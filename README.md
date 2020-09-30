@@ -26,8 +26,13 @@ Current project is a simple social network platform "XYZ". User can do various a
   node --version
   ```
 - Google Chrome browser
+- Docker
 
 To install dependencies - run `npm ci` from the root of the project.
+
+## Mongo setup
+
+Setup docker on your machine. From root of the project run `docker-compose up`
 
 # Design
 
