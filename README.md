@@ -4,7 +4,7 @@ This is an educational project for group JS internship within Sigma Software at 
 
 # Intro
 
-Current project is a simple social network platform "XYZ". User can do various actions, among them:
+Current project is a simple social network platform "Meetlang". User can do various actions, among them:
 
 - Register within system
 - Login
