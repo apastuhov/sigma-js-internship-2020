@@ -38,6 +38,8 @@ Setup docker on your machine. From root of the project run `docker-compose up`
 
 [![](https://img.shields.io/badge/source-figma-blue?style=flat)](https://www.figma.com/file/gAndxaAQxPZ20cYJdKxRuH/Fullstack-Internship)
 
+[![](https://img.shields.io/badge/source-UML_diagrams-yellow?style=flat)](https://app.diagrams.net/#G1tMWymHu0FNsaB1YHXNU6JCnRNpGu9TLb)
+
 There are no requirements for the application design at all. Be creative!
 
 Each page must contain:
