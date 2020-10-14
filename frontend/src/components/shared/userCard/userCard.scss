@@ -1,0 +1,117 @@
+@import '../../../styles/variables.scss';
+
+.user-card{
+	display: flex;
+	width: 460px;
+	padding: $box-padding;
+	border-radius: $rounding;
+	.leftbar{
+		position: relative;
+		width: 180px;
+		text-align: center;
+		border-right: 2px solid $secondary-color;
+		.online-status{
+			display: inline-block;
+			position: absolute;
+			top: 95px;
+			right: 35px;
+			width: 20px;
+			height: 20px;
+			border: 2px solid #fff;
+			border-radius: 15px;
+			background: #70D357;
+		}
+		img{
+			width: 125px;
+			height: 125px;
+			border-radius: 70px;
+		}
+		h3{
+			@include title;
+			margin: 5px;
+		}
+		p{
+			@include text;
+			margin: 5px;
+			color: $secondary-text-color;
+			span{
+				display: inline-block;
+				margin-right: 3px;
+				width: 20px;
+				height: 12px;
+				background: red;
+			}
+		}
+	}
+	.rightbar{
+		position: relative;
+		width: 255px;
+		padding: 0 13px;
+		.speaks{
+			margin-bottom: 20px;
+		}
+		.learning{
+			margin-bottom: 55px;
+		}
+		.speaks,.learning{
+			h3{
+				color: $secondary-text-color;
+				margin: 0;
+			}
+			.languages{
+				display: flex;
+				padding-left: 13px;
+				margin-bottom: 5px;
+				p:first-child{
+					min-width: 95px;
+				}
+				p{
+					@include text;
+					padding-left: 5px;
+					margin: 5px 0 0 0 ;
+				}
+			}
+		}
+		.buttons-action{
+			position: absolute;
+			bottom: 0;     
+			width: 100%;
+			display: flex;
+			justify-content: space-around;
+			.add-friend{
+				@include button;
+				background: $primary-color;
+				pointer-events: none;
+			}
+			.send-message{
+				@include button;
+				background: $secondary-color;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 540px) {
+	.user-card{
+		flex-direction: column;
+		align-items: center;
+		width: 250px;
+		.leftbar{
+			border-right: none;
+			border-bottom: 2px solid $secondary-color;
+			margin-bottom: 5px;
+		}
+		.rightbar{
+			width: auto;
+			padding: 0;
+			.languages{
+				text-align: center;
+			}
+			.buttons-action{
+				a{
+					margin: 5px;
+				}
+			}
+		}
+	}
+}
