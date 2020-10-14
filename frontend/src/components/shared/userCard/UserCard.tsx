@@ -1,7 +1,7 @@
 import Box from '@material-ui/core/Box';
 import React from 'react';
-import { Link } from "react-router-dom";
-import UserPhoto from "./user.png";
+import { Link } from 'react-router-dom';
+import UserPhoto from './user.png';
 import './userCard.scss';
 
 export const UserCard: React.FC = () => {
@@ -12,7 +12,9 @@ export const UserCard: React.FC = () => {
 				<span className="online-status"></span>
 				<h3>Orest Haponov</h3>
 				<p>22 y.o.</p>
-				<p><span></span>Ukraine</p>
+				<p>
+					<span></span>Ukraine
+				</p>
 			</div>
 			<div className="rightbar">
 				<div className="speaks">
@@ -34,10 +36,14 @@ export const UserCard: React.FC = () => {
 					</div>
 				</div>
 				<div className="buttons-action">
-					<Link to="/" className="add-friend">add friend</Link>
-					<Link to="/chat" className="send-message">message</Link>
+					<Link to="/" className="add-friend">
+						add friend
+					</Link>
+					<Link to="/chat" className="send-message">
+						message
+					</Link>
 				</div>
 			</div>
-		</Box >
-	)
-}
+		</Box>
+	);
+};
