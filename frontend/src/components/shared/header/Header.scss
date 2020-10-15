@@ -1,0 +1,66 @@
+@import '../../../styles/variables.scss';
+
+header {
+
+  background-color: $primary-color;
+
+  .container {
+    position: relative;
+    max-width: 944px;
+    margin: 0 auto;
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 2.3s;
+
+    .logo {
+      height: 48px;
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+
+    nav {
+      display: flex;
+      a {
+        display: flex;
+        align-items: center;
+        margin-right: 30px;
+        text-decoration: none;
+        color: #fff;
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+      img {
+        height: 25px;
+      }
+      .dropdown-menu {
+        display: none;
+        position: absolute;
+        list-style: none;
+        top: 60px;
+        right: -41px;
+        a {
+          display: block;
+          padding: 7px 12px;
+          margin: 2px 0 0 0;
+          min-width: 103px;
+          text-align: center;
+          border-radius: $block-round;
+          background-color: $primary-color;
+          color: #fff;
+        }
+        &-active {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
