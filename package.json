@@ -29,5 +29,8 @@
       "pre-push": "npm run typecheck",
       "pre-commit": "npm run prettier"
     }
+  },
+  "dependencies": {
+    "@material-ui/icons": "^4.9.1"
   }
 }
