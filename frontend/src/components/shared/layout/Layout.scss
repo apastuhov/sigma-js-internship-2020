@@ -1,0 +1,11 @@
+@import '../../../styles/variables.scss';
+.container {
+  max-width: $container-width;
+  margin: auto;
+  min-height: 635px;
+
+  .page-title {
+    @include title;
+    color: $black;
+  }
+}
