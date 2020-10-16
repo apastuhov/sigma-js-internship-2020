@@ -1,18 +1,17 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import SearchIcon from '@material-ui/icons/Search';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './Header.scss';
 import logo from './logo.png';
 
 const Header: React.FC = () => {
-  const [menuClass, setMenuClass] = useState('');
+  const [showMenu, setMenu] = useState('');
 
-  const pathImage = '/images/profiles/';
-  const iconName = 'icon_0.png';
+  const iconName = 'icon_0';
 
   const toggleMenu = () => {
-    setMenuClass(Boolean(menuClass) ? '' : 'dropdown-menu-active');
+    setMenu(showMenu ? '' : 'dropdown-menu-active');
   };
 
   return (
@@ -29,8 +28,8 @@ const Header: React.FC = () => {
           <Link to="/chat">
             <MailOutlineIcon style={{ color: '#fff' }} />
           </Link>
-          <img onClick={toggleMenu} src={`${pathImage}${iconName}`} alt="profile" className="logo" />
-          <div className={`dropdown-menu ${menuClass}`}>
+          <img onClick={toggleMenu} src={`/img/profiles/${iconName}.png`} alt="profile" className="logo" />
+          <div className={`dropdown-menu ${showMenu}`}>
             <Link to="/settings">Settings</Link>
             <Link to="/login">Log Out</Link>
           </div>
