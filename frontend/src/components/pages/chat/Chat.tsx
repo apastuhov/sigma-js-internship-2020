@@ -1,7 +1,12 @@
 import React from 'react';
+import Layout from '../../shared/layout/Layout';
 
 const Chat: React.FC = () => {
-  return <h1>Chat</h1>;
+  return (
+    <Layout PageTitle="Chat">
+      <div></div>
+    </Layout>
+  );
 };
 
 export default Chat;

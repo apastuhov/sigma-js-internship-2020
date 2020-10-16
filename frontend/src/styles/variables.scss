@@ -1,9 +1,9 @@
 $white: #ffffff;
 $black: #000000;
 $gray: #979797;
-$green: #70D357;
-$primary-color: #0093DD;
-$secondary-color: #F7DB17;
+$green: #70d357;
+$primary-color: #0093dd;
+$secondary-color: #f7db17;
 $small-retreat: 5px;
 $tile-width: 450px;
 $mobile-tile-width: 250px;
@@ -13,13 +13,11 @@ $block-round: 4px;
 
 @mixin title {
   font-size: 20px;
-  font-family: Roboto, sans-serif;
   font-weight: 500;
 }
 
 @mixin text {
   font-size: 14px;
-  font-family: Roboto, sans-serif;
   font-weight: 400;
 }
 
@@ -34,7 +32,6 @@ $block-round: 4px;
   border: none;
   padding: 5px;
   font-size: 14px;
-  font-family: Roboto, sans-serif;
   font-weight: 500;
   text-transform: uppercase;
   text-decoration: none;

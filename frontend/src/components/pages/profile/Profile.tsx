@@ -1,7 +1,12 @@
 import React from 'react';
+import Layout from '../../shared/layout/Layout';
 
 const Profile: React.FC = () => {
-  return <h1>Profile</h1>;
+  return (
+    <Layout PageTitle="Profile">
+      <div></div>
+    </Layout>
+  );
 };
 
 export default Profile;

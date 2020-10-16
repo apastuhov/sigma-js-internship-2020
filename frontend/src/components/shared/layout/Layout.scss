@@ -1,0 +1,12 @@
+@import '../../../styles/variables.scss';
+
+.container {
+  max-width: 944px;
+  margin: 26px auto;
+  .page-title {
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 36px;
+    color: $black;
+  }
+}

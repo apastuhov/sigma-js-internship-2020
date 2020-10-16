@@ -1,7 +1,12 @@
 import React from 'react';
+import Layout from '../../shared/layout/Layout';
 
 const Settings: React.FC = () => {
-  return <h1>Settings</h1>;
+  return (
+    <Layout PageTitle="Settings">
+      <div></div>
+    </Layout>
+  );
 };
 
 export default Settings;

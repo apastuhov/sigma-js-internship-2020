@@ -1,7 +1,12 @@
 import React from 'react';
+import Layout from '../../shared/layout/Layout';
 
 const Search: React.FC = () => {
-  return <h1>Search</h1>;
+  return (
+    <Layout PageTitle="Search">
+      <div></div>
+    </Layout>
+  );
 };
 
 export default Search;
