@@ -3,7 +3,7 @@ import Layout from '../../shared/layout/Layout';
 
 const Register: React.FC = () => {
   return (
-    <Layout PageTitle="Registration">
+    <Layout pageTitle="Registration">
       <div></div>
     </Layout>
   );

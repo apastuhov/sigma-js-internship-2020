@@ -3,19 +3,19 @@ import Header from '../header/Header';
 import Footer from '../footer/Footer';
 import './Layout.scss';
 
-type Props = {
-  PageTitle: string;
+interface IProps {
+  pageTitle: string;
   children: ReactNode;
-};
+}
 
-const Layout: React.FC<Props> = ({ PageTitle, children }: Props) => {
+const Layout: React.FC<IProps> = ({ pageTitle, children }: IProps) => {
   return (
     <div>
       <Header />
       <div className="container">
-        <p className="page-title">{PageTitle}</p>
+        <h1 className="page-title">{pageTitle}</h1>
+        {children}
       </div>
-      {children}
       <Footer />
     </div>
   );

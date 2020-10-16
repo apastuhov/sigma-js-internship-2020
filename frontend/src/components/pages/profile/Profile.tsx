@@ -3,7 +3,7 @@ import Layout from '../../shared/layout/Layout';
 
 const Profile: React.FC = () => {
   return (
-    <Layout PageTitle="Profile">
+    <Layout pageTitle="Profile">
       <div></div>
     </Layout>
   );

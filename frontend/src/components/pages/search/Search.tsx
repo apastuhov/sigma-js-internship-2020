@@ -3,7 +3,7 @@ import Layout from '../../shared/layout/Layout';
 
 const Search: React.FC = () => {
   return (
-    <Layout PageTitle="Search">
+    <Layout pageTitle="Search">
       <div></div>
     </Layout>
   );

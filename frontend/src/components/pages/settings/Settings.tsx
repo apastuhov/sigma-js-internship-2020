@@ -3,7 +3,7 @@ import Layout from '../../shared/layout/Layout';
 
 const Settings: React.FC = () => {
   return (
-    <Layout PageTitle="Settings">
+    <Layout pageTitle="Settings">
       <div></div>
     </Layout>
   );

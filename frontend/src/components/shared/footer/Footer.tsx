@@ -4,7 +4,8 @@ import './Footer.scss';
 const Footer: React.FC = () => {
   return (
     <footer>
-      <p className="footer-text"> © 2020 Sigma Software Privacy Policy Terms of use</p>
+      © 2020 Sigma Software
+      <br /> Privacy Policy Terms of use
     </footer>
   );
 };

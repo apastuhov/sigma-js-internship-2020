@@ -3,7 +3,7 @@ import Layout from '../../shared/layout/Layout';
 
 const Chat: React.FC = () => {
   return (
-    <Layout PageTitle="Chat">
+    <Layout pageTitle="Chat">
       <div></div>
     </Layout>
   );
