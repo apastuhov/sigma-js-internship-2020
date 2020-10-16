@@ -4,12 +4,19 @@ $gray: #979797;
 $green: #70D357;
 $primary-color: #0093DD;
 $secondary-color: #F7DB17;
-$small-retreat: 5px;
+$gap-2: 2px;
+$gap-4: 4px;
+$gap-10: 10px;
+$gap-20: 20px;
 $tile-width: 450px;
 $mobile-tile-width: 250px;
-$box-padding: 25px;
+$box-padding: 24px;
 $button-transform: scale(1.05);
 $block-round: 4px;
+
+@mixin for-mobile {
+  @media screen and (max-width: 540px) { @content; }
+}
 
 @mixin title {
   font-size: 20px;

@@ -4,81 +4,102 @@
   display: flex;
   width: $tile-width;
   padding: $box-padding;
-  border-radius: $block-round;
+  border-radius: $gap-4;
+
+  @include for-mobile{
+    width: $mobile-tile-width;
+    flex-direction: column;
+    align-items: center;
+  }
+
   .leftbar {
     position: relative;
     width: 180px;
     text-align: center;
-    border-right: 2px solid $secondary-color;
-    .online-status {
-      display: inline-block;
-      position: absolute;
-      top: 95px;
-      right: 35px;
-      width: 20px;
-      height: 20px;
-      border: 2px solid $white;
-      border-radius: 15px;
-      background: $green;
+    border-right: $gap-2 solid $secondary-color;
+    text-decoration: none;
+    color: $black;
+
+    @include for-mobile{
+      border-right: none;
+      border-bottom: $gap-2 solid $secondary-color;
+      margin-bottom: $gap-4;
     }
-    img {
-      width: 125px;
-      height: 125px;
-      border-radius: 70px;
-    }
+
     h3 {
       @include title;
-      margin: $small-retreat;
+      margin: $gap-4;
     }
+
     p {
       @include text;
-      margin: $small-retreat;
+      margin: $gap-4;
       color: $gray;
-      span {
+
+      .flag {
         display: inline-block;
-        margin-right: 3px;
-        width: 20px;
+        margin-right: $gap-4;
+        width: $gap-20;
         height: 12px;
         background: red;
       }
+
     }
+
   }
+
   .rightbar {
-    position: relative;
-    width: 255px;
-    padding: 0 13px;
-    .speaks {
-      margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 254px;
+    padding: 0 14px;
+    
+    @include for-mobile{
+      width: auto;
+      padding: 0;
     }
-    .learning {
-      margin-bottom: 55px;
+
+    .learning{
+      flex-grow: 1;
     }
+
     .speaks,
     .learning {
+      margin-bottom: $gap-20;
+
       h3 {
         color: $gray;
         margin: 0;
       }
+      
       .languages {
         display: flex;
-        padding-left: 13px;
-        margin-bottom: $small-retreat;
-        p:first-child {
-          min-width: 95px;
+        padding-left: 14px;
+        margin-bottom: $gap-4;
+
+        @include for-mobile{
+          text-align: center;
         }
+        
         p {
           @include text;
-          padding-left: $small-retreat;
-          margin: $small-retreat 0 0 0;
+          flex-basis: 50%;
+          padding-left: $gap-4;
+          margin: $gap-4 0 0 0;
         }
       }
     }
+
     .buttons-action {
-      position: absolute;
-      bottom: 0;
       width: 100%;
       display: flex;
       justify-content: space-around;
+
+      @include for-mobile{
+        text-align: center;
+        margin: $gap-4;
+      }
+      
       .add-friend,
       .send-message {
         @include button;
@@ -86,36 +107,13 @@
           transform: $button-transform;
         }
       }
+
       .add-friend {
         background: $primary-color;
       }
+
       .send-message {
         background: $secondary-color;
-      }
-    }
-  }
-}
-
-@media screen and (max-width: 540px) {
-  .user-card {
-    flex-direction: column;
-    align-items: center;
-    width: $mobile-tile-width;
-    .leftbar {
-      border-right: none;
-      border-bottom: 2px solid $secondary-color;
-      margin-bottom: $small-retreat;
-    }
-    .rightbar {
-      width: auto;
-      padding: 0;
-      .languages {
-        text-align: center;
-      }
-      .buttons-action {
-        a {
-          margin: $small-retreat;
-        }
       }
     }
   }

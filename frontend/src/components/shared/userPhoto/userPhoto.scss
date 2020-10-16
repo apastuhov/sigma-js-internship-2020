@@ -1,0 +1,22 @@
+@import '../../../styles/variables.scss';
+
+.user-photo{
+  position: relative;
+
+  img {
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+  }
+  
+  .online-status {
+    position: absolute;
+    bottom: $gap-10;
+    right: 35px;
+    width: $gap-20;
+    height: $gap-20;
+    border: $gap-2 solid $white;
+    border-radius: 50%;
+    background: $green;
+  }
+}

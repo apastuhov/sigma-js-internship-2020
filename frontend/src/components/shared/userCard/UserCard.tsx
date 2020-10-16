@@ -1,35 +1,50 @@
 import React, { MouseEvent } from 'react';
 import Box from '@material-ui/core/Box';
 import { Link } from 'react-router-dom';
-import UserPhoto from '../../util/user.png';
 import './userCard.scss';
-import User from '../../util/user.json';
+import User from '../../mocks/user-mock.json';
+import { UserPhoto } from '../userPhoto/UserPhoto';
+import { MainInfo } from '../../interfaces/Interface';
 
 export const UserCard: React.FC = () => {
-  let { firstName, lastName, age, country, speaks, learn, online, isFriend } = User;
+
+  let mainInfo: MainInfo = {
+    firstName: User.firstName,
+    lastName: User.lastName,
+    age: User.age,
+    country: User.country,
+    speaks: User.speaks,
+    learn: User.learn,
+    online: User.online,
+    isFriend: User.isFriend,
+    photoUrl: User.photoUrl
+  }
 
   const sendFriendRequest = (event: MouseEvent) => {
     event.preventDefault();
+    console.log("Send user friend request");
   };
 
   return (
     <Box boxShadow={2} className="user-card">
-      <div className="leftbar">
-        <img src={UserPhoto} alt="" />
-        {online === true ? <span className="online-status"></span> : null}
+      <Link to="/" className="leftbar">
+        <UserPhoto
+          online={User.online}
+          photoUrl={User.photoUrl}
+        />
         <h3>
-          {firstName} {lastName}
+          {mainInfo.firstName} {mainInfo.lastName}
         </h3>
-        <p>{age} y.o.</p>
+        <p>{mainInfo.age} y.o.</p>
         <p>
-          <span></span>
-          {country}
+          <span className="flag"></span>
+          {mainInfo.country}
         </p>
-      </div>
+      </Link>
       <div className="rightbar">
         <div className="speaks">
           <h3>Speaks</h3>
-          {speaks.map((speaksInfo, id) => {
+          {mainInfo.speaks.map((speaksInfo, id) => {
             return (
               <div className="languages" key={id}>
                 <p>{speaksInfo.language}</p>
@@ -40,7 +55,7 @@ export const UserCard: React.FC = () => {
         </div>
         <div className="learning">
           <h3>Learning</h3>
-          {learn.map((learnInfo, id) => {
+          {mainInfo.learn.map((learnInfo, id) => {
             return (
               <div className="languages" key={id}>
                 <p>{learnInfo.language}</p>
@@ -50,9 +65,9 @@ export const UserCard: React.FC = () => {
           })}
         </div>
         <div className="buttons-action">
-          {isFriend === false ? (
+          {mainInfo.isFriend === false ? (
             <Link to="/" onClick={sendFriendRequest} className="add-friend">
-              add friend{' '}
+              add friend
             </Link>
           ) : null}
           <Link to="/chat" className="send-message">
