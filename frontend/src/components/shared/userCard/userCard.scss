@@ -1,13 +1,8 @@
 @import '../../../styles/variables.scss';
 
-.container{
-	width: 944px;
-	margin: 0 auto;
-}
-
 .user-card{
 	display: flex;
-	width: 460px;
+	width: $tile-width;
 	padding: $box-padding;
 	border-radius: $block-round;
 	.leftbar{
@@ -22,9 +17,9 @@
 			right: 35px;
 			width: 20px;
 			height: 20px;
-			border: 2px solid #fff;
+			border: 2px solid $white;
 			border-radius: 15px;
-			background: #70D357;
+			background: $green;
 		}
 		img{
 			width: 125px;
@@ -33,12 +28,12 @@
 		}
 		h3{
 			@include title;
-			margin: 5px;
+			margin: $small-retreat;
 		}
 		p{
 			@include text;
-			margin: 5px;
-			color: $secondary-text-color;
+			margin: $small-retreat;
+			color: $gray;
 			span{
 				display: inline-block;
 				margin-right: 3px;
@@ -60,20 +55,20 @@
 		}
 		.speaks,.learning{
 			h3{
-				color: $secondary-text-color;
+				color: $gray;
 				margin: 0;
 			}
 			.languages{
 				display: flex;
 				padding-left: 13px;
-				margin-bottom: 5px;
+				margin-bottom: $small-retreat;
 				p:first-child{
 					min-width: 95px;
 				}
 				p{
 					@include text;
-					padding-left: 5px;
-					margin: 5px 0 0 0 ;
+					padding-left: $small-retreat;
+					margin: $small-retreat 0 0 0 ;
 				}
 			}
 		}
@@ -83,21 +78,17 @@
 			width: 100%;
 			display: flex;
 			justify-content: space-around;
-			.add-friend{
+			.add-friend,.send-message{
 				@include button;
-				background: $primary-color;
-				pointer-events: none;
-				cursor: pointer;
 				&:hover {
-                    transform: scale(1.05);
+					transform: $button-transform;
                 }
 			}
+			.add-friend{
+				background: $primary-color;
+			}
 			.send-message{
-				@include button;
 				background: $secondary-color;
-				&:hover {
-                    transform: scale(1.05);
-                }
 			}
 		}
 	}
@@ -107,11 +98,11 @@
 	.user-card{
 		flex-direction: column;
 		align-items: center;
-		width: 250px;
+		width: $mobile-tile-width;
 		.leftbar{
 			border-right: none;
 			border-bottom: 2px solid $secondary-color;
-			margin-bottom: 5px;
+			margin-bottom: $small-retreat;
 		}
 		.rightbar{
 			width: auto;
@@ -121,7 +112,7 @@
 			}
 			.buttons-action{
 				a{
-					margin: 5px;
+					margin: $small-retreat;
 				}
 			}
 		}
