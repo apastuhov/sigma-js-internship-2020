@@ -1,0 +1,122 @@
+@import '../../../styles/variables.scss';
+
+.user-card {
+  display: flex;
+  width: $tile-width;
+  padding: $box-padding;
+  border-radius: $block-round;
+  .leftbar {
+    position: relative;
+    width: 180px;
+    text-align: center;
+    border-right: 2px solid $secondary-color;
+    .online-status {
+      display: inline-block;
+      position: absolute;
+      top: 95px;
+      right: 35px;
+      width: 20px;
+      height: 20px;
+      border: 2px solid $white;
+      border-radius: 15px;
+      background: $green;
+    }
+    img {
+      width: 125px;
+      height: 125px;
+      border-radius: 70px;
+    }
+    h3 {
+      @include title;
+      margin: $small-retreat;
+    }
+    p {
+      @include text;
+      margin: $small-retreat;
+      color: $gray;
+      span {
+        display: inline-block;
+        margin-right: 3px;
+        width: 20px;
+        height: 12px;
+        background: red;
+      }
+    }
+  }
+  .rightbar {
+    position: relative;
+    width: 255px;
+    padding: 0 13px;
+    .speaks {
+      margin-bottom: 20px;
+    }
+    .learning {
+      margin-bottom: 55px;
+    }
+    .speaks,
+    .learning {
+      h3 {
+        color: $gray;
+        margin: 0;
+      }
+      .languages {
+        display: flex;
+        padding-left: 13px;
+        margin-bottom: $small-retreat;
+        p:first-child {
+          min-width: 95px;
+        }
+        p {
+          @include text;
+          padding-left: $small-retreat;
+          margin: $small-retreat 0 0 0;
+        }
+      }
+    }
+    .buttons-action {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      .add-friend,
+      .send-message {
+        @include button;
+        &:hover {
+          transform: $button-transform;
+        }
+      }
+      .add-friend {
+        background: $primary-color;
+      }
+      .send-message {
+        background: $secondary-color;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .user-card {
+    flex-direction: column;
+    align-items: center;
+    width: $mobile-tile-width;
+    .leftbar {
+      border-right: none;
+      border-bottom: 2px solid $secondary-color;
+      margin-bottom: $small-retreat;
+    }
+    .rightbar {
+      width: auto;
+      padding: 0;
+      .languages {
+        text-align: center;
+      }
+      .buttons-action {
+        a {
+          margin: $small-retreat;
+        }
+      }
+    }
+  }
+}
