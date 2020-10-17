@@ -6,23 +6,19 @@ import { UserPhoto } from '../userPhoto/UserPhoto';
 import { MainInfo } from '../../interfaces/Interface';
 
 type MainInfoProps = {
-  user: MainInfo
-}
+  user: MainInfo;
+};
 
-export const UserCard: React.FC<MainInfoProps> = (props) => {
-
+export const UserCard: React.FC<MainInfoProps> = props => {
   const sendFriendRequest = (event: MouseEvent) => {
     event.preventDefault();
-    console.log("Send user friend request");
+    console.log('Send user friend request');
   };
 
   return (
     <Box boxShadow={2} className="user-card">
       <Link to="/" className="leftbar">
-        <UserPhoto
-          online={props.user.online}
-          photoUrl={props.user.photoUrl}
-        />
+        <UserPhoto online={props.user.online} photoUrl={props.user.photoUrl} />
         <h3>
           {props.user.firstName} {props.user.lastName}
         </h3>

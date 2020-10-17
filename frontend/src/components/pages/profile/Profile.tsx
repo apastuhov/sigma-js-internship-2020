@@ -6,9 +6,7 @@ import { UserCard } from '../../shared/userCard/UserCard';
 const Profile: React.FC = () => {
   return (
     <Layout pageTitle="Profile">
-      <UserCard
-        user={User}
-      />
+      <UserCard user={User} />
     </Layout>
   );
 };

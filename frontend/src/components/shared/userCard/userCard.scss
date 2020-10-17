@@ -3,6 +3,7 @@
 .user-card {
   display: flex;
   width: $tile-width;
+  box-sizing: border-box;
   padding: $box-padding;
   border-radius: $gap-4;
 
