@@ -10,7 +10,7 @@ type UserPhotoProps = {
 export const UserPhoto: React.FC<UserPhotoProps> = (props) => {
   return (
     <div className="user-photo">
-      <img src={Avatar} alt="photo of user" />
+      <img src={Avatar} alt="User avatar" />
       {props.online === true
         ? <span className="online-status"></span>
         : null}

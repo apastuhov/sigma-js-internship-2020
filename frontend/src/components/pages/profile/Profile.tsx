@@ -1,13 +1,15 @@
 import React from 'react';
+import Layout from '../../shared/layout/Layout';
+import User from '../../mocks/user-mock.json';
 import { UserCard } from '../../shared/userCard/UserCard';
-import './profile.scss';
 
 const Profile: React.FC = () => {
   return (
-    <div className="container">
-      <h1>Profile</h1>
-      <UserCard />
-    </div>
+    <Layout pageTitle="Profile">
+      <UserCard
+        user={User}
+      />
+    </Layout>
   );
 };
 
