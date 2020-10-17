@@ -1,0 +1,49 @@
+{
+  "id": 222,
+  "firstName": "Jack",
+  "lastName": "Jackson",
+  "sex": "man",
+  "age": 24,
+  "birthday": "21.10.1997",
+  "country": "Ukraine",
+  "speaks": [
+    {
+      "language": "Ukrainian",
+      "level": "Native"
+    },
+    {
+      "language": "Russian",
+      "level": "Fluent"
+    }
+  ],
+  "learn": [
+    {
+      "language": "English",
+      "level": "Intermediate"
+    }
+  ],
+  "online": false,
+  "isFriend": false,
+  "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud.",
+  "photoUrl": "testUrl",
+  "friends": [
+    {
+      "id": 333,
+      "photoUrl": "testUrl",
+      "firstName": "Jack",
+      "lastName": "Jackson"
+    },
+    {
+      "id": 444,
+      "photoUrl": "testUrl",
+      "firstName": "Jack",
+      "lastName": "Jackson"
+    },
+    {
+      "id": 555,
+      "photoUrl": "testUrl",
+      "firstName": "Jack",
+      "lastName": "Jackson"
+    }
+  ]
+}
