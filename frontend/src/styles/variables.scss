@@ -7,6 +7,7 @@ $secondary-color: #f7db17;
 $gap-2: 2px;
 $gap-4: 4px;
 $gap-10: 10px;
+$gap-14: 14px;
 $gap-20: 20px;
 $gap-24: 24px;
 $mobile-tile-width: 250px;
@@ -35,6 +36,7 @@ $container-width: 944px;
 @mixin text {
   font-size: 14px;
   font-weight: 400;
+  font-family: 'Roboto';
 }
 
 @mixin button {

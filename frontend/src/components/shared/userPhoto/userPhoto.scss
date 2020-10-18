@@ -1,14 +1,14 @@
 @import '../../../styles/variables.scss';
 
-.user-photo{
+.user-photo {
   position: relative;
 
   img {
-    width: 125px;
-    height: 125px;
+    width: 126px;
+    height: 126px;
     border-radius: 50%;
   }
-  
+
   .online-status {
     position: absolute;
     bottom: $gap-10;
