@@ -1,4 +1,5 @@
 export interface MainInfo {
+  id: number;
   firstName: string;
   lastName: string;
   age: number;
