@@ -1,22 +1,30 @@
 $white: #ffffff;
 $black: #000000;
 $gray: #979797;
-$green: #70D357;
-$primary-color: #0093DD;
-$secondary-color: #F7DB17;
+$green: #70d357;
+$primary-color: #0093dd;
+$secondary-color: #f7db17;
 $gap-2: 2px;
 $gap-4: 4px;
 $gap-10: 10px;
 $gap-20: 20px;
-$tile-width: 450px;
+$gap-24: 24px;
 $mobile-tile-width: 250px;
-$box-padding: 24px;
-$button-transform: scale(1.05);
-$block-round: 4px;
+$tile-radius: 4px;
+$tile-width: 450px;
+$transform-scale: scale(1.05);
 $container-width: 944px;
 
 @mixin for-mobile {
-  @media screen and (max-width: 540px) { @content; }
+  @media screen and (max-width: 540px) {
+    @content;
+  }
+}
+
+@mixin hover-transform-scale {
+  &:hover {
+    transform: $transform-scale;
+  }
 }
 
 @mixin title {
@@ -43,4 +51,12 @@ $container-width: 944px;
   font-weight: 500;
   text-transform: uppercase;
   text-decoration: none;
+}
+
+@mixin tile {
+  width: $tile-width;
+  background-color: $white;
+  border-radius: $tile-radius;
+  box-sizing: border-box;
+  padding: $gap-24;
 }
