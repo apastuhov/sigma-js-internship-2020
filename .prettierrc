@@ -9,6 +9,5 @@
   "jsxBracketSameLine": false,
   "arrowParens": "avoid",
   "quoteProps": "as-needed",
-  "jsxSingleQuote": false,
-  "color-hex-"
+  "jsxSingleQuote": false
 }
