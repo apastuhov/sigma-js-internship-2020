@@ -2,12 +2,9 @@
 
 .user-card {
   display: flex;
-  width: $tile-width;
-  box-sizing: border-box;
-  padding: $box-padding;
-  border-radius: $gap-4;
+  @include tile;
 
-  @include for-mobile{
+  @include for-mobile {
     width: $mobile-tile-width;
     flex-direction: column;
     align-items: center;
@@ -21,7 +18,7 @@
     text-decoration: none;
     color: $black;
 
-    @include for-mobile{
+    @include for-mobile {
       border-right: none;
       border-bottom: $gap-2 solid $secondary-color;
       margin-bottom: $gap-4;
@@ -44,9 +41,7 @@
         height: 12px;
         background: red;
       }
-
     }
-
   }
 
   .rightbar {
@@ -54,13 +49,13 @@
     flex-direction: column;
     width: 254px;
     padding: 0 14px;
-    
-    @include for-mobile{
+
+    @include for-mobile {
       width: auto;
       padding: 0;
     }
 
-    .learning{
+    .learning {
       flex-grow: 1;
     }
 
@@ -72,16 +67,16 @@
         color: $gray;
         margin: 0;
       }
-      
+
       .languages {
         display: flex;
         padding-left: 14px;
         margin-bottom: $gap-4;
 
-        @include for-mobile{
+        @include for-mobile {
           text-align: center;
         }
-        
+
         p {
           @include text;
           flex-basis: 50%;
@@ -96,16 +91,16 @@
       display: flex;
       justify-content: space-around;
 
-      @include for-mobile{
+      @include for-mobile {
         text-align: center;
         margin: $gap-4;
       }
-      
+
       .add-friend,
       .send-message {
         @include button;
         &:hover {
-          transform: $button-transform;
+          transform: $transform;
         }
       }
 
