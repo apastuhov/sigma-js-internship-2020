@@ -1,0 +1,11 @@
+<component name="ProjectCodeStyleConfiguration">
+  <code_scheme name="Project" version="173">
+    <CssCodeStyleSettings>
+      <option name="HEX_COLOR_UPPER_CASE" value="true" />
+    </CssCodeStyleSettings>
+    <ScssCodeStyleSettings>
+      <option name="HEX_COLOR_UPPER_CASE" value="true" />
+    </ScssCodeStyleSettings>
+
+  </code_scheme>
+</component>
