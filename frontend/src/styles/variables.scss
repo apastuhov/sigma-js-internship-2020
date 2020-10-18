@@ -12,12 +12,18 @@ $gap-24: 24px;
 $mobile-tile-width: 250px;
 $tile-radius: 4px;
 $tile-width: 450px;
-$transform: scale(1.05);
+$transform-scale: scale(1.05);
 $container-width: 944px;
 
 @mixin for-mobile {
   @media screen and (max-width: 540px) {
     @content;
+  }
+}
+
+@mixin hover-transform {
+  &:hover {
+    transform: $transform-scale;
   }
 }
 

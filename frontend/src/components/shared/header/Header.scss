@@ -15,9 +15,7 @@ header {
 
     .logo {
       height: 48px;
-      &:hover {
-        transform: $transform;
-      }
+      @include hover-transform;
     }
 
     nav {
@@ -28,9 +26,7 @@ header {
         margin-right: 30px;
         text-decoration: none;
         color: $white;
-        &:hover {
-          transform: $transform;
-        }
+        @include hover-transform;
       }
       img {
         height: 25px;
