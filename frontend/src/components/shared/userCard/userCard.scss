@@ -99,7 +99,7 @@
       .add-friend,
       .send-message {
         @include button;
-        @include hover-transform;
+        @include hover-transform-scale;
       }
 
       .add-friend {

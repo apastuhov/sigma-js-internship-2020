@@ -21,7 +21,7 @@ $container-width: 944px;
   }
 }
 
-@mixin hover-transform {
+@mixin hover-transform-scale {
   &:hover {
     transform: $transform-scale;
   }
