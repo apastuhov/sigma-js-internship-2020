@@ -1,0 +1,13 @@
+@import '../../../styles/variables.scss';
+
+p {
+  margin: 24px 0 10px;
+}
+.input {
+  @include input;
+  width: 170px;
+  height: 22px;
+  &:focus {
+    outline-color: $grey;
+  }
+}

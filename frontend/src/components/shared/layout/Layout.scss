@@ -7,6 +7,7 @@
   .page-title {
     @include title;
     color: $black;
+    display: flex;
     margin: 24px 0;
   }
 }
