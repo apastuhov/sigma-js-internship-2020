@@ -4,21 +4,21 @@ import UserList from '../../shared/userList/UserList';
 import Users from '../../mocks/users-mock.json';
 import { Box } from '@material-ui/core';
 import { CountryDropdown } from 'react-country-region-selector';
-// import { countries } from "typed-countries";
+import { lowLimit, hightLimit, languages, languageLevels } from '../../constants/constants';
 import './search.scss';
 
 const Search: React.FC = () => {
   const [name, setName] = useState('');
   const [country, setCountry] = useState('');
-  const [checkbox, setCheckbox] = useState({
+  const [checkboxFilters, setCheckboxFilters] = useState({
     male: false,
     female: false,
-    online: false
+    isOnline: false
   });
 
-  const [selects, setSelects] = useState({
-    lowAge: '13',
-    highAge: '99',
+  const [selectsFilters, setSelectsFilters] = useState({
+    lowAge: lowLimit,
+    highAge: hightLimit,
     language: '',
     level: ''
   });
@@ -26,23 +26,24 @@ const Search: React.FC = () => {
   const selectCountry = (val: string) => {
     setCountry(val);
   };
+
   const handleName = (e: React.ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
   };
 
   const handleCheckbox = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCheckbox({ ...checkbox, [e.target.name]: e.target.checked });
+    setCheckboxFilters({ ...checkboxFilters, [e.target.name]: e.target.checked });
   };
 
   const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSelects({ ...selects, [e.target.name]: e.target.value });
+    setSelectsFilters({ ...selectsFilters, [e.target.name]: e.target.value });
   };
 
   const getGender = () => {
-    if ((!checkbox.female && !checkbox.male) || (checkbox.female && checkbox.male)) {
-      return '';
+    if ((!checkboxFilters.female && !checkboxFilters.male) || (checkboxFilters.female && checkboxFilters.male)) {
+      return;
     }
-    return Boolean(checkbox.male) ? 'male' : 'female';
+    return Boolean(checkboxFilters.male) ? 0 : 1;
   };
 
   const getOptions = (arr: (string | number)[]) => {
@@ -56,24 +57,19 @@ const Search: React.FC = () => {
   const findUsers = (e: React.FormEvent) => {
     const request = {
       name: name,
-      lowAge: selects.lowAge,
-      highAge: selects.highAge,
+      lowAge: selectsFilters.lowAge,
+      highAge: selectsFilters.highAge,
       sex: getGender(),
       country: country,
-      language: selects.language,
-      level: selects.level,
-      online: checkbox.online
+      language: selectsFilters.language,
+      level: selectsFilters.level,
+      isOnline: checkboxFilters.isOnline
     };
     e.preventDefault();
     console.log(JSON.stringify(request));
   };
 
-  const years: number[] = [];
-  for (let i = 13; i < 100; i++) {
-    years.push(i);
-  }
-  const language = ['Any language', 'Turkish', 'Japanese', 'German', 'Portuguese', 'Ukrainian', 'English'].sort();
-  const level = ['Any level', 'Elementary', 'Pre-intermediate', 'Intermediate', 'Upper Intermediate', 'Advanced'];
+  const years = [...Array(hightLimit - lowLimit)].map((_, index) => index + lowLimit);
 
   return (
     <Layout pageTitle="Search">
@@ -83,37 +79,37 @@ const Search: React.FC = () => {
           <input type="text" onChange={handleName} value={name} />
           <label>Age</label>
           <div className="years">
-            <select onChange={handleSelect} value={selects.lowAge} name="lowAge">
+            <select onChange={handleSelect} value={selectsFilters.lowAge} name="lowAge">
               {getOptions(years)}
             </select>
             <div className="divider"></div>
-            <select onChange={handleSelect} value={selects.highAge} name="highAge">
+            <select onChange={handleSelect} value={selectsFilters.highAge} name="highAge">
               {getOptions(years)}
             </select>
           </div>
           <label>Sex</label>
           <div>
             <label>
-              <input type="checkbox" checked={checkbox.male} onChange={handleCheckbox} name="male" />
+              <input type="checkbox" checked={checkboxFilters.male} onChange={handleCheckbox} name="male" />
               Male
             </label>
             <label>
-              <input type="checkbox" checked={checkbox.female} onChange={handleCheckbox} name="female" />
+              <input type="checkbox" checked={checkboxFilters.female} onChange={handleCheckbox} name="female" />
               Female
             </label>
           </div>
           <label>Country</label>
           <CountryDropdown value={country} onChange={val => selectCountry(val)} />
           <label>Language</label>
-          <select onChange={handleSelect} value={selects.language} name="language">
-            {getOptions(language)}
+          <select onChange={handleSelect} value={selectsFilters.language} name="language">
+            {getOptions(languages)}
           </select>
           <label>Level</label>
-          <select onChange={handleSelect} value={selects.level} name="level">
-            {getOptions(level)}
+          <select onChange={handleSelect} value={selectsFilters.level} name="level">
+            {getOptions(languageLevels)}
           </select>
           <label>Online</label>
-          <input type="checkbox" checked={checkbox.online} onChange={handleCheckbox} name="online" />
+          <input type="checkbox" checked={checkboxFilters.isOnline} onChange={handleCheckbox} name="isOnline" />
           <button type="submit">Search</button>
         </form>
       </Box>

@@ -12,7 +12,11 @@ export interface MainInfo {
     language: string;
     level: string;
   }[];
-  online: boolean;
+  isOnline: boolean;
   isFriend: boolean;
   photoUrl: string;
+}
+
+export interface IUsers {
+  users: MainInfo[];
 }

@@ -1,11 +1,7 @@
 import React from 'react';
-import { MainInfo } from '../../interfaces/Interface';
 import { UserCard } from '../../shared/userCard/UserCard';
+import { IUsers } from '../../interfaces/Interface';
 import './userList.scss';
-
-interface IUsers {
-  users: MainInfo[];
-}
 
 const UserList: React.FC<IUsers> = ({ users }) => {
   return (
