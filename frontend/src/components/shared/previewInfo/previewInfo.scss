@@ -1,0 +1,13 @@
+@import '../../../styles/variables.scss';
+
+h1 {
+  @include title;
+  text-align: center;
+  padding-top: $gap-24;
+}
+
+.preview-tile {
+  @include tile;
+  padding: 0 0 $gap-10 0;
+  margin-bottom: $gap-24;
+}

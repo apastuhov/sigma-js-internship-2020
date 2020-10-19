@@ -3,12 +3,13 @@ import './input.scss';
 
 type InputProps = {
   name: string;
+  type: string;
 };
 const Input: React.FC<InputProps> = props => {
   return (
     <React.Fragment>
       <p>{props.name}</p>
-      <input className="input" />
+      <input className="input" type={props.type} />
     </React.Fragment>
   );
 };

@@ -1,0 +1,14 @@
+@import '../../../styles/variables.scss';
+
+p {
+  margin: 24px 0 10px;
+}
+.select {
+  @include input;
+  width: 170px;
+  height: 22px;
+  margin: 0 20px 6px 0;
+  &:focus {
+    outline-color: $grey;
+  }
+}
