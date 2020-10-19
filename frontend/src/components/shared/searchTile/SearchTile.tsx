@@ -5,7 +5,7 @@ import './searchTile.scss';
 const SearchTile: React.FC = props => {
   return (
     <Box boxShadow={2} className="search-tile">
-      <input type="text" name="search" id="search" placeholder="Search" />
+      <input type="text" name="search-input" className="search-input" id="search-input" placeholder="Search" />
     </Box>
   );
 };
