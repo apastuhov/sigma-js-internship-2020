@@ -1,0 +1,55 @@
+@import '../../../../../styles/variables.scss';
+
+.add-post-form{
+  @include tile;
+
+  @include for-mobile{
+    width: $mobile-tile-width;
+  }
+
+  form{
+    display: flex;
+    position: relative;
+
+    textarea{
+      @include text;
+      box-sizing: border-box;
+      width: 360px;
+      height: 74px;
+      border: 1px solid $gray;
+      border-radius: $gap-4;
+      resize: none;
+
+        &::placeholder {
+          @include text;
+          padding: $gap-2;
+        }
+
+        &:focus {
+          outline: none;
+          border: $gap-2 solid $primary-color;
+        }
+    }
+
+    .save-icon{
+      position: relative;
+      margin-left: $gap-4;
+      
+      input{
+        position: absolute;
+        width: $gap-34;
+        height: $gap-34;
+        opacity: 0;
+        z-index: 999;
+        background: transparent;
+        cursor: pointer;
+      }
+
+      .send-icon{
+        color: $primary-color;
+        width: $gap-34;
+        height: $gap-34;
+      }  
+    }
+  }
+}
