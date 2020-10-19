@@ -1,4 +1,5 @@
 @import '../../../styles/variables.scss';
+
 .container {
   max-width: $container-width;
   margin: auto;
@@ -7,6 +8,18 @@
   .page-title {
     @include title;
     color: $black;
+    display: flex;
     margin: 24px 0;
+  }
+  .page-title-friends {
+    @include title;
+    display: inline-block;
+    color: $black;
+    margin: 24px 0;
+  }
+  span {
+    margin-left: $gap-4;
+    @include title;
+    color: $grey;
   }
 }

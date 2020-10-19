@@ -6,6 +6,7 @@ import Profile from '../components/pages/profile/Profile';
 import Register from '../components/pages/registration/Register';
 import Search from '../components/pages/search/Search';
 import Settings from '../components/pages/settings/Settings';
+import Friends from '../components/pages/friends/Friends';
 
 export default () => (
   <Switch>
@@ -15,5 +16,6 @@ export default () => (
     <Route path="/search" component={Search} />
     <Route path="/settings" component={Settings} />
     <Route path="/login" component={Login} />
+    <Route path="/friends" component={Friends} />
   </Switch>
 );

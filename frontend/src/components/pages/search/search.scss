@@ -11,7 +11,7 @@
     input {
       
       border-radius: $tile-radius;
-      border: 1px solid $gray;
+      border: 1px solid $grey;
     }
     input[type=text] {
       height: 20px;
@@ -31,13 +31,13 @@
         margin: 0 10px;
         width: 12px;
         height: 1px;  
-        border-bottom: 2px solid $gray;
+        border-bottom: 2px solid $grey;
       }
     }
     select {
       width: 172px;
       border-radius: $tile-radius;
-      border-color: $gray;
+      border-color: $grey;
       height: 24px;
     }
     button {
