@@ -1,17 +1,13 @@
 import React from 'react';
 import Avatar from '../../mocks/user.png';
 import './userPhoto.scss';
+import { UserPhotoInfo } from '../../interfaces/Interface';
 
-type UserPhotoProps = {
-  online: boolean;
-  photoUrl: string;
-};
-
-export const UserPhoto: React.FC<UserPhotoProps> = props => {
+export const UserPhoto: React.FC<UserPhotoInfo> = ({ photoInfo }) => {
   return (
     <div className="user-photo">
       <img src={Avatar} alt="User avatar" />
-      {props.online === true ? <span className="online-status"></span> : null}
+      {photoInfo.isOnline === true ? <span className="online-status"></span> : null}
     </div>
   );
 };

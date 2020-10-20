@@ -2,9 +2,9 @@
   "id": 222,
   "firstName": "Jack",
   "lastName": "Jackson",
-  "sex": "man",
+  "sex": 1,
   "age": 24,
-  "birthday": "21.10.1997",
+  "birthday": 21101997,
   "country": "Ukraine",
   "speaks": [
     {
@@ -22,8 +22,8 @@
       "level": "Intermediate"
     }
   ],
-  "online": false,
-  "isFriend": false,
+  "isOnline": false,
+  "isFriend": 0,
   "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud.",
   "photoUrl": "testUrl",
   "friends": [
@@ -32,63 +32,63 @@
       "photoUrl": "testUrl",
       "firstName": "Jack",
       "lastName": "Jackson",
-      "online": true
+      "isOnline": true
     },
     {
       "id": 222,
       "photoUrl": "testUrl",
       "firstName": "Jack",
       "lastName": "Jackson",
-      "online": false
+      "isOnline": true
     },
     {
       "id": 333,
       "photoUrl": "testUrl",
       "firstName": "Jack",
       "lastName": "Jackson",
-      "online": true
+      "isOnline": true
     },
     {
       "id": 444,
       "photoUrl": "testUrl",
       "firstName": "Jack",
       "lastName": "Jackson",
-      "online": false
+      "isOnline": false
     },
     {
       "id": 555,
       "photoUrl": "testUrl",
       "firstName": "Jack",
       "lastName": "Jackson",
-      "online": true
+      "isOnline": false
     },
     {
       "id": 666,
       "photoUrl": "testUrl",
       "firstName": "Jack",
       "lastName": "Jackson",
-      "online": false
+      "isOnline": false
     },
     {
       "id": 777,
       "photoUrl": "testUrl",
       "firstName": "Jack",
       "lastName": "Jackson",
-      "online": true
+      "isOnline": true
     },
     {
       "id": 888,
       "photoUrl": "testUrl",
       "firstName": "Jack",
       "lastName": "Jackson",
-      "online": false
+      "isOnline": false
     },
     {
       "id": 999,
       "photoUrl": "testUrl",
       "firstName": "Jack",
       "lastName": "Jackson",
-      "online": true
+      "isOnline": true
     }
   ],
   "posts": [
@@ -97,42 +97,39 @@
       "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud.",
       "date": "21.10.2020",
       "time": "21.21",
-      "user": 
-        {
-          "id": 24,
-          "firstName": "Jack",
-          "lastName": "Jackson",
-          "photoUrl": "testUrl",
-          "online": false
-        }
+      "user": {
+        "id": 24,
+        "firstName": "Jack",
+        "lastName": "Jackson",
+        "photoUrl": "testUrl",
+        "isOnline": false
+      }
     },
     {
       "id": 2,
       "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud.",
       "date": "21.10.2020",
       "time": "21.21",
-      "user": 
-        {
-          "id": 22,
-          "firstName": "Jack",
-          "lastName": "Jackson",
-          "photoUrl": "testUrl",
-          "online": true
-        }
+      "user": {
+        "id": 22,
+        "firstName": "Jack",
+        "lastName": "Jackson",
+        "photoUrl": "testUrl",
+        "isOnline": true
+      }
     },
     {
       "id": 3,
       "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud.",
       "date": "21.10.2020",
       "time": "21.21",
-      "user": 
-        {
-          "id": 25,
-          "firstName": "Jack",
-          "lastName": "Jackson",
-          "photoUrl": "testUrl",
-          "online": false
-        }
+      "user": {
+        "id": 25,
+        "firstName": "Jack",
+        "lastName": "Jackson",
+        "photoUrl": "testUrl",
+        "isOnline": false
+      }
     }
   ]
 }

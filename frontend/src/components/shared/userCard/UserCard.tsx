@@ -5,11 +5,8 @@ import './userCard.scss';
 import { UserPhoto } from '../userPhoto/UserPhoto';
 import { MainInfo } from '../../interfaces/Interface';
 
-type MainInfoProps = {
-  user: MainInfo;
-};
-
-export const UserCard: React.FC<MainInfoProps> = props => {
+export const UserCard: React.FC<MainInfo> = ({ mainInfo }) => {
+  console.log(mainInfo.isOnline);
   const sendFriendRequest = (event: MouseEvent) => {
     event.preventDefault();
     console.log('Send user friend request');
@@ -18,20 +15,20 @@ export const UserCard: React.FC<MainInfoProps> = props => {
   return (
     <Box boxShadow={2} className="user-card">
       <Link to="/" className="leftbar">
-        <UserPhoto online={props.user.online} photoUrl={props.user.photoUrl} />
+        <UserPhoto photoInfo={mainInfo} />
         <h3>
-          {props.user.firstName} {props.user.lastName}
+          {mainInfo.firstName} {mainInfo.lastName}
         </h3>
-        <p>{props.user.age} y.o.</p>
+        <p>{mainInfo.age} y.o.</p>
         <p>
           <span className="flag"></span>
-          {props.user.country}
+          {mainInfo.country}
         </p>
       </Link>
       <div className="rightbar">
         <div className="speaks">
           <h3>Speaks</h3>
-          {props.user.speaks.map((speaksInfo, id) => {
+          {mainInfo.speaks.map((speaksInfo, id) => {
             return (
               <div className="languages" key={id}>
                 <p>{speaksInfo.language}</p>
@@ -42,7 +39,7 @@ export const UserCard: React.FC<MainInfoProps> = props => {
         </div>
         <div className="learning">
           <h3>Learning</h3>
-          {props.user.learn.map((learnInfo, id) => {
+          {mainInfo.learn.map((learnInfo, id) => {
             return (
               <div className="languages" key={id}>
                 <p>{learnInfo.language}</p>
@@ -52,7 +49,7 @@ export const UserCard: React.FC<MainInfoProps> = props => {
           })}
         </div>
         <div className="buttons-action">
-          {props.user.isFriend === false ? (
+          {mainInfo.isFriend === 0 ? (
             <Link to="/" onClick={sendFriendRequest} className="add-friend">
               add friend
             </Link>
@@ -65,3 +62,5 @@ export const UserCard: React.FC<MainInfoProps> = props => {
     </Box>
   );
 };
+
+export default UserCard;

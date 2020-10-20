@@ -12,8 +12,8 @@ const AddPostForm: React.FC = () => {
 
   const sendPost = (event: React.FormEvent) => {
     event.preventDefault();
-    if (postValue === "" || postValue === " ") {
-      alert("Please write something");
+    if (postValue === '' || postValue === ' ') {
+      alert('Please write something');
     } else {
       console.log(postValue);
       setPostValue('');
@@ -23,11 +23,7 @@ const AddPostForm: React.FC = () => {
   return (
     <Box boxShadow={2} className="add-post-form">
       <form action="" onSubmit={sendPost}>
-        <textarea
-          value={postValue}
-          onChange={inputValueHandleChange}
-          placeholder="Add post..."
-        />
+        <textarea value={postValue} onChange={inputValueHandleChange} placeholder="Add post..." />
         <div className="save-icon">
           <input type="submit" />
           <SendSharpIcon className="send-icon" type="submit" />

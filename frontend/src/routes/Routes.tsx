@@ -9,14 +9,14 @@ import Settings from '../components/pages/settings/Settings';
 import Friends from '../components/pages/friends/Friends';
 
 export default () => (
-	<Switch>
-		<Route path="/" exact component={Profile} />
-		<Route path="/register" component={Register} />
-		<Route path="/chat" component={Chat} />
-		<Route path="/search" component={Search} />
-		<Route path="/settings" component={Settings} />
-		<Route path="/login" component={Login} />
-		<Route path="/friends" component={Friends} />
-		<Route path="/:id" component={Profile} />
-	</Switch>
+  <Switch>
+    <Route path="/" exact component={Profile} />
+    <Route path="/register" component={Register} />
+    <Route path="/chat" component={Chat} />
+    <Route path="/search" component={Search} />
+    <Route path="/settings" component={Settings} />
+    <Route path="/login" component={Login} />
+    <Route path="/friends" component={Friends} />
+    <Route path="/:id" component={Profile} />
+  </Switch>
 );

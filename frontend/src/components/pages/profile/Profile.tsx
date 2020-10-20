@@ -1,21 +1,21 @@
 import React from 'react';
+import './profile.scss';
 import User from '../../mocks/user-mock.json';
 import Layout from '../../shared/layout/Layout';
-import './profile.scss';
-import { UserCard } from '../../shared/userCard/UserCard';
+import UserCard from '../../shared/userCard/UserCard';
 import About from './components/about/About';
 import FriendsList from './components/friendsList/FriendsList';
-import AddPostForm from './components/addPostForm/AddPostForm';
 import Posts from './components/posts/Posts';
+import AddPostForm from './components/addPostForm/AddPostForm';
 
 const Profile: React.FC = () => {
   return (
     <Layout pageTitle="Profile">
       <div className="profile">
         <div className="leftside">
-          <UserCard user={User} />
+          <UserCard mainInfo={User} />
           <About aboutInfo={User.about} />
-          <FriendsList friendsList={User.friends} />
+          <FriendsList friends={User.friends} />
         </div>
         <div className="rightside">
           <AddPostForm />
