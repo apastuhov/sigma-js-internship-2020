@@ -19,7 +19,7 @@ export const UserCard: React.FC<MainInfoProps> = props => {
   return (
     <Box boxShadow={props.boxShadow && 2} className="user-card">
       <Link to="/" className="leftbar">
-        <UserPhoto online={props.user.online} photoUrl={props.user.photoUrl} />
+        <UserPhoto isOnline={props.user.isOnline} photoUrl={props.user.photoUrl} />
         <h3>
           {props.user.firstName} {props.user.lastName}
         </h3>

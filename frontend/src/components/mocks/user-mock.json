@@ -2,9 +2,9 @@
   "id": 222,
   "firstName": "Jack",
   "lastName": "Jackson",
-  "sex": "man",
+  "sex": 0,
   "age": 24,
-  "birthday": "21.10.1997",
+  "birthday": 854668800,
   "country": "Ukraine",
   "speaks": [
     {
@@ -22,7 +22,7 @@
       "level": "Intermediate"
     }
   ],
-  "online": false,
+  "isOnline": false,
   "isFriend": false,
   "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud.",
   "photoUrl": "testUrl",
