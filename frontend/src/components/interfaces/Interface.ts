@@ -94,4 +94,11 @@ export interface PostsList {
       photoUrl: string;
     };
   }[];
+  isOnline: boolean;
+  isFriend: boolean;
+  photoUrl: string;
+}
+
+export interface IUsers {
+  users: MainInfo[];
 }

@@ -2,9 +2,9 @@
   "id": 222,
   "firstName": "Jack",
   "lastName": "Jackson",
-  "sex": 1,
+  "sex": 0,
   "age": 24,
-  "birthday": 21101997,
+  "birthday": 854668800,
   "country": "Ukraine",
   "speaks": [
     {

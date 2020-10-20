@@ -1,0 +1,23 @@
+@import '../../../styles/variables.scss';
+
+.search-tile {
+  @include tile;
+  display: flex;
+  height: 34px;
+  width: 296px;
+  padding: 0;
+
+  .search-input {
+    @include text;
+    border-radius: $tile-radius;
+    height: $gap-14;
+    width: 100%;
+    padding: $gap-10;
+    border: none;
+    outline: none;
+  }
+
+  .search-input:focus {
+    box-shadow: 0 0 0 2px $primary-color;
+  }
+}
