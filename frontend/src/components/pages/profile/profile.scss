@@ -11,14 +11,6 @@
   }
 
   .rightside{
-    max-height: 900px;
-    overflow: scroll;
-    overflow-x: hidden;
-    
-    @include for-medium{
-      max-height: none;
-      overflow: hidden;
-      margin-top: $gap-24;
-    }
+
   }
 }

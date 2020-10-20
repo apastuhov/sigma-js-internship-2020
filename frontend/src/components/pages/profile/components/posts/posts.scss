@@ -1,8 +1,20 @@
 @import '../../../../../styles/variables.scss';
 
+.posts{
+  max-height: 790px;
+  overflow: scroll;
+  overflow-x: hidden;
+  margin-top: $gap-20;
+  
+  @include for-medium{
+    max-height: none;
+    overflow: hidden;
+    margin-top: $gap-24;
+  }
+
 .post{
   @include tile;
-  margin-top: $gap-20;
+  margin-bottom: $gap-20;
 
   @include for-mobile{
     width: $mobile-tile-width;
@@ -29,13 +41,13 @@
       }
 
       h3,p{
-          grid-column: 2 ;
-          margin: 0 0 0 $gap-10;
+        grid-column: 2 ;
+        margin: 0 0 0 $gap-10;
       }
 
       h3{
         @include title;
-          grid-row: 1;
+        grid-row: 1;
       }
 
       p{
@@ -43,6 +55,7 @@
         grid-row: 2 ;
         font-size: $gap-12;
         color: $gray;
+        font-family: 'Roboto';
       }
   }
 
@@ -66,4 +79,5 @@
   p{
       @include text;
   }
+}
 }

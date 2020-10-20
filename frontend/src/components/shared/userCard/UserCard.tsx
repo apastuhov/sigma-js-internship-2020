@@ -6,7 +6,6 @@ import { UserPhoto } from '../userPhoto/UserPhoto';
 import { MainInfo } from '../../interfaces/Interface';
 
 export const UserCard: React.FC<MainInfo> = ({ mainInfo }) => {
-  console.log(mainInfo.isOnline);
   const sendFriendRequest = (event: MouseEvent) => {
     event.preventDefault();
     console.log('Send user friend request');

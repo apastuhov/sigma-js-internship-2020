@@ -17,7 +17,7 @@ const Posts: React.FC<PostsList> = ({ posts }) => {
   };
 
   return (
-    <>
+    <div className="posts">
       {posts.map((postInfo, id) => {
         return (
           <Box boxShadow={2} className="post" key={id}>
@@ -40,7 +40,7 @@ const Posts: React.FC<PostsList> = ({ posts }) => {
           </Box>
         );
       })}
-    </>
+    </div>
   );
 };
 

@@ -40,24 +40,27 @@ export interface User {
   };
 }
 
+export interface userInfo {
+  id: number;
+  firstName: string;
+  lastName: string;
+  age: number;
+  country: string;
+  speaks: {
+    language: string;
+    level: string;
+  }[];
+  learn: {
+    language: string;
+    level: string;
+  }[];
+  isOnline: boolean;
+  isFriend: number;
+  photoUrl: string;
+}
+
 export interface MainInfo {
-  mainInfo: {
-    firstName: string;
-    lastName: string;
-    age: number;
-    country: string;
-    speaks: {
-      language: string;
-      level: string;
-    }[];
-    learn: {
-      language: string;
-      level: string;
-    }[];
-    isOnline: boolean;
-    isFriend: number;
-    photoUrl: string;
-  };
+  mainInfo: userInfo;
 }
 
 export interface UserPhotoInfo {
@@ -94,11 +97,8 @@ export interface PostsList {
       photoUrl: string;
     };
   }[];
-  isOnline: boolean;
-  isFriend: boolean;
-  photoUrl: string;
 }
 
 export interface IUsers {
-  users: MainInfo[];
+  users: userInfo[];
 }

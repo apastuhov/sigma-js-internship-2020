@@ -1,12 +1,12 @@
 import React from 'react';
-import './profile.scss';
 import User from '../../mocks/user-mock.json';
 import Layout from '../../shared/layout/Layout';
 import UserCard from '../../shared/userCard/UserCard';
 import About from './components/about/About';
+import AddPostForm from './components/addPostForm/AddPostForm';
 import FriendsList from './components/friendsList/FriendsList';
 import Posts from './components/posts/Posts';
-import AddPostForm from './components/addPostForm/AddPostForm';
+import './profile.scss';
 
 const Profile: React.FC = () => {
   return (
