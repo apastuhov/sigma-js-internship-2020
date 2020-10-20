@@ -1,6 +1,6 @@
 @import '../../../styles/variables.scss';
 
-h1 {
+.preview-h1 {
   @include title;
   text-align: center;
   padding-top: $gap-24;
