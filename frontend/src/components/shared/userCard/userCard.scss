@@ -32,7 +32,7 @@
     p {
       @include text;
       margin: $gap-4;
-      color: $gray;
+      color: $grey;
 
       .flag {
         display: inline-block;
@@ -64,7 +64,7 @@
       margin-bottom: $gap-20;
 
       h3 {
-        color: $gray;
+        color: $grey;
         margin: 0;
       }
 

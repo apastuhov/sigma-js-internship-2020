@@ -1,11 +1,13 @@
 $white: #ffffff;
 $black: #000000;
-$gray: #979797;
+$grey: #979797;
 $green: #70d357;
 $primary-color: #0093dd;
 $secondary-color: #f7db17;
+$light-grey: #dadada;
 $gap-2: 2px;
 $gap-4: 4px;
+$gap-8: 8px;
 $gap-10: 10px;
 $gap-14: 14px;
 $gap-20: 20px;
@@ -28,6 +30,12 @@ $container-width: 944px;
   }
 }
 
+@mixin input {
+  border: 1px solid $light-grey;
+  box-sizing: border-box;
+  border-radius: $tile-radius;
+}
+
 @mixin title {
   font-size: 20px;
   font-weight: 500;
@@ -37,6 +45,11 @@ $container-width: 944px;
   font-size: 14px;
   font-weight: 400;
   font-family: 'Roboto';
+}
+
+@mixin low-text {
+  font-size: 10px;
+  font-weight: 400;
 }
 
 @mixin button {
