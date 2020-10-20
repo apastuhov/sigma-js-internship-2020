@@ -22,8 +22,8 @@ const Register: React.FC = () => {
             <Box boxShadow={2} className="tile">
               <p className="privacy-policy"> By clicking "Sign Up" you agree to our Terms and Privacy Policy</p>
               <div className="register-nav">
-                <Button name="CANCEL" style="secondary" />
-                <Button name="SIGN UP" style="primary" />
+                <Button name="CANCEL" color="secondary" />
+                <Button name="SIGN UP" color="primary" />
               </div>
             </Box>
           </Tile>

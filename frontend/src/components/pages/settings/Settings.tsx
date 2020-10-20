@@ -21,8 +21,8 @@ const Settings: React.FC = () => {
           <Tile>
             <Box boxShadow={2} className="tile">
               <div className="settings-nav">
-                <Button name="BACK" style="secondary" />
-                <Button name="SAVE" style="primary" />
+                <Button name="BACK" color="secondary" />
+                <Button name="SAVE" color="primary" />
               </div>
             </Box>
           </Tile>

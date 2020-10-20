@@ -11,7 +11,7 @@ const LanguagesInfo: React.FC = () => {
         <h1>Languages</h1>
         <div className="languages-div">
           <LanguagesDetailInfo do="I speak" level="Level" />
-          <div className="divider" />
+          <hr color="#f7db17" />
           <LanguagesDetailInfo do="I learn" level="Level" />
         </div>
       </Box>

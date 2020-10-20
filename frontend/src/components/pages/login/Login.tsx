@@ -13,7 +13,7 @@ const Login: React.FC = () => {
         <Box boxShadow={2} className="login-tile">
           <div className="logo-wrapper">
             <img src={Logo} alt="logo" className="logo" />
-            <h1>Meetlang</h1>
+            <h1 className="login-h1">Meetlang</h1>
           </div>
           <p className="login-p">Login or register</p>
           <button className="login-btn">

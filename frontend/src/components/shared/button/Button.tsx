@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom';
 
 type ButtonProps = {
   name: string;
-  style: string;
+  color: string;
 };
 
 const Button: React.FC<ButtonProps> = props => {
   return (
-    <Link to="/login" className={props.style}>
+    <Link to="/login" className={props.color}>
       {props.name}
     </Link>
   );

@@ -22,9 +22,10 @@
     .logo-wrapper {
       display: flex;
 
-      h1 {
+      .login-h1 {
         font-size: 38px;
         font-weight: 500;
+        padding-top: $gap-20;
       }
     }
 
