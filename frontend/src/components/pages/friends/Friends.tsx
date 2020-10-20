@@ -10,10 +10,10 @@ const Friends: React.FC = () => {
 
   useEffect(() => {
     setCountFriends(friends.length);
-  }, [countFriends]);
+  }, [friends.length]);
 
   return (
-    <Layout pageTitle="Friends" countTiles={countFriends}>
+    <Layout pageTitle="Friends" countFriends={countFriends}>
       <UserList users={friends} />
     </Layout>
   );

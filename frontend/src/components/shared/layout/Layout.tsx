@@ -6,14 +6,14 @@ import './Layout.scss';
 interface IProps {
   pageTitle: string;
   children: ReactNode;
-  countTiles?: number;
+  countFriends?: number;
 }
 
-const Layout: React.FC<IProps> = ({ pageTitle, children, countTiles }: IProps) => {
-  const tileName = Boolean(countTiles) ? (
+const Layout: React.FC<IProps> = ({ pageTitle, children, countFriends }: IProps) => {
+  const pageName = Boolean(countFriends) ? (
     <>
       <h1 className="page-title-friends">{pageTitle}</h1>
-      <span>({countTiles})</span>
+      <span>({countFriends})</span>
     </>
   ) : (
     <h1 className="page-title">{pageTitle}</h1>
@@ -22,7 +22,7 @@ const Layout: React.FC<IProps> = ({ pageTitle, children, countTiles }: IProps) =
     <div>
       <Header />
       <div className="container">
-        {tileName}
+        {pageName}
         {children}
       </div>
       <Footer />
