@@ -1,0 +1,36 @@
+@import '../../../../../styles/variables.scss';
+
+.chat-list-item {
+  @include tile;
+  display: flex;
+  padding: $gap-14;
+  width: $chat-tile-width;
+  height: 88px;
+  margin-bottom: $gap-24;
+
+  .chat-photo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: $gap-14;
+  }
+
+  .chat-title {
+    font-size: $gap-14;
+    font-weight: bold;
+    text-transform: capitalize;
+    margin: 0;
+  }
+
+  .chat-snippet {
+    font-size: $gap-14;
+    color: $gray;
+    margin-top: $gap-14;
+  }
+}
+
+.chat-list-item:hover {
+  background: #eeeef1;
+  cursor: pointer;
+}

@@ -1,0 +1,36 @@
+@import '../../../../../styles/variables.scss';
+
+.message-list {
+  width: 614px;
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 6px;
+  background-color: $white;
+  border-radius: $tile-radius;
+  box-sizing: border-box;
+  padding: $gap-24;
+}
+
+.message-list hr {
+  height: $gap-2;
+  background-color: $secondary-color;
+  border: none;
+  margin: $gap-14 0;
+}
+
+.message-list-container {
+  overflow-y: scroll;
+  height: 500px;
+  padding-right: $gap-4;
+}
+
+.user-data h2 {
+  margin: 0;
+}
+
+.user-data p {
+  margin-top: $gap-14;
+  margin-bottom: 0;
+  color: #979797;
+  font-size: $gap-14;
+}

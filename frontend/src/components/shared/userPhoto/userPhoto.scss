@@ -4,15 +4,15 @@
   position: relative;
 
   img {
-    width: 126px;
-    height: 126px;
+    width: 124px;
+    height: 124px;
     border-radius: 50%;
   }
 
   .online-status {
     position: absolute;
     bottom: $gap-10;
-    right: 35px;
+    right: 36px;
     width: $gap-20;
     height: $gap-20;
     border: $gap-2 solid $white;

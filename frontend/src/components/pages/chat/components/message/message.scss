@@ -1,0 +1,44 @@
+@import '../../../../../styles/variables.scss';
+
+.message {
+  display: flex;
+  flex-direction: column;
+}
+
+.message .timestamp {
+  @include text;
+  display: flex;
+  justify-content: center;
+  color: $gray;
+  text-transform: uppercase;
+}
+
+.message .bubble-container {
+  font-size: $gap-14;
+  display: flex;
+}
+
+.message.mine .bubble-container {
+  justify-content: flex-end;
+}
+
+.message.mine.start .bubble-container .bubble {
+  margin-top: $gap-14;
+}
+
+.message.mine.end .bubble-container .bubble {
+  margin-bottom: $gap-14;
+}
+
+.message .bubble-container .bubble {
+  margin: $gap-1 0;
+  background: #f4f4f8;
+  padding: $gap-14;
+  border-radius: $gap-4;
+  max-width: 75%;
+}
+
+.message.mine .bubble-container .bubble {
+  background: $primary-color;
+  color: $white;
+}
