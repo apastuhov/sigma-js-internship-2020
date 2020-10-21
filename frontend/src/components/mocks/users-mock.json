@@ -3,7 +3,7 @@
     "id": 0,
     "firstName": "Patric",
     "lastName": "Rotfus",
-    "sex": 0,
+    "sex": "male",
     "age": 23,  
     "birthday": 854668800,
     "country": "Ukraine",
@@ -24,14 +24,14 @@
       }
     ],
     "isOnline": false,
-    "isFriend": 0,
+    "isFriend": false,
     "photoUrl": "testUrl"
   },
   {
     "id": 1,
     "firstName": "Jack",
     "lastName": "Jackson",
-    "sex": 0,
+    "sex": "male",
     "age": 24,
     "birthday": 854668800,
     "country": "Ukraine",
@@ -52,7 +52,7 @@
       }
     ],
     "isOnline": false,
-    "isFriend": 0,
+    "isFriend": false,
     "photoUrl": "testUrl"
   }
 ]

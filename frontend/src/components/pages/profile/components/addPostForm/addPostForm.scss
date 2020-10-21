@@ -5,6 +5,13 @@
 
   @include for-mobile{
     width: $mobile-tile-width;
+  }    
+
+  p{
+    @include text;
+    box-sizing: border-box;
+    margin: 0 0 $gap-4 0;
+    color: $red;
   }
 
   form{
@@ -13,12 +20,10 @@
 
     textarea{
       @include text;
+      flex-grow: 1;
       box-sizing: border-box;
-      width: 360px;
-      height: 74px;
       border: 1px solid $gray;
       border-radius: $gap-4;
-      resize: none;
 
         &::placeholder {
           @include text;
@@ -32,17 +37,15 @@
     }
 
     .save-icon{
-      position: relative;
       margin-left: $gap-4;
       
-      input{
-        position: absolute;
-        width: $gap-34;
-        height: $gap-34;
-        opacity: 0;
-        z-index: 999;
-        background: transparent;
+      button{
+        background: none;
+        border: none;
         cursor: pointer;
+        &:focus{
+          outline: none;
+        }
       }
 
       .send-icon{

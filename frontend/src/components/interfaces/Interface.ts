@@ -1,104 +1,75 @@
-export interface User {
-  user: {
-    id: number;
-    firstName: string;
-    lastName: string;
-    sex: number;
-    age: number;
-    birthday: number;
-    country: string;
-    speaks: {
-      language: string;
-      level: string;
-    }[];
-    learn: {
-      language: string;
-      level: string;
-    }[];
-    isOnline: boolean;
-    isFriend: number;
-    photoUrl: string;
-    friends: {
-      id: number;
-      photoUrl: string;
-      firstName: string;
-      lastName: string;
-      isOnline: boolean;
-    }[];
-    posts: {
-      id: number;
-      body: string;
-      date: string;
-      time: string;
-      user: {
-        id: number;
-        firstName: string;
-        lastName: string;
-        photoUrl: string;
-      };
-    }[];
-  };
+interface User extends MainInfo {
+  sex: string;
+  birthday: number;
+  country: string;
+  friends: Friend[];
+  posts: Post[];
 }
 
-export interface userInfo {
+export default User;
+
+export interface MainInfo {
   id: number;
   firstName: string;
   lastName: string;
   age: number;
   country: string;
-  speaks: {
-    language: string;
-    level: string;
-  }[];
-  learn: {
-    language: string;
-    level: string;
-  }[];
+  speaks: Languages[];
+  learn: Languages[];
   isOnline: boolean;
-  isFriend: number;
+  isFriend: boolean;
   photoUrl: string;
 }
 
-export interface MainInfo {
-  mainInfo: userInfo;
+export interface MainInfoProps {
+  mainInfo: MainInfo;
+}
+
+export interface Languages {
+  language: string;
+  level: string;
 }
 
 export interface UserPhotoInfo {
-  photoInfo: {
-    isOnline: boolean;
-    photoUrl: string;
-  };
+  isOnline: boolean;
+  photoUrl: string;
 }
 
 export interface AboutInfo {
   aboutInfo: string;
 }
 
-export interface ListOfFriends {
-  friends: {
-    id: number;
-    photoUrl: string;
-    firstName: string;
-    lastName: string;
-    isOnline: boolean;
-  }[];
+export interface IUserMain {
+  id: number;
+  firstName: string;
+  lastName: string;
+  photoUrl: string;
 }
 
-export interface PostsList {
-  posts: {
-    id: number;
-    body: string;
-    date: string;
-    time: string;
-    user: {
-      id: number;
-      firstName: string;
-      lastName: string;
-      photoUrl: string;
-    };
-  }[];
+export interface Friend {
+  id: number;
+  photoUrl: string;
+  firstName: string;
+  lastName: string;
+  isOnline: boolean;
+}
+
+export interface FriendsListProps {
+  friends: Friend[];
+}
+
+export interface Post {
+  id: number;
+  body: string;
+  date: string;
+  time: string;
+  user: IUserMain;
+}
+
+export interface ProfilePosts {
+  posts: Post[];
 }
 
 export interface IUsers {
-  users: userInfo[];
+  users: MainInfo[];
 }

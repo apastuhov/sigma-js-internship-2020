@@ -1,5 +1,5 @@
 import React from 'react';
-import User from '../../mocks/user-mock.json';
+import user from '../../mocks/user-mock.json';
 import Layout from '../../shared/layout/Layout';
 import UserCard from '../../shared/userCard/UserCard';
 import About from './components/about/About';
@@ -13,13 +13,13 @@ const Profile: React.FC = () => {
     <Layout pageTitle="Profile">
       <div className="profile">
         <div className="leftside">
-          <UserCard mainInfo={User} />
-          <About aboutInfo={User.about} />
-          <FriendsList friends={User.friends} />
+          <UserCard mainInfo={user} />
+          <About aboutInfo={user.about} />
+          <FriendsList friends={user.friends} />
         </div>
         <div className="rightside">
           <AddPostForm />
-          <Posts posts={User.posts} />
+          <Posts posts={user.posts} />
         </div>
       </div>
     </Layout>

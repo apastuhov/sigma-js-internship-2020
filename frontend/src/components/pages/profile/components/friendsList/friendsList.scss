@@ -36,22 +36,6 @@
        color: $black;
        margin-top: $gap-20;
 
-       .user-photo{
-         @include for-mobile{
-           width: 90px;
-           height: 90px;
-         }
-
-         span{
-           @include for-mobile{
-             bottom: 0;
-             right: $gap-10;
-             width: 18px;
-             height: 18px;
-           }
-         }
-       }
-
       p{
         @include text;
         margin: 0px;

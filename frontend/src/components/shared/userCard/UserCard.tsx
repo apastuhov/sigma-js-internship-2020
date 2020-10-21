@@ -3,18 +3,26 @@ import Box from '@material-ui/core/Box';
 import { Link } from 'react-router-dom';
 import './userCard.scss';
 import { UserPhoto } from '../userPhoto/UserPhoto';
-import { MainInfo } from '../../interfaces/Interface';
+import { MainInfoProps } from '../../interfaces/Interface';
 
-export const UserCard: React.FC<MainInfo> = ({ mainInfo }) => {
+
+export const UserCard: React.FC<MainInfoProps> = ({ mainInfo }) => {
   const sendFriendRequest = (event: MouseEvent) => {
     event.preventDefault();
-    console.log('Send user friend request');
+    const request = {
+      friendId: mainInfo.id,
+      myId: 111
+    }
+    console.log(JSON.stringify(request));
   };
 
   return (
     <Box boxShadow={2} className="user-card">
       <Link to="/" className="leftbar">
-        <UserPhoto photoInfo={mainInfo} />
+        <UserPhoto
+          isOnline={mainInfo.isOnline}
+          photoUrl={mainInfo.photoUrl}
+        />
         <h3>
           {mainInfo.firstName} {mainInfo.lastName}
         </h3>
@@ -48,11 +56,11 @@ export const UserCard: React.FC<MainInfo> = ({ mainInfo }) => {
           })}
         </div>
         <div className="buttons-action">
-          {mainInfo.isFriend === 0 ? (
-            <Link to="/" onClick={sendFriendRequest} className="add-friend">
+          {mainInfo.isFriend
+            ? null
+            : <Link to="/" onClick={sendFriendRequest} className="add-friend">
               add friend
-            </Link>
-          ) : null}
+              </Link>}
           <Link to="/chat" className="send-message">
             message
           </Link>

@@ -1,21 +1,19 @@
 import React, { useMemo } from 'react';
 import Box from '@material-ui/core/Box';
 import { Link } from 'react-router-dom';
+import { maxOnlineUsers } from '../../../../constants/constants';
+import { FriendsListProps } from '../../../../interfaces/Interface';
 import { UserPhoto } from '../../../../shared/userPhoto/UserPhoto';
 import './friendsList.scss';
-import { ListOfFriends } from '../../../../interfaces/Interface';
 
-const FriendsList: React.FC<ListOfFriends> = ({ friends }) => {
+const FriendsList: React.FC<FriendsListProps> = ({ friends }) => {
   const sortedFriends = useMemo(() => {
-    let online = friends.filter(user => user.isOnline === true);
-    let offline = friends.filter(user => user.isOnline === false);
-    if (online.length <= 6) {
-      let needToAdd = 6 - online.length;
-      let addUsers = offline.slice(0, needToAdd);
-      let usersToShow = online.concat(addUsers);
-      return usersToShow;
+    const online = friends.filter(user => user.isOnline);
+    const offline = friends.filter(user => !user.isOnline);
+    if (online.length < maxOnlineUsers) {
+      return [...online, ...offline].slice(0, maxOnlineUsers);
     } else {
-      return online.slice(0, 6);
+      return online.slice(0, maxOnlineUsers);
     }
   }, [friends]);
 
@@ -29,7 +27,10 @@ const FriendsList: React.FC<ListOfFriends> = ({ friends }) => {
         {sortedFriends.map((friendInfo, id) => {
           return (
             <Link to={`/${friendInfo.id}`} className="friend" key={id}>
-              <UserPhoto photoInfo={friendInfo} />
+              <UserPhoto
+                isOnline={friendInfo.isOnline}
+                photoUrl={friendInfo.photoUrl}
+              />
               <p>
                 {friendInfo.firstName} {friendInfo.lastName}
               </p>

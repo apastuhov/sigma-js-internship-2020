@@ -70,7 +70,6 @@ const Search: React.FC = () => {
   };
 
   const years = [...Array(hightLimit - lowLimit)].map((_, index) => index + lowLimit);
-  console.log(Users);
   return (
     <Layout pageTitle="Search">
       <Box boxShadow={2} className="filter">

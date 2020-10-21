@@ -5,9 +5,9 @@ import CloseIcon from '@material-ui/icons/Close';
 import UserPhoto from '../../../../mocks/user.png';
 import { Link } from 'react-router-dom';
 import './posts.scss';
-import { PostsList } from '../../../../interfaces/Interface';
+import { ProfilePosts } from '../../../../interfaces/Interface';
 
-const Posts: React.FC<PostsList> = ({ posts }) => {
+const Posts: React.FC<ProfilePosts> = ({ posts }) => {
   const editPost = (postId: number) => {
     console.log(postId);
   };
