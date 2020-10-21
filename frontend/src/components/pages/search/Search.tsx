@@ -1,13 +1,14 @@
 import React, { useState } from 'react';
 import Layout from '../../shared/layout/Layout';
 import UserList from '../../shared/userList/UserList';
-import Users from '../../mocks/users-mock.json';
 import { Box } from '@material-ui/core';
 import { CountryDropdown } from 'react-country-region-selector';
 import { lowLimit, hightLimit, languages, languageLevels } from '../../constants/constants';
+import { getUsersByParams } from '../../../services/getUsers';
 import './search.scss';
 
 const Search: React.FC = () => {
+  const [users, setUsers] = useState([]);
   const [name, setName] = useState('');
   const [country, setCountry] = useState('');
   const [checkboxFilters, setCheckboxFilters] = useState({
@@ -55,7 +56,7 @@ const Search: React.FC = () => {
   };
 
   const findUsers = (e: React.FormEvent) => {
-    const request = {
+    const requestBody = {
       name: name,
       lowAge: selectsFilters.lowAge,
       highAge: selectsFilters.highAge,
@@ -66,7 +67,7 @@ const Search: React.FC = () => {
       isOnline: checkboxFilters.isOnline
     };
     e.preventDefault();
-    console.log(JSON.stringify(request));
+    getUsersByParams(`http://127.0.0.1:8000/api/users`, JSON.stringify(requestBody)).then(users => setUsers(users));
   };
 
   const years = [...Array(hightLimit - lowLimit)].map((_, index) => index + lowLimit);
@@ -113,7 +114,7 @@ const Search: React.FC = () => {
           <button type="submit">Search</button>
         </form>
       </Box>
-      <UserList users={Users} />
+      <UserList users={users} />
     </Layout>
   );
 };

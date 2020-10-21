@@ -5,18 +5,16 @@
   margin: auto;
   min-height: 635px;
 
-  .page-title {
+  .title {
     @include title;
     color: $black;
     display: flex;
     margin: 24px 0;
+    &-friends {
+      display: inline-block;
+    }
   }
-  .page-title-friends {
-    @include title;
-    display: inline-block;
-    color: $black;
-    margin: 24px 0;
-  }
+
   span {
     margin-left: $gap-4;
     @include title;

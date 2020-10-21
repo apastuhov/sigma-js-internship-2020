@@ -10,19 +10,14 @@ interface IProps {
 }
 
 const Layout: React.FC<IProps> = ({ pageTitle, children, countFriends }: IProps) => {
-  const pageName = Boolean(countFriends) ? (
-    <>
-      <h1 className="page-title-friends">{pageTitle}</h1>
-      <span>({countFriends})</span>
-    </>
-  ) : (
-    <h1 className="page-title">{pageTitle}</h1>
-  );
   return (
     <div>
       <Header />
       <div className="container">
-        {pageName}
+        <>
+          <h1 className={Boolean(countFriends) ? 'title title-friends' : 'title'}>{pageTitle}</h1>
+          {Boolean(countFriends) && <span>({countFriends})</span>}
+        </>
         {children}
       </div>
       <Footer />

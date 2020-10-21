@@ -1,19 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import Layout from '../../shared/layout/Layout';
 import UserList from '../../shared/userList/UserList';
-import getFriends from '../../../services/getFriends';
+import { getUsers } from '../../../services/getUsers';
 import './friends.scss';
 
 const Friends: React.FC = () => {
-  const [countFriends, setCountFriends] = useState(0);
-  const friends = getFriends();
+  const [friends, setFriends] = useState([]);
 
   useEffect(() => {
-    setCountFriends(friends.length);
-  }, [friends.length]);
+    getUsers(`http://127.0.0.1:8000/api/users`).then(users => setFriends(users));
+  }, []);
 
   return (
-    <Layout pageTitle="Friends" countFriends={countFriends}>
+    <Layout pageTitle="Friends" countFriends={friends.length}>
       <UserList users={friends} />
     </Layout>
   );
