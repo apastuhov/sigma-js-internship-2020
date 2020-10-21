@@ -18,14 +18,15 @@
 
   .chat-title {
     font-size: $gap-14;
-    font-weight: bold;
+    font-weight: 500;
     text-transform: capitalize;
     margin: 0;
+    text-align: left;
   }
 
   .chat-snippet {
     font-size: $gap-14;
-    color: $gray;
+    color: $grey;
     margin-top: $gap-14;
   }
 }

@@ -2,17 +2,16 @@
 
 .chat-list {
   display: inline-block;
-}
 
-.chat-list-container {
-  display: inline-block;
-  height: 650px;
-  overflow-y: scroll;
-  margin-top: $gap-24;
-  padding: 0 $gap-2;
-}
+  &-container {
+    height: 650px;
+    overflow-y: scroll;
+    margin-top: $gap-24;
+    padding: 0 $gap-2;
+  }
 
-.chat-search {
-  margin-left: $gap-1;
-  background-color: $background-color;
+  .chat-search {
+    margin-left: $gap-1;
+    background-color: $background-color;
+  }
 }

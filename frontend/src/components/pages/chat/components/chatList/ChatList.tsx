@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import type { ChatInfoProps } from '../chatListItem/ChatListItem';
 import { ChatListItem } from '../chatListItem/ChatListItem';
 import ChatSearch from '../chatSearch/ChatSearch';
 import './chatList.scss';
@@ -23,14 +24,16 @@ export const ChatList: React.FC = () => {
 
   const getChats = () => {
     axios.get('https://randomuser.me/api/?results=20').then(response => {
-      let newChats = response.data.results.map((result: ChatProps) => {
-        return {
-          photo: result.picture.large,
-          name: `${result.name.first} ${result.name.last}`,
-          text: 'Hello world! This is a long message that needs to be truncated.'
-        };
-      });
-      setChats([...chats, ...newChats]);
+      let newChats = response.data.results.map(
+        (result: ChatProps): ChatInfoProps => {
+          return {
+            photo: result.picture.large,
+            name: `${result.name.first} ${result.name.last}`,
+            text: 'Hello world! This is a long message that needs to be truncated.'
+          };
+        }
+      );
+      setChats([...newChats]);
     });
   };
 

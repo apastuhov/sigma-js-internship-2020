@@ -1,9 +1,9 @@
-import Box from '@material-ui/core/Box';
+import { Box } from '@material-ui/core';
 import React, { useEffect } from 'react';
 import shave from 'shave';
 import './chatListItem.scss';
 
-type ChatInfoProps = {
+export type ChatInfoProps = {
   photo: string;
   name: string;
   text: string;
