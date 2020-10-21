@@ -1,0 +1,11 @@
+@import '../../../styles/variables.scss';
+ul {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    li {
+      width: $tile-width;
+      margin-bottom: $gap-24;
+      list-style: none;
+    }
+  }
