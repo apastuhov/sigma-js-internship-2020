@@ -1,10 +1,10 @@
+import { Box } from '@material-ui/core';
 import React, { useState } from 'react';
+import { CountryDropdown } from 'react-country-region-selector';
+import { hightLimit, languageLevels, languages, lowLimit } from '../../constants/constants';
+import Users from '../../mocks/users-mock.json';
 import Layout from '../../shared/layout/Layout';
 import UserList from '../../shared/userList/UserList';
-import Users from '../../mocks/users-mock.json';
-import { Box } from '@material-ui/core';
-import { CountryDropdown } from 'react-country-region-selector';
-import { lowLimit, hightLimit, languages, languageLevels } from '../../constants/constants';
 import './search.scss';
 
 const Search: React.FC = () => {
