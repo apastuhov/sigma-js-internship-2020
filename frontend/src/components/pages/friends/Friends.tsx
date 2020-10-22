@@ -1,12 +1,12 @@
 import React from 'react';
 import Layout from '../../shared/layout/Layout';
 
-const Register: React.FC = () => {
+const Friends: React.FC = () => {
   return (
-    <Layout pageTitle="Registration">
+    <Layout pageTitle="Friends">
       <div></div>
     </Layout>
   );
 };
 
-export default Register;
+export default Friends;

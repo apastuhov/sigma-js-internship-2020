@@ -1,38 +1,45 @@
-import React, { MouseEvent } from 'react';
 import Box from '@material-ui/core/Box';
+import React, { MouseEvent } from 'react';
 import { Link } from 'react-router-dom';
-import './userCard.scss';
-import { UserPhoto } from '../userPhoto/UserPhoto';
 import { MainInfo } from '../../interfaces/Interface';
+import { UserPhoto } from '../userPhoto/UserPhoto';
+import './userCard.scss';
 
 type MainInfoProps = {
-  user: MainInfo;
+  mainInfo: MainInfo;
   boxShadow?: number;
 };
 
-export const UserCard: React.FC<MainInfoProps> = props => {
+export const UserCard: React.FC<MainInfoProps> = ({ mainInfo }, shadowIntensity) => {
   const sendFriendRequest = (event: MouseEvent) => {
     event.preventDefault();
-    console.log('Send user friend request');
+    const request = {
+      friendId: mainInfo.id,
+      myId: 111
+    }
+    console.log(JSON.stringify(request));
   };
 
   return (
-    <Box boxShadow={props.boxShadow && 2} className="user-card">
+    <Box boxShadow={shadowIntensity.boxShadow && 2} className="user-card">
       <Link to="/" className="leftbar">
-        <UserPhoto isOnline={props.user.isOnline} photoUrl={props.user.photoUrl} />
+        <UserPhoto
+          isOnline={mainInfo.isOnline}
+          photoUrl={mainInfo.photoUrl}
+        />
         <h3>
-          {props.user.firstName} {props.user.lastName}
+          {mainInfo.firstName} {mainInfo.lastName}
         </h3>
-        <p>{props.user.age} y.o.</p>
+        <p>{mainInfo.age} y.o.</p>
         <p>
           <span className="flag"></span>
-          {props.user.country}
+          {mainInfo.country}
         </p>
       </Link>
       <div className="rightbar">
         <div className="speaks">
           <h3>Speaks</h3>
-          {props.user.speaks.map((speaksInfo, id) => {
+          {mainInfo.speaks.map((speaksInfo, id) => {
             return (
               <div className="languages" key={id}>
                 <p>{speaksInfo.language}</p>
@@ -43,7 +50,7 @@ export const UserCard: React.FC<MainInfoProps> = props => {
         </div>
         <div className="learning">
           <h3>Learning</h3>
-          {props.user.learn.map((learnInfo, id) => {
+          {mainInfo.learn.map((learnInfo, id) => {
             return (
               <div className="languages" key={id}>
                 <p>{learnInfo.language}</p>
@@ -53,11 +60,11 @@ export const UserCard: React.FC<MainInfoProps> = props => {
           })}
         </div>
         <div className="buttons-action">
-          {props.user.isFriend === false ? (
-            <Link to="/" onClick={sendFriendRequest} className="add-friend">
+          {mainInfo.isFriend
+            ? null
+            : <Link to="/" onClick={sendFriendRequest} className="add-friend">
               add friend
-            </Link>
-          ) : null}
+              </Link>}
           <Link to="/chat" className="send-message">
             message
           </Link>
@@ -66,3 +73,5 @@ export const UserCard: React.FC<MainInfoProps> = props => {
     </Box>
   );
 };
+
+export default UserCard;

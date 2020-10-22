@@ -1,5 +1,4 @@
 @import '../../../styles/variables.scss';
-
 .container {
   max-width: $container-width;
   margin: auto;
@@ -8,7 +7,6 @@
   .page-title {
     @include title;
     color: $black;
-    display: flex;
     margin: 24px 0;
   }
 }

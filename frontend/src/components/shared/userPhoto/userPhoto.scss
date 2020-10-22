@@ -2,17 +2,20 @@
 
 .user-photo {
   position: relative;
+  width: 125px;
+  height: 125px;
+  margin: 0 auto;
 
   img {
-    width: 124px;
-    height: 124px;
+    width: 126px;
+    height: 126px;
     border-radius: 50%;
   }
 
   .online-status {
     position: absolute;
-    bottom: $gap-10;
-    right: 36px;
+    bottom: $gap-6;
+    right: $gap-12;
     width: $gap-20;
     height: $gap-20;
     border: $gap-2 solid $white;

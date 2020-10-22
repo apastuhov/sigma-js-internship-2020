@@ -1,16 +1,16 @@
-@import '../../../../../styles/variables.scss';
+@import '../../../styles/variables.scss';
 
-.chat-search {
+.search-tile {
   @include tile;
   display: flex;
   height: 34px;
-  width: $chat-tile-width;
+  width: 296px;
   padding: 0;
 
   .search-input {
     @include text;
     border-radius: $tile-radius;
-    height: 100%;
+    height: $gap-14;
     width: 100%;
     padding: $gap-10;
     border: none;
@@ -18,6 +18,6 @@
   }
 
   .search-input:focus {
-    box-shadow: 0 0 0 $gap-2 $primary-color;
+    box-shadow: 0 0 0 2px $primary-color;
   }
 }
