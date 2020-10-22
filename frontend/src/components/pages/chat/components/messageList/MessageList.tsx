@@ -84,15 +84,8 @@ export const MessageList: React.FC = () => {
     setMessages([...messages, ...tempMessages]);
   };
 
-  const renderMessages = () => {
-    let tempMessages = [];
-
-    for (let i = 0; i < messages.length; i++) {
-      let isMine = messages[i].author === MY_USER_ID;
-      tempMessages.push(<Message key={i} isMine={isMine} data={messages[i]} />);
-    }
-    return tempMessages;
-  };
+  const renderMessages = () =>
+    messages.map(message => <Message key={message.id} isMine={message.author === MY_USER_ID} data={message} />);
 
   return (
     <Box boxShadow={2} className="message-list">

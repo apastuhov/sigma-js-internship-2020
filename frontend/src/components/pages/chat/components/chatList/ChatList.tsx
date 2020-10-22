@@ -17,7 +17,7 @@ type ChatProps = {
 };
 
 export const ChatList: React.FC = () => {
-  const [chats, setChats] = useState<Array<string>>([]);
+  const [chats, setChats] = useState<ChatInfoProps[]>([]);
   useEffect(() => {
     getChats();
   }, []);
@@ -43,7 +43,7 @@ export const ChatList: React.FC = () => {
         <ChatSearch />
       </div>
       <div className="chat-list-container">
-        {chats.map((chat: any) => (
+        {chats.map((chat: ChatInfoProps) => (
           <ChatListItem key={chat.name} {...chat} />
         ))}
       </div>
