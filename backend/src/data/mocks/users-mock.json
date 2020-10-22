@@ -108,7 +108,7 @@
       }
     ],
     "isOnline": false,
-    "isFriend": false,
+    "isFriend": true,
     "photoUrl": "testUrl"
   }
 ]
