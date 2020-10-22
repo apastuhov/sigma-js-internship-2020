@@ -5,16 +5,22 @@ import { User } from '../models/user';
 
 export class UserRepository {
   async filterAll(name: string): Promise<DTO.IUser[]> {
-    this.createUser(name);
-
-    // const users = await this.filterMockUsers();
+    // this.createUser(name);
+    const users = await this.filterMockUsers();
     // TODO: remove any
-    const users = await new Promise<any[]>(resolve =>
-      User.find({ name }, (err, data) => {
-        resolve(data);
-      })
-    );
+    // const users = await new Promise<any[]>(resolve =>
+    //   User.find({ name }, (err, data) => {
+    //     resolve(data);
+    //   })
+    // );
     return users;
+  }
+
+  async getAllUsers() {
+    const pathToMock = path.join(__dirname, '../mocks/users-mock.json');
+    const users = await fs.promises.readFile(pathToMock);
+    const jsonUsers = JSON.parse(users.toString());
+    return jsonUsers;
   }
 
   private createUser(name: string) {

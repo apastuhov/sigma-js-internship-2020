@@ -22,6 +22,7 @@ export interface IUsers {
 }
 
 export enum dataType {
+  filter = 'users/filter',
   users = 'users',
   posts = 'posts',
   dialogs = 'dialogs'

@@ -68,7 +68,7 @@ const Search: React.FC = () => {
       isOnline: checkboxFilters.isOnline
     };
     e.preventDefault();
-    apiService(dataType.users, requestBody).then(users => setUsers(users));
+    apiService(dataType.filter, requestBody).then(users => setUsers(users));
   };
 
   const years = [...Array(hightLimit - lowLimit)].map((_, index) => index + lowLimit);

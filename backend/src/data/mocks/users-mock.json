@@ -4,7 +4,7 @@
     "firstName": "Patric",
     "lastName": "Rotfus",
     "sex": 0,
-    "age": 23,
+    "age": 12,
     "birthday": 854668800,
     "country": "Ukraine",
     "speaks": [
@@ -32,7 +32,7 @@
     "firstName": "Jack",
     "lastName": "Jackson",
     "sex": 0,
-    "age": 24,
+    "age": 25,
     "birthday": 854668800,
     "country": "Ukraine",
     "speaks": [
@@ -57,12 +57,12 @@
   },
   {
     "id": 2,
-    "firstName": "Jack",
-    "lastName": "Jackson",
+    "firstName": "Tick",
+    "lastName": "Tack",
     "sex": 0,
     "age": 24,
     "birthday": 854668800,
-    "country": "Ukraine",
+    "country": "USA",
     "speaks": [
       {
         "language": "Ukrainian",
@@ -85,8 +85,8 @@
   },
   {
     "id": 3,
-    "firstName": "Jack",
-    "lastName": "Jackson",
+    "firstName": "Pall",
+    "lastName": "Richal",
     "sex": 0,
     "age": 24,
     "birthday": 854668800,

@@ -8,6 +8,12 @@ class UserService {
     const data = await this.userRepo.filterAll(username);
     return data;
   }
+
+  async getAllUsers() {
+    const data = await this.userRepo.getAllUsers();
+    return data;
+  }
+
 }
 
 export const userService = new UserService(userRepository);
