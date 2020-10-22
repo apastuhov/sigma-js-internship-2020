@@ -1,0 +1,19 @@
+@import '../../../styles/variables.scss';
+
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0 10px;
+
+  .privacy-policy {
+    @include text;
+    text-align: center;
+    width: 208px;
+    margin: 0 auto 14px;
+  }
+  .register-nav {
+    display: flex;
+    justify-content: space-between;
+  }
+}
