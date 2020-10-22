@@ -6,14 +6,18 @@ import './Layout.scss';
 interface IProps {
   pageTitle: string;
   children: ReactNode;
+  countFriends?: number;
 }
 
-const Layout: React.FC<IProps> = ({ pageTitle, children }: IProps) => {
+const Layout: React.FC<IProps> = ({ pageTitle, children, countFriends }: IProps) => {
   return (
     <div>
       <Header />
       <div className="container">
-        <h1 className="page-title">{pageTitle}</h1>
+        <>
+          <h1 className={Boolean(countFriends) ? 'title title-friends' : 'title'}>{pageTitle}</h1>
+          {Boolean(countFriends) && <span>({countFriends})</span>}
+        </>
         {children}
       </div>
       <Footer />
