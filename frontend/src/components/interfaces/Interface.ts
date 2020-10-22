@@ -20,3 +20,9 @@ export interface MainInfo {
 export interface IUsers {
   users: MainInfo[];
 }
+
+export enum dataType {
+  users = 'users',
+  posts = 'posts',
+  dialogs = 'dialogs'
+}

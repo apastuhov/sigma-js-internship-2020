@@ -4,7 +4,8 @@ import UserList from '../../shared/userList/UserList';
 import { Box } from '@material-ui/core';
 import { CountryDropdown } from 'react-country-region-selector';
 import { lowLimit, hightLimit, languages, languageLevels } from '../../constants/constants';
-import { getUsersByParams } from '../../../services/getUsers';
+import { dataType } from '../../interfaces/Interface';
+import apiService from '../../../services/apiService';
 import './search.scss';
 
 const Search: React.FC = () => {
@@ -67,7 +68,7 @@ const Search: React.FC = () => {
       isOnline: checkboxFilters.isOnline
     };
     e.preventDefault();
-    getUsersByParams(`http://127.0.0.1:8000/api/users`, JSON.stringify(requestBody)).then(users => setUsers(users));
+    apiService(dataType.users, requestBody).then(users => setUsers(users));
   };
 
   const years = [...Array(hightLimit - lowLimit)].map((_, index) => index + lowLimit);
