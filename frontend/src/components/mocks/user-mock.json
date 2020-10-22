@@ -2,7 +2,7 @@
   "id": 222,
   "firstName": "Jack",
   "lastName": "Jackson",
-  "sex": "male",
+  "sex": 0,
   "age": 24,
   "birthday": 854668800,
   "country": "Ukraine",
@@ -25,7 +25,7 @@
   "isOnline": false,
   "isFriend": false,
   "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud.",
-  "photoUrl": "testUrl",
+  "photoUrl": "https://ibb.co/5hmt4BT",
   "friends": [
     {
       "id": 111,

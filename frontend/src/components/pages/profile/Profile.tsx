@@ -13,7 +13,7 @@ const Profile: React.FC = () => {
     <Layout pageTitle="Profile">
       <div className="profile">
         <div className="leftside">
-          <UserCard mainInfo={user} />
+          <UserCard mainInfo={user} boxShadow={2} />
           <About aboutInfo={user.about} />
           <FriendsList friends={user.friends} />
         </div>

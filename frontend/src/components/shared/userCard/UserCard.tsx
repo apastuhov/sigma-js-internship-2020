@@ -1,12 +1,16 @@
-import React, { MouseEvent } from 'react';
 import Box from '@material-ui/core/Box';
+import React, { MouseEvent } from 'react';
 import { Link } from 'react-router-dom';
-import './userCard.scss';
+import { MainInfo } from '../../interfaces/Interface';
 import { UserPhoto } from '../userPhoto/UserPhoto';
-import { MainInfoProps } from '../../interfaces/Interface';
+import './userCard.scss';
 
+type MainInfoProps = {
+  mainInfo: MainInfo;
+  boxShadow?: number;
+};
 
-export const UserCard: React.FC<MainInfoProps> = ({ mainInfo }) => {
+export const UserCard: React.FC<MainInfoProps> = ({ mainInfo }, shadowIntensity) => {
   const sendFriendRequest = (event: MouseEvent) => {
     event.preventDefault();
     const request = {
@@ -17,7 +21,7 @@ export const UserCard: React.FC<MainInfoProps> = ({ mainInfo }) => {
   };
 
   return (
-    <Box boxShadow={2} className="user-card">
+    <Box boxShadow={shadowIntensity.boxShadow && 2} className="user-card">
       <Link to="/" className="leftbar">
         <UserPhoto
           isOnline={mainInfo.isOnline}

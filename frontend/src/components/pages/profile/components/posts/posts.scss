@@ -54,7 +54,7 @@
         @include text;
         grid-row: 2 ;
         font-size: $gap-12;
-        color: $gray;
+        color: $grey;
         font-family: 'Roboto';
       }
   }
@@ -69,7 +69,7 @@
       margin-left: $gap-4;
       width: 16px;
       height: 16px;
-      color: $gray;
+      color: $grey;
       cursor: pointer;
       @include hover-transform-scale;
       }
