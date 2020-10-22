@@ -27,3 +27,4 @@ export enum dataType {
   posts = 'posts',
   dialogs = 'dialogs'
 }
+
