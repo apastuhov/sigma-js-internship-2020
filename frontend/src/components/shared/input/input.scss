@@ -1,0 +1,10 @@
+@import '../../../styles/variables.scss';
+
+.input {
+  @include input;
+  width: 170px;
+  height: 22px;
+  &:focus {
+    outline-color: $grey;
+  }
+}

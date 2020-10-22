@@ -1,0 +1,10 @@
+@import '../../../../../styles/variables.scss';
+
+.compose-input {
+  width: 546px;
+  height: 16px;
+  padding: $gap-10;
+  border: $gap-1 solid $grey;
+  border-radius: $gap-4;
+  outline-color: $primary-color;
+}
