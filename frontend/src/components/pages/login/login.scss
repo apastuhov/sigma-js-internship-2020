@@ -46,7 +46,8 @@
       width: 270px;
       @include hover-transform-scale;
 
-      .login-btn-p {
+      &-link {
+        text-decoration: none;
         margin: 0;
         color: $white;
         @include title;

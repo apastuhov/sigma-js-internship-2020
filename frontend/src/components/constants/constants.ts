@@ -1,6 +1,7 @@
 // years
 export const lowLimit = 13;
 export const hightLimit = 99;
+export const maxOnlineUsers = 6;
 
 // languages
 

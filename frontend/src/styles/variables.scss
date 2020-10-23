@@ -1,5 +1,6 @@
 $white: #ffffff;
 $black: #000000;
+$red: #c70e0e;
 $grey: #979797;
 $light-grey: #eeeef1;
 $green: #70d357;
@@ -8,14 +9,16 @@ $secondary-color: #f7db17;
 $background-color: #f0eaea;
 $chat-light-grey: #f4f4f8;
 $gap-1: 1px;
-$light-grey: #dadada;
 $gap-2: 2px;
 $gap-4: 4px;
+$gap-6: 6px;
 $gap-8: 8px;
 $gap-10: 10px;
+$gap-12: 12px;
 $gap-14: 14px;
 $gap-20: 20px;
 $gap-24: 24px;
+$gap-34: 34px;
 $mobile-tile-width: 250px;
 $tile-radius: 4px;
 $tile-width: 450px;
@@ -25,6 +28,12 @@ $container-width: 944px;
 
 @mixin for-mobile {
   @media screen and (max-width: 540px) {
+    @content;
+  }
+}
+
+@mixin for-medium {
+  @media screen and (max-width: 991px) {
     @content;
   }
 }
@@ -48,8 +57,7 @@ $container-width: 944px;
 
 @mixin text {
   font-size: 14px;
-  font-weight: 400;
-  font-family: 'Roboto';
+  font-weight: 400; 
 }
 
 @mixin low-text {
@@ -71,6 +79,8 @@ $container-width: 944px;
   font-weight: 500;
   text-transform: uppercase;
   text-decoration: none;
+  cursor: pointer;
+  @include hover-transform-scale;
 }
 
 @mixin tile {
