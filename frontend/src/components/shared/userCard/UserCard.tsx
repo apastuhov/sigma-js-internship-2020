@@ -68,7 +68,7 @@ export const UserCard: React.FC<MainInfoProps> = ({ mainInfo }, shadowIntensity)
             );
           })}
         </div>
-        {loginedUser.id || null === mainInfo.id ?
+        {false || loginedUser.id === mainInfo.id ?
           null
           : <div className="buttons-action">
             {mainInfo.isFriend
