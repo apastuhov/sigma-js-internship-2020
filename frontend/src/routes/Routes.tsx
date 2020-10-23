@@ -17,5 +17,6 @@ export default () => (
     <Route path="/settings" component={Settings} />
     <Route path="/login" component={Login} />
     <Route path="/friends" component={Friends} />
+    <Route path="/:id" component={Profile} />
   </Switch>
-);
+)

@@ -10,7 +10,7 @@ const PreviewInfo: React.FC = () => {
     <Tile>
       <Box boxShadow={2} className="preview-tile">
         <h1 className="preview-h1">Preview</h1>
-        <UserCard user={User} boxShadow={0} />
+        <UserCard mainInfo={User} boxShadow={0} />
       </Box>
     </Tile>
   );
