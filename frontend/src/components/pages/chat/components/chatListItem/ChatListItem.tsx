@@ -11,7 +11,7 @@ export type ChatInfoProps = {
 
 export const ChatListItem: React.FC<ChatInfoProps> = props => {
   useEffect(() => {
-    shave('.chat-snippet', 20);
+    shave('.chat-snippet', 24);
   });
 
   const { photo, name, text } = props;
