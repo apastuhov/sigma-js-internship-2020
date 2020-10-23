@@ -23,7 +23,7 @@ export const UserCard: React.FC<MainInfoProps> = props => {
         <h3>
           {props.user.firstName} {props.user.lastName}
         </h3>
-        <p>{props.user.age} y.o.</p>
+        {props.user.age ? <p>{props.user.age} y.o.</p> : null}
         <p>
           <span className="flag"></span>
           {props.user.country}

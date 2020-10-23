@@ -1,5 +1,9 @@
 @import '../../../styles/variables.scss';
 
+p {
+  @include form-margin;
+}
+
 .upload-wrapper {
   position: relative;
   display: flex;
@@ -17,6 +21,7 @@
     padding: 0 6px;
   }
 }
+
 .text-optional {
   color: $grey;
 }

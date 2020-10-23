@@ -44,7 +44,6 @@ $container-width: 944px;
 @mixin text {
   font-size: 14px;
   font-weight: 400;
-  font-family: 'Roboto';
 }
 
 @mixin low-text {
@@ -74,4 +73,8 @@ $container-width: 944px;
   border-radius: $tile-radius;
   box-sizing: border-box;
   padding: $gap-24;
+}
+
+@mixin form-margin {
+  margin: $gap-24 0 $gap-10;
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Layout from '../../shared/layout/Layout';
 import MainInfo from '../../shared/mainInfo/MainInfo';
 import AdditionalInfo from '../../shared/additionalInfo/AdditionalInfo';
@@ -8,26 +8,49 @@ import Tile from '../../shared/tile/Tile';
 import { Box } from '@material-ui/core';
 import './settings.scss';
 import Button from '../../shared/button/Button';
+import { Formik } from 'formik';
 
 const Settings: React.FC = () => {
+  const [mainInfo, setInfo] = useState({ name: '', surname: '' });
+  const handleSubmit = () => {};
+
   return (
     <Layout pageTitle="Settings">
-      <div className="wrapper">
-        <MainInfo />
-        <AdditionalInfo />
-        <LanguagesInfo />
-        <div>
-          <PreviewInfo />
-          <Tile>
-            <Box boxShadow={2} className="tile">
-              <div className="settings-nav">
-                <Button name="BACK" color="secondary" />
-                <Button name="SAVE" color="primary" />
-              </div>
-            </Box>
-          </Tile>
+      <Formik
+        initialValues={{
+          name: '',
+          languages: [
+            {
+              language: '',
+              level: ''
+            }
+          ],
+          learnLanguages: [
+            {
+              language: '',
+              level: ''
+            }
+          ]
+        }}
+        onSubmit={handleSubmit}
+      >
+        <div className="wrapper">
+          <MainInfo />
+          <AdditionalInfo />
+          <LanguagesInfo />
+          <div>
+            <PreviewInfo />
+            <Tile>
+              <Box boxShadow={2} className="tile">
+                <div className="settings-nav">
+                  <Button name="BACK" color="secondary" />
+                  <Button name="SAVE" color="primary" />
+                </div>
+              </Box>
+            </Tile>
+          </div>
         </div>
-      </div>
+      </Formik>
     </Layout>
   );
 };
