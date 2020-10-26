@@ -19,4 +19,4 @@ export default () => (
     <Route path="/friends" component={Friends} />
     <Route path="/:id" component={Profile} />
   </Switch>
-)
+);
