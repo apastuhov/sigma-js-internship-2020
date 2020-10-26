@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import { Box } from '@material-ui/core';
+import React, { useEffect, useState } from 'react';
+import { CountryDropdown } from 'react-country-region-selector';
+import apiService from '../../../services/apiService';
+import { hightLimit, languageLevels, languages, lowLimit } from '../../constants/constants';
+import { dataType } from '../../interfaces/Interface';
 import Layout from '../../shared/layout/Layout';
 import UserList from '../../shared/userList/UserList';
-import { Box } from '@material-ui/core';
-import { CountryDropdown } from 'react-country-region-selector';
-import { lowLimit, hightLimit, languages, languageLevels } from '../../constants/constants';
-import { dataType } from '../../interfaces/Interface';
-import apiService from '../../../services/apiService';
 import './search.scss';
 
 const Search: React.FC = () => {
@@ -40,6 +40,10 @@ const Search: React.FC = () => {
   const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectsFilters({ ...selectsFilters, [e.target.name]: e.target.value });
   };
+
+  useEffect(() => {
+    apiService(dataType.users).then(users => setUsers(users));
+  }, []);
 
   const getGender = () => {
     if ((!checkboxFilters.female && !checkboxFilters.male) || (checkboxFilters.female && checkboxFilters.male)) {
@@ -78,7 +82,7 @@ const Search: React.FC = () => {
       <Box boxShadow={2} className="filter">
         <form onSubmit={findUsers}>
           <label>Name</label>
-          <input type="text" onChange={handleName} value={name} />
+          <input type="search" onChange={handleName} value={name} />
           <label>Age</label>
           <div className="years">
             <select onChange={handleSelect} value={selectsFilters.lowAge} name="lowAge">
