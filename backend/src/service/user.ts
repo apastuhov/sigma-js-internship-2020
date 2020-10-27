@@ -14,6 +14,10 @@ class UserService {
     return data;
   }
 
+  async createUser(newUser: DTO.IUserRegister) {
+    const data = await this.userRepo.createUser(newUser);
+    return data;
+  }
 }
 
 export const userService = new UserService(userRepository);

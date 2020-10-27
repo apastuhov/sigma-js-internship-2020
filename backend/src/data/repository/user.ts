@@ -23,12 +23,13 @@ export class UserRepository {
     return jsonUsers;
   }
 
-  private createUser(name: string) {
-    const user = new User({ name });
+  async createUser(newUser: DTO.IUserRegister) {
+    const user = new User(newUser);
     user.save(function (err, user) {
       if (err) return console.error(err);
       console.log(user);
     });
+    return user;
   }
 
   private async filterMockUsers() {

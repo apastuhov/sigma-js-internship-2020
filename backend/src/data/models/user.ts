@@ -1,7 +1,53 @@
-import mongoose from 'mongoose';
+import { Schema, model } from 'mongoose';
+import { DTO } from '../../interface';
 
-const userSchema = new mongoose.Schema({
-  name: String
-});
+const userSchemaFields: Record<keyof DTO.IUserRegister, any> = {
+  firstName: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  lastName: {
+    type: String,
+    required: true,
+    trim: true
+  },
+  sex: Number,
+  email: {
+    type: String,
+    required: true,
+    unique: true
+  },
+  birthday: { type: Number, required: true },
+  friends: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'User'
+    }
+  ],
+  country: { type: String, required: true },
+  speak: {
+    type: Array,
+    required: true,
+    validate: {
+      validator: function (array: object[]) {
+        return array.every(v => typeof v === 'object');
+      }
+    }
+  },
+  learn: {
+    type: Array,
+    required: true,
+    validate: {
+      validator: function (array: object[]) {
+        return array.every(v => typeof v === 'object');
+      }
+    }
+  },
+  about: String,
+  photo: String
+};
 
-export const User = mongoose.model('User', userSchema);
+const userSchema = new Schema(userSchemaFields);
+
+export const User = model<DTO.IUserRegisterDoc>('User', userSchema);

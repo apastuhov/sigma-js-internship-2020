@@ -16,14 +16,13 @@ router.get('/', async (req, res, next) => {
   }
 });
 
-router.post<any, any, DTO.User.FilterRequest, any>('/filter', async (req, res, next) => {
+router.post('/register', async (req, res, next) => {
   // TODO: catch errors
   try {
-    const { name } = req.body;
-    const users = await userService.search(name);
-    return res.send(users);
+    const user = await userService.createUser(req.body);
+    return res.status(201).send(user);
   } catch (e) {
-    next(e);
+    return res.status(400).send(e);
   }
 });
 
