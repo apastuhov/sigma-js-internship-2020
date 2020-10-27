@@ -1,42 +1,16 @@
-interface User extends MainInfo {
-  sex: string;
-  birthday: number;
-  country: string;
-  friends: Friend[];
-  posts: Post[];
-}
+import { DTO } from 'dto';
 
-export default User;
+export interface IUser extends DTO.IUser { }
+export interface IFriend extends DTO.IFriend { }
+export interface IPost extends DTO.IPost { }
 
-export interface MainInfo {
-  id: number;
-  firstName: string;
-  lastName: string;
-  age: number;
-  country: string;
-  speaks: Languages[];
-  learn: Languages[];
-  isOnline: boolean;
-  isFriend: boolean;
-  photoUrl: string;
-}
-
-export interface MainInfoProps {
-  mainInfo: MainInfo;
-}
-
-export interface Languages {
-  language: string;
-  level: string;
-}
-
-export interface UserPhotoInfo {
+export interface IUserPhotoProps {
   isOnline: boolean;
   photoUrl: string;
 }
 
-export interface AboutInfo {
-  aboutInfo: string;
+export interface IAboutProps {
+  about: string;
 }
 
 export interface IUserMain {
@@ -46,32 +20,16 @@ export interface IUserMain {
   photoUrl: string;
 }
 
-export interface Friend {
-  id: number;
-  photoUrl: string;
-  firstName: string;
-  lastName: string;
-  isOnline: boolean;
+export interface IFriendsListProps {
+  friends: IFriend[];
 }
 
-export interface FriendsListProps {
-  friends: Friend[];
-}
-
-export interface Post {
-  id: number;
-  body: string;
-  date: string;
-  time: string;
-  user: IUserMain;
-}
-
-export interface ProfilePosts {
-  posts: Post[];
+export interface IPostsProps {
+  posts: IPost[];
 }
 
 export interface IUsers {
-  users: MainInfo[];
+  users: IUser[];
 }
 
 export enum dataType {

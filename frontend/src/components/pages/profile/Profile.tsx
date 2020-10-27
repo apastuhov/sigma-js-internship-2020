@@ -14,7 +14,7 @@ const Profile: React.FC = () => {
       <div className="profile">
         <div className="leftside">
           <UserCard mainInfo={user} boxShadow={2} />
-          <About aboutInfo={user.about} />
+          <About about={user.about} />
           <FriendsList friends={user.friends} />
         </div>
         <div className="rightside">
