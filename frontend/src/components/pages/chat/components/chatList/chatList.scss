@@ -8,6 +8,9 @@
     overflow-y: scroll;
     margin-top: $gap-24;
     padding: 0 $gap-2;
+    
+    @include scrollbar-style;
+
   }
 
   .chat-search {

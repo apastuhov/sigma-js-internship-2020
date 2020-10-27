@@ -1,5 +1,5 @@
-import React from 'react';
-import user from '../../mocks/user-mock.json';
+import React, { useState } from 'react';
+import { getUserFromStorage } from '../../../services/localStorage';
 import Layout from '../../shared/layout/Layout';
 import UserCard from '../../shared/userCard/UserCard';
 import About from './components/about/About';
@@ -9,17 +9,19 @@ import Posts from './components/posts/Posts';
 import './profile.scss';
 
 const Profile: React.FC = () => {
+  const [userDetails, setUserDetails] = useState(getUserFromStorage());
+
   return (
     <Layout pageTitle="Profile">
       <div className="profile">
         <div className="leftside">
-          <UserCard mainInfo={user} boxShadow={2} />
-          <About aboutInfo={user.about} />
-          <FriendsList friends={user.friends} />
+          <UserCard mainInfo={userDetails} boxShadow={2} />
+          <About aboutInfo={userDetails.about} />
+          <FriendsList friends={userDetails.friends} />
         </div>
         <div className="rightside">
           <AddPostForm />
-          <Posts posts={user.posts} />
+          <Posts posts={userDetails.posts} />
         </div>
       </div>
     </Layout>

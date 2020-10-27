@@ -1,8 +1,9 @@
+import React, { MouseEvent, useState } from 'react';
 import Box from '@material-ui/core/Box';
-import React, { MouseEvent, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { MainInfo } from '../../interfaces/Interface';
 import { UserPhoto } from '../userPhoto/UserPhoto';
+import { getUserFromStorage } from '../../../services/localStorage';
 import './userCard.scss';
 
 type MainInfoProps = {
@@ -11,14 +12,7 @@ type MainInfoProps = {
 };
 
 export const UserCard: React.FC<MainInfoProps> = ({ mainInfo }, shadowIntensity) => {
-  const loginedUser = useMemo(() => {
-    const user = JSON.parse(localStorage.getItem('loginedUser')!);
-    if (user === null) {
-      return false;
-    } else {
-      return user;
-    }
-  }, []);
+  const [loginedUser, setLoginedUser] = useState(getUserFromStorage());
 
   const sendFriendRequest = (event: MouseEvent) => {
     event.preventDefault();
@@ -68,7 +62,7 @@ export const UserCard: React.FC<MainInfoProps> = ({ mainInfo }, shadowIntensity)
             );
           })}
         </div>
-        {false || loginedUser.id === mainInfo.id ?
+        {loginedUser.id === mainInfo.id ?
           null
           : <div className="buttons-action">
             {mainInfo.isFriend

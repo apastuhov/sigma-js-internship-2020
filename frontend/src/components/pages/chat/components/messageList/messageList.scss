@@ -8,7 +8,7 @@
   background-color: $white;
   border-radius: $tile-radius;
   box-sizing: border-box;
-  padding: $gap-24;
+  padding: $gap-24;  
 }
 
 .message-list hr {
@@ -22,6 +22,9 @@
   overflow-y: scroll;
   height: 500px;
   padding-right: $gap-4;
+
+  @include scrollbar-style;
+
 }
 
 .user-data h2 {

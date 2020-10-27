@@ -6,6 +6,8 @@
   overflow-x: hidden;
   margin-top: $gap-20;
   
+  @include scrollbar-style;
+
   @include for-medium{
     max-height: none;
     overflow: hidden;
@@ -14,7 +16,7 @@
 
 .post{
   @include tile;
-  margin-bottom: $gap-20;
+  margin: 0 $gap-4 $gap-20 0;
 
   @include for-mobile{
     width: $mobile-tile-width;
