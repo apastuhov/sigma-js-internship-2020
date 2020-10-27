@@ -4,12 +4,13 @@ import { DTO } from '../../interface';
 import { User } from '../models/user';
 
 export class UserRepository {
-  async filterAll(name: string): Promise<DTO.IUser[]> {
+  async filterAll(parameters: DTO.User.FilterRequest): Promise<DTO.IUser[]> {
     // this.createUser(name);
     const users = await this.filterMockUsers();
+    console.log(parameters);
     // TODO: remove any
     // const users = await new Promise<any[]>(resolve =>
-    //   User.find({ name }, (err, data) => {
+    //   User.find(parameters, (err, data) => {
     //     resolve(data);
     //   })
     // );

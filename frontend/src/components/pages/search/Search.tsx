@@ -13,8 +13,10 @@ const Search: React.FC = () => {
   const [name, setName] = useState('');
   const [country, setCountry] = useState('');
   const [checkboxFilters, setCheckboxFilters] = useState({
+    //TODO: consider move genders to object
     male: false,
     female: false,
+    other: false,
     isOnline: false
   });
 
@@ -46,7 +48,11 @@ const Search: React.FC = () => {
   }, []);
 
   const getGender = () => {
-    if ((!checkboxFilters.female && !checkboxFilters.male) || (checkboxFilters.female && checkboxFilters.male)) {
+    //TODO: right organization for genders
+    if (
+      (!checkboxFilters.female && !checkboxFilters.male && !checkboxFilters.other) ||
+      (checkboxFilters.female && checkboxFilters.male && checkboxFilters.other)
+    ) {
       return;
     }
     return Boolean(checkboxFilters.male) ? 0 : 1;
@@ -75,7 +81,8 @@ const Search: React.FC = () => {
     apiService(dataType.filter, requestBody).then(users => setUsers(users));
   };
 
-  const years = [...Array(hightLimit - lowLimit)].map((_, index) => index + lowLimit);
+  const lowYears = [...Array(hightLimit - lowLimit)].map((_, index) => index + lowLimit);
+  const hightYears = [...Array(hightLimit - lowLimit)].map((_, index) => hightLimit - index);
 
   return (
     <Layout pageTitle="Search">
@@ -86,11 +93,11 @@ const Search: React.FC = () => {
           <label>Age</label>
           <div className="years">
             <select onChange={handleSelect} value={selectsFilters.lowAge} name="lowAge">
-              {getOptions(years)}
+              {getOptions(lowYears)}
             </select>
             <div className="divider"></div>
             <select onChange={handleSelect} value={selectsFilters.highAge} name="highAge">
-              {getOptions(years)}
+              {getOptions(hightYears)}
             </select>
           </div>
           <label>Sex</label>
@@ -102,6 +109,10 @@ const Search: React.FC = () => {
             <label>
               <input type="checkbox" checked={checkboxFilters.female} onChange={handleCheckbox} name="female" />
               Female
+            </label>
+            <label>
+              <input type="checkbox" checked={checkboxFilters.other} onChange={handleCheckbox} name="other" />
+              Other
             </label>
           </div>
           <label>Country</label>

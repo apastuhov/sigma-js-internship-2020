@@ -4,8 +4,8 @@ import { DTO } from '../interface';
 class UserService {
   constructor(private userRepo: UserRepository) {}
 
-  async search(username: string): Promise<DTO.IUser[]> {
-    const data = await this.userRepo.filterAll(username);
+  async search(parameters: DTO.User.FilterRequest): Promise<DTO.IUser[]> {
+    const data = await this.userRepo.filterAll(parameters);
     return data;
   }
 
