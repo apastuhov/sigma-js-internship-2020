@@ -23,9 +23,9 @@ export class UserRepository {
     return jsonUsers;
   }
 
-  async createUser(newUser: DTO.IUserRegister) {
+  async createUser(newUser: DTO.IUser) {
     const user = new User(newUser);
-    user.save(function (err, user) {
+    await user.save(function (err, user) {
       if (err) return console.error(err);
       console.log(user);
     });

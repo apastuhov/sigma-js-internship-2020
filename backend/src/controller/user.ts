@@ -1,5 +1,4 @@
 import express from 'express';
-import { DTO } from '../interface';
 import { userService } from '../service/user';
 
 const router = express.Router();

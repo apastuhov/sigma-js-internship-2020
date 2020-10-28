@@ -1,7 +1,7 @@
 import { Schema, model } from 'mongoose';
 import { DTO } from '../../interface';
 
-const userSchemaFields: Record<keyof DTO.IUserRegister, any> = {
+const userSchemaFields: Record<keyof DTO.IUser, any> = {
   firstName: {
     type: String,
     required: true,
@@ -50,4 +50,4 @@ const userSchemaFields: Record<keyof DTO.IUserRegister, any> = {
 
 const userSchema = new Schema(userSchemaFields);
 
-export const User = model<DTO.IUserRegisterDoc>('User', userSchema);
+export const User = model<DTO.IUserDoc>('User', userSchema);

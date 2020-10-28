@@ -1,7 +1,7 @@
 import { Document, Types } from 'mongoose';
-type ID = Types.ObjectId;
 
 export namespace DTO {
+  export type ID = Types.ObjectId;
   export namespace User {
     export interface FilterRequest {
       name: string;
@@ -14,19 +14,6 @@ export namespace DTO {
   }
 
   export interface IUser {
-    id: number;
-    firstName: string;
-    lastName: string;
-    age: number;
-    country: string;
-    speaks: ILanguage[];
-    learn: ILanguage[];
-    isOnline: boolean;
-    isFriend: boolean;
-    photoUrl: string;
-  }
-
-  export interface IUserRegister {
     firstName: string;
     lastName: string;
     sex: number;
@@ -37,8 +24,16 @@ export namespace DTO {
     learn: ILanguage[];
     photo: string;
     about: string;
-    friends: ID[] | IUserRegisterDoc[];
+    friends: ID[] | IUserDoc[];
   }
 
-  export interface IUserRegisterDoc extends IUserRegister, Document {}
+  export interface IPost {
+    userId: ID;
+    body: string;
+    date: Date;
+    creator: ID;
+  }
+
+  export interface IPostDoc extends IPost, Document {}
+  export interface IUserDoc extends IUser, Document {}
 }
