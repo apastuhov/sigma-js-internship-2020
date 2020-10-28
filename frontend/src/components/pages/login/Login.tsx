@@ -7,13 +7,19 @@ import Tile from '../../shared/tile/Tile';
 import Box from '@material-ui/core/Box';
 import { Link } from 'react-router-dom';
 import { GoogleLogin } from 'react-google-login';
+import axios from 'axios';
 import user from '../../mocks/user-mock.json';
 
 const saveUserToStorage = () => {
   localStorage.setItem('loginedUser', JSON.stringify(user));
 };
 function responseGoogle(response: any): void {
-  console.log(response.profileObj);
+  axios({
+    method: 'POST',
+    url: 'http://localhost:8000/api/googleLogin',
+    data: { tokenID: response.tokenId }
+  });
+  console.log(response.tokenId);
 }
 
 const Login: React.FC = () => {
