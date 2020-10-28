@@ -4,13 +4,13 @@ import GoogleLogo from '../../../images/google-login.svg';
 import './login.scss';
 import Footer from '../../shared/footer/Footer';
 import Tile from '../../shared/tile/Tile';
-import Box from '@material-ui/core/Box';
+import { Box } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import user from '../../mocks/user-mock.json';
 
 const saveUserToStorage = () => {
   localStorage.setItem('loginedUser', JSON.stringify(user));
-}
+};
 
 const Login: React.FC = () => {
   return (
@@ -26,7 +26,9 @@ const Login: React.FC = () => {
             <div className="google-logo-container">
               <img src={GoogleLogo} alt="google-logo" />
             </div>
-            <Link to='/settings' className="login-btn-link" onClick={saveUserToStorage}>Sign in with google</Link>
+            <Link to="/register" className="login-btn-link" onClick={saveUserToStorage}>
+              Sign in with google
+            </Link>
           </button>
         </Box>
       </Tile>

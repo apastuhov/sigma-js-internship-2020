@@ -3,9 +3,10 @@ import './additionalInfo.scss';
 import Tile from '../../shared/tile/Tile';
 import Box from '@material-ui/core/Box';
 import PhotoInput from './components/PhotoInput';
-import { useFormikContext } from 'formik';
+import { useField, useFormikContext } from 'formik';
+import TextareaInput from './components/TextareaInput';
 
-const AdditionalInfo: React.FC = () => {
+const AdditionalInfo: React.FC = props => {
   const { setFieldValue } = useFormikContext();
 
   const handleUpload = (url: string) => setFieldValue('fileUrl', url);
@@ -23,7 +24,7 @@ const AdditionalInfo: React.FC = () => {
         <p>
           About<span className="text-optional"> (optional)</span>
         </p>
-        <textarea rows={9} cols={51} className="textarea" placeholder="Write something about you..."></textarea>
+        <TextareaInput name="about" />
       </Box>
     </Tile>
   );

@@ -24,8 +24,7 @@ select {
 
 .sex-wrapper {
   display: flex;
-  margin: $gap-24 0;
-  .label {
-    margin-right: 16px;
+  .sex-input {
+    display: flex;
   }
 }

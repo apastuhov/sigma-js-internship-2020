@@ -4,7 +4,7 @@ import Select from '../select/Select';
 
 type SelectProps = {
   name: string;
-  options: string[];
+  options: any;
   label?: string;
 };
 
@@ -13,7 +13,7 @@ const SelectWithFormik: React.FC<SelectProps> = props => {
 
   return (
     <Select
-      name={props.name}
+      name={field.name}
       options={props.options}
       label={props.label}
       value={field.value}

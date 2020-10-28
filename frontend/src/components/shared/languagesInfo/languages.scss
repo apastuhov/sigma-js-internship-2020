@@ -5,12 +5,12 @@
   color: $primary-color;
   border: none;
   outline: none;
-  margin: $gap-8 0 $gap-24 0;
+  margin: $gap-8 0 $gap-20 0;
   &:hover {
     color: $secondary-color;
   }
 }
 
 .languages-div {
-  min-height: 392px;
+  min-height: 336px;
 }

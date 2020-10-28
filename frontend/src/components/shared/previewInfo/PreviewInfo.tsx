@@ -5,15 +5,20 @@ import { UserCard } from '../userCard/UserCard';
 import User from '../../mocks/user-mock.json';
 import './previewInfo.scss';
 import { useFormik, useFormikContext } from 'formik';
+import { Country } from '../../constants/Countries';
+import { Languages } from '../../interfaces/Interface';
 
 type FormikValues = {
   name: string;
   surname: string;
   age: number;
   birthday: string;
-  languages: Array<any>;
-  learnLanguages: Array<any>;
+  languages: Languages[];
+  learnLanguages: Languages[];
   fileUrl: string;
+  sex: string;
+  country: any;
+  about: any;
 };
 
 const PreviewInfo: React.FC = () => {
@@ -31,6 +36,10 @@ const PreviewInfo: React.FC = () => {
   }
 
   const old = getOld(values.birthday);
+
+  const getMethodPriority = (country: keyof typeof Country) => {
+    return Country[country];
+  };
 
   return (
     <Tile>

@@ -30,7 +30,9 @@ const Settings: React.FC = () => {
               language: '',
               level: ''
             }
-          ]
+          ],
+          age: 0,
+          fileUrl: ''
         }}
         onSubmit={handleSubmit}
       >
@@ -43,8 +45,8 @@ const Settings: React.FC = () => {
             <Tile>
               <Box boxShadow={2} className="tile">
                 <div className="settings-nav">
-                  <Button name="BACK" color="secondary" />
-                  <Button name="SAVE" color="primary" />
+                  <Button name="BACK" color="secondary" link="" />
+                  <Button name="SAVE" color="primary" link="" />
                 </div>
               </Box>
             </Tile>

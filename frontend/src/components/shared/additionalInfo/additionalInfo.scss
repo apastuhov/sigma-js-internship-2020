@@ -8,6 +8,7 @@ p {
   position: relative;
   display: flex;
   justify-content: center;
+  margin: 22px 0;
   .upload-photo {
     @include hover-transform-scale;
   }
