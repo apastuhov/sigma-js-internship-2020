@@ -11,6 +11,10 @@
     input {
       border-radius: $tile-radius;
       border: 1px solid $grey;
+      &:focus {
+        outline: none;
+        border: $gap-2 solid $primary-color;
+      }
     }
     input[type='text'] {
       height: 20px;
@@ -19,12 +23,14 @@
       width: 14px;
       height: 14px;
       margin-right: 4px;
+      cursor: pointer;
     }
     .years {
       display: flex;
       align-items: center;
       select {
         width: 40px;
+        cursor: pointer;
       }
       .divider {
         margin: 0 10px;
@@ -38,12 +44,18 @@
       border-radius: $tile-radius;
       border-color: $grey;
       height: 24px;
+      cursor: pointer;
     }
     button {
       @include button;
       justify-self: center;
       background-color: $primary-color;
       grid-column: 2 / 3;
+
+      &:focus {
+        outline: none;
+        border: $gap-2 solid $primary-color;
+      }
     }
     label {
       text-align: left;
@@ -51,3 +63,4 @@
     }
   }
 }
+

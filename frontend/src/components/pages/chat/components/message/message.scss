@@ -1,0 +1,33 @@
+@import '../../../../../styles/variables.scss';
+
+.message {
+  display: flex;
+  flex-direction: column;
+
+  .bubble-container {
+    font-size: $gap-14;
+    display: flex;
+
+    .bubble {
+      margin-top: $gap-14;
+      background: $chat-light-grey;
+      padding: $gap-14;
+      border-radius: $gap-4;
+      max-width: 75%;
+
+      .timestamp {
+        margin-top: 4px;
+        text-align: right;
+      }
+    }
+  }
+}
+
+.message.mine .bubble-container {
+  justify-content: flex-end;
+
+  .bubble {
+    background: $primary-color;
+    color: $white;
+  }
+}

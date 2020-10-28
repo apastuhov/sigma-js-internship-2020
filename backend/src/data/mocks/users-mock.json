@@ -1,0 +1,114 @@
+[
+  {
+    "id": 0,
+    "firstName": "Patric",
+    "lastName": "Rotfus",
+    "sex": 0,
+    "age": 12,
+    "birthday": 854668800,
+    "country": "Ukraine",
+    "speaks": [
+      {
+        "language": "Ukrainian",
+        "level": "Native"
+      },
+      {
+        "language": "Russian",
+        "level": "Fluent"
+      }
+    ],
+    "learn": [
+      {
+        "language": "English",
+        "level": "Intermediate"
+      }
+    ],
+    "isOnline": false,
+    "isFriend": false,
+    "photoUrl": "testUrl"
+  },
+  {
+    "id": 1,
+    "firstName": "Jack",
+    "lastName": "Jackson",
+    "sex": 0,
+    "age": 25,
+    "birthday": 854668800,
+    "country": "Ukraine",
+    "speaks": [
+      {
+        "language": "Ukrainian",
+        "level": "Native"
+      },
+      {
+        "language": "Russian",
+        "level": "Fluent"
+      }
+    ],
+    "learn": [
+      {
+        "language": "English",
+        "level": "Intermediate"
+      }
+    ],
+    "isOnline": false,
+    "isFriend": false,
+    "photoUrl": "testUrl"
+  },
+  {
+    "id": 2,
+    "firstName": "Tick",
+    "lastName": "Tack",
+    "sex": 0,
+    "age": 24,
+    "birthday": 854668800,
+    "country": "USA",
+    "speaks": [
+      {
+        "language": "Ukrainian",
+        "level": "Native"
+      },
+      {
+        "language": "Russian",
+        "level": "Fluent"
+      }
+    ],
+    "learn": [
+      {
+        "language": "English",
+        "level": "Intermediate"
+      }
+    ],
+    "isOnline": false,
+    "isFriend": false,
+    "photoUrl": "testUrl"
+  },
+  {
+    "id": 3,
+    "firstName": "Pall",
+    "lastName": "Richal",
+    "sex": 0,
+    "age": 24,
+    "birthday": 854668800,
+    "country": "Ukraine",
+    "speaks": [
+      {
+        "language": "Ukrainian",
+        "level": "Native"
+      },
+      {
+        "language": "Russian",
+        "level": "Fluent"
+      }
+    ],
+    "learn": [
+      {
+        "language": "English",
+        "level": "Intermediate"
+      }
+    ],
+    "isOnline": false,
+    "isFriend": true,
+    "photoUrl": "testUrl"
+  }
+]

@@ -5,7 +5,7 @@ const Footer: React.FC = () => {
   return (
     <footer>
       © 2020 Sigma Software
-      <br /> Privacy Policy Terms of use
+      <br /> Privacy Policy | Terms of use
     </footer>
   );
 };

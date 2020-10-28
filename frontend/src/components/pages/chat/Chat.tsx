@@ -1,12 +1,15 @@
 import React from 'react';
 import Layout from '../../shared/layout/Layout';
-import SearchTile from '../../shared/searchTile/SearchTile';
+import { ChatList } from './components/chatList/ChatList';
+import { MessageList } from './components/messageList/MessageList';
 
 const Chat: React.FC = () => {
   return (
     <Layout pageTitle="Chat">
-      <SearchTile />
-      <div></div>
+      <div className="chat-container">
+        <ChatList />
+        <MessageList />
+      </div>
     </Layout>
   );
 };

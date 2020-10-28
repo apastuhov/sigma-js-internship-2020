@@ -5,6 +5,12 @@ import './login.scss';
 import Footer from '../../shared/footer/Footer';
 import Tile from '../../shared/tile/Tile';
 import Box from '@material-ui/core/Box';
+import { Link } from 'react-router-dom';
+import user from '../../mocks/user-mock.json';
+
+const saveUserToStorage = () => {
+  localStorage.setItem('loginedUser', JSON.stringify(user));
+}
 
 const Login: React.FC = () => {
   return (
@@ -20,7 +26,7 @@ const Login: React.FC = () => {
             <div className="google-logo-container">
               <img src={GoogleLogo} alt="google-logo" />
             </div>
-            <p className="login-btn-p">Sign in with google</p>
+            <Link to='/settings' className="login-btn-link" onClick={saveUserToStorage}>Sign in with google</Link>
           </button>
         </Box>
       </Tile>

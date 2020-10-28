@@ -1,21 +1,19 @@
+import bodyParser from 'body-parser';
 import express from 'express';
-import mongoose from 'mongoose';
+import { PORT } from './constant';
+import routes from './controller/index';
+import './data/db/mongoose';
+import { corsMiddleware } from './middleware/cors';
 
 const app = express();
-const PORT = process.env.PORT || 8000;
-const dbLink = 'mongodb://localhost:27018/db';
 
-mongoose.connect(dbLink, err => {
-  if (err) {
-    console.error('Error occured during connection to DB');
-    console.error(err);
-  } else {
-    console.log('Connected to DB succesfully');
-  }
-});
+app.use(corsMiddleware);
+app.use(bodyParser.json());
 
-app.get('/', (req, res) => res.send('Express + TypeScript Server'));
+app.use('/api/', routes);
+
+app.get('/healthcheck', (req, res) => res.send('Express + TypeScript Server'));
 
 app.listen(PORT, () => {
-  console.log(`⚡️[server]: Server is running at https://localhost:${PORT}`);
+  console.log(`⚡️[server]: Server is running at http://localhost:${PORT}`);
 });

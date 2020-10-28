@@ -8,7 +8,7 @@ const UserList: React.FC<IUsers> = ({ users }) => {
     <ul>
       {users.map(item => (
         <li key={item.id}>
-          <UserCard user={item} />
+          <UserCard mainInfo={item} boxShadow={2} />
         </li>
       ))}
     </ul>
