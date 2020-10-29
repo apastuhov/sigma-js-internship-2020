@@ -50,7 +50,8 @@ const Search: React.FC = () => {
 
   useEffect(() => {
     async function getUsers() {
-      await apiService(dataType.users).then(users => setUsers(users));
+      const users = await apiService(dataType.users);
+      setUsers(users);
     }
     getUsers();
   }, []);
@@ -62,6 +63,7 @@ const Search: React.FC = () => {
     if (genderFilters.every(e => e) || genderFilters.every(e => !e)) {
       return;
     }
+    //TODO: wait for enum in other pull request
     if (genders.male) {
       arrGenders.push(0);
     }
