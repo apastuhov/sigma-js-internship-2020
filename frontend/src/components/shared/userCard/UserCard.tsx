@@ -25,17 +25,14 @@ export const UserCard: React.FC<MainInfoProps> = ({ mainInfo }, shadowIntensity)
     const request = {
       friendId: mainInfo.id,
       myId: 111
-    }
+    };
     console.log(JSON.stringify(request));
   };
 
   return (
     <Box boxShadow={shadowIntensity.boxShadow && 2} className="user-card">
       <Link to="/" className="leftbar">
-        <UserPhoto
-          isOnline={mainInfo.isOnline}
-          photoUrl={mainInfo.photoUrl}
-        />
+        <UserPhoto isOnline={mainInfo.isOnline} photoUrl={mainInfo.photoUrl} />
         <h3>
           {mainInfo.firstName} {mainInfo.lastName}
         </h3>
@@ -68,19 +65,18 @@ export const UserCard: React.FC<MainInfoProps> = ({ mainInfo }, shadowIntensity)
             );
           })}
         </div>
-        {false || loginedUser.id === mainInfo.id ?
-          null
-          : <div className="buttons-action">
-            {mainInfo.isFriend
-              ? null
-              : <Link to="/" onClick={sendFriendRequest} className="add-friend">
+        {false || loginedUser.id === mainInfo.id ? null : (
+          <div className="buttons-action">
+            {mainInfo.isFriend ? null : (
+              <Link to="/" onClick={sendFriendRequest} className="add-friend">
                 add friend
-              </Link>}
+              </Link>
+            )}
             <Link to="/chat" className="send-message">
               message
-          </Link>
+            </Link>
           </div>
-        }
+        )}
       </div>
     </Box>
   );

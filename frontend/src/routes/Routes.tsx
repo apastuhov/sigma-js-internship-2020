@@ -19,4 +19,4 @@ export default () => (
     <Route path="/login" component={Login} />
     <Route path="/friends" component={Friends} />
   </Switch>
-)
+);
