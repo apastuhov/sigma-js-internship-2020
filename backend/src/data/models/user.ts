@@ -12,7 +12,7 @@ const userSchemaFields: Record<keyof DTO.IUser, any> = {
     required: true,
     trim: true
   },
-  sex: Number,
+  sex: String,
   email: {
     type: String,
     required: true,
@@ -27,21 +27,25 @@ const userSchemaFields: Record<keyof DTO.IUser, any> = {
   ],
   country: { type: String, required: true },
   speak: {
-    type: Array,
-    required: true,
-    validate: {
-      validator: function (array: object[]) {
-        return array.every(v => typeof v === 'object');
+    type: [
+      {
+        language: { type: String, required: true },
+        level: { type: String, required: true }
       }
+    ],
+    validate: (v: object[]) => {
+      return typeof v === 'object' && v.length > 0;
     }
   },
   learn: {
-    type: Array,
-    required: true,
-    validate: {
-      validator: function (array: object[]) {
-        return array.every(v => typeof v === 'object');
+    type: [
+      {
+        language: { type: String, required: true },
+        level: { type: String, required: true }
       }
+    ],
+    validate: (v: object[]) => {
+      return typeof v === 'object' && v.length > 0;
     }
   },
   about: String,

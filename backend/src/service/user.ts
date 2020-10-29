@@ -4,19 +4,33 @@ import { DTO } from '../interface';
 class UserService {
   constructor(private userRepo: UserRepository) {}
 
-  async search(username: string): Promise<DTO.IUser[]> {
-    const data = await this.userRepo.filterAll(username);
+  // User login
+
+  async checkUserMail(mail: string): Promise<DTO.IUser | null> {
+    const data = await this.userRepo.checkUserMail(mail);
     return data;
   }
 
-  async getAllUsers() {
-    const data = await this.userRepo.getAllUsers();
-    return data;
-  }
-
-  async createUser(newUser: DTO.IUser) {
+  async createUser(newUser: DTO.IUser): Promise<DTO.IUserDoc> {
     const data = await this.userRepo.createUser(newUser);
     return data;
+  }
+
+  // Users
+  async getUserById(userId: DTO.ID): Promise<DTO.IUserDoc | null> {
+    const data = await this.userRepo.getUserById(userId);
+    return data;
+  }
+  // Posts
+
+  async getAllPostByUserId(userId: DTO.ID): Promise<DTO.IPost[]> {
+    const posts = await this.userRepo.getAllPostByUserId(userId);
+    return posts;
+  }
+
+  async createPost(newPost: DTO.IPost): Promise<DTO.IPost> {
+    const post = await this.userRepo.createPost(newPost);
+    return post;
   }
 }
 

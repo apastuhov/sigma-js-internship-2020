@@ -34,6 +34,20 @@ export namespace DTO {
     creator: ID;
   }
 
+  export interface IMessage {
+    userId: ID;
+    body: string;
+    status: number;
+    date: Date;
+  }
+
+  export interface IDialogs {
+    participants: ID[];
+    messages: IMessage[];
+  }
+
+  export interface IMessageDoc extends IMessage, Document {}
+  export interface IDialogsDoc extends IDialogs, Document {}
   export interface IPostDoc extends IPost, Document {}
   export interface IUserDoc extends IUser, Document {}
 }

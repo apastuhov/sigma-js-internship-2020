@@ -1,42 +1,56 @@
-import fs from 'fs';
-import path from 'path';
 import { DTO } from '../../interface';
 import { User } from '../models/user';
+import { Post } from '../models/post';
 
 export class UserRepository {
-  async filterAll(name: string): Promise<DTO.IUser[]> {
-    // this.createUser(name);
-    const users = await this.filterMockUsers();
-    // TODO: remove any
-    // const users = await new Promise<any[]>(resolve =>
-    //   User.find({ name }, (err, data) => {
-    //     resolve(data);
-    //   })
-    // );
-    return users;
+  // async filterAll(name: string): Promise<DTO.IUser[]> {
+  //   // this.createUser(name);
+  //   // const users = await this.filterMockUsers();
+  //   // TODO: remove any
+  //   // const users = await new Promise<any[]>(resolve =>
+  //   //   User.find({ name }, (err, data) => {
+  //   //     resolve(data);
+  //   //   });
+  //   // );
+  //   // return users;
+  // }
+
+  // Login & Register
+  async checkUserMail(mail: string): Promise<DTO.IUserDoc | null> {
+    const data = await User.findOne({ email: mail }).populate('friends', ['firstName', 'lastName', 'photo']);
+    return data;
   }
 
-  async getAllUsers() {
-    const pathToMock = path.join(__dirname, '../mocks/users-mock.json');
-    const users = await fs.promises.readFile(pathToMock);
-    const jsonUsers = JSON.parse(users.toString());
-    return jsonUsers;
-  }
-
-  async createUser(newUser: DTO.IUser) {
+  async createUser(newUser: DTO.IUser): Promise<DTO.IUserDoc> {
     const user = new User(newUser);
-    await user.save(function (err, user) {
+    const res = await user.save(function (err, user) {
       if (err) return console.error(err);
-      console.log(user);
+      return user;
     });
-    return user;
+    return res;
   }
 
-  private async filterMockUsers() {
-    const pathToMock = path.join(__dirname, '../mocks/users-mock.json');
-    const users = await fs.promises.readFile(pathToMock);
-    const jsonUsers = JSON.parse(users.toString());
-    return jsonUsers;
+  // User data
+
+  async getUserById(userId: DTO.ID): Promise<DTO.IUserDoc | null> {
+    const data = await User.findById(userId).populate('friends', ['firstName', 'lastName', 'photo']);
+    return data;
+  }
+
+  // Posts
+
+  async getAllPostByUserId(ID: DTO.ID): Promise<DTO.IPost[]> {
+    const posts = await Post.find({ userId: ID }).populate('creator', ['firstName', 'lastName', 'photo']);
+    return posts;
+  }
+
+  async createPost(newPost: DTO.IPost): Promise<DTO.IPost> {
+    const post = new Post(newPost);
+    const res = await post.save(function (err, post) {
+      if (err) return console.error(err);
+      return post;
+    });
+    return res;
   }
 }
 
