@@ -1,12 +1,12 @@
 import Box from '@material-ui/core/Box';
 import React, { MouseEvent, useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { MainInfo } from '../../interfaces/Interface';
+import { IUser } from '../../interfaces/Interface';
 import { UserPhoto } from '../userPhoto/UserPhoto';
 import './userCard.scss';
 
 type MainInfoProps = {
-  mainInfo: MainInfo;
+  mainInfo: IUser;
   boxShadow?: number;
 };
 
