@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Redirect } from 'react-router-dom';
 import { getUserFromStorage } from '../../../services/localStorage';
 import Layout from '../../shared/layout/Layout';
 import UserCard from '../../shared/userCard/UserCard';
@@ -13,26 +12,19 @@ const Profile: React.FC = () => {
   const [userDetails, setUserDetails] = useState(getUserFromStorage());
 
   return (
-    <>
-      {/* TIME DECISION */}
-      {userDetails === null
-        ? <Redirect to="/login" />
-        :
-        <Layout pageTitle="Profile">
-          <div className="profile">
-            <div className="leftside">
-              <UserCard mainInfo={userDetails} boxShadow={2} />
-              <About about={userDetails.about} />
-              <FriendsList friends={userDetails.friends} />
-            </div>
-            <div className="rightside">
-              <AddPostForm />
-              <Posts posts={userDetails.posts} />
-            </div>
-          </div>
-        </Layout>
-      }
-    </>
+    <Layout pageTitle="Profile">
+      <div className="profile">
+        <div className="leftside">
+          <UserCard mainInfo={userDetails} boxShadow={2} />
+          <About aboutInfo={userDetails.about} />
+          <FriendsList friends={userDetails.friends} />
+        </div>
+        <div className="rightside">
+          <AddPostForm />
+          <Posts posts={userDetails.posts} />
+        </div>
+      </div>
+    </Layout>
   );
 };
 
