@@ -55,7 +55,7 @@ You must become familiar and use
 BE:
 
 - NodeJs
-- Experess
+- Express
 - MongoDB
 - TypeScript
 

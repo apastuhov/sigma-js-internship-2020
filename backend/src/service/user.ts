@@ -21,6 +21,7 @@ class UserService {
     const data = await this.userRepo.getUserById(userId);
     return data;
   }
+
   // Posts
 
   async getAllPostByUserId(userId: DTO.ID): Promise<DTO.IPost[]> {

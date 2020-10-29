@@ -1,20 +1,23 @@
-import React, { useState } from 'react';
+import { Box } from '@material-ui/core';
+import React, { useEffect, useState } from 'react';
+import { CountryDropdown } from 'react-country-region-selector';
+import apiService from '../../../services/apiService';
+import { hightLimit, languageLevels, languages, lowLimit } from '../../constants/constants';
+import { dataType } from '../../interfaces/Interface';
 import Layout from '../../shared/layout/Layout';
 import UserList from '../../shared/userList/UserList';
-import { Box } from '@material-ui/core';
-import { CountryDropdown } from 'react-country-region-selector';
-import { lowLimit, hightLimit, languages, languageLevels } from '../../constants/constants';
-import { dataType } from '../../interfaces/Interface';
-import apiService from '../../../services/apiService';
 import './search.scss';
 
 const Search: React.FC = () => {
   const [users, setUsers] = useState([]);
   const [name, setName] = useState('');
   const [country, setCountry] = useState('');
-  const [checkboxFilters, setCheckboxFilters] = useState({
+  const [genders, setGenders] = useState({
     male: false,
     female: false,
+    other: false
+  });
+  const [online, setIsOnline] = useState({
     isOnline: false
   });
 
@@ -33,19 +36,45 @@ const Search: React.FC = () => {
     setName(e.target.value);
   };
 
-  const handleCheckbox = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setCheckboxFilters({ ...checkboxFilters, [e.target.name]: e.target.checked });
+  const handleOnline = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setIsOnline({ ...online, [e.target.name]: e.target.checked });
+  };
+
+  const handleGender = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setGenders({ ...genders, [e.target.name]: e.target.checked });
   };
 
   const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectsFilters({ ...selectsFilters, [e.target.name]: e.target.value });
   };
 
-  const getGender = () => {
-    if ((!checkboxFilters.female && !checkboxFilters.male) || (checkboxFilters.female && checkboxFilters.male)) {
+  useEffect(() => {
+    async function getUsers() {
+      const users = await apiService(dataType.users);
+      setUsers(users);
+    }
+    getUsers();
+  }, []);
+
+  const getGenders = () => {
+    const arrGenders: Array<number> = [];
+    const genderFilters = Object.values(genders);
+
+    if (genderFilters.every(e => e) || genderFilters.every(e => !e)) {
       return;
     }
-    return Boolean(checkboxFilters.male) ? 0 : 1;
+    //TODO: wait for enum in other pull request
+    if (genders.male) {
+      arrGenders.push(0);
+    }
+    if (genders.female) {
+      arrGenders.push(1);
+    }
+    if (genders.other) {
+      arrGenders.push(2);
+    }
+
+    return arrGenders;
   };
 
   const getOptions = (arr: (string | number)[]) => {
@@ -61,43 +90,48 @@ const Search: React.FC = () => {
       name: name,
       lowAge: selectsFilters.lowAge,
       highAge: selectsFilters.highAge,
-      sex: getGender(),
+      sex: getGenders(),
       country: country,
       language: selectsFilters.language,
       level: selectsFilters.level,
-      isOnline: checkboxFilters.isOnline
+      isOnline: online.isOnline
     };
     e.preventDefault();
     apiService(dataType.filter, requestBody).then(users => setUsers(users));
   };
 
-  const years = [...Array(hightLimit - lowLimit)].map((_, index) => index + lowLimit);
+  const lowYears = [...Array(hightLimit - lowLimit)].map((_, index) => index + lowLimit);
+  const hightYears = [...lowYears].reverse();
 
   return (
     <Layout pageTitle="Search">
       <Box boxShadow={2} className="filter">
         <form onSubmit={findUsers}>
           <label>Name</label>
-          <input type="text" onChange={handleName} value={name} />
+          <input type="search" onChange={handleName} value={name} />
           <label>Age</label>
           <div className="years">
             <select onChange={handleSelect} value={selectsFilters.lowAge} name="lowAge">
-              {getOptions(years)}
+              {getOptions(lowYears)}
             </select>
             <div className="divider"></div>
             <select onChange={handleSelect} value={selectsFilters.highAge} name="highAge">
-              {getOptions(years)}
+              {getOptions(hightYears)}
             </select>
           </div>
           <label>Sex</label>
           <div>
             <label>
-              <input type="checkbox" checked={checkboxFilters.male} onChange={handleCheckbox} name="male" />
+              <input type="checkbox" checked={genders.male} onChange={handleGender} name="male" />
               Male
             </label>
             <label>
-              <input type="checkbox" checked={checkboxFilters.female} onChange={handleCheckbox} name="female" />
+              <input type="checkbox" checked={genders.female} onChange={handleGender} name="female" />
               Female
+            </label>
+            <label>
+              <input type="checkbox" checked={genders.other} onChange={handleGender} name="other" />
+              Other
             </label>
           </div>
           <label>Country</label>
@@ -111,7 +145,7 @@ const Search: React.FC = () => {
             {getOptions(languageLevels)}
           </select>
           <label>Online</label>
-          <input type="checkbox" checked={checkboxFilters.isOnline} onChange={handleCheckbox} name="isOnline" />
+          <input type="checkbox" checked={online.isOnline} onChange={handleOnline} name="isOnline" />
           <button type="submit">Search</button>
         </form>
       </Box>

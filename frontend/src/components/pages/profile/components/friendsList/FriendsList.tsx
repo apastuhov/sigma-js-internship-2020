@@ -27,10 +27,7 @@ const FriendsList: React.FC<FriendsListProps> = ({ friends }) => {
         {sortedFriends.map((friendInfo, id) => {
           return (
             <Link to={`/${friendInfo.id}`} className="friend" key={id}>
-              <UserPhoto
-                isOnline={friendInfo.isOnline}
-                photoUrl={friendInfo.photoUrl}
-              />
+              <UserPhoto isOnline={friendInfo.isOnline} photoUrl={friendInfo.photoUrl} />
               <p>
                 {friendInfo.firstName} {friendInfo.lastName}
               </p>

@@ -13,7 +13,7 @@ const AddPostForm: React.FC = () => {
 
   const hideErrorMessage = () => {
     setInvalidForm(false);
-  }
+  };
 
   const sendPost = (event: React.FormEvent) => {
     event.preventDefault();
@@ -35,16 +35,19 @@ const AddPostForm: React.FC = () => {
 
   return (
     <Box boxShadow={2} className="add-post-form">
-      {isInvalidForm && (<p>The value is missing</p>)}
+      {isInvalidForm && <p>The value is missing</p>}
       <form action="" onSubmit={sendPost}>
         <textarea
           rows={5}
           onFocus={hideErrorMessage}
-          value={postValue} onChange={inputValueHandleChange}
+          value={postValue}
+          onChange={inputValueHandleChange}
           placeholder="Add post..."
         />
         <div className="save-icon">
-          <button type="submit"><SendSharpIcon className="send-icon" type="submit" /></button>
+          <button type="submit">
+            <SendSharpIcon className="send-icon" type="submit" />
+          </button>
         </div>
       </form>
     </Box>
