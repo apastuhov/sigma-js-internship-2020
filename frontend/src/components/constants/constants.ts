@@ -1,5 +1,5 @@
 // years
-export const lowLimit = 13;
+export const lowLimit = 16;
 export const hightLimit = 99;
 export const maxOnlineUsers = 6;
 
@@ -12,5 +12,6 @@ export const languageLevels = [
   'Pre-intermediate',
   'Intermediate',
   'Upper Intermediate',
-  'Advanced'
+  'Advanced',
+  'Native'
 ];

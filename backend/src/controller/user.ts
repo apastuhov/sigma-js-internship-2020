@@ -19,8 +19,8 @@ router.get('/', async (req, res, next) => {
 router.post<any, any, DTO.User.FilterRequest, any>('/filter', async (req, res, next) => {
   // TODO: catch errors
   try {
-    const { name } = req.body;
-    const users = await userService.search(name);
+    const parameters = req.body;
+    const users = await userService.search(parameters);
     return res.send(users);
   } catch (e) {
     next(e);

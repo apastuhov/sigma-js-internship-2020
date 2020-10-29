@@ -2,6 +2,12 @@ export namespace DTO {
   export namespace User {
     export interface FilterRequest {
       name: string;
+      lowAge: number;
+      highAge: number;
+      country: string;
+      language: string;
+      level: string;
+      isOnline: boolean;
     }
   }
 
