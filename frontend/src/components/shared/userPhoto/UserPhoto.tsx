@@ -3,7 +3,7 @@ import { IUserPhotoProps } from '../../interfaces/Interface';
 import Avatar from '../../mocks/user.png';
 import './userPhoto.scss';
 
-export const UserPhoto: React.FC<UserPhotoInfo> = photoInfo => {
+export const UserPhoto: React.FC<IUserPhotoProps> = photoInfo => {
   function checkURL(url: string) {
     return url.match(/\.(jpeg|jpg|gif|png)$/) != null || url.startsWith('blob:');
   }

@@ -1,21 +1,21 @@
 import React from 'react';
 import Tile from '../../shared/tile/Tile';
 import Box from '@material-ui/core/Box';
-import { UserCard } from '../userCard/UserCard';
 import User from '../../mocks/user-mock.json';
 import './previewInfo.scss';
 import { useFormik, useFormikContext } from 'formik';
 import { Country } from '../../constants/Countries';
-import { Languages } from '../../interfaces/Interface';
+import { ILanguage } from '../../interfaces/Interface';
 import dayjs from 'dayjs';
+import UserCard from '../userCard/UserCard';
 
 type FormikValues = {
   name: string;
   surname: string;
   age: number;
   birthday: string;
-  languages: Languages[];
-  learnLanguages: Languages[];
+  languages: ILanguage[];
+  learnLanguages: ILanguage[];
   fileUrl: string;
   sex: string;
   country: any;

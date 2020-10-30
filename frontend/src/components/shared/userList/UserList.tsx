@@ -1,7 +1,7 @@
 import React from 'react';
-import { UserCard } from '../../shared/userCard/UserCard';
 import { IUsers } from '../../interfaces/Interface';
 import './userList.scss';
+import UserCard from '../userCard/UserCard';
 
 const UserList: React.FC<IUsers> = ({ users }) => {
   return (
