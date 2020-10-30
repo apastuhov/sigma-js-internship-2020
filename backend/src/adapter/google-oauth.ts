@@ -1,15 +1,17 @@
 import { google } from 'googleapis';
 
-const client = new google.auth.OAuth2('341926743470-9blkj1v16puk169ke04vsk7qigumb8tb.apps.googleusercontent.com');
+const client = new google.auth.OAuth2(process.env.clientID);
 const googleLogin = (req: any, res: any) => {
   const { tokenID } = req.body;
   client
     .verifyIdToken({
       idToken: tokenID,
-      audience: '341926743470-9blkj1v16puk169ke04vsk7qigumb8tb.apps.googleusercontent.com'
+      audience: process.env.clientID
     })
     .then((response: any) => {
-      console.log(response);
+      const { given_name, family_name, email } = response.payload;
+
+      console.log(given_name, family_name, email);
     });
 };
 

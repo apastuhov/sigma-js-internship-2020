@@ -13,13 +13,15 @@ import user from '../../mocks/user-mock.json';
 const saveUserToStorage = () => {
   localStorage.setItem('loginedUser', JSON.stringify(user));
 };
+
+const url = 'http://localhost:8000';
+
 function responseGoogle(response: any): void {
   axios({
     method: 'POST',
-    url: 'http://localhost:8000/api/googleLogin',
+    url: `${url}/api/googleLogin`,
     data: { tokenID: response.tokenId }
   });
-  console.log(response.tokenId);
 }
 
 const Login: React.FC = () => {
