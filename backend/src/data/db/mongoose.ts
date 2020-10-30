@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 const dbLink = 'mongodb://localhost:27018/db';
 
-mongoose.connect(dbLink, err => {
+mongoose.connect(dbLink, { useNewUrlParser: true, useUnifiedTopology: true }, err => {
   if (err) {
     console.error('Error occured during connection to DB');
     console.error(err);

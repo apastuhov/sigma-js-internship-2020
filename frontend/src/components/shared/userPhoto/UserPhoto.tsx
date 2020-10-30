@@ -1,5 +1,5 @@
 import React from 'react';
-import { UserPhotoInfo } from '../../interfaces/Interface';
+import { IUserPhotoProps } from '../../interfaces/Interface';
 import Avatar from '../../mocks/user.png';
 import './userPhoto.scss';
 
