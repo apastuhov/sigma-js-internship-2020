@@ -19,7 +19,7 @@ function responseGoogle(response: any): void {
     url: `${url}/api/googleLogin`,
     data: { tokenID: response.tokenId }
   });
-  saveUserToStorage(user)
+  saveUserToStorage(user);
 }
 
 const Login: React.FC = () => {
