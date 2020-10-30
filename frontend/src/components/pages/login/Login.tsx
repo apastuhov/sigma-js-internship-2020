@@ -1,18 +1,15 @@
 import React from 'react';
-import Logo from '../../../images/logo-login.svg';
 import GoogleLogo from '../../../images/google-login.svg';
-import './login.scss';
+import Logo from '../../../images/logo-login.svg';
+import { saveUserToStorage } from '../../../services/localStorageService';
+import user from '../../mocks/user-mock.json';
 import Footer from '../../shared/footer/Footer';
 import Tile from '../../shared/tile/Tile';
+import './login.scss';
 import Box from '@material-ui/core/Box';
 import { Link } from 'react-router-dom';
 import { GoogleLogin } from 'react-google-login';
 import axios from 'axios';
-import user from '../../mocks/user-mock.json';
-
-const saveUserToStorage = () => {
-  localStorage.setItem('loginedUser', JSON.stringify(user));
-};
 
 const url = 'http://localhost:8000';
 
@@ -22,6 +19,7 @@ function responseGoogle(response: any): void {
     url: `${url}/api/googleLogin`,
     data: { tokenID: response.tokenId }
   });
+  saveUserToStorage(user)
 }
 
 const Login: React.FC = () => {

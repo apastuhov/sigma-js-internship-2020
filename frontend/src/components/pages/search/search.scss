@@ -8,6 +8,10 @@
     grid-template-columns: max-content max-content;
     grid-gap: 26px 14px;
 
+    select {
+      outline-color: $primary-color;
+    }
+
     input {
       border-radius: $tile-radius;
       border: 1px solid $grey;
@@ -16,8 +20,8 @@
         border: $gap-2 solid $primary-color;
       }
     }
-    input[type='text'] {
-      height: 20px;
+    input[type='search'] {
+      height: 24px;
     }
     input[type='checkbox'] {
       width: 14px;
@@ -63,4 +67,3 @@
     }
   }
 }
-

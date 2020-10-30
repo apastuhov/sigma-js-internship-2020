@@ -1,29 +1,68 @@
 import express from 'express';
-import { DTO } from '../interface';
 import { userService } from '../service/user';
+import { Types } from 'mongoose';
 
 const router = express.Router();
 
-router.get('/', async (req, res, next) => {
+// Login & register
+
+router.get('/login', async (req, res) => {
   // TODO: catch errors
-  console.log('1');
   try {
-    const users = await userService.getAllUsers();
-    console.log(users);
-    return res.send(users);
+    const mail = req.query.mail;
+    const user = await userService.checkUserMail(mail as string);
+    return res.status(200).send(user);
+  } catch (e) {
+    return res.status(404).send(e);
+  }
+});
+
+router.post('/register', async (req, res, next) => {
+  // TODO: catch errors
+  try {
+    const user = await userService.createUser(req.body);
+    return res.status(201).send(user);
+  } catch (e) {
+    return res.status(400).send(e);
+  }
+});
+
+// User info
+
+router.get('/:id', async (req, res, next) => {
+  // TODO: catch errors
+  try {
+    const ID = Types.ObjectId(req.params.id);
+    const user = await userService.getUserById(ID);
+    return res.send(user);
   } catch (e) {
     next(e);
   }
 });
 
-router.post<any, any, DTO.User.FilterRequest, any>('/filter', async (req, res, next) => {
-  // TODO: catch errors
+// User posts
+
+router.get('/:id/posts', async (req, res, next) => {
   try {
-    const { name } = req.body;
-    const users = await userService.search(name);
-    return res.send(users);
+    const ID = req.params.id;
+    const posts = await userService.getAllPostByUserId(Types.ObjectId(ID));
+    return res.send(posts);
   } catch (e) {
-    next(e);
+    return res.status(400).send(e);
+  }
+});
+
+router.post('/:id/posts', async (req, res, next) => {
+  try {
+    const ID = req.params.id;
+    const newPost = {
+      userId: ID,
+      ...req.body
+    };
+    const posts = await userService.createPost(newPost);
+    return res.status(201).send(posts);
+  } catch (e) {
+    return res.status(400).send(e);
   }
 });
 

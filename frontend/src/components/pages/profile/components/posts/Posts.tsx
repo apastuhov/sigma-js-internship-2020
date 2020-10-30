@@ -4,10 +4,10 @@ import EditIcon from '@material-ui/icons/Edit';
 import CloseIcon from '@material-ui/icons/Close';
 import UserPhoto from '../../../../mocks/user.png';
 import { Link } from 'react-router-dom';
+import { IPostsProps } from '../../../../interfaces/Interface';
 import './posts.scss';
-import { ProfilePosts } from '../../../../interfaces/Interface';
 
-const Posts: React.FC<ProfilePosts> = ({ posts }) => {
+const Posts: React.FC<IPostsProps> = ({ posts }) => {
   const editPost = (postId: number) => {
     console.log(postId);
   };
@@ -22,7 +22,7 @@ const Posts: React.FC<ProfilePosts> = ({ posts }) => {
         return (
           <Box boxShadow={2} className="post" key={id}>
             <div className="user-post">
-              <Link to={`/${postInfo.user.id}`} className="user">
+              <Link to={`/user/${postInfo.user.id}`} className="user">
                 <img src={UserPhoto} alt="" />
                 <h3>
                   {postInfo.user.firstName} {postInfo.user.lastName}
