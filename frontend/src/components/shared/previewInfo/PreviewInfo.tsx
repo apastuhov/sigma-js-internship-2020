@@ -7,6 +7,7 @@ import './previewInfo.scss';
 import { useFormik, useFormikContext } from 'formik';
 import { Country } from '../../constants/Countries';
 import { Languages } from '../../interfaces/Interface';
+import dayjs from 'dayjs';
 
 type FormikValues = {
   name: string;
@@ -24,18 +25,8 @@ type FormikValues = {
 const PreviewInfo: React.FC = () => {
   const { values } = useFormikContext<FormikValues>();
 
-  function getOld(dateString: string): number {
-    const today = new Date();
-    const birthDate = new Date(dateString);
-    let age = today.getFullYear() - birthDate.getFullYear();
-    const month = today.getMonth() - birthDate.getMonth();
-    if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) {
-      age--;
-    }
-    return age;
-  }
-
-  const old = getOld(values.birthday);
+  const date = dayjs(new Date());
+  const old = date.diff(values.birthday, 'year');
 
   const getMethodPriority = (country: keyof typeof Country) => {
     return Country[country];
@@ -53,7 +44,8 @@ const PreviewInfo: React.FC = () => {
             age: old,
             speaks: values.languages,
             learn: values.learnLanguages,
-            photoUrl: values.fileUrl
+            photoUrl: values.fileUrl,
+            country: values.country
           }}
           boxShadow={0}
         />

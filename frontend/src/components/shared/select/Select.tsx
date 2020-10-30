@@ -9,20 +9,16 @@ type SelectProps = {
   onChange?: (e: any) => void;
 };
 
-const getOptions = (arr: (string | number)[]) => {
-  return arr.map((item, i) => (
-    <option key={`${item}${i}`} value={item}>
-      {item}
-    </option>
-  ));
-};
-
 const Select: React.FC<SelectProps> = props => {
   return (
     <div>
       <p>{props.label}</p>
       <select className="select" onChange={props.onChange} name={props.name} value={props.value}>
-        {getOptions(props.options)}
+        {props.options.map((item, i) => (
+          <option key={`${item}${i}`} value={item}>
+            {item}
+          </option>
+        ))}
       </select>
     </div>
   );

@@ -6,7 +6,7 @@ import Input from '../input/Input';
 import { CountryDropdown } from 'react-country-region-selector';
 import InputWithFormik from '../InputWithFormik/InputWithFormik';
 import Select from '../select/Select';
-import { sex, Sex } from '../../constants/constants';
+import { sex } from '../../constants/constants';
 import SelectWithFormik from '../SelectWithFormik/SelectWithFormik';
 import { Country } from '../../constants/Countries';
 
@@ -25,7 +25,7 @@ const MainInfo: React.FC = () => {
         <div className="sex-wrapper">
           <SelectWithFormik label="Sex" name="sex" options={sex} />
         </div>
-        <InputWithFormik label="Birthday" name="birthday" type="date" max={new Date().toISOString().substring(0, 10)} />
+        <InputWithFormik label="Birthday" name="birthday" type="date" maxAge={new Date().toISOString().substring(0, 10)} />
         <div className="country-selector">
           <SelectWithFormik label="Country" name="country" options={Object.keys(Country)} />
         </div>

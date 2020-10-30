@@ -15,10 +15,4 @@ export const languageLevels = [
   'Advanced'
 ];
 
-export enum Sex {
-  Male,
-  Female,
-  Other
-}
-
 export const sex = ['Male', 'Female', 'Other'];
