@@ -26,9 +26,9 @@ export const UserCard: React.FC<MainInfoProps> = ({ mainInfo }, shadowIntensity)
   return (
     <>
       {/* TIME DECISION */}
-      {loginedUser === null
-        ? <Redirect to="/login" />
-        :
+      {loginedUser === null ? (
+        <Redirect to="/login" />
+      ) : (
         <Box boxShadow={shadowIntensity.boxShadow && 2} className="user-card">
           <Link to="/" className="leftbar">
             <UserPhoto isOnline={mainInfo.isOnline} photoUrl={mainInfo.photoUrl} />
@@ -64,23 +64,21 @@ export const UserCard: React.FC<MainInfoProps> = ({ mainInfo }, shadowIntensity)
                 );
               })}
             </div>
-            {loginedUser.id === mainInfo.id ?
-              null
-              : <div className="buttons-action">
-                {mainInfo.isFriend
-                  ? null
-                  : <Link to="/" onClick={sendFriendRequest} className="add-friend">
+            {loginedUser.id === mainInfo.id ? null : (
+              <div className="buttons-action">
+                {mainInfo.isFriend ? null : (
+                  <Link to="/" onClick={sendFriendRequest} className="add-friend">
                     add friend
-              </Link>
-                }
+                  </Link>
+                )}
                 <Link to="/chat" className="send-message">
                   message
-            </Link>
+                </Link>
               </div>
-            }
+            )}
           </div>
         </Box>
-      }
+      )}
     </>
   );
 };
