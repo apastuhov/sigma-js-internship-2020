@@ -8,6 +8,10 @@
   height: 88px;
   margin-bottom: $gap-24;
 
+  &:last-of-type {
+    margin-bottom: $gap-4;
+  }
+
   .chat-photo {
     width: 60px;
     height: 60px;

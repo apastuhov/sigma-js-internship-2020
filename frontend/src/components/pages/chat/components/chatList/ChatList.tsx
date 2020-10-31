@@ -1,8 +1,8 @@
+import Box from '@material-ui/core/Box';
 import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import React, { ChangeEvent, useEffect, useState } from 'react';
 import type { ChatInfoProps } from '../chatListItem/ChatListItem';
 import { ChatListItem } from '../chatListItem/ChatListItem';
-import ChatSearch from '../chatSearch/ChatSearch';
 import './chatList.scss';
 
 type ChatProps = {
@@ -17,10 +17,17 @@ type ChatProps = {
 };
 
 export const ChatList: React.FC = () => {
-  const [chats, setChats] = useState<ChatInfoProps[]>([]);
+  const [search, setSearch] = useState('');
+  const [searchResults, setSearchResults] = useState<ChatInfoProps[]>([]);
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
+    setSearch(e.currentTarget?.value);
+  };
+
   useEffect(() => {
     getChats();
-  }, []);
+  }, [search]);
 
   const getChats = () => {
     axios.get('https://randomuser.me/api/?results=20').then(response => {
@@ -33,17 +40,18 @@ export const ChatList: React.FC = () => {
           };
         }
       );
-      setChats([...newChats]);
+      const results = newChats.filter((chat: ChatInfoProps) => chat.name.toLowerCase().includes(search));
+      setSearchResults(results);
     });
   };
 
   return (
     <div className="chat-list">
-      <div className="chat-search">
-        <ChatSearch />
-      </div>
+      <Box boxShadow={2} className="chat-search">
+        <input type="search" className="search-input" placeholder="Search" value={search} onChange={handleChange} />
+      </Box>
       <div className="chat-list-container">
-        {chats.map((chat: ChatInfoProps) => (
+        {searchResults.map((chat: ChatInfoProps) => (
           <ChatListItem key={chat.name} {...chat} />
         ))}
       </div>

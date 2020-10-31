@@ -1,5 +1,6 @@
-import { Box } from '@material-ui/core';
+import Box from '@material-ui/core/Box';
 import React, { useEffect, useState } from 'react';
+import ScrollableFeed from 'react-scrollable-feed';
 import { Compose } from '../compose/Compose';
 import { Message } from '../message/Message';
 import './messageList.scss';
@@ -94,7 +95,9 @@ export const MessageList: React.FC = () => {
         <p>Last seen 2 hours ago</p>
       </div>
       <hr />
-      <div className="message-list-container">{renderMessages()}</div>
+      <ScrollableFeed forceScroll={true}>
+        <div className="message-list-container">{renderMessages()}</div>
+      </ScrollableFeed>
       <hr />
       <Compose />
     </Box>

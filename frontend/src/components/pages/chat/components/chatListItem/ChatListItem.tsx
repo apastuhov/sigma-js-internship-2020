@@ -1,4 +1,4 @@
-import { Box } from '@material-ui/core';
+import Box from '@material-ui/core/Box';
 import React, { useEffect } from 'react';
 import shave from 'shave';
 import './chatListItem.scss';
@@ -11,7 +11,7 @@ export type ChatInfoProps = {
 
 export const ChatListItem: React.FC<ChatInfoProps> = props => {
   useEffect(() => {
-    shave('.chat-snippet', 24);
+    shave('.chat-snippet', 30);
   });
 
   const { photo, name, text } = props;
