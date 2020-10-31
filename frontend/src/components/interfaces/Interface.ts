@@ -5,19 +5,23 @@ export interface IFriend extends DTO.IFriend { }
 export interface IPost extends DTO.IPost { }
 
 export interface IUserPhotoProps {
-  isOnline: boolean;
-  photoUrl: string;
+  isOnline?: boolean;
+  photo: string;
 }
 
 export interface IAboutProps {
   about: string;
 }
 
+export interface ISendPostProps {
+  _id: number;
+}
+
 export interface IUserMain {
   id: number;
   firstName: string;
   lastName: string;
-  photoUrl: string;
+  photo: string;
 }
 
 export interface IFriendsListProps {
@@ -35,6 +39,7 @@ export interface IUsers {
 export enum dataType {
   filter = 'users/filter',
   users = 'users',
-  posts = 'posts',
+  user = 'user/',
+  posts = '/getPosts',
   dialogs = 'dialogs'
 }

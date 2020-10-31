@@ -26,6 +26,7 @@ const userSchemaFields: Record<keyof DTO.IUser, any> = {
     }
   ],
   country: { type: String, required: true },
+  countryCode: { type: String, required: true },
   speak: {
     type: [
       {

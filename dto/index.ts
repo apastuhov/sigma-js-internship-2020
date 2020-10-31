@@ -3,13 +3,12 @@ export namespace DTO {
     id: number;
     firstName: string;
     lastName: string;
-    age: number;
     country: string;
-    speaks: ILanguage[];
+    countryCode: string;
+    speak: ILanguage[];
     learn: ILanguage[];
-    isOnline: boolean;
     isFriend: boolean;
-    photoUrl: string;
+    photo: string;
   }
 
   export interface IUserDetails extends IUser {
@@ -26,27 +25,24 @@ export namespace DTO {
   }
 
   export interface IFriend {
-    id: number;
-    photoUrl: string;
+    _id: number;
     firstName: string;
     lastName: string;
-    isOnline: boolean;
+    photo: string;
   }
 
   export interface IPost {
-    id: number;
+    _id: number;
     body: string;
     date: string;
-    time: string;
-    user: IUserPostDetails;
+    creator: IUserDetailsPost;
   }
 
-  export interface IUserPostDetails {
-    id: number;
+  export interface IUserDetailsPost {
+    _id: number;
     firstName: string;
     lastName: string;
-    photoUrl: string;
+    photo: string;
   }
 
 }
-

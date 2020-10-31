@@ -26,6 +26,7 @@ export namespace DTO {
     email: string;
     birthday: string;
     country: string;
+    countryCode: string;
     speak: ILanguage[];
     learn: ILanguage[];
     photo: string;
@@ -52,8 +53,8 @@ export namespace DTO {
     messages: IMessage[];
   }
 
-  export interface IMessageDoc extends IMessage, Document {}
-  export interface IDialogsDoc extends IDialogs, Document {}
-  export interface IPostDoc extends IPost, Document {}
-  export interface IUserDoc extends IUser, Document {}
+  export interface IMessageDoc extends IMessage, Document { }
+  export interface IDialogsDoc extends IDialogs, Document { }
+  export interface IPostDoc extends IPost, Document { }
+  export interface IUserDoc extends IUser, Document { }
 }
