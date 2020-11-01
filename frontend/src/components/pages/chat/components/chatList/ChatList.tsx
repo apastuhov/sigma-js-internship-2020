@@ -1,5 +1,6 @@
 import Box from '@material-ui/core/Box';
 import axios from 'axios';
+import dayjs from 'dayjs';
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import type { ChatInfoProps } from '../chatListItem/ChatListItem';
 import { ChatListItem } from '../chatListItem/ChatListItem';
@@ -36,7 +37,8 @@ export const ChatList: React.FC = () => {
           return {
             photo: result.picture.large,
             name: `${result.name.first} ${result.name.last}`,
-            text: 'Hello world! This is a long message that needs to be truncated.'
+            text: 'Hello world! This is a long message that needs to be truncated.',
+            date: dayjs(new Date().getTime()).format('DD.MM')
           };
         }
       );

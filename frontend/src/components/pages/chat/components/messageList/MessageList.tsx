@@ -1,6 +1,5 @@
 import Box from '@material-ui/core/Box';
-import React, { useEffect, useState } from 'react';
-import ScrollableFeed from 'react-scrollable-feed';
+import React, { useEffect, useRef, useState } from 'react';
 import { Compose } from '../compose/Compose';
 import { Message } from '../message/Message';
 import './messageList.scss';
@@ -85,6 +84,13 @@ export const MessageList: React.FC = () => {
     setMessages([...messages, ...tempMessages]);
   };
 
+  //scroll to bottom
+  const divRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    divRef.current!.scrollIntoView();
+  });
+
   const renderMessages = () =>
     messages.map(message => <Message key={message.id} isMine={message.author === MY_USER_ID} data={message} />);
 
@@ -95,9 +101,10 @@ export const MessageList: React.FC = () => {
         <p>Last seen 2 hours ago</p>
       </div>
       <hr />
-      <ScrollableFeed forceScroll={true}>
-        <div className="message-list-container">{renderMessages()}</div>
-      </ScrollableFeed>
+      <div className="message-list-container">
+        {renderMessages()}
+        <div ref={divRef} />
+      </div>
       <hr />
       <Compose />
     </Box>

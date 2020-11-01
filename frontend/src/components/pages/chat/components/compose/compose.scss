@@ -1,10 +1,34 @@
 @import '../../../../../styles/variables.scss';
 
-.compose-input {
-  width: 546px;
-  height: 16px;
-  padding: $gap-10;
-  border: $gap-1 solid $grey;
-  border-radius: $gap-4;
-  outline-color: $primary-color;
+form {
+  display: flex;
+  position: relative;
+
+  .compose-input {
+    width: 500px;
+    height: 16px;
+    padding: $gap-10;
+    border: $gap-1 solid $grey;
+    border-radius: $gap-4;
+    outline-color: $primary-color;
+  }
+
+  .save-icon {
+    margin-left: $gap-14;
+
+    button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      &:focus {
+        outline: none;
+      }
+    }
+
+    .send-icon {
+      color: $primary-color;
+      width: $gap-34;
+      height: $gap-34;
+    }
+  }
 }
