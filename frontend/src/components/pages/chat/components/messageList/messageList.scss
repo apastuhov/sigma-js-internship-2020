@@ -9,6 +9,7 @@
   border-radius: $tile-radius;
   box-sizing: border-box;
   padding: $gap-24;
+  @include scrollbar;
 }
 
 .message-list hr {
@@ -25,6 +26,7 @@
 }
 
 .user-data h2 {
+  font-size: 22px;
   margin: 0;
   font-weight: 500;
 }

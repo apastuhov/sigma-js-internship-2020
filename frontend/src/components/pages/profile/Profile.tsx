@@ -37,9 +37,9 @@ const Profile: React.FC<IParamsProps> = (props) => {
   return (
     <>
       {/* TIME DECISION */}
-      {userDetails === null
-        ? <Redirect to="/login" />
-        :
+      {!userDetails ? (
+        <Redirect to="/login" />
+      ) : (
         <Layout pageTitle="Profile">
           <div className="profile">
             <div className="leftside">
@@ -53,7 +53,7 @@ const Profile: React.FC<IParamsProps> = (props) => {
             </div>
           </div>
         </Layout>
-      }
+      )}
     </>
   );
 };

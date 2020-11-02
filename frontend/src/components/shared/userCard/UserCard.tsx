@@ -10,8 +10,7 @@ type MainInfoProps = {
   mainInfo: IUser;
   boxShadow?: number;
 };
-
-export const UserCard: React.FC<MainInfoProps> = ({ mainInfo }, shadowIntensity) => {
+const UserCard: React.FC<MainInfoProps> = ({ mainInfo }, shadowIntensity) => {
   const [loginedUser, setLoginedUser] = useState(getUserFromStorage());
 
   const sendFriendRequest = (event: MouseEvent) => {
@@ -26,9 +25,9 @@ export const UserCard: React.FC<MainInfoProps> = ({ mainInfo }, shadowIntensity)
   return (
     <>
       {/* TIME DECISION */}
-      {loginedUser === null
-        ? <Redirect to="/login" />
-        :
+      {!loginedUser ? (
+        <Redirect to="/login" />
+      ) : (
         <Box boxShadow={shadowIntensity.boxShadow && 2} className="user-card">
           <Link to="/" className="leftbar">
             <UserPhoto avatar={mainInfo.avatar} />
@@ -68,10 +67,10 @@ export const UserCard: React.FC<MainInfoProps> = ({ mainInfo }, shadowIntensity)
                 {!mainInfo.isFriend && <Link to="/" onClick={sendFriendRequest} className="add-friend">add friend</Link>}
                 <Link to="/chat" className="send-message">message</Link>
               </div>
-            }
+            )}
           </div>
         </Box>
-      }
+      )}
     </>
   );
 };

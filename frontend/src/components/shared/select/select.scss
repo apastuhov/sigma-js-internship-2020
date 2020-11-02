@@ -1,5 +1,11 @@
 @import '../../../styles/variables.scss';
 
+.select-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+}
 .select {
   @include input;
   width: 170px;

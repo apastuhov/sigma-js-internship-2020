@@ -51,13 +51,13 @@ $container-width: 944px;
 }
 
 @mixin title {
-  font-size: 20px;
+  font-size: 22px;
   font-weight: 500;
 }
 
 @mixin text {
   font-size: 14px;
-  font-weight: 400; 
+  font-weight: 400;
 }
 
 @mixin low-text {
@@ -89,4 +89,28 @@ $container-width: 944px;
   border-radius: $tile-radius;
   box-sizing: border-box;
   padding: $gap-24;
+}
+
+
+@mixin scrollbar {
+  ::-webkit-scrollbar {
+    width: 14px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #d7d7d7;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #979797;
+  }
+
+@mixin form-margin {
+  margin: $gap-24 0 $gap-10;
+
 }
