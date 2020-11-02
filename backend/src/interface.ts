@@ -52,6 +52,12 @@ export namespace DTO {
     messages: IMessage[];
   }
 
+  export interface IUserFriends {
+    userId: ID;
+    friends: ID[];
+  }
+
+  export interface IUserFriendsDoc extends IUser, Document {}
   export interface IMessageDoc extends IMessage, Document {}
   export interface IDialogsDoc extends IDialogs, Document {}
   export interface IPostDoc extends IPost, Document {}
