@@ -8,13 +8,15 @@ import './friendsList.scss';
 
 const FriendsList: React.FC<IFriendsListProps> = ({ friends }) => {
   const sortedFriends = useMemo(() => {
-    const online = friends.filter(user => user.isOnline);
-    const offline = friends.filter(user => !user.isOnline);
-    if (online.length < maxOnlineUsers) {
-      return [...online, ...offline].slice(0, maxOnlineUsers);
-    } else {
-      return online.slice(0, maxOnlineUsers);
-    }
+    return friends.slice(0, maxOnlineUsers);
+    //WILL BE NEEDED IN THE FUTURE 
+    // const online = friends.filter(user => user.isOnline);
+    // const offline = friends.filter(user => !user.isOnline);
+    // if (online.length < maxOnlineUsers) {
+    //   return [...online, ...offline].slice(0, maxOnlineUsers);
+    // } else {
+    //   return online.slice(0, maxOnlineUsers);
+    // }
   }, [friends]);
 
   return (
@@ -26,8 +28,10 @@ const FriendsList: React.FC<IFriendsListProps> = ({ friends }) => {
       <div className="friends-list">
         {sortedFriends.map((friendInfo, id) => {
           return (
-            <Link to={`/user/${friendInfo.id}`} className="friend" key={id}>
-              <UserPhoto isOnline={friendInfo.isOnline} photoUrl={friendInfo.photoUrl} />
+            <Link to={`/user/${friendInfo._id}`} className="friend" key={id}>
+              <UserPhoto
+                avatar={friendInfo.avatar}
+              />
               <p>
                 {friendInfo.firstName} {friendInfo.lastName}
               </p>

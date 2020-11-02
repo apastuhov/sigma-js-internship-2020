@@ -2,7 +2,6 @@ import React from 'react';
 import Box from '@material-ui/core/Box';
 import EditIcon from '@material-ui/icons/Edit';
 import CloseIcon from '@material-ui/icons/Close';
-import UserPhoto from '../../../../mocks/user.png';
 import { Link } from 'react-router-dom';
 import { IPostsProps } from '../../../../interfaces/Interface';
 import './posts.scss';
@@ -19,21 +18,21 @@ const Posts: React.FC<IPostsProps> = ({ posts }) => {
   return (
     <div className="posts">
       {posts.map((postInfo, id) => {
+        const parseDate = Date.parse(postInfo.date);
+        const date = new Date(parseDate).toLocaleString();
         return (
           <Box boxShadow={2} className="post" key={id}>
             <div className="user-post">
-              <Link to={`/user/${postInfo.user.id}`} className="user">
-                <img src={UserPhoto} alt="" />
+              <Link to={`/user/${postInfo.createdBy._id}`} className="user">
+                <img src={postInfo.createdBy.avatar} alt="User avatar" />
                 <h3>
-                  {postInfo.user.firstName} {postInfo.user.lastName}
+                  {postInfo.createdBy.firstName} {postInfo.createdBy.lastName}
                 </h3>
-                <p>
-                  {postInfo.date} at {postInfo.time}
-                </p>
+                <p>{date}</p>
               </Link>
               <div className="post-actions">
-                <EditIcon className="action-icons" onClick={() => editPost(postInfo.user.id)} />
-                <CloseIcon className="action-icons" onClick={() => deletePost(postInfo.user.id)} />
+                <EditIcon className="action-icons" onClick={() => editPost(postInfo.createdBy._id)} />
+                <CloseIcon className="action-icons" onClick={() => deletePost(postInfo.createdBy._id)} />
               </div>
             </div>
             <p>{postInfo.body}</p>

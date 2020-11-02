@@ -3,10 +3,10 @@
   "firstName": "Jack",
   "lastName": "Jackson",
   "sex": 0,
-  "age": 24,
   "birthday": 854668800,
   "country": "Ukraine",
-  "speaks": [
+  "countryCode": "UA",
+  "speak": [
     {
       "language": "Ukrainian",
       "level": "Native"
@@ -22,114 +22,9 @@
       "level": "Intermediate"
     }
   ],
-  "isOnline": false,
   "isFriend": false,
   "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud.",
-  "photoUrl": "https://ibb.co/5hmt4BT",
-  "friends": [
-    {
-      "id": 111,
-      "photoUrl": "testUrl",
-      "firstName": "Jack",
-      "lastName": "Jackson",
-      "isOnline": true
-    },
-    {
-      "id": 222,
-      "photoUrl": "testUrl",
-      "firstName": "Jack",
-      "lastName": "Jackson",
-      "isOnline": true
-    },
-    {
-      "id": 333,
-      "photoUrl": "testUrl",
-      "firstName": "Jack",
-      "lastName": "Jackson",
-      "isOnline": true
-    },
-    {
-      "id": 444,
-      "photoUrl": "testUrl",
-      "firstName": "Jack",
-      "lastName": "Jackson",
-      "isOnline": false
-    },
-    {
-      "id": 555,
-      "photoUrl": "testUrl",
-      "firstName": "Jack",
-      "lastName": "Jackson",
-      "isOnline": false
-    },
-    {
-      "id": 666,
-      "photoUrl": "testUrl",
-      "firstName": "Jack",
-      "lastName": "Jackson",
-      "isOnline": false
-    },
-    {
-      "id": 777,
-      "photoUrl": "testUrl",
-      "firstName": "Jack",
-      "lastName": "Jackson",
-      "isOnline": true
-    },
-    {
-      "id": 888,
-      "photoUrl": "testUrl",
-      "firstName": "Jack",
-      "lastName": "Jackson",
-      "isOnline": false
-    },
-    {
-      "id": 999,
-      "photoUrl": "testUrl",
-      "firstName": "Jack",
-      "lastName": "Jackson",
-      "isOnline": true
-    }
-  ],
-  "posts": [
-    {
-      "id": 1,
-      "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud.",
-      "date": "21.10.2020",
-      "time": "21.21",
-      "user": {
-        "id": 24,
-        "firstName": "Jack",
-        "lastName": "Jackson",
-        "photoUrl": "testUrl",
-        "isOnline": false
-      }
-    },
-    {
-      "id": 2,
-      "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud.",
-      "date": "21.10.2020",
-      "time": "21.21",
-      "user": {
-        "id": 22,
-        "firstName": "Jack",
-        "lastName": "Jackson",
-        "photoUrl": "testUrl",
-        "isOnline": true
-      }
-    },
-    {
-      "id": 3,
-      "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis nostrud.",
-      "date": "21.10.2020",
-      "time": "21.21",
-      "user": {
-        "id": 25,
-        "firstName": "Jack",
-        "lastName": "Jackson",
-        "photoUrl": "testUrl",
-        "isOnline": false
-      }
-    }
-  ]
+  "avatar": "test",
+  "friends": [],
+  "posts": []
 }
