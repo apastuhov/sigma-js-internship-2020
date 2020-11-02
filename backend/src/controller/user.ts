@@ -40,6 +40,18 @@ router.get('/:id', async (req, res, next) => {
   }
 });
 
+// User friends
+
+router.get('/:id/friends', async (req, res, next) => {
+  try {
+    const userId = Types.ObjectId(req.params.id);
+    const friends = await userService.getUserFriendsById(userId);
+    return res.send(friends);
+  } catch (e) {
+    next(e);
+  }
+});
+
 // User posts
 
 router.get('/:id/posts', async (req, res, next) => {

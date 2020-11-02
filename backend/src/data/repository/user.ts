@@ -30,6 +30,13 @@ export class UserRepository {
     return res;
   }
 
+  // Friends
+
+  async getFriendsById(userId: DTO.ID): Promise<DTO.IUserDoc | null> {
+    const data = await User.findById(userId).populate('friends', ['firstName', 'lastName', 'photo', 'birthday', 'country', 'speak', 'learn']);
+    return data;
+  }
+
   // User data
 
   async getUserById(userId: DTO.ID): Promise<DTO.IUserDoc | null> {
