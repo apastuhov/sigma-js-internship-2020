@@ -8,7 +8,7 @@ export namespace DTO {
     speak: ILanguage[];
     learn: ILanguage[];
     isFriend: boolean;
-    photo: string;
+    avatar: string;
   }
 
   export interface IUserDetails extends IUser {
@@ -28,21 +28,21 @@ export namespace DTO {
     _id: number;
     firstName: string;
     lastName: string;
-    photo: string;
+    avatar: string;
   }
 
   export interface IPost {
     _id: number;
     body: string;
     date: string;
-    creator: IUserDetailsPost;
+    createdBy: IUserDetailsPost;
   }
 
   export interface IUserDetailsPost {
     _id: number;
     firstName: string;
     lastName: string;
-    photo: string;
+    avatar: string;
   }
 
 }

@@ -31,7 +31,7 @@ export const UserCard: React.FC<MainInfoProps> = ({ mainInfo }, shadowIntensity)
         :
         <Box boxShadow={shadowIntensity.boxShadow && 2} className="user-card">
           <Link to="/" className="leftbar">
-            <UserPhoto photo={mainInfo.photo} />
+            <UserPhoto avatar={mainInfo.avatar} />
             <h3>
               {mainInfo.firstName} {mainInfo.lastName}
             </h3>
@@ -66,10 +66,7 @@ export const UserCard: React.FC<MainInfoProps> = ({ mainInfo }, shadowIntensity)
             {loginedUser.id
               ? null
               : <div className="buttons-action">
-                {mainInfo.isFriend
-                  ? null
-                  : <Link to="/" onClick={sendFriendRequest} className="add-friend">add friend</Link>
-                }
+                {!mainInfo.isFriend && <Link to="/" onClick={sendFriendRequest} className="add-friend">add friend</Link>}
                 <Link to="/chat" className="send-message">message</Link>
               </div>
             }

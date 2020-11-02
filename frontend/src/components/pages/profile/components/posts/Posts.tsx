@@ -23,16 +23,16 @@ const Posts: React.FC<IPostsProps> = ({ posts }) => {
         return (
           <Box boxShadow={2} className="post" key={id}>
             <div className="user-post">
-              <Link to={`/user/${postInfo.creator._id}`} className="user">
-                <img src={postInfo.creator.photo} alt="User avatar" />
+              <Link to={`/user/${postInfo.createdBy._id}`} className="user">
+                <img src={postInfo.createdBy.avatar} alt="User avatar" />
                 <h3>
-                  {postInfo.creator.firstName} {postInfo.creator.lastName}
+                  {postInfo.createdBy.firstName} {postInfo.createdBy.lastName}
                 </h3>
                 <p>{date}</p>
               </Link>
               <div className="post-actions">
-                <EditIcon className="action-icons" onClick={() => editPost(postInfo.creator._id)} />
-                <CloseIcon className="action-icons" onClick={() => deletePost(postInfo.creator._id)} />
+                <EditIcon className="action-icons" onClick={() => editPost(postInfo.createdBy._id)} />
+                <CloseIcon className="action-icons" onClick={() => deletePost(postInfo.createdBy._id)} />
               </div>
             </div>
             <p>{postInfo.body}</p>

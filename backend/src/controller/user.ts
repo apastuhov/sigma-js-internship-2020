@@ -42,7 +42,7 @@ router.get('/:id', async (req, res, next) => {
 
 // User posts
 
-router.get('/:id/getPosts', async (req, res, next) => {
+router.get('/:id/posts', async (req, res, next) => {
   try {
     const ID = req.params.id;
     const posts = await userService.getAllPostByUserId(Types.ObjectId(ID));

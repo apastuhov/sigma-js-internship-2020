@@ -38,7 +38,7 @@ export namespace DTO {
     userId: ID;
     body: string;
     date: Date;
-    creator: ID;
+    createdBy: ID;
   }
 
   export interface IMessage {

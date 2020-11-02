@@ -1,17 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { Redirect, RouteComponentProps } from 'react-router-dom';
+import { Redirect, RouteComponentProps, useLocation } from 'react-router-dom';
+import { getUserDetails, getUserPosts } from '../../../services/apiUserService';
 import { getUserFromStorage } from '../../../services/localStorageService';
 import Layout from '../../shared/layout/Layout';
 import UserCard from '../../shared/userCard/UserCard';
-import { dataType } from '../../interfaces/Interface';
 import About from './components/about/About';
 import AddPostForm from './components/addPostForm/AddPostForm';
 import FriendsList from './components/friendsList/FriendsList';
 import Posts from './components/posts/Posts';
 import './profile.scss';
-import { useLocation } from 'react-router-dom';
-import filterUserPosts from '../../../services/getPostService';
-import filterUserDetails from '../../../services/getUserDetails';
 
 
 interface MatchParams {
@@ -27,13 +24,13 @@ const Profile: React.FC<IParamsProps> = (props) => {
 
   useEffect(() => {
     const userId = props.match.params.id;
-    if (userId === undefined) {
+    if (!userId) {
       const user = getUserFromStorage();
       setUserDetails(user);
       setUserPost(user.posts);
     } else {
-      filterUserDetails(dataType.user, userId).then(user => setUserDetails(user));
-      filterUserPosts(userId, dataType.posts).then(posts => setUserPost(posts));
+      getUserDetails(userId).then(user => setUserDetails(user));
+      getUserPosts(userId).then(posts => setUserPost(posts));
     }
   }, [location]);
 
