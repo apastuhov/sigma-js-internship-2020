@@ -1,25 +1,34 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import './mainInfo.scss';
 import Tile from '../../shared/tile/Tile';
 import Box from '@material-ui/core/Box';
 import Input from '../input/Input';
+import { CountryDropdown } from 'react-country-region-selector';
+import InputWithFormik from '../InputWithFormik/InputWithFormik';
 import Select from '../select/Select';
+import { sex } from '../../constants/constants';
+import SelectWithFormik from '../SelectWithFormik/SelectWithFormik';
+import { Country } from '../../constants/Countries';
 
 const MainInfo: React.FC = () => {
+  const [country, setCountry] = useState('');
+  const selectCountry = (val: string) => {
+    setCountry(val);
+  };
+
   return (
     <Tile>
       <Box boxShadow={2} className="tile">
         <h1>Main Info</h1>
-        <Input name="Name" type="text" />
-        <Input name="Surname" type="text" />
+        <InputWithFormik label="Name" name="name" type="text" />
+        <InputWithFormik label="Surname" name="surname" type="text" />
         <div className="sex-wrapper">
-          <input type="radio" name="gender" />
-          <label className="label">Male</label>
-          <input type="radio" name="gender" />
-          <label className="label">Female</label>
+          <SelectWithFormik label="Sex" name="sex" options={sex} />
         </div>
-        <Input name="Birthday" type="date" />
-        <Select name="Country" />
+        <InputWithFormik label="Birthday" name="birthday" type="date" maxAge={new Date().toISOString().substring(0, 10)} />
+        <div className="country-selector">
+          <SelectWithFormik label="Country" name="country" options={Object.keys(Country)} />
+        </div>
       </Box>
     </Tile>
   );

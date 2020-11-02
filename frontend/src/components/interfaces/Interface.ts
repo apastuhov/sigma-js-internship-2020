@@ -1,8 +1,9 @@
 import { DTO } from 'dto';
 
-export interface IUser extends DTO.IUser { }
-export interface IFriend extends DTO.IFriend { }
-export interface IPost extends DTO.IPost { }
+export interface IUser extends DTO.IUser {}
+export interface IFriend extends DTO.IFriend {}
+export interface IPost extends DTO.IPost {}
+export interface ILanguage extends DTO.ILanguage {}
 
 export interface IUserPhotoProps {
   isOnline: boolean;

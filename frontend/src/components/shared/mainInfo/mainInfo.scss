@@ -5,11 +5,26 @@ h1 {
   text-align: center;
   margin: 0;
 }
+.country-selector {
+  display: flex;
+  flex-direction: column;
+  label {
+    @include form-margin;
+  }
+}
+select {
+  @include input;
+  width: 170px;
+  height: 22px;
+  margin: 0 20px 6px 0;
+  &:focus {
+    outline-color: $grey;
+  }
+}
 
 .sex-wrapper {
   display: flex;
-  margin: $gap-24 0;
-  .label {
-    margin-right: 16px;
+  .sex-input {
+    display: flex;
   }
 }

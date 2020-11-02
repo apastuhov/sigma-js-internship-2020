@@ -10,9 +10,9 @@ const LanguagesInfo: React.FC = () => {
       <Box boxShadow={2} className="tile">
         <h1>Languages</h1>
         <div className="languages-div">
-          <LanguagesDetailInfo do="I speak" level="Level" />
+          <LanguagesDetailInfo name="languages" label="I speak" />
           <hr color="#f7db17" />
-          <LanguagesDetailInfo do="I learn" level="Level" />
+          <LanguagesDetailInfo name="learnLanguages" label="I learn" />
         </div>
       </Box>
     </Tile>

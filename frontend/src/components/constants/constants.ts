@@ -15,3 +15,5 @@ export const languageLevels = [
   'Advanced',
   'Native'
 ];
+
+export const sex = ['Male', 'Female', 'Other'];

@@ -1,9 +1,14 @@
 @import '../../../styles/variables.scss';
 
+p {
+  @include form-margin;
+}
+
 .upload-wrapper {
   position: relative;
   display: flex;
   justify-content: center;
+  margin: 22px 0;
   .upload-photo {
     @include hover-transform-scale;
   }
@@ -17,6 +22,7 @@
     padding: 0 6px;
   }
 }
+
 .text-optional {
   color: $grey;
 }
