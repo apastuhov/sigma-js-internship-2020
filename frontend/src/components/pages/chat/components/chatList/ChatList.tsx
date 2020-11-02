@@ -20,6 +20,7 @@ type ChatProps = {
 export const ChatList: React.FC = () => {
   const [search, setSearch] = useState('');
   const [searchResults, setSearchResults] = useState<ChatInfoProps[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
@@ -31,6 +32,7 @@ export const ChatList: React.FC = () => {
   }, [search]);
 
   const getChats = () => {
+    setIsLoading(true);
     axios.get('https://randomuser.me/api/?results=20').then(response => {
       let newChats = response.data.results.map(
         (result: ChatProps): ChatInfoProps => {
@@ -42,8 +44,9 @@ export const ChatList: React.FC = () => {
           };
         }
       );
-      const results = newChats.filter((chat: ChatInfoProps) => chat.name.toLowerCase().includes(search));
+      const results = newChats.filter((chat: ChatInfoProps) => chat.name.toLowerCase().includes(search.toLowerCase()));
       setSearchResults(results);
+      setIsLoading(false);
     });
   };
 
@@ -53,9 +56,20 @@ export const ChatList: React.FC = () => {
         <input type="search" className="search-input" placeholder="Search" value={search} onChange={handleChange} />
       </Box>
       <div className="chat-list-container">
-        {searchResults.map((chat: ChatInfoProps) => (
-          <ChatListItem key={chat.name} {...chat} />
-        ))}
+        {isLoading ? (
+          <div className="lds-roller">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        ) : (
+          searchResults.map((chat: ChatInfoProps) => <ChatListItem key={chat.name} {...chat} />)
+        )}
       </div>
     </div>
   );

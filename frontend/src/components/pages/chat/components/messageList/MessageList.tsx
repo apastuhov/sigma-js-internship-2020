@@ -11,6 +11,7 @@ export const MessageList: React.FC = () => {
 
   useEffect(() => {
     getMessages();
+    // id
   }, []);
 
   const getMessages = () => {

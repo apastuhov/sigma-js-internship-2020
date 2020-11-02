@@ -23,12 +23,12 @@ export const Message: React.FC<MessageProps> = props => {
     <div className={['message', `${isMine ? 'mine' : ''}`].join(' ')}>
       <div className="bubble-container">
         <div className="bubble">
-          {isMine ? (
+          {isMine && (
             <div className="post-actions">
               <EditIcon className="action-icons" />
               <CloseIcon className="action-icons" />
             </div>
-          ) : null}
+          )}
           {data.message}
           <div className="timestamp">{friendlyTimestamp}</div>
         </div>

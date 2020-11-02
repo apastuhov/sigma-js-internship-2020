@@ -15,7 +15,7 @@ const Profile: React.FC = () => {
   return (
     <>
       {/* TIME DECISION */}
-      {userDetails === null ? (
+      {!userDetails ? (
         <Redirect to="/login" />
       ) : (
         <Layout pageTitle="Profile">

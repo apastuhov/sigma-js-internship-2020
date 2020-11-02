@@ -26,7 +26,7 @@ export const UserCard: React.FC<MainInfoProps> = ({ mainInfo }, shadowIntensity)
   return (
     <>
       {/* TIME DECISION */}
-      {loginedUser === null ? (
+      {!loginedUser ? (
         <Redirect to="/login" />
       ) : (
         <Box boxShadow={shadowIntensity.boxShadow && 2} className="user-card">
@@ -64,9 +64,9 @@ export const UserCard: React.FC<MainInfoProps> = ({ mainInfo }, shadowIntensity)
                 );
               })}
             </div>
-            {loginedUser.id === mainInfo.id ? null : (
+            {loginedUser.id !== mainInfo.id && (
               <div className="buttons-action">
-                {mainInfo.isFriend ? null : (
+                {mainInfo.isFriend && (
                   <Link to="/" onClick={sendFriendRequest} className="add-friend">
                     add friend
                   </Link>

@@ -11,15 +11,16 @@ export type ChatInfoProps = {
 };
 
 export const ChatListItem: React.FC<ChatInfoProps> = props => {
+  const { photo, name, text, date } = props;
   useEffect(() => {
     shave('.chat-snippet', 30);
   });
 
+  //on click set id link to router
   const [isActive, setIsActive] = useState<boolean>(false);
-  const toggleChat = () => (isActive ? setIsActive(false) : setIsActive(true));
+  // id = id current set is active true
+  const toggleChat = () => setIsActive(!isActive);
   const tileClass = isActive ? 'chat-list-item-selected' : 'chat-list-item';
-
-  const { photo, name, text, date } = props;
 
   return (
     <Box boxShadow={2} className={tileClass} onClick={toggleChat}>
