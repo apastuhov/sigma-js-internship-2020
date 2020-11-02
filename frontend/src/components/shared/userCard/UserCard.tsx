@@ -10,8 +10,7 @@ type MainInfoProps = {
   mainInfo: IUser;
   boxShadow?: number;
 };
-
-export const UserCard: React.FC<MainInfoProps> = ({ mainInfo }, shadowIntensity) => {
+const UserCard: React.FC<MainInfoProps> = ({ mainInfo }, shadowIntensity) => {
   const [loginedUser, setLoginedUser] = useState(getUserFromStorage());
 
   const sendFriendRequest = (event: MouseEvent) => {
