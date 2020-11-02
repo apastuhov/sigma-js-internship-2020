@@ -15,9 +15,9 @@ const Profile: React.FC = () => {
   return (
     <>
       {/* TIME DECISION */}
-      {userDetails === null
-        ? <Redirect to="/login" />
-        :
+      {!userDetails ? (
+        <Redirect to="/login" />
+      ) : (
         <Layout pageTitle="Profile">
           <div className="profile">
             <div className="leftside">
@@ -31,7 +31,7 @@ const Profile: React.FC = () => {
             </div>
           </div>
         </Layout>
-      }
+      )}
     </>
   );
 };
