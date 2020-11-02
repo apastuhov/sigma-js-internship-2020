@@ -8,13 +8,15 @@ import './friends.scss';
 const Friends: React.FC = () => {
   const [friends, setFriends] = useState([]);
 
-  useEffect(() => {
-    apiService(dataType.users).then(users => setFriends(users));
-  }, []);
+  //NEED TO DO FRIENDS SERVICE
+
+  // useEffect(() => {
+  //   apiService(dataType.users).then(users => setFriends(users));
+  // }, []);
 
   return (
     <Layout pageTitle="Friends" countFriends={friends.length}>
-      <UserList users={friends} />
+      {/* <UserList users={friends} /> */}
     </Layout>
   );
 };

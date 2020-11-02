@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import SearchIcon from '@material-ui/icons/Search';
-import {clearStorage} from '../../../services/localStorageService';
+import { clearStorage } from '../../../services/localStorageService';
 import './Header.scss';
 import logo from './logo.png';
 
@@ -33,7 +33,9 @@ const Header: React.FC = () => {
           <img onClick={toggleMenu} src={`${pathImage}${iconName}`} alt="profile" className="logo" />
           <div className={`dropdown-menu ${menuClass}`}>
             <Link to="/settings">Settings</Link>
-            <Link to="/login" onClick={clearStorage}>Log Out</Link>
+            <Link to="/login" onClick={clearStorage}>
+              Log Out
+            </Link>
           </div>
         </nav>
       </div>

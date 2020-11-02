@@ -72,7 +72,7 @@ export class UserRepository {
   // Posts
 
   async getAllPostByUserId(ID: DTO.ID): Promise<DTO.IPost[]> {
-    const posts = await Post.find({ userId: ID }).populate('creator', ['firstName', 'lastName', 'photo']);
+    const posts = await Post.find({ userId: ID }).populate('createdBy', ['firstName', 'lastName', 'photo']);
     return posts;
   }
 

@@ -6,19 +6,23 @@ export interface IPost extends DTO.IPost {}
 export interface ILanguage extends DTO.ILanguage {}
 
 export interface IUserPhotoProps {
-  isOnline: boolean;
-  photoUrl: string;
+  isOnline?: boolean;
+  avatar: string;
 }
 
 export interface IAboutProps {
   about: string;
 }
 
+export interface ISendPostProps {
+  _id: number;
+}
+
 export interface IUserMain {
   id: number;
   firstName: string;
   lastName: string;
-  photoUrl: string;
+  avatar: string;
 }
 
 export interface IFriendsListProps {
@@ -36,6 +40,7 @@ export interface IUsers {
 export enum dataType {
   filter = 'users/filter',
   users = 'users',
+  user = 'user',
   posts = 'posts',
   dialogs = 'dialogs'
 }
