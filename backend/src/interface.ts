@@ -2,17 +2,18 @@ import { Document, Types } from 'mongoose';
 
 export namespace DTO {
   export type ID = Types.ObjectId;
-  export namespace User {
-    export interface FilterRequest {
-      name: string;
-      lowAge: number;
-      highAge: number;
-      country: string;
-      language: string;
-      level: string;
-      isOnline: boolean;
-    }
+
+  export interface FilterRequest {
+    name: string;
+    lowAge: Date;
+    highAge: Date;
+    sex: string[];
+    country: string;
+    language: string;
+    level: string;
+    isOnline: boolean;
   }
+
 
   export interface ILanguage {
     language: string;
@@ -22,7 +23,7 @@ export namespace DTO {
   export interface IUser {
     firstName: string;
     lastName: string;
-    sex: number;
+    sex: string;
     email: string;
     birthday: string;
     country: string;

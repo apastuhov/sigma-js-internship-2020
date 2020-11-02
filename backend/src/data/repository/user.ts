@@ -3,18 +3,6 @@ import { User } from '../models/user';
 import { Post } from '../models/post';
 
 export class UserRepository {
-  // async filterAll(name: string): Promise<DTO.IUser[]> {
-  //   // this.createUser(name);
-  //   // const users = await this.filterMockUsers();
-  //   // TODO: remove any
-  //   // const users = await new Promise<any[]>(resolve =>
-  //   //   User.find({ name }, (err, data) => {
-  //   //     resolve(data);
-  //   //   });
-  //   // );
-  //   // return users;
-  // }
-
   // Login & Register
   async checkUserMail(mail: string): Promise<DTO.IUserDoc | null> {
     const data = await User.findOne({ email: mail }).populate('friends', ['firstName', 'lastName', 'photo']);
@@ -41,6 +29,43 @@ export class UserRepository {
 
   async getUserById(userId: DTO.ID): Promise<DTO.IUserDoc | null> {
     const data = await User.findById(userId).populate('friends', ['firstName', 'lastName', 'photo']);
+    return data;
+  }
+
+  async getUsers(): Promise<DTO.IUserDoc[] | null> {
+    const data = await User.find(
+      {},
+      { firstName: 1, lastName: 1, photo: 1, birthday: 1, country: 1, speak: 1, learn: 1 }
+    ).limit(5);
+    return data;
+  }
+  // Search
+
+  async getUsersByParams(params: DTO.FilterRequest): Promise<DTO.IUserDoc[] | null> {
+    const { name, lowAge, highAge, sex, country, language, level } = params;
+    const data = await User.find({
+      $and: [
+        {
+          $expr: {
+            $regexMatch: {
+              input: { $concat: ['$firstName', ' ', '$lastName'] },
+              regex: name,
+              options: 'i'
+            }
+          }
+        },
+        {
+          birthday: {
+            $gte: new Date(highAge).toISOString(),
+            $lte: new Date(lowAge).toISOString()
+          }
+        },
+        sex ? { sex: { $in: sex } } : {},
+        country ? { country: country } : {},
+        language ? { 'speak.language': language } : {},
+        level ? { 'speak.level': level } : {}
+      ]
+    });
     return data;
   }
 

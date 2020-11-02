@@ -10,6 +10,7 @@ import './search.scss';
 
 const Search: React.FC = () => {
   const [users, setUsers] = useState([]);
+  const [showError, setShowError] = useState('');
   const [name, setName] = useState('');
   const [country, setCountry] = useState('');
   const [genders, setGenders] = useState({
@@ -57,21 +58,21 @@ const Search: React.FC = () => {
   }, []);
 
   const getGenders = () => {
-    const arrGenders: Array<number> = [];
+    const arrGenders: Array<string> = [];
     const genderFilters = Object.values(genders);
 
     if (genderFilters.every(e => e) || genderFilters.every(e => !e)) {
-      return;
+      return '';
     }
     //TODO: wait for enum in other pull request
     if (genders.male) {
-      arrGenders.push(0);
+      arrGenders.push('male');
     }
     if (genders.female) {
-      arrGenders.push(1);
+      arrGenders.push('female');
     }
     if (genders.other) {
-      arrGenders.push(2);
+      arrGenders.push('other');
     }
 
     return arrGenders;
@@ -85,19 +86,31 @@ const Search: React.FC = () => {
     ));
   };
 
+  const convertAge = (age: number): Date => {
+    const now = new Date().getFullYear();
+    return new Date(`${now - age},12,31`);
+  };
+
   const findUsers = (e: React.FormEvent) => {
     const requestBody = {
       name: name,
-      lowAge: selectsFilters.lowAge,
-      highAge: selectsFilters.highAge,
+      lowAge: convertAge(selectsFilters.lowAge),
+      highAge: convertAge(selectsFilters.highAge),
       sex: getGenders(),
       country: country,
-      language: selectsFilters.language,
-      level: selectsFilters.level,
+      language: selectsFilters.language === languages[0] ? '' : selectsFilters.language,
+      level: selectsFilters.level === languageLevels[0] ? '' : selectsFilters.level,
       isOnline: online.isOnline
     };
     e.preventDefault();
-    apiService(dataType.filter, requestBody).then(users => setUsers(users));
+    apiService(dataType.filter, requestBody).then(users => {
+      if (users.length) {
+        setUsers(users);
+        setShowError('');
+      } else {
+        setShowError('show');
+      }
+    });
   };
 
   const lowYears = [...Array(hightLimit - lowLimit)].map((_, index) => index + lowLimit);
@@ -149,7 +162,13 @@ const Search: React.FC = () => {
           <button type="submit">Search</button>
         </form>
       </Box>
-      <UserList users={users} />
+      {showError ? (
+        <Box boxShadow={2} className="not-found">
+          Not found, try again
+        </Box>
+      ) : (
+        <UserList users={users} />
+      )}
     </Layout>
   );
 };
