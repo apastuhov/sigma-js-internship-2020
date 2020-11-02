@@ -19,7 +19,7 @@ interface IParamsProps extends RouteComponentProps<MatchParams> { }
 
 const Profile: React.FC<IParamsProps> = (props) => {
   const [userDetails, setUserDetails] = useState(getUserFromStorage());
-  const [userPost, setUserPost] = useState([]);
+  const [userPosts, setUserPosts] = useState([]);
   const location = useLocation();
 
   useEffect(() => {
@@ -27,10 +27,10 @@ const Profile: React.FC<IParamsProps> = (props) => {
     if (!userId) {
       const user = getUserFromStorage();
       setUserDetails(user);
-      setUserPost(user.posts);
+      setUserPosts(user.posts);
     } else {
       getUserDetails(userId).then(user => setUserDetails(user));
-      getUserPosts(userId).then(posts => setUserPost(posts));
+      getUserPosts(userId).then(posts => setUserPosts(posts));
     }
   }, [location]);
 
@@ -49,7 +49,7 @@ const Profile: React.FC<IParamsProps> = (props) => {
             </div>
             <div className="rightside">
               <AddPostForm />
-              <Posts posts={userPost} />
+              <Posts posts={userPosts} />
             </div>
           </div>
         </Layout>

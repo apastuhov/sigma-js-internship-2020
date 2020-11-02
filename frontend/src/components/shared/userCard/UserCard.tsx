@@ -63,9 +63,8 @@ export const UserCard: React.FC<MainInfoProps> = ({ mainInfo }, shadowIntensity)
                 );
               })}
             </div>
-            {loginedUser.id
-              ? null
-              : <div className="buttons-action">
+            {!loginedUser.id &&
+              <div className="buttons-action">
                 {!mainInfo.isFriend && <Link to="/" onClick={sendFriendRequest} className="add-friend">add friend</Link>}
                 <Link to="/chat" className="send-message">message</Link>
               </div>

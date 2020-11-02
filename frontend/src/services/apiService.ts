@@ -6,9 +6,9 @@ const apiService = async (type: dataType, data: object = {}) => {
   let res = null;
   try {
     if (Object.keys(data).length === 0 && data.constructor === Object) {
-      res = await axios.get(`${axios.defaults.baseURL}${type}`);
+      res = await axios.get(`${type}`);
     } else {
-      res = await axios.post(`${axios.defaults.baseURL}${type}`, JSON.stringify(data), axios.defaults.headers);
+      res = await axios.post(`${type}`, JSON.stringify(data), axios.defaults.headers);
     }
     return await res.data;
   } catch (e) {
