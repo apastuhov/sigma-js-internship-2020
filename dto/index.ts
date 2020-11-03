@@ -8,12 +8,12 @@ export namespace DTO {
     speak: ILanguage[];
     learn: ILanguage[];
     isFriend: boolean;
+    birthday: Date;
     avatar: string;
   }
 
   export interface IUserDetails extends IUser {
     sex: string;
-    birthday: number;
     country: string;
     friends: IFriend[];
     posts: IPost[];

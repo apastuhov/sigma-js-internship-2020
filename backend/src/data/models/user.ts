@@ -18,7 +18,7 @@ const userSchemaFields: Record<keyof DTO.IUser, any> = {
     required: true,
     unique: true
   },
-  birthday: { type: Number, required: true },
+  birthday: { type: Date, required: true },
   friends: [
     {
       type: Schema.Types.ObjectId,

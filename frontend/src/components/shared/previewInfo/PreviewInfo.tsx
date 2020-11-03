@@ -3,10 +3,9 @@ import Tile from '../../shared/tile/Tile';
 import Box from '@material-ui/core/Box';
 import User from '../../mocks/user-mock.json';
 import './previewInfo.scss';
-import { useFormik, useFormikContext } from 'formik';
+import { useFormikContext } from 'formik';
 import { Country } from '../../constants/Countries';
 import { ILanguage } from '../../interfaces/Interface';
-import dayjs from 'dayjs';
 import UserCard from '../userCard/UserCard';
 
 type FormikValues = {
@@ -25,9 +24,6 @@ type FormikValues = {
 const PreviewInfo: React.FC = () => {
   const { values } = useFormikContext<FormikValues>();
 
-  const date = dayjs(new Date());
-  const old = date.diff(values.birthday, 'year');
-
   const getMethodPriority = (country: keyof typeof Country) => {
     return Country[country];
   };
@@ -41,10 +37,11 @@ const PreviewInfo: React.FC = () => {
             ...User,
             firstName: values.name,
             lastName: values.surname,
-            age: old,
-            speaks: values.languages,
+            birthday: new Date(values.birthday),
+            countryCode: getMethodPriority(values.country),
+            speak: values.languages,
             learn: values.learnLanguages,
-            photoUrl: values.fileUrl,
+            avatar: values.fileUrl,
             country: values.country
           }}
           boxShadow={0}
