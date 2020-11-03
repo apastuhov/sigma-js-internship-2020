@@ -1,4 +1,4 @@
-import React, { MouseEvent, useState } from 'react';
+import React, { MouseEvent, useState, useEffect } from 'react';
 import Box from '@material-ui/core/Box';
 import { Link, Redirect } from 'react-router-dom';
 import { getUserFromStorage } from '../../../services/localStorageService';
@@ -13,6 +13,7 @@ type MainInfoProps = {
 };
 const UserCard: React.FC<MainInfoProps> = ({ mainInfo }, shadowIntensity) => {
   const [loginedUser, setLoginedUser] = useState(getUserFromStorage());
+  const [userAge, setUserAge] = useState<number>();
 
   const sendFriendRequest = (event: MouseEvent) => {
     event.preventDefault();
@@ -23,11 +24,11 @@ const UserCard: React.FC<MainInfoProps> = ({ mainInfo }, shadowIntensity) => {
     console.log(JSON.stringify(request));
   };
 
-  const getCurrentAge = () => {
+  useEffect(() => {
     const date = dayjs(new Date());
     const age = date.diff(mainInfo.birthday, 'year');
-    console.log(age)
-  }
+    setUserAge(age);
+  }, [mainInfo.birthday]);
 
   return (
     <>
@@ -41,10 +42,11 @@ const UserCard: React.FC<MainInfoProps> = ({ mainInfo }, shadowIntensity) => {
               <h3>
                 {mainInfo.firstName} {mainInfo.lastName}
               </h3>
-              <p>
-                <span className="flag"></span>
-                {mainInfo.country}
-              </p>
+              <p>{userAge} y.o.</p>
+              <div className="flag">
+                <img src={`https://www.countryflags.io/${mainInfo.countryCode}/flat/24.png`} alt="Country flag" />
+                <p>{mainInfo.country}</p>
+              </div>
             </Link>
             <div className="rightbar">
               <div className="speaks">
