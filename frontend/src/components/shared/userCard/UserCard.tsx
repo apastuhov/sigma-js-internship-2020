@@ -44,7 +44,7 @@ const UserCard: React.FC<MainInfoProps> = ({ mainInfo }, shadowIntensity) => {
               </h3>
               <p>{userAge} y.o.</p>
               <div className="flag">
-                <img src={`https://www.countryflags.io/${mainInfo.countryCode}/flat/24.png`} />
+                <img src={`https://www.countryflags.io/${mainInfo.countryCode}/flat/24.png`} alt="Country flag" />
                 <p>{mainInfo.country}</p>
               </div>
             </Link>
