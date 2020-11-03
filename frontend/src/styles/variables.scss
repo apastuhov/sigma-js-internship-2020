@@ -109,8 +109,8 @@ $container-width: 944px;
   ::-webkit-scrollbar-thumb:hover {
     background: #979797;
   }
+}
 
 @mixin form-margin {
   margin: $gap-24 0 $gap-10;
-
 }

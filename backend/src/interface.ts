@@ -5,15 +5,14 @@ export namespace DTO {
 
   export interface FilterRequest {
     name: string;
-    lowAge: Date;
-    highAge: Date;
+    birthdateFrom: string;
+    birthdateTo: string;
     sex: string[];
     country: string;
     language: string;
     level: string;
     isOnline: boolean;
   }
-
 
   export interface ILanguage {
     language: string;
@@ -64,5 +63,4 @@ export namespace DTO {
   export interface IDialogsDoc extends IDialogs, Document {}
   export interface IPostDoc extends IPost, Document {}
   export interface IUserDoc extends IUser, Document {}
-    
 }

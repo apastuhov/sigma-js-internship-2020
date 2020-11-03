@@ -6,11 +6,12 @@ import { hightLimit, languageLevels, languages, lowLimit } from '../../constants
 import { dataType } from '../../interfaces/Interface';
 import Layout from '../../shared/layout/Layout';
 import UserList from '../../shared/userList/UserList';
+import dayjs from 'dayjs';
 import './search.scss';
 
 const Search: React.FC = () => {
   const [users, setUsers] = useState([]);
-  const [showError, setShowError] = useState('');
+  const [showError, setShowError] = useState(false);
   const [name, setName] = useState('');
   const [country, setCountry] = useState('');
   const [genders, setGenders] = useState({
@@ -51,65 +52,52 @@ const Search: React.FC = () => {
 
   useEffect(() => {
     async function getUsers() {
-      const users = await apiService(dataType.users);
+      const users = await apiService(dataType.user);
       setUsers(users);
     }
     getUsers();
   }, []);
 
-  const getGenders = () => {
-    const arrGenders: Array<string> = [];
-    const genderFilters = Object.values(genders);
+  const getGenders = () =>
+    Object.entries(genders)
+      .filter(([, b]) => b)
+      .map(([a]) => a);
 
-    if (genderFilters.every(e => e) || genderFilters.every(e => !e)) {
-      return '';
+  const getOptions = (arr: (string | number)[] = [], obj: object = {}) => {
+    if (!Object.keys(obj).length) {
+      return arr.map((item, i) => (
+        <option key={`${item}${i}`} value={item}>
+          {item}
+        </option>
+      ));
+    } else {
+      return Object.keys(obj).map((item, i) => (
+        <option key={`${item}${i}`} value={item}>
+          {item}
+        </option>
+      ));
     }
-    //TODO: wait for enum in other pull request
-    if (genders.male) {
-      arrGenders.push('male');
-    }
-    if (genders.female) {
-      arrGenders.push('female');
-    }
-    if (genders.other) {
-      arrGenders.push('other');
-    }
-
-    return arrGenders;
   };
 
-  const getOptions = (arr: (string | number)[]) => {
-    return arr.map((item, i) => (
-      <option key={`${item}${i}`} value={item}>
-        {item}
-      </option>
-    ));
-  };
-
-  const convertAge = (age: number): Date => {
-    const now = new Date().getFullYear();
-    return new Date(`${now - age},12,31`);
+  const convertAgeToBirthdate = (age: number): string => {
+    return dayjs().subtract(age, 'year').toISOString();
   };
 
   const findUsers = (e: React.FormEvent) => {
     const requestBody = {
       name: name,
-      lowAge: convertAge(selectsFilters.lowAge),
-      highAge: convertAge(selectsFilters.highAge),
+      birthdateFrom: convertAgeToBirthdate(selectsFilters.highAge),
+      birthdateTo: convertAgeToBirthdate(selectsFilters.lowAge),
       sex: getGenders(),
       country: country,
-      language: selectsFilters.language === languages[0] ? '' : selectsFilters.language,
-      level: selectsFilters.level === languageLevels[0] ? '' : selectsFilters.level,
+      language: selectsFilters.language,
+      level: selectsFilters.level,
       isOnline: online.isOnline
     };
     e.preventDefault();
     apiService(dataType.filter, requestBody).then(users => {
-      if (users.length) {
-        setUsers(users);
-        setShowError('');
-      } else {
-        setShowError('show');
-      }
+      setUsers(users);
+      setShowError(!Boolean(users.length));
     });
   };
 
@@ -151,11 +139,17 @@ const Search: React.FC = () => {
           <CountryDropdown value={country} onChange={val => selectCountry(val)} />
           <label>Language</label>
           <select onChange={handleSelect} value={selectsFilters.language} name="language">
-            {getOptions(languages)}
+            <option key={'Any language'} value={''}>
+              Any language
+            </option>
+            {getOptions([], languages)}
           </select>
           <label>Level</label>
           <select onChange={handleSelect} value={selectsFilters.level} name="level">
-            {getOptions(languageLevels)}
+            <option key={'Any level'} value={''}>
+              Any level
+            </option>
+            {getOptions([], languageLevels)}
           </select>
           <label>Online</label>
           <input type="checkbox" checked={online.isOnline} onChange={handleOnline} name="isOnline" />

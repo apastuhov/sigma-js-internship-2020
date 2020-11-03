@@ -1,6 +1,7 @@
 import express from 'express';
 import { userService } from '../service/user';
 import { Types } from 'mongoose';
+import { DTO } from '../interface';
 
 const router = express.Router();
 
@@ -40,7 +41,7 @@ router.get('/:id', async (req, res, next) => {
   }
 });
 
-router.post('/filter', async (req, res, next) => {
+router.post<any, any, DTO.FilterRequest, any>('/filter', async (req, res, next) => {
   // TODO: catch errors
   try {
     const params = req.body;

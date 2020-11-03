@@ -21,7 +21,6 @@ class UserService {
     const data = await this.userRepo.getFriendsById(userId);
     return data;
   }
-  
 
   // Users
 

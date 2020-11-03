@@ -21,7 +21,15 @@ export class UserRepository {
   // Friends
 
   async getFriendsById(userId: DTO.ID): Promise<DTO.IUserDoc | null> {
-    const data = await User.findById(userId).populate('friends', ['firstName', 'lastName', 'photo', 'birthday', 'country', 'speak', 'learn']);
+    const data = await User.findById(userId).populate('friends', [
+      'firstName',
+      'lastName',
+      'photo',
+      'birthday',
+      'country',
+      'speak',
+      'learn'
+    ]);
     return data;
   }
 
@@ -36,31 +44,34 @@ export class UserRepository {
     const data = await User.find(
       {},
       { firstName: 1, lastName: 1, photo: 1, birthday: 1, country: 1, speak: 1, learn: 1 }
-    ).limit(5);
+    );
     return data;
   }
+
   // Search
 
   async getUsersByParams(params: DTO.FilterRequest): Promise<DTO.IUserDoc[] | null> {
-    const { name, lowAge, highAge, sex, country, language, level } = params;
+    const { name, birthdateFrom, birthdateTo, sex, country, language, level } = params;
     const data = await User.find({
       $and: [
         {
           $expr: {
-            $regexMatch: {
-              input: { $concat: ['$firstName', ' ', '$lastName'] },
-              regex: name,
-              options: 'i'
+            $function: {
+              body: `function(firstName, lastName) {
+              return (firstName.toLowerCase() + ' ' + lastName.toLowerCase).includes('${name.toLowerCase()}')
+              }`,
+              args: ['$firstName', '$lastName'],
+              lang: 'js'
             }
           }
         },
         {
           birthday: {
-            $gte: new Date(highAge).toISOString(),
-            $lte: new Date(lowAge).toISOString()
+            $gte: birthdateFrom,
+            $lte: birthdateTo
           }
         },
-        sex ? { sex: { $in: sex } } : {},
+        sex.length ? { sex: { $in: sex } } : {},
         country ? { country: country } : {},
         language ? { 'speak.language': language } : {},
         level ? { 'speak.level': level } : {}
