@@ -33,22 +33,20 @@
       @include text;
       margin: $gap-4;
       color: $grey;
-
-      .flag {
-        display: inline-block;
-        margin-right: $gap-4;
-        width: $gap-20;
-        height: 12px;
-        background-color: red;
-      }
     }
+    
+    .flag {
+      display: flex;    
+      justify-content: center;
+    }
+
   }
 
   .rightbar {
     display: flex;
     flex-direction: column;
     width: 254px;
-    padding: 0 14px;
+    padding: 0 $gap-14;
 
     @include for-mobile {
       width: auto;
@@ -65,13 +63,15 @@
 
       h3 {
         color: $grey;
+        font-weight: 400;
         margin: 0;
       }
 
       .languages {
         display: flex;
-        padding-left: 14px;
-        margin-bottom: $gap-4;
+        justify-content: space-around;
+        padding-left: $gap-8;
+        margin-bottom: $gap-6;
 
         @include for-mobile {
           text-align: center;
@@ -79,8 +79,7 @@
 
         p {
           @include text;
-          flex-basis: 50%;
-          padding-left: $gap-4;
+          padding-left: $gap-2;
           margin: $gap-4 0 0 0;
         }
       }
