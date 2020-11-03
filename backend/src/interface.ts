@@ -37,7 +37,7 @@ export namespace DTO {
   export interface IPost {
     userId: ID;
     body: string;
-    date: Date;
+    date?: Date;
     createdBy: ID;
   }
 
@@ -63,5 +63,5 @@ export namespace DTO {
   export interface IDialogsDoc extends IDialogs, Document {}
   export interface IPostDoc extends IPost, Document {}
   export interface IUserDoc extends IUser, Document {}
-    
+
 }

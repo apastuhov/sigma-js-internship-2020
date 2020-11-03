@@ -1,6 +1,7 @@
 import express from 'express';
 import { userService } from '../service/user';
 import { Types } from 'mongoose';
+import { DTO } from '../interface';
 
 const router = express.Router();
 
@@ -64,12 +65,13 @@ router.get('/:id/posts', async (req, res, next) => {
   }
 });
 
-router.post('/:id/posts', async (req, res, next) => {
+router.post<any, any, DTO.IPost, any>('/:id/posts', async (req, res, next) => {
   try {
     const ID = req.params.id;
     const newPost = {
       userId: ID,
-      ...req.body
+      body: req.body.body,
+      createdBy: req.body.createdBy,
     };
     const posts = await userService.createPost(newPost);
     return res.status(201).send(posts);
