@@ -17,11 +17,10 @@ class UserService {
   }
 
   // User friends
-  async getUserFriendsById(userId: DTO.ID): Promise<DTO.IUserDoc | null> {
+  async getUserFriendsById(userId: DTO.ID): Promise<DTO.IUserDoc[] | null> {
     const data = await this.userRepo.getFriendsById(userId);
     return data;
   }
-  
 
   // Users
   async getUserById(userId: DTO.ID): Promise<DTO.IUserDoc | null> {

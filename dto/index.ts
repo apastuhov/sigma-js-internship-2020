@@ -1,6 +1,6 @@
 export namespace DTO {
   export interface IUser {
-    id: number;
+    _id: string;
     firstName: string;
     lastName: string;
     country: string;

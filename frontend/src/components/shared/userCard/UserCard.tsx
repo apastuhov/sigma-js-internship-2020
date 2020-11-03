@@ -17,7 +17,7 @@ const UserCard: React.FC<MainInfoProps> = ({ mainInfo }, shadowIntensity) => {
   const sendFriendRequest = (event: MouseEvent) => {
     event.preventDefault();
     const request = {
-      friendId: mainInfo.id,
+      friendId: mainInfo._id,
       myId: 111
     };
     console.log(JSON.stringify(request));

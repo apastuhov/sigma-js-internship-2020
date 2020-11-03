@@ -1,6 +1,7 @@
 import { DTO } from '../../interface';
 import { User } from '../models/user';
 import { Post } from '../models/post';
+import { Friends } from '../models/friends';
 
 export class UserRepository {
   // async filterAll(name: string): Promise<DTO.IUser[]> {
@@ -32,8 +33,10 @@ export class UserRepository {
 
   // Friends
 
-  async getFriendsById(userId: DTO.ID): Promise<DTO.IUserDoc | null> {
-    const data = await User.findById(userId).populate('friends', ['firstName', 'lastName', 'photo', 'birthday', 'country', 'speak', 'learn']);
+  async getFriendsById(userId: DTO.ID): Promise<DTO.IUserDoc[] | null> {
+    const data = await Friends.find({ userId: userId })
+      .populate('friends', ['firstName', 'lastName', 'photo', 'birthday', 'country', 'speak', 'learn'])
+      .select('friends');
     return data;
   }
 

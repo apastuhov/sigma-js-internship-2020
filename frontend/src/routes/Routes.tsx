@@ -11,12 +11,12 @@ import Friends from '../components/pages/friends/Friends';
 export default () => (
   <Switch>
     <Route path="/" exact component={Profile} />
-    <Route path="/user/:id" component={Profile} />
+    <Route path="/user/:id" exact component={Profile} />
     <Route path="/register" component={Register} />
     <Route path="/chat" component={Chat} />
     <Route path="/search" component={Search} />
     <Route path="/settings" component={Settings} />
     <Route path="/login" component={Login} />
-    <Route path="/friends" component={Friends} />
+    <Route path="/user/:id/friends" component={Friends} />
   </Switch>
 );
