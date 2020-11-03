@@ -1,6 +1,7 @@
 import express from 'express';
 import { userService } from '../service/user';
 import { Types } from 'mongoose';
+import { DTO } from '../interface';
 
 const router = express.Router();
 
@@ -35,6 +36,27 @@ router.get('/:id', async (req, res, next) => {
     const ID = Types.ObjectId(req.params.id);
     const user = await userService.getUserById(ID);
     return res.send(user);
+  } catch (e) {
+    next(e);
+  }
+});
+
+router.post<any, any, DTO.FilterRequest, any>('/filter', async (req, res, next) => {
+  // TODO: catch errors
+  try {
+    const params = req.body;
+    const users = await userService.getUsersByParams(params);
+    return res.send(users);
+  } catch (e) {
+    console.log(e);
+  }
+});
+
+router.get('/', async (req, res, next) => {
+  // TODO: catch errors
+  try {
+    const users = await userService.getUsers();
+    return res.send(users);
   } catch (e) {
     next(e);
   }

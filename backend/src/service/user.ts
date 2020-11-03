@@ -23,8 +23,19 @@ class UserService {
   }
 
   // Users
+
   async getUserById(userId: DTO.ID): Promise<DTO.IUserDoc | null> {
     const data = await this.userRepo.getUserById(userId);
+    return data;
+  }
+
+  async getUsers(): Promise<DTO.IUserDoc[] | null> {
+    const data = await this.userRepo.getUsers();
+    return data;
+  }
+
+  async getUsersByParams(params: DTO.FilterRequest): Promise<DTO.IUserDoc[] | null> {
+    const data = await this.userRepo.getUsersByParams(params);
     return data;
   }
 

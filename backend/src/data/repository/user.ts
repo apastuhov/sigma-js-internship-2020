@@ -3,19 +3,9 @@ import { User } from '../models/user';
 import { Post } from '../models/post';
 import { Friends } from '../models/friends';
 
-export class UserRepository {
-  // async filterAll(name: string): Promise<DTO.IUser[]> {
-  //   // this.createUser(name);
-  //   // const users = await this.filterMockUsers();
-  //   // TODO: remove any
-  //   // const users = await new Promise<any[]>(resolve =>
-  //   //   User.find({ name }, (err, data) => {
-  //   //     resolve(data);
-  //   //   });
-  //   // );
-  //   // return users;
-  // }
+const userFiels = ['firstName', 'lastName', 'photo', 'birthday', 'country', 'speak', 'learn'];
 
+export class UserRepository {
   // Login & Register
   async checkUserMail(mail: string): Promise<DTO.IUserDoc | null> {
     const data = await User.findOne({ email: mail }).populate('friends', ['firstName', 'lastName', 'photo']);
@@ -44,6 +34,43 @@ export class UserRepository {
 
   async getUserById(userId: DTO.ID): Promise<DTO.IUserDoc | null> {
     const data = await User.findById(userId).populate('friends', ['firstName', 'lastName', 'photo']);
+    return data;
+  }
+
+  async getUsers(): Promise<DTO.IUserDoc[] | null> {
+    const data = await User.find({});
+    return data;
+  }
+
+  // Search
+
+  async getUsersByParams(params: DTO.FilterRequest): Promise<DTO.IUserDoc[] | null> {
+    const { name, birthdateFrom, birthdateTo, sex, country, language, level } = params;
+    const data = await User.find({
+      $and: [
+        {
+          $expr: {
+            $function: {
+              body: `function(firstName, lastName) {return (firstName + ' ' + lastName).toLowerCase().includes('${name
+                .trim()
+                .toLowerCase()}')}`,
+              args: ['$firstName', '$lastName'],
+              lang: 'js'
+            }
+          }
+        },
+        {
+          birthday: {
+            $gte: birthdateFrom,
+            $lte: birthdateTo
+          }
+        },
+        sex.length ? { sex: { $in: sex } } : {},
+        country ? { country: country } : {},
+        language ? { 'speak.language': language } : {},
+        level ? { 'speak.level': level } : {}
+      ]
+    });
     return data;
   }
 

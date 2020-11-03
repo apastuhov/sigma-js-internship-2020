@@ -2,6 +2,7 @@
 
 .filter {
   float: left;
+  margin-right: 24px;
   @include tile;
   form {
     display: grid;
@@ -66,4 +67,13 @@
       margin-right: 20px;
     }
   }
+}
+.not-found {
+  box-sizing: border-box;
+  height: 100px;
+  @include title;
+  @include tile;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
