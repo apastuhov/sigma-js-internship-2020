@@ -2,6 +2,8 @@ import { DTO } from '../../interface';
 import { User } from '../models/user';
 import { Post } from '../models/post';
 
+const userFiels = ['firstName', 'lastName', 'photo', 'birthday', 'country', 'speak', 'learn'];
+
 export class UserRepository {
   // Login & Register
   async checkUserMail(mail: string): Promise<DTO.IUserDoc | null> {
@@ -21,15 +23,7 @@ export class UserRepository {
   // Friends
 
   async getFriendsById(userId: DTO.ID): Promise<DTO.IUserDoc | null> {
-    const data = await User.findById(userId).populate('friends', [
-      'firstName',
-      'lastName',
-      'photo',
-      'birthday',
-      'country',
-      'speak',
-      'learn'
-    ]);
+    const data = await User.findById(userId).populate('friends', [...userFiels]);
     return data;
   }
 
@@ -41,10 +35,7 @@ export class UserRepository {
   }
 
   async getUsers(): Promise<DTO.IUserDoc[] | null> {
-    const data = await User.find(
-      {},
-      { firstName: 1, lastName: 1, photo: 1, birthday: 1, country: 1, speak: 1, learn: 1 }
-    );
+    const data = await User.find({});
     return data;
   }
 
@@ -57,9 +48,9 @@ export class UserRepository {
         {
           $expr: {
             $function: {
-              body: `function(firstName, lastName) {
-              return (firstName.toLowerCase() + ' ' + lastName.toLowerCase).includes('${name.toLowerCase()}')
-              }`,
+              body: `function(firstName, lastName) {return (firstName + ' ' + lastName).toLowerCase().includes('${name
+                .trim()
+                .toLowerCase()}')}`,
               args: ['$firstName', '$lastName'],
               lang: 'js'
             }
