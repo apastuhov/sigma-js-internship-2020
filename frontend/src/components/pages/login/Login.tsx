@@ -1,28 +1,32 @@
-import React from 'react';
+import Box from '@material-ui/core/Box';
+import axios from 'axios';
+import React, { useState } from 'react';
+import { GoogleLogin } from 'react-google-login';
+import { Redirect } from 'react-router-dom';
 import GoogleLogo from '../../../images/google-login.svg';
 import Logo from '../../../images/logo-login.svg';
+import { getUserByMail } from '../../../services/apiUserService';
 import { saveUserToStorage } from '../../../services/localStorageService';
-import user from '../../mocks/user-mock.json';
 import Footer from '../../shared/footer/Footer';
 import Tile from '../../shared/tile/Tile';
 import './login.scss';
-import Box from '@material-ui/core/Box';
-import { Link } from 'react-router-dom';
-import { GoogleLogin } from 'react-google-login';
-import axios from 'axios';
 
 const url = 'http://localhost:8000';
 
-function responseGoogle(response: any): void {
-  axios({
-    method: 'POST',
-    url: `${url}/api/googleLogin`,
-    data: { tokenID: response.tokenId }
-  });
-  saveUserToStorage(user);
-}
-
 const Login: React.FC = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  function responseGoogle(response: any): void {
+    axios({
+      method: 'POST',
+      url: `${url}/api/googleLogin`,
+      data: { tokenID: response.tokenId }
+    });
+    // redirect to registration if mail doesn`t exist in a database, if found redirect to profile and save to localstorage
+    const mail = response.tt.$t;
+    const user: any = getUserByMail(mail);
+    user.id && saveUserToStorage(user);
+    user.id && setIsLoggedIn(true);
+  }
   return (
     <div className="login-wrapper">
       <Tile>
@@ -50,6 +54,7 @@ const Login: React.FC = () => {
         </Box>
       </Tile>
       <Footer />
+      {isLoggedIn ? <Redirect to="/" /> : <Redirect to="/register" />}
     </div>
   );
 };

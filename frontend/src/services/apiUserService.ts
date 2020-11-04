@@ -6,5 +6,7 @@ axios.defaults.headers = { 'Content-Type': 'application/json' };
 
 const getRequest = (url: string) => axios.get(`${url}`).then(res => res.data);
 
-export const getUserDetails = (id: number) => getRequest(`${dataType.user}/${id}`)
-export const getUserPosts = (id: number) => getRequest(`${dataType.user}/${id}/${dataType.posts}`)
+export const getUserDetails = (id: number) => getRequest(`${dataType.user}/${id}`);
+export const getUserPosts = (id: number) => getRequest(`${dataType.user}/${id}/${dataType.posts}`);
+
+export const getUserByMail = (mail: string) => getRequest(`${dataType.user}/login`);

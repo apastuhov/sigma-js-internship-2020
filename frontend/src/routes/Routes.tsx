@@ -1,12 +1,12 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 import Chat from '../components/pages/chat/Chat';
+import Friends from '../components/pages/friends/Friends';
 import Login from '../components/pages/login/Login';
 import Profile from '../components/pages/profile/Profile';
 import Register from '../components/pages/registration/Register';
 import Search from '../components/pages/search/Search';
 import Settings from '../components/pages/settings/Settings';
-import Friends from '../components/pages/friends/Friends';
 
 export default () => (
   <Switch>
