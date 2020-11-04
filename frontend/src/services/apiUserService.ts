@@ -16,6 +16,14 @@ const postRequest = (url: string, body: any) => {
   })
 }
 
+export const getFriends = async (id: string) => {
+  try {
+    const res = await axios.get(`${dataType.user}/${id}/friends`);
+    return await res.data;
+  } catch (e) {
+    console.log(e);
+  }
+};
 
 export const getUserDetails = (id: number) => getRequest(`${dataType.user}/${id}`)
 export const getUserPosts = (id: number) => getRequest(`${dataType.user}/${id}/${dataType.posts}`)
