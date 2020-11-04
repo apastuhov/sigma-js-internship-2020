@@ -2,13 +2,13 @@
 
 .chat-list {
   display: inline-block;
-  @include scrollbar;
-
+  
   &-container {
     height: 650px;
     overflow-y: scroll;
     margin-top: $gap-24;
     padding: 0 $gap-2;
+    @include scrollbar;
   }
 
   .chat-search {
