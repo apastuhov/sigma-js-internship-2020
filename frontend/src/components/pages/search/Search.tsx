@@ -6,10 +6,12 @@ import { hightLimit, languageLevels, languages, lowLimit } from '../../constants
 import { dataType } from '../../interfaces/Interface';
 import Layout from '../../shared/layout/Layout';
 import UserList from '../../shared/userList/UserList';
+import dayjs from 'dayjs';
 import './search.scss';
 
 const Search: React.FC = () => {
   const [users, setUsers] = useState([]);
+  const [showError, setShowError] = useState(false);
   const [name, setName] = useState('');
   const [country, setCountry] = useState('');
   const [genders, setGenders] = useState({
@@ -50,46 +52,42 @@ const Search: React.FC = () => {
 
   useEffect(() => {
     async function getUsers() {
-      const users = await apiService(dataType.users);
+      const users = await apiService(dataType.user);
       setUsers(users);
     }
     getUsers();
   }, []);
 
-  const getGenders = () => {
-    const arrGenders: Array<number> = [];
-    const genderFilters = Object.values(genders);
+  const getGenders = () =>
+    Object.entries(genders)
+      .filter(([, b]) => b)
+      .map(([a]) => a);
 
-    if (genderFilters.every(e => e) || genderFilters.every(e => !e)) {
-      return;
+  const getOptions = (arr: (string | number)[] = [], obj: object = {}) => {
+    if (!Object.keys(obj).length) {
+      return arr.map((item, i) => (
+        <option key={`${item}${i}`} value={item}>
+          {item}
+        </option>
+      ));
+    } else {
+      return Object.keys(obj).map((item, i) => (
+        <option key={`${item}${i}`} value={item}>
+          {item}
+        </option>
+      ));
     }
-    //TODO: wait for enum in other pull request
-    if (genders.male) {
-      arrGenders.push(0);
-    }
-    if (genders.female) {
-      arrGenders.push(1);
-    }
-    if (genders.other) {
-      arrGenders.push(2);
-    }
-
-    return arrGenders;
   };
 
-  const getOptions = (arr: (string | number)[]) => {
-    return arr.map((item, i) => (
-      <option key={`${item}${i}`} value={item}>
-        {item}
-      </option>
-    ));
+  const convertAgeToBirthdate = (age: number): string => {
+    return dayjs().subtract(age, 'year').toISOString();
   };
 
   const findUsers = (e: React.FormEvent) => {
     const requestBody = {
       name: name,
-      lowAge: selectsFilters.lowAge,
-      highAge: selectsFilters.highAge,
+      birthdateFrom: convertAgeToBirthdate(selectsFilters.highAge),
+      birthdateTo: convertAgeToBirthdate(selectsFilters.lowAge),
       sex: getGenders(),
       country: country,
       language: selectsFilters.language,
@@ -97,7 +95,10 @@ const Search: React.FC = () => {
       isOnline: online.isOnline
     };
     e.preventDefault();
-    apiService(dataType.filter, requestBody).then(users => setUsers(users));
+    apiService(dataType.filter, requestBody).then(users => {
+      setUsers(users);
+      setShowError(!Boolean(users.length));
+    });
   };
 
   const lowYears = [...Array(hightLimit - lowLimit)].map((_, index) => index + lowLimit);
@@ -138,18 +139,30 @@ const Search: React.FC = () => {
           <CountryDropdown value={country} onChange={val => selectCountry(val)} />
           <label>Language</label>
           <select onChange={handleSelect} value={selectsFilters.language} name="language">
-            {getOptions(languages)}
+            <option key={'Any language'} value={''}>
+              Any language
+            </option>
+            {getOptions([], languages)}
           </select>
           <label>Level</label>
           <select onChange={handleSelect} value={selectsFilters.level} name="level">
-            {getOptions(languageLevels)}
+            <option key={'Any level'} value={''}>
+              Any level
+            </option>
+            {getOptions([], languageLevels)}
           </select>
           <label>Online</label>
           <input type="checkbox" checked={online.isOnline} onChange={handleOnline} name="isOnline" />
           <button type="submit">Search</button>
         </form>
       </Box>
-      <UserList users={users} />
+      {showError ? (
+        <Box boxShadow={2} className="not-found">
+          Not found, try again
+        </Box>
+      ) : (
+        <UserList users={users} />
+      )}
     </Layout>
   );
 };

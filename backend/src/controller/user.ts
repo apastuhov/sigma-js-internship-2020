@@ -41,6 +41,27 @@ router.get('/:id', async (req, res, next) => {
   }
 });
 
+router.post<any, any, DTO.FilterRequest, any>('/filter', async (req, res, next) => {
+  // TODO: catch errors
+  try {
+    const params = req.body;
+    const users = await userService.getUsersByParams(params);
+    return res.send(users);
+  } catch (e) {
+    console.log(e);
+  }
+});
+
+router.get('/', async (req, res, next) => {
+  // TODO: catch errors
+  try {
+    const users = await userService.getUsers();
+    return res.send(users);
+  } catch (e) {
+    next(e);
+  }
+});
+
 // User friends
 
 router.get('/:id/friends', async (req, res, next) => {

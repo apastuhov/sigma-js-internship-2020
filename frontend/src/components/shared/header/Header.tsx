@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import Box from '@material-ui/core/Box';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import SearchIcon from '@material-ui/icons/Search';
 import { clearStorage } from '../../../services/localStorageService';
@@ -31,12 +32,12 @@ const Header: React.FC = () => {
             <MailOutlineIcon style={{ color: '#fff' }} />
           </Link>
           <img onClick={toggleMenu} src={`${pathImage}${iconName}`} alt="profile" className="logo" />
-          <div className={`dropdown-menu ${menuClass}`}>
+          <Box boxShadow={2} className={`dropdown-menu ${menuClass}`}>
             <Link to="/settings">Settings</Link>
             <Link to="/login" onClick={clearStorage}>
               Log Out
             </Link>
-          </div>
+          </Box>
         </nav>
       </div>
     </header>
