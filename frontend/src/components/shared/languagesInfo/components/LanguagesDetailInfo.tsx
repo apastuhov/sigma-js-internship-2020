@@ -26,11 +26,11 @@ const LanguagesBlock: React.FC<ILanguage> = props => {
       <Select
         label={props.label}
         name="language"
-        options={languages}
+        options={Object.values(languages)}
         value={field.value.language}
         onChange={handleChange}
       />
-      <Select label="Level" name="level" options={languageLevels} value={field.value.level} onChange={handleChange} />
+      <Select label="Level" name="level" options={Object.values(languageLevels)} value={field.value.level} onChange={handleChange} />
     </div>
   );
 };
