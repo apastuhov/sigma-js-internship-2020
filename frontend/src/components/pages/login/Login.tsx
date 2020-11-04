@@ -58,7 +58,7 @@ const Login: React.FC = () => {
       </Tile>
       <Footer />
       {isLoggedIn && history.push('/')}
-      {!isLoggedIn && history.push('/search')}
+      {!isLoggedIn && history.push('/register')}
     </div>
   );
 };

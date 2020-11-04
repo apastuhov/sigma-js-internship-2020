@@ -92,7 +92,7 @@ router.post<any, any, DTO.IPost, any>('/:id/posts', async (req, res, next) => {
     const newPost = {
       userId: ID,
       body: req.body.body,
-      createdBy: req.body.createdBy,
+      createdBy: req.body.createdBy
     };
     const posts = await userService.createPost(newPost);
     return res.status(201).send(posts);

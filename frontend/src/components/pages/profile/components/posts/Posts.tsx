@@ -10,7 +10,7 @@ import './posts.scss';
 const Posts: React.FC<IPostsProps> = ({ posts }) => {
   const sortedPosts = useMemo(() => {
     return posts.sort((a: any, b: any) => {
-      return (new Date(b.date).getTime() - new Date(a.date).getTime())
+      return new Date(b.date).getTime() - new Date(a.date).getTime();
     });
   }, [posts]);
 
@@ -24,15 +24,16 @@ const Posts: React.FC<IPostsProps> = ({ posts }) => {
 
   return (
     <>
-      {sortedPosts.length === 0 ?
+      {sortedPosts.length === 0 ? (
         <div className="empty-posts">
           <PostAddIcon className="posts-icon" />
           <h3>
-            This user has no posts yet<br />
+            This user has no posts yet
+            <br />
             You can be the first)
           </h3>
         </div>
-        :
+      ) : (
         <div className="posts">
           {sortedPosts.map((postInfo, id) => {
             const parseDate = Date.parse(postInfo.date);
@@ -57,7 +58,7 @@ const Posts: React.FC<IPostsProps> = ({ posts }) => {
             );
           })}
         </div>
-      }
+      )}
     </>
   );
 };

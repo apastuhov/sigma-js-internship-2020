@@ -25,7 +25,12 @@ const MainInfo: React.FC = () => {
         <div className="sex-wrapper">
           <SelectWithFormik label="Sex" name="sex" options={sex} />
         </div>
-        <InputWithFormik label="Birthday" name="birthday" type="date" maxAge={new Date().toISOString().substring(0, 10)} />
+        <InputWithFormik
+          label="Birthday"
+          name="birthday"
+          type="date"
+          maxAge={new Date().toISOString().substring(0, 10)}
+        />
         <div className="country-selector">
           <SelectWithFormik label="Country" name="country" options={Object.keys(Country)} />
         </div>

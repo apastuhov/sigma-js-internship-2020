@@ -25,9 +25,10 @@ export class UserRepository {
 
   async getFriendsById(userId: DTO.ID): Promise<DTO.IUserDoc[] | DTO.ID[]> {
     const data = await Friends.findOne({ userId: userId })
-      .populate('friends', [...userFiels]).then((res) => {
+      .populate('friends', [...userFiels])
+      .then(res => {
         return res?.friends;
-      })
+      });
     if (!data) return [];
     return data;
   }

@@ -25,7 +25,7 @@ const AddPostForm: React.FC<ISendPostProps> = ({ _id }) => {
       const request = {
         body: postValue,
         createdBy: _id
-      }
+      };
       sendPostToUser(loginedUser._id, request);
       setPostValue('');
     } else {

@@ -14,9 +14,9 @@ interface MatchParams {
   id: number & string;
 }
 
-interface IParamsProps extends RouteComponentProps<MatchParams> { }
+interface IParamsProps extends RouteComponentProps<MatchParams> {}
 
-const Profile: React.FC<IParamsProps> = (props) => {
+const Profile: React.FC<IParamsProps> = props => {
   const [userDetails, setUserDetails] = useState(getUserFromStorage());
   const [userPosts, setUserPosts] = useState([]);
   const location = useLocation();
@@ -45,14 +45,14 @@ const Profile: React.FC<IParamsProps> = (props) => {
               <UserCard mainInfo={userDetails} boxShadow={2} />
               <About about={userDetails.about} />
               <FriendsList id={userDetails._id} friends={userDetails.friends} />
-              </div>
-              <div className="rightside">
-                <AddPostForm _id={userDetails._id} />
-                <Posts posts={userPosts} />
-              </div>
             </div>
-          </Layout>
-        )}
+            <div className="rightside">
+              <AddPostForm _id={userDetails._id} />
+              <Posts posts={userPosts} />
+            </div>
+          </div>
+        </Layout>
+      )}
     </>
   );
 };
