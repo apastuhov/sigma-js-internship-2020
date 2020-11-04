@@ -29,6 +29,10 @@ export interface IFriendsListProps {
   friends: IFriend[];
 }
 
+export interface ISendPostProps {
+  _id: number;
+}
+
 export interface IPostsProps {
   posts: IPost[];
 }

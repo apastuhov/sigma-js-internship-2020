@@ -37,7 +37,7 @@ export namespace DTO {
   export interface IPost {
     userId: ID;
     body: string;
-    date: Date;
+    date?: Date;
     createdBy: ID;
   }
 

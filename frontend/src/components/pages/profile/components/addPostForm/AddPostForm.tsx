@@ -2,10 +2,14 @@ import React, { useState } from 'react';
 import Box from '@material-ui/core/Box';
 import SendSharpIcon from '@material-ui/icons/SendSharp';
 import './addPostForm.scss';
+import { ISendPostProps } from '../../../../interfaces/Interface';
+import { getUserFromStorage } from '../../../../../services/localStorageService';
+import { sendPostToUser } from '../../../../../services/apiUserService';
 
-const AddPostForm: React.FC = () => {
+const AddPostForm: React.FC<ISendPostProps> = ({ _id }) => {
   const [postValue, setPostValue] = useState<string>('');
   const [isInvalidForm, setInvalidForm] = useState<boolean>(false);
+  const [loginedUser, setLoginedUser] = useState(getUserFromStorage());
 
   const inputValueHandleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setPostValue(event.target.value);
@@ -19,14 +23,10 @@ const AddPostForm: React.FC = () => {
     event.preventDefault();
     if (postValue?.trim()?.length > 0) {
       const request = {
-        userId: 11,
-        photoUrl: 'photoUrl',
-        firtName: 'firstName',
-        lastName: 'lastName',
-        postBody: postValue,
-        date: '21.10.97'
-      };
-      console.log(JSON.stringify(request));
+        body: postValue,
+        createdBy: _id
+      }
+      sendPostToUser(loginedUser._id, request);
       setPostValue('');
     } else {
       setInvalidForm(true);

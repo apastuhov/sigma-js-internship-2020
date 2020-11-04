@@ -10,7 +10,6 @@ import FriendsList from './components/friendsList/FriendsList';
 import Posts from './components/posts/Posts';
 import './profile.scss';
 
-
 interface MatchParams {
   id: number & string;
 }
@@ -40,20 +39,20 @@ const Profile: React.FC<IParamsProps> = (props) => {
       {!userDetails ? (
         <Redirect to="/login" />
       ) : (
-        <Layout pageTitle="Profile">
-          <div className="profile">
-            <div className="leftside">
-              <UserCard mainInfo={userDetails} boxShadow={2} />
-              <About about={userDetails.about} />
-              <FriendsList friends={userDetails.friends} />
+          <Layout pageTitle="Profile">
+            <div className="profile">
+              <div className="leftside">
+                <UserCard mainInfo={userDetails} boxShadow={2} />
+                <About about={userDetails.about} />
+                <FriendsList friends={userDetails.friends} />
+              </div>
+              <div className="rightside">
+                <AddPostForm _id={userDetails._id} />
+                <Posts posts={userPosts} />
+              </div>
             </div>
-            <div className="rightside">
-              <AddPostForm />
-              <Posts posts={userPosts} />
-            </div>
-          </div>
-        </Layout>
-      )}
+          </Layout>
+        )}
     </>
   );
 };
