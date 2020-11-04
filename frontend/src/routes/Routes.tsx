@@ -12,11 +12,11 @@ export default () => (
   <Switch>
     <Route path="/" exact component={Profile} />
     <Route path="/user/:id" exact component={Profile} />
+    <Route path="/user/:id/friends" component={Friends} />
     <Route path="/register" component={Register} />
     <Route path="/chat" component={Chat} />
     <Route path="/search" component={Search} />
     <Route path="/settings" component={Settings} />
     <Route path="/login" component={Login} />
-    <Route path="/user/:id/friends" component={Friends} />
   </Switch>
 );

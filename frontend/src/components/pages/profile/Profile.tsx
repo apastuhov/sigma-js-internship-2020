@@ -45,7 +45,7 @@ const Profile: React.FC<IParamsProps> = (props) => {
             <div className="leftside">
               <UserCard mainInfo={userDetails} boxShadow={2} />
               <About about={userDetails.about} />
-              <FriendsList friends={userDetails.friends} />
+              <FriendsList id={userDetails._id} friends={userDetails.friends} />
             </div>
             <div className="rightside">
               <AddPostForm />

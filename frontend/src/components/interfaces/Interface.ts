@@ -26,6 +26,7 @@ export interface IUserMain {
 }
 
 export interface IFriendsListProps {
+  id: string;
   friends: IFriend[];
 }
 

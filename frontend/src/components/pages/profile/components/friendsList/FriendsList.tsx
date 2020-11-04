@@ -6,7 +6,7 @@ import { IFriendsListProps } from '../../../../interfaces/Interface';
 import { UserPhoto } from '../../../../shared/userPhoto/UserPhoto';
 import './friendsList.scss';
 
-const FriendsList: React.FC<IFriendsListProps> = ({ friends }) => {
+const FriendsList: React.FC<IFriendsListProps> = ({ id, friends }) => {
   const sortedFriends = useMemo(() => {
     return friends.slice(0, maxOnlineUsers);
     //WILL BE NEEDED IN THE FUTURE 
@@ -21,7 +21,7 @@ const FriendsList: React.FC<IFriendsListProps> = ({ friends }) => {
 
   return (
     <Box boxShadow={2} className="friends">
-      <Link to="/friends" className="title">
+      <Link to={`/user/${id}/friends`} className="title">
         Friends
         <span>({friends.length})</span>
       </Link>

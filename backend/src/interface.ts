@@ -55,10 +55,10 @@ export namespace DTO {
 
   export interface IUserFriends {
     userId: ID;
-    friends: ID[];
+    friends: ID[] | IUserDoc[];
   }
 
-  export interface IUserFriendsDoc extends IUser, Document {}
+  export interface IUserFriendsDoc extends IUserFriends, Document {}
   export interface IMessageDoc extends IMessage, Document {}
   export interface IDialogsDoc extends IDialogs, Document {}
   export interface IPostDoc extends IPost, Document {}
