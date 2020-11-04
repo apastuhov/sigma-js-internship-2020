@@ -16,9 +16,9 @@ type FormikValues = {
   languages: ILanguage[];
   learnLanguages: ILanguage[];
   fileUrl: string;
-  sex: string;
+  sex: 'Male' | 'Female' | 'Other';
   country: any;
-  about: any;
+  about: string;
 };
 
 const PreviewInfo: React.FC = () => {

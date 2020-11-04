@@ -8,7 +8,26 @@ import Tile from '../../shared/tile/Tile';
 import './registration.scss';
 import { Box } from '@material-ui/core';
 import Button from '../../shared/button/Button';
-import { Formik } from 'formik';
+import { Formik, useFormikContext } from 'formik';
+import { postRequest } from '../../../services/apiUserService';
+import { ILanguage } from '../../interfaces/Interface';
+import { ButtonWithFormikRegister } from '../../shared/ButtonsWithFormikRegister/ButtonsWithFormikRegister';
+import { Country } from '../../constants/Countries';
+
+type FormikValues = {
+  name: string;
+  surname: string;
+  age: number;
+  birthday: string;
+  languages: ILanguage[];
+  learnLanguages: ILanguage[];
+  fileUrl: string;
+  sex: string;
+  country: any;
+  about: any;
+};
+
+
 
 const Register: React.FC = () => {
   const handleSubmit = () => {};
@@ -34,7 +53,7 @@ const Register: React.FC = () => {
           ],
           age: 0,
           fileUrl: '',
-          sex: '',
+          sex: 0,
           country: ''
         }}
         onSubmit={handleSubmit}
@@ -48,10 +67,7 @@ const Register: React.FC = () => {
             <Tile>
               <Box boxShadow={2} className="tile">
                 <p className="privacy-policy"> By clicking "Sign Up" you agree to our Terms and Privacy Policy</p>
-                <div className="register-nav">
-                  <Button name="CANCEL" color="secondary" link="login" />
-                  <Button name="SIGN UP" color="primary" link="" />
-                </div>
+                <ButtonWithFormikRegister />
               </Box>
             </Tile>
           </div>
