@@ -7,13 +7,13 @@ axios.defaults.headers = { 'Content-Type': 'application/json' };
 const getRequest = (url: string) => axios.get(`${url}`).then(res => res.data);
 
 const postRequest = (url: string, body: any) => {
-	axios.post(`${url}`, body).then(res => {
-		if (res.status === 201) {
-			return res.data;
-		} else {
-			console.log(res.status)
-		};
-	})
+  axios.post(`${url}`, body)
+  .then(res => {
+    return res.data;
+  })
+  .catch(e => {
+    return e;
+  })
 }
 
 
