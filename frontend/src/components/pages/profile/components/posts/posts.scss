@@ -1,11 +1,25 @@
 @import '../../../../../styles/variables.scss';
+.empty-posts{
+  text-align: center;
+  margin-top: $gap-14;
+  .posts-icon{
+    font-size: 50px;
+    color: $primary-color;
+  }
+  h3{
+    @include title;
+    color: $primary-color;
+  }
+}
 
 .posts{
   max-height: 790px;
   overflow: scroll;
   overflow-x: hidden;
   margin-top: $gap-20;
-  
+  padding-right: $gap-6;
+  @include scrollbar;
+
   @include for-medium{
     max-height: none;
     overflow: hidden;

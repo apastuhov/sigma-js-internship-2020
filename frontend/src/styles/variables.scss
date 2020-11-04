@@ -93,20 +93,20 @@ $container-width: 944px;
 
 
 @mixin scrollbar {
-  ::-webkit-scrollbar {
-    width: 14px;
+  &::-webkit-scrollbar {
+    width: 4px;
   }
 
-  ::-webkit-scrollbar-track {
+  &::-webkit-scrollbar-track {
     background: #f1f1f1;
   }
 
-  ::-webkit-scrollbar-thumb {
+  &::-webkit-scrollbar-thumb {
     background: #d7d7d7;
     border-radius: 4px;
   }
 
-  ::-webkit-scrollbar-thumb:hover {
+  &::-webkit-scrollbar-thumb:hover {
     background: #979797;
   }
 }
