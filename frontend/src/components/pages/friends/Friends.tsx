@@ -1,22 +1,25 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import Layout from '../../shared/layout/Layout';
 import UserList from '../../shared/userList/UserList';
-import apiService from '../../../services/apiService';
-import { dataType } from '../../interfaces/Interface';
+import { getFriends } from '../../../services/apiUserService';
 import './friends.scss';
+
+interface MatchParams {
+  id: number & string;
+}
 
 const Friends: React.FC = () => {
   const [friends, setFriends] = useState([]);
+  const { id } = useParams<MatchParams>();
 
-  //NEED TO DO FRIENDS SERVICE
-
-  // useEffect(() => {
-  //   apiService(dataType.users).then(users => setFriends(users));
-  // }, []);
+  useEffect(() => {
+    getFriends(id).then(users => setFriends(users));
+  }, []);
 
   return (
     <Layout pageTitle="Friends" countFriends={friends.length}>
-      {/* <UserList users={friends} /> */}
+      <UserList users={friends} />
     </Layout>
   );
 };

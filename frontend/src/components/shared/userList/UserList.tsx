@@ -6,8 +6,8 @@ import UserCard from '../userCard/UserCard';
 const UserList: React.FC<IUsers> = ({ users }) => {
   return (
     <ul>
-      {users.map((item, id) => (
-        <li key={id}>
+      {users.map(item => (
+        <li key={item._id}>
           <UserCard mainInfo={item} boxShadow={2} />
         </li>
       ))}

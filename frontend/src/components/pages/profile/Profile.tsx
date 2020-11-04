@@ -39,12 +39,12 @@ const Profile: React.FC<IParamsProps> = (props) => {
       {!userDetails ? (
         <Redirect to="/login" />
       ) : (
-          <Layout pageTitle="Profile">
-            <div className="profile">
-              <div className="leftside">
-                <UserCard mainInfo={userDetails} boxShadow={2} />
-                <About about={userDetails.about} />
-                <FriendsList friends={userDetails.friends} />
+        <Layout pageTitle="Profile">
+          <div className="profile">
+            <div className="leftside">
+              <UserCard mainInfo={userDetails} boxShadow={2} />
+              <About about={userDetails.about} />
+              <FriendsList id={userDetails._id} friends={userDetails.friends} />
               </div>
               <div className="rightside">
                 <AddPostForm _id={userDetails._id} />
