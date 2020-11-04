@@ -7,14 +7,15 @@ axios.defaults.headers = { 'Content-Type': 'application/json' };
 const getRequest = (url: string) => axios.get(`${url}`).then(res => res.data);
 
 const postRequest = (url: string, body: any) => {
-  axios.post(`${url}`, body)
-  .then(res => {
-    return res.data;
-  })
-  .catch(e => {
-    return e;
-  })
-}
+  axios
+    .post(`${url}`, body)
+    .then(res => {
+      return res.data;
+    })
+    .catch(e => {
+      return e;
+    });
+};
 
 export const getFriends = async (id: string) => {
   try {
@@ -25,7 +26,7 @@ export const getFriends = async (id: string) => {
   }
 };
 
-export const getUserDetails = (id: number) => getRequest(`${dataType.user}/${id}`)
-export const getUserPosts = (id: number) => getRequest(`${dataType.user}/${id}/${dataType.posts}`)
-export const sendPostToUser = (id: any, body: {}) => postRequest(`${dataType.user}/${id}/${dataType.posts}`, body)
-
+export const getUserDetails = (id: number) => getRequest(`${dataType.user}/${id}`);
+export const getUserPosts = (id: number) => getRequest(`${dataType.user}/${id}/${dataType.posts}`);
+export const sendPostToUser = (id: any, body: {}) => postRequest(`${dataType.user}/${id}/${dataType.posts}`, body);
+export const getUserByMail = (mail: string) => getRequest(`${dataType.user}/login`);
