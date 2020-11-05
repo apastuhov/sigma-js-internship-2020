@@ -10,8 +10,10 @@ import './userCard.scss';
 type MainInfoProps = {
   mainInfo: IUser;
   boxShadow?: number;
+  isProfile?: boolean;
 };
-const UserCard: React.FC<MainInfoProps> = ({ mainInfo }, shadowIntensity) => {
+
+const UserCard: React.FC<MainInfoProps> = ({ mainInfo, boxShadow, isProfile }) => {
   const [loginedUser, setLoginedUser] = useState(getUserFromStorage());
   const [userAge, setUserAge] = useState<number>();
 
@@ -36,8 +38,8 @@ const UserCard: React.FC<MainInfoProps> = ({ mainInfo }, shadowIntensity) => {
       {!loginedUser ? (
         <Redirect to="/login" />
       ) : (
-          <Box boxShadow={shadowIntensity.boxShadow && 2} className="user-card">
-            <Link to="/" className="leftbar">
+          <Box boxShadow={boxShadow && 2} className="user-card">
+            <Link to={`/user/${mainInfo._id}`} className={isProfile ? "leftbar disabled" : "leftbar"}>
               <UserPhoto avatar={mainInfo.avatar} />
               <h3>
                 {mainInfo.firstName} {mainInfo.lastName}
@@ -71,7 +73,7 @@ const UserCard: React.FC<MainInfoProps> = ({ mainInfo }, shadowIntensity) => {
                   );
                 })}
               </div>
-              {!loginedUser.id &&
+              {loginedUser._id !== mainInfo._id &&
                 <div className="buttons-action">
                   {!mainInfo.isFriend && <Link to="/" onClick={sendFriendRequest} className="add-friend">add friend</Link>}
                   <Link to="/chat" className="send-message">message</Link>

@@ -42,7 +42,7 @@ const Profile: React.FC<IParamsProps> = (props) => {
         <Layout pageTitle="Profile">
           <div className="profile">
             <div className="leftside">
-              <UserCard mainInfo={userDetails} boxShadow={2} />
+              <UserCard mainInfo={userDetails} boxShadow={2} isProfile />
               <About about={userDetails.about} />
               <FriendsList id={userDetails._id} friends={userDetails.friends} />
               </div>
