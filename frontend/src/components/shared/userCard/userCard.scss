@@ -8,6 +8,11 @@
     width: $mobile-tile-width;
     flex-direction: column;
     align-items: center;
+  }    
+  
+  .disabled{  
+    pointer-events: none;
+    cursor: default;
   }
 
   .leftbar {
@@ -69,7 +74,7 @@
 
       .languages {
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
         padding-left: $gap-8;
         margin-bottom: $gap-6;
 
