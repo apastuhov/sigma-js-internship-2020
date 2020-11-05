@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React from 'react';
 import Layout from '../../shared/layout/Layout';
 import MainInfo from '../../shared/mainInfo/MainInfo';
 import AdditionalInfo from '../../shared/additionalInfo/AdditionalInfo';
@@ -7,27 +7,8 @@ import PreviewInfo from '../../shared/previewInfo/PreviewInfo';
 import Tile from '../../shared/tile/Tile';
 import './registration.scss';
 import { Box } from '@material-ui/core';
-import Button from '../../shared/button/Button';
-import { Formik, useFormikContext } from 'formik';
-import { postRequest } from '../../../services/apiUserService';
-import { ILanguage } from '../../interfaces/Interface';
+import { Formik } from 'formik';
 import { ButtonWithFormikRegister } from '../../shared/ButtonsWithFormikRegister/ButtonsWithFormikRegister';
-import { Country } from '../../constants/Countries';
-
-type FormikValues = {
-  name: string;
-  surname: string;
-  age: number;
-  birthday: string;
-  languages: ILanguage[];
-  learnLanguages: ILanguage[];
-  fileUrl: string;
-  sex: string;
-  country: any;
-  about: any;
-};
-
-
 
 const Register: React.FC = () => {
   const handleSubmit = () => {};
@@ -53,7 +34,7 @@ const Register: React.FC = () => {
           ],
           age: 0,
           fileUrl: '',
-          sex: 0,
+          sex: '',
           country: ''
         }}
         onSubmit={handleSubmit}

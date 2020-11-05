@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Layout from '../../shared/layout/Layout';
 import MainInfo from '../../shared/mainInfo/MainInfo';
 import AdditionalInfo from '../../shared/additionalInfo/AdditionalInfo';
@@ -7,8 +7,7 @@ import PreviewInfo from '../../shared/previewInfo/PreviewInfo';
 import Tile from '../../shared/tile/Tile';
 import { Box } from '@material-ui/core';
 import './settings.scss';
-import Button from '../../shared/button/Button';
-import { Formik, FormikValues, useFormikContext } from 'formik';
+import { Formik } from 'formik';
 
 const Settings: React.FC = () => {
   const handleSubmit = () => {};
@@ -17,13 +16,15 @@ const Settings: React.FC = () => {
     <Layout pageTitle="Settings">
       <Formik
         initialValues={{
-          name: '',
+          birthday: '',
           languages: [
             {
               language: '',
               level: ''
             }
           ],
+          surname: '',
+          name: '',
           learnLanguages: [
             {
               language: '',
@@ -31,7 +32,9 @@ const Settings: React.FC = () => {
             }
           ],
           age: 0,
-          fileUrl: ''
+          fileUrl: '',
+          sex: '',
+          country: ''
         }}
         onSubmit={handleSubmit}
       >

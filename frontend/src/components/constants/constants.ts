@@ -24,7 +24,7 @@ export enum languageLevels {
 }
 
 export enum sex {
-  Male = '0',
-  Female = '1',
-  Other = '2'
+  Male = 'male',
+  Female = 'female',
+  Other = 'other'
 }

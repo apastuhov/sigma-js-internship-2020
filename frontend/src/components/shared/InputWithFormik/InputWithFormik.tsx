@@ -6,7 +6,7 @@ type InputProps = {
   name: string;
   label: string;
   type: string;
-  maxAge?: string;
+  currentDate?: string;
 };
 
 const InputWithFormik: React.FC<InputProps> = props => {
@@ -19,7 +19,7 @@ const InputWithFormik: React.FC<InputProps> = props => {
       onChange={field.onChange}
       label={props.label}
       type={props.type}
-      max={props.maxAge}
+      currentDate={props.currentDate}
     />
   );
 };

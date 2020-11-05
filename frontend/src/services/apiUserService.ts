@@ -10,12 +10,8 @@ const getRequest = (url: string) => axios.get(`${url}`).then(res => res.data);
 export const postRequest = (url: string, body: any) => {
   return axios
     .post(`${url}`, body)
-    .then(res => {
-      return res.data;
-    })
-    .catch(e => {
-      return e;
-    });
+    .then(res => res.data)
+    .catch(e => e);
 };
 
 export const getFriends = async (id: string) => {
