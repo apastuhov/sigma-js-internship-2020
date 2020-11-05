@@ -1,35 +1,14 @@
 import Box from '@material-ui/core/Box';
-import axios from 'axios';
-import React, { useState } from 'react';
+import React from 'react';
 import { GoogleLogin } from 'react-google-login';
-import { useHistory } from 'react-router-dom';
 import GoogleLogo from '../../../images/google-login.svg';
 import Logo from '../../../images/logo-login.svg';
-import { getUserByMail } from '../../../services/apiUserService';
-import { saveUserToStorage } from '../../../services/localStorageService';
-// import user from '../../mocks/user-mock.json';
+import { handleGoogleResponse } from '../../../services/sessionService';
 import Footer from '../../shared/footer/Footer';
 import Tile from '../../shared/tile/Tile';
 import './login.scss';
 
-const url = 'http://localhost:8000';
-
 const Login: React.FC = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const history = useHistory();
-  function responseGoogle(response: any): void {
-    axios({
-      method: 'POST',
-      url: `${url}/api/googleLogin`,
-      data: { tokenID: response.tokenId }
-    });
-    // redirect to registration if mail doesn`t exist in a database, if found redirect to profile and save to localstorage
-    // saveUserToStorage(user);
-    const mail = response.tt.$t;
-    const user: any = getUserByMail(mail);
-    user._id && saveUserToStorage(user);
-    user._id && setIsLoggedIn(true);
-  }
   return (
     <div className="login-wrapper">
       <Tile>
@@ -50,15 +29,14 @@ const Login: React.FC = () => {
               </button>
             )}
             buttonText="Login"
-            onSuccess={responseGoogle}
-            onFailure={responseGoogle}
+            onSuccess={handleGoogleResponse}
+            // in case of fail we need to send to google-oauth
+            onFailure={handleGoogleResponse}
             cookiePolicy={'single_host_origin'}
           />
         </Box>
       </Tile>
       <Footer />
-      {isLoggedIn && history.push('/')}
-      {!isLoggedIn && history.push('/register')}
     </div>
   );
 };

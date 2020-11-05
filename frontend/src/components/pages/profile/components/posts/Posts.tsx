@@ -1,17 +1,16 @@
-import React, { useMemo } from 'react';
 import Box from '@material-ui/core/Box';
-import EditIcon from '@material-ui/icons/Edit';
 import CloseIcon from '@material-ui/icons/Close';
+import EditIcon from '@material-ui/icons/Edit';
+import PostAddIcon from '@material-ui/icons/PostAdd';
+import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { IPostsProps } from '../../../../interfaces/Interface';
-import PostAddIcon from '@material-ui/icons/PostAdd';
 import './posts.scss';
 
 const Posts: React.FC<IPostsProps> = ({ posts }) => {
   const sortedPosts = useMemo(() => {
-    return posts.sort((a: any, b: any) => {
-      return new Date(b.date).getTime() - new Date(a.date).getTime();
-    });
+    const newPosts = [...posts].reverse();
+    return newPosts;
   }, [posts]);
 
   const editPost = (postId: number) => {

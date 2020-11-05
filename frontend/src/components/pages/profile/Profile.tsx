@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Redirect, RouteComponentProps, useLocation } from 'react-router-dom';
-import { getUserDetails, getUserPosts } from '../../../services/apiUserService';
+import { getUserDetails } from '../../../services/apiUserService';
 import { getUserFromStorage } from '../../../services/localStorageService';
+import { getUserPosts } from '../../../services/postService';
 import Layout from '../../shared/layout/Layout';
 import UserCard from '../../shared/userCard/UserCard';
 import About from './components/about/About';
