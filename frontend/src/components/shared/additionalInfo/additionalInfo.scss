@@ -20,6 +20,9 @@ p {
     margin: 0;
     @include low-text;
     padding: 0 6px;
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
 
@@ -31,11 +34,18 @@ p {
   position: absolute;
   width: 82px;
   height: 82px;
+  &:hover {
+    cursor: pointer;
+  }
 }
 .textarea {
   @include input;
-  padding: $gap-8;
+  padding: $gap-4;
   &:focus {
     outline-color: $grey;
   }
+}
+
+.container span {
+  font-size: 16px;
 }

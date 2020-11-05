@@ -2,7 +2,7 @@
 
 .filter {
   float: left;
-  margin-right: 24px;
+  margin-right: $gap-10;
   @include tile;
   form {
     display: grid;
@@ -11,6 +11,7 @@
 
     select {
       outline-color: $primary-color;
+      margin-right: 0;
     }
 
     input {
@@ -38,7 +39,7 @@
         cursor: pointer;
       }
       .divider {
-        margin: 0 10px;
+        margin: 0 10px 6px 10px;
         width: 12px;
         height: 1px;
         border-bottom: 2px solid $grey;

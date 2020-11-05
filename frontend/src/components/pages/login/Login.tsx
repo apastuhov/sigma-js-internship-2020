@@ -25,7 +25,7 @@ const Login: React.FC = () => {
                 <div className="google-logo-container">
                   <img src={GoogleLogo} alt="google-logo" />
                 </div>
-                <p className="login-btn-link">Sign in with google</p>
+                <p className="login-btn-link">SIGN IN WITH GOOGLE</p>
               </button>
             )}
             buttonText="Login"

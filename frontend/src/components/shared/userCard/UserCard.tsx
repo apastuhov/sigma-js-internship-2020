@@ -1,10 +1,10 @@
-import React, { MouseEvent, useState, useEffect } from 'react';
 import Box from '@material-ui/core/Box';
+import dayjs from 'dayjs';
+import React, { MouseEvent, useEffect, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { getUserFromStorage } from '../../../services/localStorageService';
 import { IUser } from '../../interfaces/Interface';
 import { UserPhoto } from '../userPhoto/UserPhoto';
-import dayjs from 'dayjs';
 import './userCard.scss';
 
 type MainInfoProps = {
