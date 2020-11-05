@@ -19,12 +19,6 @@ const userSchemaFields: Record<keyof DTO.IUser, any> = {
     unique: true
   },
   birthday: { type: Date, required: true },
-  friends: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'User'
-    }
-  ],
   country: { type: String, required: true },
   countryCode: { type: String, required: true },
   speak: {
