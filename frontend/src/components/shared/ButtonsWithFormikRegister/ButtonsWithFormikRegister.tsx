@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import Button from '../button/Button';
 import { useFormikContext } from 'formik';
-import { postRequest } from '../../../services/apiUserService';
-import { Country } from '../../constants/Countries';
-import { sex } from '../../constants/constants';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
+import { postRequest } from '../../../services/apiService';
+import { sex } from '../../constants/constants';
+import { Country } from '../../constants/Countries';
 import { FormikValues } from '../../interfaces/Interface';
+import Button from '../button/Button';
 
 const getMethodPriority = (country: keyof typeof Country) => {
   return Country[country];

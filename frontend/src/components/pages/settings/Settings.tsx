@@ -1,7 +1,6 @@
-
 import { Box } from '@material-ui/core';
 import { Formik } from 'formik';
-import React, { useState } from 'react';
+import React from 'react';
 import AdditionalInfo from '../../shared/additionalInfo/AdditionalInfo';
 import Button from '../../shared/button/Button';
 import LanguagesInfo from '../../shared/languagesInfo/Languages';
@@ -49,8 +48,8 @@ const Settings: React.FC = () => {
             <Tile>
               <Box boxShadow={2} className="tile">
                 <div className="settings-nav">
-                  {/*<Button name="BACK" color="secondary" link="" />*/}
-                  {/*<Button name="SAVE" color="primary" link="" />*/}
+                  <Button name="BACK" color="secondary" link="" />
+                  <Button name="SAVE" color="primary" link="" />
                 </div>
               </Box>
             </Tile>

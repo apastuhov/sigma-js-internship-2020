@@ -21,7 +21,7 @@ const apiService = async (type: dataType, data: object = {}) => {
 export const getRequest = (url: string) => axios.get(`${url}`).then(res => res.data);
 
 export const postRequest = (url: string, body: any) => {
-  axios
+  return axios
     .post(`${url}`, body)
     .then(res => res.data)
     .catch(e => e);

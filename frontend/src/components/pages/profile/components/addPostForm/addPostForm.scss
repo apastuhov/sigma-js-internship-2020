@@ -1,58 +1,58 @@
 @import '../../../../../styles/variables.scss';
 
-.add-post-form{
+.add-post-form {
   @include tile;
 
-  @include for-mobile{
+  @include for-mobile {
     width: $mobile-tile-width;
-  }    
+  }
 
-  p{
+  p {
     @include text;
     box-sizing: border-box;
     margin: 0 0 $gap-4 0;
     color: $red;
   }
 
-  form{
+  form {
     display: flex;
     position: relative;
 
-    textarea{
+    textarea {
       @include text;
       flex-grow: 1;
       box-sizing: border-box;
       border: 1px solid $grey;
       border-radius: $gap-4;
 
-        &::placeholder {
-          @include text;
-          padding: $gap-2;
-        }
+      &::placeholder {
+        @include text;
+        padding: $gap-2;
+      }
 
-        &:focus {
-          outline: none;
-          border: $gap-2 solid $primary-color;
-        }
+      &:focus {
+        outline: none;
+        border: $gap-2 solid $primary-color;
+      }
     }
 
-    .save-icon{
+    .save-icon {
       margin-left: $gap-4;
-      
-      button{
+
+      button {
         background: none;
         border: none;
         cursor: pointer;
-        &:focus{
+        &:focus {
           outline: none;
         }
       }
 
-      .send-icon{
+      .send-icon {
         color: $primary-color;
         width: $gap-34;
         height: $gap-34;
-      }  
+      }
     }
   }
 }
