@@ -1,10 +1,13 @@
 import React from 'react';
 import Routes from './routes/Routes';
+import { Store } from './components/storage/context';
 
 function App() {
   return (
     <div className="App">
-      <Routes />
+      <Store>
+        <Routes />
+      </Store>
     </div>
   );
 }

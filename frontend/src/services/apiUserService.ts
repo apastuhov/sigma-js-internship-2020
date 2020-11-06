@@ -23,6 +23,15 @@ export const getFriends = async (id: string) => {
   }
 };
 
+export const addFriend = async (id: string, friendID: object) => {
+  try {
+    const res = await axios.patch(`${dataType.user}/${id}/friends`, friendID);
+    return await res.data;
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 export const getUserDetails = (id: number) => getRequest(`${dataType.user}/${id}`);
 export const getUserPosts = (id: number) => getRequest(`${dataType.user}/${id}/${dataType.posts}`);
 export const sendPostToUser = (id: any, body: {}) => postRequest(`${dataType.user}/${id}/${dataType.posts}`, body);

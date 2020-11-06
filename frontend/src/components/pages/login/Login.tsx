@@ -1,7 +1,7 @@
 import React from 'react';
 import GoogleLogo from '../../../images/google-login.svg';
 import Logo from '../../../images/logo-login.svg';
-import { saveUserToStorage } from '../../../services/localStorageService';
+import { saveUserToStorage, saveFriendsToStorage } from '../../../services/localStorageService';
 import user from '../../mocks/user-mock.json';
 import Footer from '../../shared/footer/Footer';
 import Tile from '../../shared/tile/Tile';
@@ -19,7 +19,9 @@ function responseGoogle(response: any): void {
     url: `${url}/api/googleLogin`,
     data: { tokenID: response.tokenId }
   });
+
   saveUserToStorage(user);
+  saveFriendsToStorage([]);
 }
 
 const Login: React.FC = () => {

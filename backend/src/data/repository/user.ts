@@ -32,10 +32,17 @@ export class UserRepository {
     return data;
   }
 
+  async addFriend(userId: DTO.ID, friendId: DTO.ID) {
+    const data = await Friends.updateOne({ userId: userId }, { $addToSet: { friends: friendId } }).then(res => {
+      return res.nModified;
+    });
+    return data;
+  }
+
   // User data
 
   async getUserById(userId: DTO.ID): Promise<DTO.IUserDoc | null> {
-    const data = await User.findById(userId).populate('friends', ['firstName', 'lastName', 'photo']);
+    const data = await User.findById(userId);
     return data;
   }
 
