@@ -1,14 +1,25 @@
 import Box from '@material-ui/core/Box';
 import React from 'react';
 import { GoogleLogin } from 'react-google-login';
+import { useHistory } from 'react-router-dom';
 import GoogleLogo from '../../../images/google-login.svg';
 import Logo from '../../../images/logo-login.svg';
-import { handleGoogleResponse } from '../../../services/sessionService';
+import { processGoogleResponse } from '../../../services/sessionService';
 import Footer from '../../shared/footer/Footer';
 import Tile from '../../shared/tile/Tile';
 import './login.scss';
 
 const Login: React.FC = () => {
+  const history = useHistory();
+  const handleGoogleResponse = async (res: any) => {
+    const result = await processGoogleResponse(res);
+    if (result) {
+      history.push('/');
+    } else {
+      localStorage.setItem('loginedUser', JSON.stringify(res.tt.$t));
+      history.push('/register');
+    }
+  };
   return (
     <div className="login-wrapper">
       <Tile>
