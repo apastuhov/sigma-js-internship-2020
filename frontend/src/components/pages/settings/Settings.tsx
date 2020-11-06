@@ -1,3 +1,4 @@
+
 import { Box } from '@material-ui/core';
 import { Formik } from 'formik';
 import React, { useState } from 'react';
@@ -11,20 +12,21 @@ import Tile from '../../shared/tile/Tile';
 import './settings.scss';
 
 const Settings: React.FC = () => {
-  const [mainInfo, setInfo] = useState({ name: '', surname: '' });
   const handleSubmit = () => {};
 
   return (
     <Layout pageTitle="Settings">
       <Formik
         initialValues={{
-          name: '',
+          birthday: '',
           languages: [
             {
               language: '',
               level: ''
             }
           ],
+          surname: '',
+          name: '',
           learnLanguages: [
             {
               language: '',
@@ -32,7 +34,9 @@ const Settings: React.FC = () => {
             }
           ],
           age: 0,
-          fileUrl: ''
+          fileUrl: '',
+          sex: '',
+          country: ''
         }}
         onSubmit={handleSubmit}
       >
@@ -45,8 +49,8 @@ const Settings: React.FC = () => {
             <Tile>
               <Box boxShadow={2} className="tile">
                 <div className="settings-nav">
-                  <Button name="BACK" color="secondary" link="" />
-                  <Button name="SAVE" color="primary" link="" />
+                  {/*<Button name="BACK" color="secondary" link="" />*/}
+                  {/*<Button name="SAVE" color="primary" link="" />*/}
                 </div>
               </Box>
             </Tile>

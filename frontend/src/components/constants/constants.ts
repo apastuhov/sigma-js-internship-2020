@@ -23,4 +23,8 @@ export enum languageLevels {
   Native = 'Native'
 }
 
-export const sex = ['Male', 'Female', 'Other'];
+export enum sex {
+  Male = 'male',
+  Female = 'female',
+  Other = 'other'
+}

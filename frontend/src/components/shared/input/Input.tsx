@@ -7,7 +7,7 @@ type InputProps = {
   type: string;
   onChange: any;
   value: string;
-  max?: string;
+  currentDate?: string;
 };
 
 const Input: React.FC<InputProps> = props => {
@@ -20,7 +20,7 @@ const Input: React.FC<InputProps> = props => {
         onChange={props.onChange}
         name={props.name}
         value={props.value}
-        max={props.max}
+        max={props.currentDate}
       />
     </div>
   );

@@ -5,21 +5,8 @@ import User from '../../mocks/user-mock.json';
 import './previewInfo.scss';
 import { useFormikContext } from 'formik';
 import { Country } from '../../constants/Countries';
-import { ILanguage } from '../../interfaces/Interface';
 import UserCard from '../userCard/UserCard';
-
-type FormikValues = {
-  name: string;
-  surname: string;
-  age: number;
-  birthday: string;
-  languages: ILanguage[];
-  learnLanguages: ILanguage[];
-  fileUrl: string;
-  sex: string;
-  country: any;
-  about: any;
-};
+import { FormikValues } from '../../interfaces/Interface';
 
 const PreviewInfo: React.FC = () => {
   const { values } = useFormikContext<FormikValues>();

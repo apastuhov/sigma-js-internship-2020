@@ -1,4 +1,6 @@
 import { DTO } from 'dto';
+import { Country } from '../constants/Countries';
+import { sex } from '../constants/constants';
 
 export interface IUser extends DTO.IUser {}
 export interface IFriend extends DTO.IFriend {}
@@ -48,3 +50,16 @@ export enum dataType {
   posts = 'posts',
   dialogs = 'dialogs'
 }
+
+export type FormikValues = {
+  name: string;
+  surname: string;
+  age: number;
+  birthday: string;
+  languages: ILanguage[];
+  learnLanguages: ILanguage[];
+  fileUrl: string;
+  sex: keyof typeof sex;
+  country: keyof typeof Country;
+  about: string;
+};

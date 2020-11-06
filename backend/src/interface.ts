@@ -31,7 +31,6 @@ export namespace DTO {
     learn: ILanguage[];
     photo: string;
     about: string;
-    friends: ID[] | IUserDoc[];
   }
 
   export interface IPost {
