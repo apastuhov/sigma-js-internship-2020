@@ -63,6 +63,17 @@ router.get('/:id/friends', async (req, res, next) => {
   }
 });
 
+router.patch('/:id/friends', async (req, res, next) => {
+  try {
+    const ID = Types.ObjectId(req.params.id);
+    const friendId = req.body.ID;
+    const response = await userService.addFriend(ID, friendId);
+    return res.send(response);
+  } catch (e) {
+    next(e);
+  }
+});
+
 // User posts
 
 router.get('/:id/posts', async (req, res, next) => {
@@ -71,7 +82,7 @@ router.get('/:id/posts', async (req, res, next) => {
     const posts = await userService.getAllPostByUserId(Types.ObjectId(ID));
     return res.send(posts);
   } catch (e) {
-    return res.status(400).send(e);
+    next(e);
   }
 });
 

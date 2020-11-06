@@ -5,9 +5,11 @@ import { useHistory } from 'react-router-dom';
 import GoogleLogo from '../../../images/google-login.svg';
 import Logo from '../../../images/logo-login.svg';
 import { processGoogleResponse } from '../../../services/sessionService';
+import { saveUserToStorage, saveFriendsToStorage } from '../../../services/localStorageService';
 import Footer from '../../shared/footer/Footer';
 import Tile from '../../shared/tile/Tile';
 import './login.scss';
+
 
 const Login: React.FC = () => {
   const history = useHistory();
@@ -17,6 +19,7 @@ const Login: React.FC = () => {
       history.push('/');
     } else {
       localStorage.setItem('loginedUser', JSON.stringify(res.tt.$t));
+      saveFriendsToStorage([]);
       history.push('/register');
     }
   };

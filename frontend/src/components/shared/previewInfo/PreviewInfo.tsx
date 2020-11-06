@@ -1,12 +1,12 @@
-import React from 'react';
-import Tile from '../../shared/tile/Tile';
 import Box from '@material-ui/core/Box';
-import User from '../../mocks/user-mock.json';
-import './previewInfo.scss';
 import { useFormikContext } from 'formik';
+import React from 'react';
 import { Country } from '../../constants/Countries';
-import UserCard from '../userCard/UserCard';
 import { FormikValues } from '../../interfaces/Interface';
+import User from '../../mocks/user-mock.json';
+import Tile from '../../shared/tile/Tile';
+import UserCard from '../userCard/UserCard';
+import './previewInfo.scss';
 
 const PreviewInfo: React.FC = () => {
   const { values } = useFormikContext<FormikValues>();

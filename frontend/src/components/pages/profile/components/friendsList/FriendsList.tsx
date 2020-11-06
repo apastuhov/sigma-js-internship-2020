@@ -26,7 +26,7 @@ const FriendsList: React.FC<IFriendsListProps> = ({ id, friends }) => {
         <span>({friends.length})</span>
       </Link>
       <div className="friends-list">
-        {sortedFriends.map((friendInfo, id) => {
+        {friends.map((friendInfo, id) => {
           return (
             <Link to={`/user/${friendInfo._id}`} className="friend" key={id}>
               <UserPhoto avatar={friendInfo.avatar} />

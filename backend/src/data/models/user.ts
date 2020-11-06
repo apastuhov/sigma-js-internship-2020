@@ -44,7 +44,7 @@ const userSchemaFields: Record<keyof DTO.IUser, any> = {
     }
   },
   about: String,
-  photo: String
+  avatar: String
 };
 
 const userSchema = new Schema(userSchemaFields);

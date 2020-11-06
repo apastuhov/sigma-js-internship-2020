@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { saveUserToStorage } from './localStorageService';
+import { saveFriendsToStorage, saveUserToStorage } from './localStorageService';
 
 const url = 'http://localhost:8000';
 
@@ -12,6 +12,7 @@ export const processGoogleResponse = (res: any) => {
     const user = res.data;
     if (user._id) {
       saveUserToStorage(user);
+      saveFriendsToStorage([]);
       return user;
     }
     saveUserToStorage({});
