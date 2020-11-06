@@ -26,7 +26,7 @@ const Profile: React.FC<IParamsProps> = props => {
     if (!userId) {
       const user = getUserFromStorage();
       setUserDetails(user);
-      getUserDetails(userDetails._id).then(user => setUserDetails(user));
+      getUserPosts(userDetails._id).then(posts => setUserPosts(posts));
     } else {
       getUserDetails(userId).then(user => setUserDetails(user));
       getUserPosts(userId).then(posts => setUserPosts(posts));
