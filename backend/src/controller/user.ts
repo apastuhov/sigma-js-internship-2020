@@ -1,22 +1,11 @@
 import express from 'express';
-import { userService } from '../service/user';
 import { Types } from 'mongoose';
 import { DTO } from '../interface';
+import { userService } from '../service/user';
 
 const router = express.Router();
 
 // Login & register
-
-router.get('/login', async (req, res) => {
-  // TODO: catch errors
-  try {
-    const mail = req.query.mail;
-    const user = await userService.checkUserMail(mail as string);
-    return res.status(200).send(user);
-  } catch (e) {
-    return res.status(404).send(e);
-  }
-});
 
 router.post('/register', async (req, res, next) => {
   // TODO: catch errors
@@ -92,7 +81,7 @@ router.post<any, any, DTO.IPost, any>('/:id/posts', async (req, res, next) => {
     const newPost = {
       userId: ID,
       body: req.body.body,
-      createdBy: req.body.createdBy,
+      createdBy: req.body.createdBy
     };
     const posts = await userService.createPost(newPost);
     return res.status(201).send(posts);

@@ -1,7 +1,7 @@
 import { DTO } from '../../interface';
-import { User } from '../models/user';
-import { Post } from '../models/post';
 import { Friends } from '../models/friends';
+import { Post } from '../models/post';
+import { User } from '../models/user';
 
 const userFiels = ['firstName', 'lastName', 'photo', 'birthday', 'country', 'speak', 'learn'];
 
@@ -25,10 +25,8 @@ export class UserRepository {
 
   async getFriendsById(userId: DTO.ID): Promise<DTO.IUserDoc[] | DTO.ID[]> {
     const data = await Friends.findOne({ userId: userId })
-      .populate('friends', [...userFiels]).then((res) => {
-        return res?.friends;
-      })
-    if (!data) return [];
+      .populate('friends', [...userFiels])
+      .then(res => res?.friends || []);
     return data;
   }
 

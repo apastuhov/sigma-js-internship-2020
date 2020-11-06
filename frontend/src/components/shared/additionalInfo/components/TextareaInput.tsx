@@ -1,5 +1,5 @@
-import React from 'react';
 import { useField } from 'formik';
+import React from 'react';
 
 type InputProps = {
   name: string;
@@ -13,8 +13,8 @@ const TextareaInput: React.FC<InputProps> = props => {
       name={field.name}
       value={field.value}
       onChange={field.onChange}
-      rows={10}
-      cols={51}
+      rows={11}
+      cols={54}
       className="textarea"
     />
   );

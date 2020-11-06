@@ -1,4 +1,5 @@
 import { google } from 'googleapis';
+import { userService } from '../service/user';
 
 const client = new google.auth.OAuth2(process.env.clientID);
 const googleLogin = (req: any, res: any) => {
@@ -8,10 +9,14 @@ const googleLogin = (req: any, res: any) => {
       idToken: tokenID,
       audience: process.env.clientID
     })
-    .then((response: any) => {
-      const { given_name, family_name, email } = response.payload;
-
-      console.log(given_name, family_name, email);
+    .then(async (response: any) => {
+      const { email } = response.payload;
+      try {
+        const user = await userService.checkUserMail(email as string);
+        return res.status(200).send(user);
+      } catch (e) {
+        return res.status(404).send(e);
+      }
     });
 };
 

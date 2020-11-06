@@ -1,26 +1,12 @@
+import Box from '@material-ui/core/Box';
 import React from 'react';
+import { GoogleLogin } from 'react-google-login';
 import GoogleLogo from '../../../images/google-login.svg';
 import Logo from '../../../images/logo-login.svg';
-import { saveUserToStorage } from '../../../services/localStorageService';
-import user from '../../mocks/user-mock.json';
+import { handleGoogleResponse } from '../../../services/sessionService';
 import Footer from '../../shared/footer/Footer';
 import Tile from '../../shared/tile/Tile';
 import './login.scss';
-import Box from '@material-ui/core/Box';
-import { Link } from 'react-router-dom';
-import { GoogleLogin } from 'react-google-login';
-import axios from 'axios';
-
-const url = 'http://localhost:8000';
-
-function responseGoogle(response: any): void {
-  axios({
-    method: 'POST',
-    url: `${url}/api/googleLogin`,
-    data: { tokenID: response.tokenId }
-  });
-  saveUserToStorage(user);
-}
 
 const Login: React.FC = () => {
   return (
@@ -39,12 +25,13 @@ const Login: React.FC = () => {
                 <div className="google-logo-container">
                   <img src={GoogleLogo} alt="google-logo" />
                 </div>
-                <p className="login-btn-link">Sign in with google</p>
+                <p className="login-btn-link">SIGN IN WITH GOOGLE</p>
               </button>
             )}
             buttonText="Login"
-            onSuccess={responseGoogle}
-            onFailure={responseGoogle}
+            onSuccess={handleGoogleResponse}
+            // in case of fail we need to send to google-oauth
+            onFailure={handleGoogleResponse}
             cookiePolicy={'single_host_origin'}
           />
         </Box>

@@ -10,7 +10,7 @@ const friendsFields: Record<keyof DTO.IUserFriends, any> = {
       unique: true,
       ref: 'User'
     }
-  ],
+  ]
 };
 
 const friendsSchema = new Schema(friendsFields);

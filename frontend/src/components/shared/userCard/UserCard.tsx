@@ -1,10 +1,10 @@
-import React, { MouseEvent, useState, useEffect } from 'react';
 import Box from '@material-ui/core/Box';
+import dayjs from 'dayjs';
+import React, { MouseEvent, useEffect, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { getUserFromStorage } from '../../../services/localStorageService';
 import { IUser } from '../../interfaces/Interface';
 import { UserPhoto } from '../userPhoto/UserPhoto';
-import dayjs from 'dayjs';
 import './userCard.scss';
 
 type MainInfoProps = {
@@ -80,8 +80,32 @@ const UserCard: React.FC<MainInfoProps> = ({ mainInfo, boxShadow, isProfile }) =
                 </div>
               }
             </div>
-          </Box>
-        )}
+            <div className="learning">
+              <h3>Learning</h3>
+              {mainInfo.learn.map((learnInfo, id) => {
+                return (
+                  <div className="languages" key={id}>
+                    <p>{learnInfo.language}</p>
+                    <p>{learnInfo.level}</p>
+                  </div>
+                );
+              })}
+            </div>
+            {!loginedUser.id && (
+              <div className="buttons-action">
+                {!mainInfo.isFriend && (
+                  <Link to="/" onClick={sendFriendRequest} className="add-friend">
+                    add friend
+                  </Link>
+                )}
+                <Link to="/chat" className="send-message">
+                  message
+                </Link>
+              </div>
+            )}
+          </div>
+        </Box>
+      )}
     </>
   );
 };

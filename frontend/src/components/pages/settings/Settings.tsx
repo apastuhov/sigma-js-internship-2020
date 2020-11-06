@@ -1,13 +1,15 @@
-import React from 'react';
+
+import { Box } from '@material-ui/core';
+import { Formik } from 'formik';
+import React, { useState } from 'react';
+import AdditionalInfo from '../../shared/additionalInfo/AdditionalInfo';
+import Button from '../../shared/button/Button';
+import LanguagesInfo from '../../shared/languagesInfo/Languages';
 import Layout from '../../shared/layout/Layout';
 import MainInfo from '../../shared/mainInfo/MainInfo';
-import AdditionalInfo from '../../shared/additionalInfo/AdditionalInfo';
-import LanguagesInfo from '../../shared/languagesInfo/Languages';
 import PreviewInfo from '../../shared/previewInfo/PreviewInfo';
 import Tile from '../../shared/tile/Tile';
-import { Box } from '@material-ui/core';
 import './settings.scss';
-import { Formik } from 'formik';
 
 const Settings: React.FC = () => {
   const handleSubmit = () => {};

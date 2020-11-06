@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
 import Box from '@material-ui/core/Box';
 import SendSharpIcon from '@material-ui/icons/SendSharp';
-import './addPostForm.scss';
-import { ISendPostProps } from '../../../../interfaces/Interface';
+import React, { useState } from 'react';
 import { getUserFromStorage } from '../../../../../services/localStorageService';
-import { sendPostToUser } from '../../../../../services/apiUserService';
+import { sendPostToUser } from '../../../../../services/postService';
+import { ISendPostProps } from '../../../../interfaces/Interface';
+import './addPostForm.scss';
 
 const AddPostForm: React.FC<ISendPostProps> = ({ _id }) => {
   const [postValue, setPostValue] = useState<string>('');
@@ -25,7 +25,7 @@ const AddPostForm: React.FC<ISendPostProps> = ({ _id }) => {
       const request = {
         body: postValue,
         createdBy: _id
-      }
+      };
       sendPostToUser(loginedUser._id, request);
       setPostValue('');
     } else {
