@@ -14,7 +14,7 @@ const TextareaInput: React.FC<InputProps> = props => {
       value={field.value}
       onChange={field.onChange}
       rows={11}
-      cols={54}
+      cols={53}
       className="textarea"
     />
   );
