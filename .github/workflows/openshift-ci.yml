@@ -1,0 +1,54 @@
+name: Node CI
+
+on:
+  push:
+    branches:
+    - test
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [12.x]
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+        
+    - name: build frontend
+      working-directory: frontend
+      run: |
+        npm i
+        npm run build
+        mv /build /fe
+        
+    - name: build backend
+      working-directory: backend
+      run: npm run build
+      
+    - name: copy-files
+      run:  cp -r ./frontend/fe ./backend
+      
+    - name: clean-up
+      run: |
+        shopt -s extglob
+        rm -r !(backend)
+        ls
+    - name: Add changes to Git tracking
+      run:  |
+        git config user.email "gitactions@gmail.com"
+        git config user.name "actions"
+        git checkout -b pr-pages
+        git add -A
+        git commit -m release
+    - name: Push changes
+      uses: ad-m/github-push-action@develop
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: pr-pages
+        force: true
