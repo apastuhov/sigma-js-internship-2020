@@ -30,5 +30,7 @@
       "pre-commit": "npm run prettier"
     }
   },
-  "dependencies": {}
+  "dependencies": {
+    "cors": "^2.8.5"
+  }
 }

@@ -4,7 +4,6 @@ import { PORT } from './constant';
 import routes from './controller/index';
 import './data/db/mongoose';
 import { corsMiddleware } from './middleware/cors';
-
 const app = express();
 
 app.use(corsMiddleware);

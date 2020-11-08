@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { dataType } from '../components/interfaces/Interface';
-import { Redirect } from 'react-router-dom';
 
 axios.defaults.baseURL = 'http://127.0.0.1:8000/api/';
 axios.defaults.headers = { 'Content-Type': 'application/json' };
@@ -10,6 +9,13 @@ const getRequest = (url: string) => axios.get(`${url}`).then(res => res.data);
 export const postRequest = (url: string, body: any) => {
   return axios
     .post(`${url}`, body)
+    .then(res => res.data)
+    .catch(e => e);
+};
+
+export const patchRequest = (url: string, body: any) => {
+  return axios
+    .patch(`${url}`, body)
     .then(res => res.data)
     .catch(e => e);
 };

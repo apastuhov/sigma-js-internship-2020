@@ -1,5 +1,6 @@
 import { UserRepository, userRepository } from '../data/repository/user';
 import { DTO } from '../interface';
+import IUserDoc = DTO.IUserDoc;
 
 class UserService {
   constructor(private userRepo: UserRepository) {}
@@ -13,6 +14,11 @@ class UserService {
 
   async createUser(newUser: DTO.IUser): Promise<DTO.IUserDoc> {
     const data = await this.userRepo.createUser(newUser);
+    return data;
+  }
+
+  async updateUser(ID: DTO.ID, param: IUserDoc): Promise<DTO.IUserDoc | null> {
+    const data = await this.userRepo.updateUser(ID, param);
     return data;
   }
 

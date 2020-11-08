@@ -5,7 +5,7 @@ import Login from '../components/pages/login/Login';
 import Profile from '../components/pages/profile/Profile';
 import Register from '../components/pages/registration/Register';
 import Search from '../components/pages/search/Search';
-import Settings from '../components/pages/settings/Settings';
+import Settings from '../components/pages/settings/Components/SettingFormikWrapper';
 import Friends from '../components/pages/friends/Friends';
 
 export default () => (
