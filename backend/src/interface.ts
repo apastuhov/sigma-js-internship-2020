@@ -63,3 +63,8 @@ export namespace DTO {
   export interface IPostDoc extends IPost, Document { }
   export interface IUserDoc extends IUser, Document { }
 }
+
+export enum status {
+  SUCCESS = 'SUCCESS',
+  FAILURE = 'FAILURE'
+}

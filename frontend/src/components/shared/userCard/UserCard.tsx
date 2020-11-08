@@ -2,9 +2,11 @@ import Box from '@material-ui/core/Box';
 import dayjs from 'dayjs';
 import React, { MouseEvent, useEffect, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import { getUserFromStorage } from '../../../services/localStorageService';
-import { IUser } from '../../interfaces/Interface';
+import { getUserFromStorage, getFriendsFromStorage, saveFriendsToStorage } from '../../../services/localStorageService';
+import { IUser, status } from '../../interfaces/Interface';
 import { UserPhoto } from '../userPhoto/UserPhoto';
+import { addFriend } from '../../../services/apiUserService';
+import dayjs from 'dayjs';
 import './userCard.scss';
 
 type MainInfoProps = {
@@ -15,15 +17,23 @@ type MainInfoProps = {
 
 const UserCard: React.FC<MainInfoProps> = ({ mainInfo, boxShadow, isProfile }) => {
   const [loginedUser, setLoginedUser] = useState(getUserFromStorage());
+  const [friends, setFriends] = useState<string[]>(getFriendsFromStorage());
   const [userAge, setUserAge] = useState<number>();
+
+  const isFriend = friends.includes(mainInfo._id.toString());
 
   const sendFriendRequest = (event: MouseEvent) => {
     event.preventDefault();
-    const request = {
-      friendId: mainInfo._id,
-      myId: 111
+    const friendId = {
+      ID: mainInfo._id
     };
-    console.log(JSON.stringify(request));
+
+    addFriend(loginedUser._id, friendId).then(res => {
+      if (res === status.SUCCESS) {
+        setFriends(arr => [...arr, friendId.ID]);
+        saveFriendsToStorage(friends);
+      }
+    });
   };
 
   useEffect(() => {
