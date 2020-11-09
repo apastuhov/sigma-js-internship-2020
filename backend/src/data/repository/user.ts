@@ -1,5 +1,7 @@
 import { DTO } from '../../interface';
 import { Friends } from '../models/friends';
+import { Post } from '../models/post';
+import { User } from '../models/user';
 import IUserDoc = DTO.IUserDoc;
 
 const userFiels = ['firstName', 'lastName', 'photo', 'birthday', 'country', 'speak', 'learn'];
