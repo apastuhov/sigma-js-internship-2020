@@ -20,9 +20,9 @@ const Profile: React.FC<IParamsProps> = props => {
   const [userDetails, setUserDetails] = useState(getUserFromStorage());
   const [userPosts, setUserPosts] = useState([]);
   const location = useLocation();
+  const userId = props.match.params.id;
 
   useEffect(() => {
-    const userId = props.match.params.id;
     if (!userId) {
       const user = getUserFromStorage();
       setUserDetails(user);
@@ -31,7 +31,7 @@ const Profile: React.FC<IParamsProps> = props => {
       getUserDetails(userId).then(user => setUserDetails(user));
       getUserPosts(userId).then(posts => setUserPosts(posts));
     }
-  }, [location]);
+  }, [location, userId, userDetails]);
 
   return (
     <>

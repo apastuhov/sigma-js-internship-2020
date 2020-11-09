@@ -1,7 +1,6 @@
 import { DTO } from '../../interface';
 import { Friends } from '../models/friends';
-import { Post } from '../models/post';
-import { User } from '../models/user';
+import IUserDoc = DTO.IUserDoc;
 
 const userFiels = ['firstName', 'lastName', 'photo', 'birthday', 'country', 'speak', 'learn'];
 
@@ -14,10 +13,12 @@ export class UserRepository {
 
   async createUser(newUser: DTO.IUser): Promise<DTO.IUserDoc> {
     const user = new User(newUser);
-    const res = await user.save(function (err, user) {
-      if (err) return console.error(err);
-      return user;
-    });
+    const res = await user.save();
+    return res._id;
+  }
+
+  async updateUser(ID: DTO.ID, param: IUserDoc): Promise<DTO.IUserDoc | null> {
+    const res = await User.findByIdAndUpdate(ID, param).exec();
     return res;
   }
 
@@ -26,7 +27,10 @@ export class UserRepository {
   async getFriendsById(userId: DTO.ID): Promise<DTO.IUserDoc[] | DTO.ID[]> {
     const data = await Friends.findOne({ userId: userId })
       .populate('friends', [...userFiels])
-      .then(res => res?.friends || []);
+      .then(res => {
+        return res?.friends;
+      });
+    if (!data) return [];
     return data;
   }
 

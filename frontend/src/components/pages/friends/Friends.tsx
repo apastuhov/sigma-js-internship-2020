@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
+import { getFriends } from '../../../services/apiUserService';
 import Layout from '../../shared/layout/Layout';
 import UserList from '../../shared/userList/UserList';
 import { getFriends } from '../../../services/apiUserService';
