@@ -1,12 +1,12 @@
 import axios from 'axios';
 import { saveUserToStorage } from './localStorageService';
 
-const url = 'http://localhost:8000';
+const url = `${process.env.REACT_APP_API_URL}`;
 
 export const processGoogleResponse = (res: any) => {
   return axios({
     method: 'POST',
-    url: `${url}/api/googleLogin`,
+    url: `${url}/googleLogin`,
     data: { tokenID: res.tokenId }
   }).then(res => {
     const user = res.data;
