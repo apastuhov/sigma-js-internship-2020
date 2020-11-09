@@ -1,5 +1,6 @@
 import Box from '@material-ui/core/Box';
 import React, { useEffect, useRef, useState } from 'react';
+import { tempMessages } from '../../../../mocks/tempMessages';
 import { Compose } from '../compose/Compose';
 import { Message } from '../message/Message';
 import './messageList.scss';
@@ -10,80 +11,9 @@ export const MessageList: React.FC = () => {
   const [messages, setMessages] = useState<Array<any>>([]);
 
   useEffect(() => {
-    getMessages();
+    setMessages([...tempMessages]);
     // id
   }, []);
-
-  const getMessages = () => {
-    const tempMessages = [
-      {
-        id: 1,
-        author: 'apple',
-        message:
-          'Hello world! This is a long message that will hopefully get wrapped by our message bubble component! We will see how well it works.',
-        timestamp: new Date().getTime()
-      },
-      {
-        id: 2,
-        author: 'orange',
-        message: 'It looks like it wraps exactly as it is supposed to. Lets see what a reply looks like!',
-        timestamp: new Date().getTime()
-      },
-      {
-        id: 3,
-        author: 'orange',
-        message:
-          'Hello world! This is a long message that will hopefully get wrapped by our message bubble component! We will see how well it works.',
-        timestamp: new Date().getTime()
-      },
-      {
-        id: 4,
-        author: 'apple',
-        message: 'It looks like it wraps exactly as it is supposed to. Lets see what a reply looks like!',
-        timestamp: new Date().getTime()
-      },
-      {
-        id: 5,
-        author: 'apple',
-        message:
-          'Hello world! This is a long message that will hopefully get wrapped by our message bubble component! We will see how well it works.',
-        timestamp: new Date().getTime()
-      },
-      {
-        id: 6,
-        author: 'apple',
-        message: 'It looks like it wraps exactly as it is supposed to. Lets see what a reply looks like!',
-        timestamp: new Date().getTime()
-      },
-      {
-        id: 7,
-        author: 'orange',
-        message:
-          'Hello world! This is a long message that will hopefully get wrapped by our message bubble component! We will see how well it works.',
-        timestamp: new Date().getTime()
-      },
-      {
-        id: 8,
-        author: 'orange',
-        message: 'It looks like it wraps exactly as it is supposed to. Lets see what a reply looks like!',
-        timestamp: new Date().getTime()
-      },
-      {
-        id: 9,
-        author: 'apple',
-        message:
-          'Hello world! This is a long message that will hopefully get wrapped by our message bubble component! We will see how well it works.',
-        timestamp: new Date().getTime()
-      },
-      {
-        id: 10,
-        author: 'orange',
-        message: 'It looks like it wraps exactly as it is supposed to. Lets see what a reply looks like!',
-        timestamp: new Date().getTime()
-      }
-    ];
-    setMessages([...messages, ...tempMessages]);
-  };
 
   //scroll to bottom
   const divRef = useRef<HTMLDivElement>(null);

@@ -9,7 +9,7 @@ import './addPostForm.scss';
 const AddPostForm: React.FC<ISendPostProps> = ({ _id }) => {
   const [postValue, setPostValue] = useState<string>('');
   const [isInvalidForm, setInvalidForm] = useState<boolean>(false);
-  const [loginedUser, setLoginedUser] = useState(getUserFromStorage());
+  const [loginedUser] = useState(getUserFromStorage());
 
   const inputValueHandleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     setPostValue(event.target.value);

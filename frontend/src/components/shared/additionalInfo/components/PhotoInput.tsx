@@ -1,6 +1,5 @@
-import React from 'react';
-import UploadPhotoImg from '../../../../images/upload-photo.svg';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import React from 'react';
 
 interface PhotoInputProps {
   onUpload: (url: string) => void;

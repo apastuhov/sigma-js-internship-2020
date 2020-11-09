@@ -1,9 +1,9 @@
-import React from 'react';
-import './additionalInfo.scss';
-import Tile from '../../shared/tile/Tile';
 import Box from '@material-ui/core/Box';
+import { useFormikContext } from 'formik';
+import React from 'react';
+import Tile from '../../shared/tile/Tile';
+import './additionalInfo.scss';
 import PhotoInput from './components/PhotoInput';
-import { useField, useFormikContext } from 'formik';
 import TextareaInput from './components/TextareaInput';
 
 const AdditionalInfo: React.FC = props => {
