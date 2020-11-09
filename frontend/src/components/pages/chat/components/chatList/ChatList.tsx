@@ -29,7 +29,7 @@ export const ChatList: React.FC = () => {
 
   useEffect(() => {
     getChats();
-  }, [search]);
+  }, []);
 
   const getChats = () => {
     setIsLoading(true);
@@ -44,8 +44,7 @@ export const ChatList: React.FC = () => {
           };
         }
       );
-      const results = newChats.filter((chat: ChatInfoProps) => chat.name.toLowerCase().includes(search.toLowerCase()));
-      setSearchResults(results);
+      setSearchResults(newChats);
       setIsLoading(false);
     });
   };

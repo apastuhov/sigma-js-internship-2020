@@ -1,5 +1,5 @@
-import React from 'react';
 import { useField } from 'formik';
+import React from 'react';
 import Select from '../select/Select';
 
 type SelectProps = {
@@ -9,7 +9,7 @@ type SelectProps = {
 };
 
 const SelectWithFormik: React.FC<SelectProps> = props => {
-  const [field, meta] = useField(props.name);
+  const [field] = useField(props.name);
 
   return (
     <Select

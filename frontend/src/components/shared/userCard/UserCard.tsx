@@ -14,7 +14,7 @@ type MainInfoProps = {
 };
 
 const UserCard: React.FC<MainInfoProps> = ({ mainInfo, boxShadow, isProfile }) => {
-  const [loginedUser, setLoginedUser] = useState(getUserFromStorage());
+  const [loginedUser] = useState(getUserFromStorage());
   const [userAge, setUserAge] = useState<number>();
 
   const sendFriendRequest = (event: MouseEvent) => {

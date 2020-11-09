@@ -1,5 +1,5 @@
-import React from 'react';
 import { useField } from 'formik';
+import React from 'react';
 import Input from '../input/Input';
 
 type InputProps = {
@@ -10,7 +10,7 @@ type InputProps = {
 };
 
 const InputWithFormik: React.FC<InputProps> = props => {
-  const [field, meta] = useField(props.name);
+  const [field] = useField(props.name);
 
   return (
     <Input

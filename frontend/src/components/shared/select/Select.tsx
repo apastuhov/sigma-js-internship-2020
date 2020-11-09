@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './select.scss';
-import { languageLevels } from '../../constants/constants';
 
 type SelectProps = {
   name: string;
