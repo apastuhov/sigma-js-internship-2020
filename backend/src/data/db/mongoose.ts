@@ -2,7 +2,9 @@ import mongoose from 'mongoose';
 
 import { user, dbAddress, dbName, dbPort } from '../settings';
 
-const dbLink = `mongodb://${user}${dbAddress}:${dbPort}/${dbName}`;
+const dbUser = user? `${user}:${user}@` : '';
+
+const dbLink = `mongodb://${dbUser}${dbAddress}:${dbPort}/${dbName}`;
 
 mongoose.connect(dbLink, { useNewUrlParser: true, useUnifiedTopology: true }, err => {
   if (err) {
