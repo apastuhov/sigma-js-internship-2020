@@ -39,23 +39,28 @@
       justify-content: flex-start;
       align-items: center;
       background-color: $primary-color;
-      padding: 0 $gap-24 0 0;
       border: 1px solid $primary-color;
       border-radius: $tile-radius;
       outline: none;
       width: 270px;
       @include hover-transform-scale;
 
+      &:hover {
+        cursor: pointer;
+      }
+
       &-link {
         text-decoration: none;
         margin: 0;
         color: $white;
-        @include title;
+        font-size: 16px;
+        font-family: 'Roboto';
       }
     }
 
     .google-logo-container {
       background-color: $white;
+      height: 24px;
       border-radius: $tile-radius;
       padding: $gap-2;
       margin: $gap-8 $gap-24 $gap-8 $gap-10;

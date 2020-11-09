@@ -1,6 +1,4 @@
 import { DTO } from '../../interface';
-import { User } from '../models/user';
-import { Post } from '../models/post';
 import { Friends } from '../models/friends';
 import IUserDoc = DTO.IUserDoc;
 

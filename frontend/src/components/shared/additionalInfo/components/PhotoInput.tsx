@@ -1,5 +1,6 @@
 import React from 'react';
 import UploadPhotoImg from '../../../../images/upload-photo.svg';
+import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
 interface PhotoInputProps {
   onUpload: (url: string) => void;
@@ -12,8 +13,8 @@ const PhotoInput: React.FC<PhotoInputProps> = props => {
   return (
     <div className="upload-photo">
       <input type="file" className="img-input" accept="image/jpeg,image/png,image/gif" onChange={onUpload} />
-      <img src={UploadPhotoImg} alt="upload" />
-      <p className="upload-text">Upload a photo</p>
+      <AccountCircleIcon className="avatar-icon" />
+      <p className="upload-text">+ Upload a photo</p>
     </div>
   );
 };

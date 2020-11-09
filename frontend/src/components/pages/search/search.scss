@@ -2,7 +2,7 @@
 
 .filter {
   float: left;
-  margin-right: 24px;
+  margin-right: $gap-10;
   @include tile;
   form {
     display: grid;
@@ -11,6 +11,7 @@
 
     select {
       outline-color: $primary-color;
+      margin-right: 0;
     }
 
     input {
@@ -38,7 +39,7 @@
         cursor: pointer;
       }
       .divider {
-        margin: 0 10px;
+        margin: 0 10px 6px 10px;
         width: 12px;
         height: 1px;
         border-bottom: 2px solid $grey;
@@ -56,6 +57,8 @@
       justify-self: center;
       background-color: $primary-color;
       grid-column: 2 / 3;
+      height: 34px;
+      font-family: 'Roboto';
 
       &:focus {
         outline: none;
@@ -76,4 +79,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+ul li {
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.14) 0px 2px 2px 0px,
+    rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
 }

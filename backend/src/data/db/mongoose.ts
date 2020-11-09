@@ -1,6 +1,8 @@
 import mongoose from 'mongoose';
 
-const dbLink = 'mongodb://localhost:27018/db';
+import { user, dbAddress, dbName, dbPort } from '../settings';
+
+const dbLink = `mongodb://${user}${dbAddress}:${dbPort}/${dbName}`;
 
 mongoose.connect(dbLink, { useNewUrlParser: true, useUnifiedTopology: true }, err => {
   if (err) {
