@@ -29,13 +29,13 @@ export const getFriends = async (id: string) => {
   }
 };
 
-export const addFriend = async (id: string, friendID: object) => {
+export const addFriendToDB = async (id: string, friendID: object) => {
   try {
     const res = await axios.patch(`${dataType.user}/${id}/friends`, friendID);
     return await res.data;
   } catch (e) {
     console.log(e);
   }
-}
+};
 
 export const getUserDetails = (id: number) => getRequest(`${dataType.user}/${id}`);

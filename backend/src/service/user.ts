@@ -1,6 +1,5 @@
 import { UserRepository, userRepository } from '../data/repository/user';
 import { DTO, status } from '../interface';
-import { DTO } from '../interface';
 import IUserDoc = DTO.IUserDoc;
 
 class UserService {

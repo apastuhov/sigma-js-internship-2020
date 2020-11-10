@@ -5,8 +5,6 @@ import { useHistory } from 'react-router-dom';
 import GoogleLogo from '../../../images/google-login.svg';
 import Logo from '../../../images/logo-login.svg';
 import { processGoogleResponse } from '../../../services/sessionService';
-import { saveUserToStorage, saveFriendsToStorage } from '../../../services/localStorageService';
-import user from '../../mocks/user-mock.json';
 import Footer from '../../shared/footer/Footer';
 import Tile from '../../shared/tile/Tile';
 import './login.scss';

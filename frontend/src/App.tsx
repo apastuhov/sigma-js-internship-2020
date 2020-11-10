@@ -1,13 +1,13 @@
 import React from 'react';
 import Routes from './routes/Routes';
-import { Store } from './components/storage/context';
+import { FriendsProvider } from './components/storage/friends/friendsContext';
 
 function App() {
   return (
     <div className="App">
-      <Store>
+      <FriendsProvider>
         <Routes />
-      </Store>
+      </FriendsProvider>
     </div>
   );
 }
