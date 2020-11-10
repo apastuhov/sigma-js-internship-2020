@@ -6,7 +6,7 @@ type InputProps = {
 };
 
 const TextareaInput: React.FC<InputProps> = props => {
-  const [field, meta] = useField(props.name);
+  const [field] = useField(props.name);
 
   return (
     <textarea

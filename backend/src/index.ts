@@ -5,7 +5,6 @@ import routes from './controller/index';
 const path = require('path');
 import './data/db/mongoose';
 import { corsMiddleware } from './middleware/cors';
-
 const app = express();
 
 app.use(corsMiddleware);

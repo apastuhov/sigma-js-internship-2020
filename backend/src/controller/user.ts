@@ -17,6 +17,18 @@ router.post('/register', async (req, res, next) => {
   }
 });
 
+router.patch('/edit/:id', async (req, res, next) => {
+  // TODO: catch errors
+  try {
+    const ID = Types.ObjectId(req.params.id);
+    const param = req.body;
+    const user = await userService.updateUser(ID, param);
+    return res.status(201).send(user);
+  } catch (e) {
+    console.log(e);
+  }
+});
+
 // User info
 
 router.get('/:id', async (req, res, next) => {

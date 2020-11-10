@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { getFriends } from '../../../services/apiUserService';
 import Layout from '../../shared/layout/Layout';
 import UserList from '../../shared/userList/UserList';
-import { getFriends } from '../../../services/apiUserService';
 import './friends.scss';
 
 interface MatchParams {
@@ -15,7 +15,7 @@ const Friends: React.FC = () => {
 
   useEffect(() => {
     getFriends(id).then(users => setFriends(users));
-  }, []);
+  }, [id]);
 
   return (
     <Layout pageTitle="Friends" countFriends={friends.length}>
