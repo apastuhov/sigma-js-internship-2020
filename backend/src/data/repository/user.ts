@@ -2,6 +2,7 @@ import { DTO } from '../../interface';
 import { Friends } from '../models/friends';
 import { Post } from '../models/post';
 import { User } from '../models/user';
+import { Dialog } from '../models/dialog';
 import IUserDoc = DTO.IUserDoc;
 
 const userFiels = ['firstName', 'lastName', 'photo', 'birthday', 'country', 'speak', 'learn'];
@@ -92,6 +93,17 @@ export class UserRepository {
     const res = await post.save(function (err, post) {
       if (err) return console.error(err);
       return post;
+    });
+    return res;
+  }
+
+  //Dialogs
+
+  async createDialog(newDialog: DTO.IDialogs): Promise<DTO.IDialogs> {
+    const dialog = new Dialog(newDialog);
+    const res = await dialog.save(function (err, dialog) {
+      if (err) return console.error(err);
+      return dialog;
     });
     return res;
   }
