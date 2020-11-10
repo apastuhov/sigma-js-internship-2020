@@ -15,7 +15,7 @@ interface MatchParams {
   id: number & string;
 }
 
-interface IParamsProps extends RouteComponentProps<MatchParams> { }
+interface IParamsProps extends RouteComponentProps<MatchParams> {}
 
 const Profile: React.FC<IParamsProps> = props => {
   const [userDetails, setUserDetails] = useState(getUserFromStorage());
@@ -35,7 +35,7 @@ const Profile: React.FC<IParamsProps> = props => {
       getUserPosts(userId).then(posts => setUserPosts(posts));
       getFriends(userId).then(users => setFriends(users));
     }
-  }, [location]);
+  }, [location, userId, userDetails]);
 
   return (
     <>
@@ -43,20 +43,20 @@ const Profile: React.FC<IParamsProps> = props => {
       {!userDetails ? (
         <Redirect to="/login" />
       ) : (
-          <Layout pageTitle="Profile">
-            <div className="profile">
-              <div className="leftside">
-                <UserCard mainInfo={userDetails} boxShadow={2} isProfile />
-                <About about={userDetails.about} />
-                <FriendsList id={userDetails._id} friends={friends} />
-              </div>
-              <div className="rightside">
-                <AddPostForm _id={userDetails._id} />
-                <Posts posts={userPosts} />
-              </div>
+        <Layout pageTitle="Profile">
+          <div className="profile">
+            <div className="leftside">
+              <UserCard mainInfo={userDetails} boxShadow={2} isProfile />
+              <About about={userDetails.about} />
+              <FriendsList id={userDetails._id} friends={friends} />
             </div>
-          </Layout>
-        )}
+            <div className="rightside">
+              <AddPostForm _id={userDetails._id} />
+              <Posts posts={userPosts} />
+            </div>
+          </div>
+        </Layout>
+      )}
     </>
   );
 };

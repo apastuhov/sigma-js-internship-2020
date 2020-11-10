@@ -11,48 +11,43 @@ import { IUser } from '../../interfaces/Interface';
 
 type InitialStateType = {
   friends: Set<string>;
-  addFriendToContext: (id:string) => void;
+  addFriendToContext: (id: string) => void;
 };
 
 const initialState: InitialStateType = {
   friends: new Set<string>(),
-  addFriendToContext: (id:string) => {}
-}
-
-type Props = {
-  children: React.ReactNode
+  addFriendToContext: (id: string) => {}
 };
 
-export const friendsContext = React.createContext(initialState)
+type Props = {
+  children: React.ReactNode;
+};
 
-export const FriendsProvider = ({children}:Props) => {
-  const [friends, setFriends] = useState<Set<string>>(new Set([]))
-  const user = getUserFromStorage()
+export const friendsContext = React.createContext(initialState);
 
-  const friendsFromStorage = getFriendsFromStorage()
+export const FriendsProvider = ({ children }: Props) => {
+  const [friends, setFriends] = useState<Set<string>>(new Set([]));
+  const user = getUserFromStorage();
 
-  const addFriendToContext = (id:string) => {
-    setFriends(arr => new Set(arr.add(id)))
-  }
+  const friendsFromStorage = getFriendsFromStorage();
+
+  const addFriendToContext = (id: string) => {
+    setFriends(arr => new Set(arr.add(id)));
+  };
 
   useEffect(() => {
-    if(friendsFromStorage) {
-      setFriends(new Set(friendsFromStorage))
+    if (friendsFromStorage) {
+      setFriends(new Set(friendsFromStorage));
     } else {
-      getFriends(user._id).then(users => setFriends(new Set(users.map((user:IUser) => user._id))))
+      getFriends(user._id).then(users => setFriends(new Set(users.map((user: IUser) => user._id))));
     }
-  }, [])
+  }, []);
 
   useEffect(() => {
-    saveFriendsToStorage(friends)
-  }, [friends])
+    saveFriendsToStorage(friends);
+  }, [friends]);
 
-  return (
-    <friendsContext.Provider value={{ friends, addFriendToContext }}>
-      {children}
-    </friendsContext.Provider>
-  )
-}
+  return <friendsContext.Provider value={{ friends, addFriendToContext }}>{children}</friendsContext.Provider>;
+};
 
-export const useFriends = () => useContext(friendsContext)
-
+export const useFriends = () => useContext(friendsContext);

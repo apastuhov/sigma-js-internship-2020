@@ -1,13 +1,12 @@
 import { Box } from '@material-ui/core';
-import dayjs from 'dayjs';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { CountryDropdown } from 'react-country-region-selector';
 import apiService from '../../../services/apiService';
 import { hightLimit, languageLevels, languages, lowLimit } from '../../constants/constants';
 import { dataType } from '../../interfaces/Interface';
 import Layout from '../../shared/layout/Layout';
 import UserList from '../../shared/userList/UserList';
-import { useFriends } from '../../storage/friends/friendsContext';
+import dayjs from 'dayjs';
 import './search.scss';
 
 const Search: React.FC = () => {
@@ -20,9 +19,7 @@ const Search: React.FC = () => {
     female: false,
     other: false
   });
-  const {friends} = useFriends();
 
-  console.log(friends);
   const [online, setIsOnline] = useState({
     isOnline: false
   });
@@ -165,8 +162,8 @@ const Search: React.FC = () => {
           Not found, try again
         </Box>
       ) : (
-          <UserList users={users} />
-        )}
+        <UserList users={users} />
+      )}
     </Layout>
   );
 };

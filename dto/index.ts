@@ -45,8 +45,4 @@ export namespace DTO {
     avatar: string;
   }
 
-  export enum status {
-    SUCCESS="SUCCESS",
-    FAILURE="FAILURE"
-  }
 }
