@@ -1,25 +1,22 @@
+import { Box } from '@material-ui/core';
+import { useFormikContext } from 'formik';
 import React, { useEffect, useState } from 'react';
-import Layout from '../../shared/layout/Layout';
-import MainInfo from '../../shared/mainInfo/MainInfo';
+import { getUserFromStorage } from '../../../services/localStorageService';
+import { FormikValues } from '../../interfaces/Interface';
 import AdditionalInfo from '../../shared/additionalInfo/AdditionalInfo';
-import Button from '../../shared/button/Button';
 import LanguagesInfo from '../../shared/languagesInfo/Languages';
 import Layout from '../../shared/layout/Layout';
 import MainInfo from '../../shared/mainInfo/MainInfo';
 import PreviewInfo from '../../shared/previewInfo/PreviewInfo';
 import Tile from '../../shared/tile/Tile';
-import './settings.scss';
-import { Formik, useFormikContext } from 'formik';
-import { getUserFromStorage } from '../../../services/localStorageService';
-import { getUserDetails, getUserPosts } from '../../../services/apiUserService';
-import { FormikValues } from '../../interfaces/Interface';
 import { ButtonWithFormikSettings } from './Components/ButtonsWithFormikSettings';
+import './settings.scss';
 
 const Settings: React.FC = () => {
-  const { values, setValues } = useFormikContext<FormikValues>();
+  const { setValues } = useFormikContext<FormikValues>();
   const storageData = getUserFromStorage();
 
-  const [userDetails, setUserDetails] = useState({
+  const [userDetails] = useState({
     name: storageData.firstName,
     surname: storageData.lastName,
     birthday: storageData.birthday,
@@ -34,7 +31,7 @@ const Settings: React.FC = () => {
 
   useEffect(() => {
     setValues(userDetails);
-  }, []);
+  }, [setValues, userDetails]);
 
   return (
     <Layout pageTitle="Settings">
