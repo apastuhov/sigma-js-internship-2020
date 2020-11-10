@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
 import { useFormikContext } from 'formik';
-import { patchRequest, postRequest } from '../../../../services/apiUserService';
+import React from 'react';
+import { patchRequest } from '../../../../services/apiUserService';
+import { getUserFromStorage } from '../../../../services/localStorageService';
+import { sex } from '../../../constants/constants';
+import { Country } from '../../../constants/Countries';
 import { FormikValues } from '../../../interfaces/Interface';
 import Button from '../../../shared/button/Button';
-import { Country } from '../../../constants/Countries';
-import { sex } from '../../../constants/constants';
-import { getUserFromStorage } from '../../../../services/localStorageService';
 
 const storageData = getUserFromStorage();
 
