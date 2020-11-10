@@ -13,10 +13,10 @@ import { ButtonWithFormikSettings } from './Components/ButtonsWithFormikSettings
 import './settings.scss';
 
 const Settings: React.FC = () => {
-  const { values, setValues } = useFormikContext<FormikValues>();
+  const { setValues } = useFormikContext<FormikValues>();
   const storageData = getUserFromStorage();
 
-  const [userDetails, setUserDetails] = useState({
+  const [userDetails] = useState({
     name: storageData.firstName,
     surname: storageData.lastName,
     birthday: storageData.birthday,
@@ -31,7 +31,7 @@ const Settings: React.FC = () => {
 
   useEffect(() => {
     setValues(userDetails);
-  }, []);
+  }, [setValues, userDetails]);
 
   return (
     <Layout pageTitle="Settings">

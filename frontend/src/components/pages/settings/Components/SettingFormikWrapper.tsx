@@ -1,10 +1,7 @@
-import React, { useState } from 'react';
-import Layout from '../../../shared/layout/Layout';
-import '../settings.scss';
-import { Formik, useFormikContext } from 'formik';
+import { Formik } from 'formik';
+import React from 'react';
 import Setting from '../Settings';
-import { getUserFromStorage } from '../../../../services/localStorageService';
-import { FormikValues } from '../../../interfaces/Interface';
+import '../settings.scss';
 
 const Settings: React.FC = () => {
   const handleSubmit = () => {};
