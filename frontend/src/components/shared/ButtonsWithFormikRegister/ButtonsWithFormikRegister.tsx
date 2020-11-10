@@ -24,10 +24,9 @@ export const ButtonWithFormikRegister: React.FC = props => {
   const history = useHistory();
 
   useEffect(() => {
-    toDataURL(values.fileUrl)
-      .then(dataUrl => {
-        setUserImage(dataUrl);
-      })
+    toDataURL(values.fileUrl).then(dataUrl => {
+      setUserImage(dataUrl);
+    });
   }, [values.fileUrl]);
 
   const submitUser = () => {
@@ -44,7 +43,7 @@ export const ButtonWithFormikRegister: React.FC = props => {
       learn: values.learnLanguages,
       avatar: userImage,
       about: values.about
-    }
+    };
     saveUserToStorage(user);
     postRequest('user/register', {
       firstName: values.name,

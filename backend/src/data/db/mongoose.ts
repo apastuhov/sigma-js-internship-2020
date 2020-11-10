@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 import { user, dbAddress, dbName, dbPort } from '../settings';
 
-const dbUser = user? `${user}:${user}@` : '';
+const dbUser = user ? `${user}:${user}@` : '';
 
 const dbLink = `mongodb://${dbUser}${dbAddress}:${dbPort}/${dbName}`;
 
