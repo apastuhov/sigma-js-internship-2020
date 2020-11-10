@@ -1,16 +1,16 @@
 import axios from 'axios';
 import { dataType } from '../components/interfaces/Interface';
 
-axios.defaults.baseURL = 'http://127.0.0.1:8000/api/';
+axios.defaults.baseURL = `${process.env.REACT_APP_API_URL}`;
 axios.defaults.headers = { 'Content-Type': 'application/json' };
 
 const apiService = async (type: dataType, data: object = {}) => {
   let res = null;
   try {
     if (Object.keys(data).length === 0 && data.constructor === Object) {
-      res = await axios.get(`${type}`);
+      res = await axios.get(`/${type}`);
     } else {
-      res = await axios.post(`${type}`, JSON.stringify(data), axios.defaults.headers);
+      res = await axios.post(`/${type}`, JSON.stringify(data), axios.defaults.headers);
     }
     return await res.data;
   } catch (e) {
