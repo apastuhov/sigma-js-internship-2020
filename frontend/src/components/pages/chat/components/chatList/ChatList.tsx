@@ -1,7 +1,7 @@
 import Box from '@material-ui/core/Box';
-import axios from 'axios';
 import dayjs from 'dayjs';
 import React, { ChangeEvent, useEffect, useState } from 'react';
+import { getUserChats } from '../../../../../services/getUserChats';
 import type { ChatInfoProps } from '../chatListItem/ChatListItem';
 import { ChatListItem } from '../chatListItem/ChatListItem';
 import './chatList.scss';
@@ -31,22 +31,21 @@ export const ChatList: React.FC = () => {
     getChats();
   }, []);
 
-  const getChats = () => {
+  const getChats = async () => {
     setIsLoading(true);
-    axios.get('https://randomuser.me/api/?results=20').then(response => {
-      let newChats = response.data.results.map(
-        (result: ChatProps): ChatInfoProps => {
-          return {
-            photo: result.picture.large,
-            name: `${result.name.first} ${result.name.last}`,
-            text: 'Hello world! This is a long message that needs to be truncated.',
-            date: dayjs(new Date().getTime()).format('DD.MM')
-          };
-        }
-      );
-      setSearchResults(newChats);
-      setIsLoading(false);
-    });
+    const result = await getUserChats();
+    const newChats = result.map(
+      (result: ChatProps): ChatInfoProps => {
+        return {
+          photo: result.picture.large,
+          name: `${result.name.first} ${result.name.last}`,
+          text: 'Hello world! This is a long message that needs to be truncated.',
+          date: dayjs(new Date().getTime()).format('DD.MM')
+        };
+      }
+    );
+    setSearchResults(newChats);
+    setIsLoading(false);
   };
 
   return (
