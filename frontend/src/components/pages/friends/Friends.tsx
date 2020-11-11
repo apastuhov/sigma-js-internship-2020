@@ -15,7 +15,7 @@ const Friends: React.FC = () => {
 
   useEffect(() => {
     getFriends(id).then(users => setFriends(users));
-  }, []);
+  }, [id]);
 
   return (
     <Layout pageTitle="Friends" countFriends={friends.length}>

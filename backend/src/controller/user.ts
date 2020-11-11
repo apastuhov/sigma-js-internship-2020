@@ -93,7 +93,7 @@ router.get('/:id/posts', async (req, res) => {
     const posts = await userService.getAllPostByUserId(Types.ObjectId(ID));
     return res.send(posts);
   } catch (e) {
-    next(e);
+    return res.send(e);
   }
 });
 
