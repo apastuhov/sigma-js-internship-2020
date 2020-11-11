@@ -9,7 +9,6 @@ export class ChatRepository {
   
   async getAllDialogs(ID: DTO.ID): Promise<DTO.IDialogs[]> {
     const dialogs = await Dialog.find({ participants: ID }).populate([{ path: 'participants', select: ['firstName', 'lastName', 'avatar'] }, { path: 'messages', options: { limit: 1 } }])
-    console.log(dialogs)
     return dialogs;
   } 
 }
