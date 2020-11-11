@@ -27,15 +27,18 @@ export const friendsContext = React.createContext(initialState);
 
 export const FriendsProvider = ({ children }: Props) => {
   const [friends, setFriends] = useState<Set<string>>(new Set([]));
-  const user = getUserFromStorage();
 
-  const friendsFromStorage = getFriendsFromStorage();
+
+
 
   const addFriendToContext = (id: string) => {
     setFriends(arr => new Set(arr.add(id)));
   };
 
   useEffect(() => {
+    const user = getUserFromStorage();
+    const friendsFromStorage = getFriendsFromStorage();
+
     if (friendsFromStorage) {
       setFriends(new Set(friendsFromStorage));
     } else {
