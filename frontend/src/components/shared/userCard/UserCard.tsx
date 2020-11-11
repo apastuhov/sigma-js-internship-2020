@@ -34,7 +34,7 @@ const UserCard: React.FC<MainInfoProps> = ({ mainInfo, boxShadow, isProfile }) =
 
   return (
     <>
-      {/* TIME DECISION */}
+      {/* TEMPORARY DECISION */}
       {!loginedUser ? (
         <Redirect to="/login" />
       ) : (
