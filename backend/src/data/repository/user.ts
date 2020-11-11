@@ -5,12 +5,12 @@ import { User } from '../models/user';
 import { Dialog } from '../models/dialog';
 import IUserDoc = DTO.IUserDoc;
 
-const userFiels = ['firstName', 'lastName', 'photo', 'birthday', 'country', 'speak', 'learn'];
+const userFiels = ['firstName', 'lastName', 'avatar', 'birthday', 'country', 'speak', 'learn'];
 
 export class UserRepository {
   // Login & Register
   async checkUserMail(mail: string): Promise<DTO.IUserDoc | null> {
-    const data = await User.findOne({ email: mail }).populate('friends', ['firstName', 'lastName', 'photo']);
+    const data = await User.findOne({ email: mail }).populate('friends', ['firstName', 'lastName', 'avatar']);
     return data;
   }
 
@@ -91,7 +91,7 @@ export class UserRepository {
   // Posts
 
   async getAllPostByUserId(ID: DTO.ID): Promise<DTO.IPost[]> {
-    const posts = await Post.find({ userId: ID }).populate('createdBy', ['firstName', 'lastName', 'photo']);
+    const posts = await Post.find({ userId: ID }).populate('createdBy', ['firstName', 'lastName', 'avatar']);
     return posts;
   }
 

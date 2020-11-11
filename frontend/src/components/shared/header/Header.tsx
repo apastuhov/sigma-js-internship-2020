@@ -1,21 +1,24 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Box from '@material-ui/core/Box';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import SearchIcon from '@material-ui/icons/Search';
-import { clearStorage } from '../../../services/localStorageService';
+import { clearStorage, getUserFromStorage } from '../../../services/localStorageService';
 import './Header.scss';
 import logo from './logo.png';
 
 const Header: React.FC = () => {
   const [menuClass, setMenuClass] = useState('');
-
-  const pathImage = '/images/profiles/';
-  const iconName = 'icon_0.png';
+  const [avatar, setAvatar] = useState('');
 
   const toggleMenu = () => {
     setMenuClass(Boolean(menuClass) ? '' : 'dropdown-menu-active');
   };
+
+  useEffect(() => {
+    const user = getUserFromStorage()
+    setAvatar(user.avatar)
+  }, [])
 
   return (
     <header>
@@ -31,7 +34,9 @@ const Header: React.FC = () => {
           <Link to="/chat">
             <MailOutlineIcon style={{ color: '#fff' }} />
           </Link>
-          <img onClick={toggleMenu} src={`${pathImage}${iconName}`} alt="profile" className="logo" />
+          <div className="avatar">
+            <img onClick={toggleMenu} src={avatar} alt="profile" />
+          </div>
           <Box boxShadow={2} className={`dropdown-menu ${menuClass}`}>
             <Link to="/settings">Settings</Link>
             <Link to="/login" onClick={clearStorage}>
