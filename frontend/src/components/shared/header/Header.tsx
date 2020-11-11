@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
 import Box from '@material-ui/core/Box';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import SearchIcon from '@material-ui/icons/Search';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { clearStorage } from '../../../services/localStorageService';
 import './Header.scss';
 import logo from './logo.png';

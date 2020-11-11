@@ -1,5 +1,9 @@
 @import '../../../../../styles/variables.scss';
 
+.chat-item-link {
+  text-decoration: none;
+}
+
 .chat-list-item {
   @include tile;
   display: flex;
@@ -8,9 +12,6 @@
   height: 88px;
   margin-bottom: $gap-24;
 
-  &:last-of-type {
-    margin-bottom: $gap-4;
-  }
   .chat-info {
     width: 100%;
   }
@@ -25,6 +26,7 @@
 
   .chat-title {
     display: inline-block;
+    color: $black;
     font-size: $gap-14;
     font-weight: 500;
     text-transform: capitalize;
@@ -59,10 +61,6 @@
   height: 88px;
   margin-bottom: $gap-24;
   background-color: $primary-color;
-
-  &:last-of-type {
-    margin-bottom: $gap-4;
-  }
 
   .chat-info {
     width: 100%;
@@ -102,8 +100,4 @@
   .js-shave-char {
     color: $white;
   }
-}
-
-.chat-list-item-selected:hover {
-  cursor: pointer;
 }
