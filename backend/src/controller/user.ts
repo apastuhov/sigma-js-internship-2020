@@ -7,8 +7,7 @@ const router = express.Router();
 
 // Login & register
 
-router.post('/register', async (req, res, next) => {
-  // TODO: catch errors
+router.post('/register', async (req, res) => {
   try {
     const user = await userService.createUser(req.body);
     return res.status(201).send(user);
@@ -17,7 +16,7 @@ router.post('/register', async (req, res, next) => {
   }
 });
 
-router.patch('/edit/:id', async (req, res, next) => {
+router.patch('/edit/:id', async (req, res) => {
   // TODO: catch errors
   try {
     const ID = Types.ObjectId(req.params.id);
@@ -42,7 +41,7 @@ router.get('/:id', async (req, res, next) => {
   }
 });
 
-router.post<any, any, DTO.FilterRequest, any>('/filter', async (req, res, next) => {
+router.post<any, any, DTO.FilterRequest, any>('/filter', async (req, res) => {
   // TODO: catch errors
   try {
     const params = req.body;
@@ -88,7 +87,7 @@ router.patch('/:id/friends', async (req, res, next) => {
 
 // User posts
 
-router.get('/:id/posts', async (req, res, next) => {
+router.get('/:id/posts', async (req, res) => {
   try {
     const ID = req.params.id;
     const posts = await userService.getAllPostByUserId(Types.ObjectId(ID));
@@ -98,7 +97,7 @@ router.get('/:id/posts', async (req, res, next) => {
   }
 });
 
-router.post<any, any, DTO.IPost, any>('/:id/posts', async (req, res, next) => {
+router.post<any, any, DTO.IPost, any>('/:id/posts', async (req, res) => {
   try {
     const ID = req.params.id;
     const newPost = {
