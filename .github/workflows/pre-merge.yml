@@ -19,9 +19,10 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: test
+        working-directory: frontend
         run: |
         npm i
-        npm test
+        npm run test
 
       - name: build frontend
         working-directory: frontend
