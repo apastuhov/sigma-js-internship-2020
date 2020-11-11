@@ -19,6 +19,7 @@ const Search: React.FC = () => {
     female: false,
     other: false
   });
+
   const [online, setIsOnline] = useState({
     isOnline: false
   });
