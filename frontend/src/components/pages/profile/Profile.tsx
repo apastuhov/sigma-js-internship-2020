@@ -31,7 +31,7 @@ const Profile: React.FC<IParamsProps> = props => {
       getUserDetails(userId).then(user => setUserDetails(user));
       getUserPosts(userId).then(posts => setUserPosts(posts));
     }
-  }, [location, userId, userDetails]);
+  }, [location, userId, userDetails._id]);
 
   return (
     <>

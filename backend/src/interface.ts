@@ -49,7 +49,7 @@ export namespace DTO {
 
   export interface IDialogs {
     participants: ID[];
-    messages: IMessage[];
+    messages?: IMessage[];
   }
 
   export interface IUserFriends {
