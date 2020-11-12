@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
-import { getFriendsFromStorage, getUserFromStorage, saveFriendsToStorage } from '../../../services/localStorageService';
-import { getFriends } from '../../../services/apiUserService';
-import { IUser } from '../../interfaces/Interface';
+import { saveFriendsToStorage } from '../../../services/localStorageService';
+// import { getFriends } from '../../../services/apiUserService';
+// import { IUser } from '../../interfaces/Interface';
 
 // TODO
 // service, that update context
@@ -28,22 +28,19 @@ export const friendsContext = React.createContext(initialState);
 export const FriendsProvider = ({ children }: Props) => {
   const [friends, setFriends] = useState<Set<string>>(new Set([]));
 
-
-
-
   const addFriendToContext = (id: string) => {
     setFriends(arr => new Set(arr.add(id)));
   };
 
   useEffect(() => {
-    const user = getUserFromStorage();
-    const friendsFromStorage = getFriendsFromStorage();
+    // const user = getUserFromStorage();
+    // const friendsFromStorage = getFriendsFromStorage();
 
-    if (friendsFromStorage) {
-      setFriends(new Set(friendsFromStorage));
-    } else {
-      getFriends(user._id).then(users => setFriends(new Set(users.map((user: IUser) => user._id))));
-    }
+    // if (friendsFromStorage) {
+    //   setFriends(new Set(friendsFromStorage));
+    // } else {
+    //   getFriends(user._id).then(users => setFriends(new Set(users.map((user: IUser) => user._id))));
+    // }
   }, []);
 
   useEffect(() => {
