@@ -24,12 +24,10 @@ jobs:
       - name: test
         working-directory: frontend
         run:  |
-          npm i
+          npm ci
+          npm install typescript
           npm run test
 
       - name: build frontend
         working-directory: frontend
-        run: |
-          npm i
-          npm i typescript
-          npm run build
+        run: npm run build
