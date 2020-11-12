@@ -1,6 +1,7 @@
 import Box from '@material-ui/core/Box';
 import React, { useEffect, useRef, useState } from 'react';
-import { tempMessages } from '../../../../mocks/tempMessages';
+import { useParams } from 'react-router-dom';
+import { getChatMessages } from '../../../../../services/getChatMessages';
 import { Compose } from '../compose/Compose';
 import { Message } from '../message/Message';
 import './messageList.scss';
@@ -9,13 +10,21 @@ const MY_USER_ID = 'apple';
 
 export const MessageList: React.FC = () => {
   const [messages, setMessages] = useState<Array<any>>([]);
+  const { dialogId } = useParams<any>();
 
   useEffect(() => {
-    setMessages([...tempMessages]);
-    // id
-  }, []);
+    setMessages([]);
+    (async () => {
+      const messages = await getChatMessages(dialogId);
+      setMessages(messages);
+    })();
+  }, [dialogId]);
 
-  //scroll to bottom
+  //TODO: second useEffect for user data
+
+  // third useEffect for sockets for new messages
+
+  //scroll to bottom on each render
   const divRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

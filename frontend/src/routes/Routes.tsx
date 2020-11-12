@@ -14,8 +14,8 @@ export default () => (
     <Route path="/user/:id" exact component={Profile} />
     <Route path="/user/:id/friends" component={Friends} />
     <Route path="/register" component={Register} />
-    <Route path="/dialogs" component={Chat} />
-    <Route path="/dialogs/:id" component={Chat} />
+    <Route path="/chat" component={Chat} />
+    <Route path="/chat/:dialogId" component={Chat} />
     <Route path="/search" component={Search} />
     <Route path="/settings" component={Settings} />
     <Route path="/login" component={Login} />

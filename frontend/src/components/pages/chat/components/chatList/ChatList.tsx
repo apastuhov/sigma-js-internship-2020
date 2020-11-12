@@ -33,6 +33,7 @@ export const ChatList: React.FC = () => {
 
   const getChats = async () => {
     setIsLoading(true);
+    // TODO: replace with another service
     const result = await getUserChats();
     const newChats = result.map(
       (result: ChatProps): ChatInfoProps => {
