@@ -44,7 +44,7 @@ export namespace DTO {
     userId: ID;
     body: string;
     status: number;
-    date: Date;
+    date?: Date;
   }
 
   export interface IDialogs {
