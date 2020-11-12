@@ -19,9 +19,11 @@ const Search: React.FC = () => {
     female: false,
     other: false
   });
+
   // const [online, setIsOnline] = useState({
   //   isOnline: false
   // });
+
 
   const [selectsFilters, setSelectsFilters] = useState({
     lowAge: lowLimit,
