@@ -31,9 +31,8 @@ export const MessageList: React.FC = () => {
     divRef.current!.scrollIntoView();
   });
 
-  const renderMessages = () => {
+  const renderMessages = () =>
     messages.map(message => <Message key={message.id} isMine={message.author === MY_USER_ID} data={message} />);
-  };
 
   return (
     <Box boxShadow={2} className="message-list">
