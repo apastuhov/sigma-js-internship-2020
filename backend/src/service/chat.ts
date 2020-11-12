@@ -8,6 +8,11 @@ class ChatService {
     const data = await this.chatRepo.getMessagesByChatId(chatId);
     return data;
   }
+
+  async getAllDialogs(userId: DTO.ID): Promise<DTO.IDialogs[]> {
+    const dialogs = await this.chatRepo.getAllDialogs(userId);
+    return dialogs;
+  }
 }
 
 export const chatService = new ChatService(chatRepository);
