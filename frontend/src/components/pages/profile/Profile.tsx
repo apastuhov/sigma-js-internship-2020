@@ -23,6 +23,7 @@ const Profile: React.FC<IParamsProps> = props => {
   const [userPosts, setUserPosts] = useState([]);
   const location = useLocation();
   const userId = props.match.params.id;
+  const { _id } = getUserFromStorage();
 
   useEffect(() => {
     if (!userId) {
@@ -43,7 +44,7 @@ const Profile: React.FC<IParamsProps> = props => {
       {!userDetails ? (
         <Redirect to="/login" />
       ) : (
-        <Layout pageTitle="Profile">
+        <Layout pageTitle={`${userDetails._id === _id ? 'My': ''} Profile`}>
           <div className="profile">
             <div className="leftside">
               <UserCard mainInfo={userDetails} boxShadow={2} isProfile />
