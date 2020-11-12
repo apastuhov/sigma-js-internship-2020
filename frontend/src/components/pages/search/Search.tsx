@@ -1,5 +1,5 @@
 import { Box } from '@material-ui/core';
-import React, { useEffect, useState } from 'react';
+import React, { MouseEvent, useEffect, useState } from 'react';
 import { CountryDropdown } from 'react-country-region-selector';
 import apiService from '../../../services/apiService';
 import { hightLimit, languageLevels, languages, lowLimit } from '../../constants/constants';
@@ -20,9 +20,10 @@ const Search: React.FC = () => {
     other: false
   });
 
-  const [online, setIsOnline] = useState({
-    isOnline: false
-  });
+  // const [online, setIsOnline] = useState({
+  //   isOnline: false
+  // });
+
 
   const [selectsFilters, setSelectsFilters] = useState({
     lowAge: lowLimit,
@@ -39,9 +40,9 @@ const Search: React.FC = () => {
     setName(e.target.value);
   };
 
-  const handleOnline = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setIsOnline({ ...online, [e.target.name]: e.target.checked });
-  };
+  // const handleOnline = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   setIsOnline({ ...online, [e.target.name]: e.target.checked });
+  // };
 
   const handleGender = (e: React.ChangeEvent<HTMLInputElement>) => {
     setGenders({ ...genders, [e.target.name]: e.target.checked });
@@ -84,6 +85,18 @@ const Search: React.FC = () => {
     return dayjs().subtract(age, 'year').toISOString();
   };
 
+  const resetFields = (e: MouseEvent) => {
+    e.preventDefault();
+    setName('');
+    setGenders({male: false,female: false,other: false});
+    setCountry('');
+    setSelectsFilters({
+      lowAge: lowLimit,
+      highAge: hightLimit,
+      language: '',
+      level: ''})
+  }
+
   const findUsers = (e: React.FormEvent) => {
     const requestBody = {
       name: name,
@@ -92,8 +105,8 @@ const Search: React.FC = () => {
       sex: getGenders(),
       country: country,
       language: selectsFilters.language,
-      level: selectsFilters.level,
-      isOnline: online.isOnline
+      level: selectsFilters.level
+      // isOnline: online.isOnline
     };
     e.preventDefault();
     apiService(dataType.filter, requestBody).then(users => {
@@ -152,9 +165,11 @@ const Search: React.FC = () => {
             </option>
             {getOptions([], languageLevels)}
           </select>
-          <label>Online</label>
-          <input type="checkbox" checked={online.isOnline} onChange={handleOnline} name="isOnline" />
+          {/*<label>Online</label>*/}
+          {/*<input type="checkbox" checked={online.isOnline} onChange={handleOnline} name="isOnline" />*/}
+          <button className="reset" onClick={resetFields}>Reset</button>
           <button type="submit">Search</button>
+
         </form>
       </Box>
       {showError ? (
