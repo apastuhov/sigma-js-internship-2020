@@ -1,4 +1,4 @@
-name: Linting application
+name: Checking commit quality
 
 on:
   push:
