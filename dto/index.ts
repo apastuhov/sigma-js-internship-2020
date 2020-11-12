@@ -7,7 +7,7 @@ export namespace DTO {
     countryCode: string;
     speak: ILanguage[];
     learn: ILanguage[];
-    isFriend: boolean;
+    isFriend?: boolean;
     birthday: Date;
     avatar: string;
   }

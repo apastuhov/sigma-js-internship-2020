@@ -56,7 +56,6 @@
       @include button;
       justify-self: center;
       background-color: $primary-color;
-      grid-column: 2 / 3;
       height: 34px;
       font-family: 'Roboto';
 
@@ -68,6 +67,18 @@
     label {
       text-align: left;
       margin-right: 20px;
+    }
+
+    .reset {
+      height: 20px;
+      min-width: 50px;
+      background-color: transparent;
+      justify-self: start;
+      color: $reset;
+      align-self: center;
+      &:focus {
+        border: none;
+      }
     }
   }
 }

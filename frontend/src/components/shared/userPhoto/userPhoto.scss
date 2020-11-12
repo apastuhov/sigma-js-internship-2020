@@ -7,9 +7,7 @@
   margin: 0 auto;
 
   img {
-    width: 126px;
-    height: 126px;
-    border-radius: 50%;
+   @include avatar;
   }
 
   .online-status {

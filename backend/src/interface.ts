@@ -49,7 +49,7 @@ export namespace DTO {
 
   export interface IDialogs {
     participants: ID[];
-    messages: IMessage[];
+    messages?: IMessage[];
   }
 
   export interface IUserFriends {
@@ -62,4 +62,9 @@ export namespace DTO {
   export interface IDialogsDoc extends IDialogs, Document {}
   export interface IPostDoc extends IPost, Document {}
   export interface IUserDoc extends IUser, Document {}
+}
+
+export enum status {
+  SUCCESS = 'SUCCESS',
+  FAILURE = 'FAILURE'
 }

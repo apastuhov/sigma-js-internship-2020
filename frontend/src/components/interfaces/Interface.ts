@@ -63,3 +63,8 @@ export type FormikValues = {
   country: keyof typeof Country;
   about: string;
 };
+
+export enum status {
+  SUCCESS = 'SUCCESS',
+  FAILURE = 'FAILURE'
+}

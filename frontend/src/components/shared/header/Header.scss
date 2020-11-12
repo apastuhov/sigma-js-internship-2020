@@ -32,6 +32,17 @@ header {
         height: 25px;
         cursor: pointer;
       }
+
+      .avatar {
+        border-radius: 50%;
+        height: 48px;
+        width: 48px;
+        @include hover-transform-scale;
+        img {
+          @include avatar;
+        }
+      }
+
       .dropdown-menu {
         display: none;
         position: absolute;

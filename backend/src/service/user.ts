@@ -1,5 +1,5 @@
 import { UserRepository, userRepository } from '../data/repository/user';
-import { DTO } from '../interface';
+import { DTO, status } from '../interface';
 import IUserDoc = DTO.IUserDoc;
 
 class UserService {
@@ -26,6 +26,12 @@ class UserService {
   async getUserFriendsById(userId: DTO.ID): Promise<DTO.IUserDoc[] | DTO.ID[]> {
     const data = await this.userRepo.getFriendsById(userId);
     return data;
+  }
+
+  async addFriend(userId: DTO.ID, friendId: DTO.ID) {
+    const res = await this.userRepo.addFriend(userId, friendId);
+    if (!res) return status.FAILURE;
+    return status.SUCCESS;
   }
 
   // Users
@@ -55,6 +61,13 @@ class UserService {
   async createPost(newPost: DTO.IPost): Promise<DTO.IPost> {
     const post = await this.userRepo.createPost(newPost);
     return post;
+  }
+
+  // Dialogs
+
+  async createDialog(newDialog: DTO.IDialogs): Promise<DTO.IDialogs> {
+    const dialog = await this.userRepo.createDialog(newDialog);
+    return dialog;
   }
 }
 

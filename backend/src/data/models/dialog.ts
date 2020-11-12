@@ -3,7 +3,7 @@ import { DTO } from '../../interface';
 
 const dialogSchemaFields: Record<keyof DTO.IDialogs, any> = {
   participants: [{ type: Types.ObjectId, ref: 'User', required: true }],
-  messages: [{ type: Types.ObjectId, ref: 'Message', required: true }]
+  messages: [{ type: Types.ObjectId, ref: 'Message' }]
 };
 
 const dialogSchema = new Schema(dialogSchemaFields);

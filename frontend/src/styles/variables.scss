@@ -1,6 +1,7 @@
 $white: #ffffff;
 $black: #000000;
 $red: #c70e0e;
+$reset: #ff5151;
 $grey: #979797;
 $light-grey: #eeeef1;
 $green: #70d357;
@@ -42,6 +43,13 @@ $container-width: 944px;
   &:hover {
     transform: $transform-scale;
   }
+}
+
+@mixin avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
 }
 
 @mixin input {
