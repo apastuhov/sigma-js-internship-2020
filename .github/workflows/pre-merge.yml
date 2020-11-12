@@ -1,8 +1,10 @@
 name: Linting application
 
 on:
-  pull_request
-
+  push:
+    branches:
+      - "!develop"
+      - "!pr-pages"
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -20,9 +22,9 @@ jobs:
 
       - name: test
         working-directory: frontend
-        run: |
-        npm i
-        npm run test
+        run:  |
+          npm i
+          npm run test
 
       - name: build frontend
         working-directory: frontend
