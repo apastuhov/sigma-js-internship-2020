@@ -55,7 +55,7 @@ export const ButtonWithFormikRegister: React.FC = props => {
       countryCode: getMethodPriority(values.country),
       speak: values.languages,
       learn: values.learnLanguages,
-      avatar: values.fileUrl,
+      avatar: userImage,
       about: values.about
     })
       .then(() => history.push('/'))

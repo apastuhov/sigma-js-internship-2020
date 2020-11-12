@@ -45,6 +45,13 @@ $container-width: 944px;
   }
 }
 
+@mixin avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
 @mixin input {
   border: 1px solid $light-grey;
   box-sizing: border-box;
