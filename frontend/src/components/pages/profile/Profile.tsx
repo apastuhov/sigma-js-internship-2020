@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Redirect, RouteComponentProps, useLocation } from 'react-router-dom';
 import { getFriends, getUserDetails } from '../../../services/apiUserService';
-import { getUserFromStorage } from '../../../services/localStorageService';
 import { getUserPosts } from '../../../services/postService';
+import { getUserFromStorage } from '../../../services/sessionStorageService';
 import Layout from '../../shared/layout/Layout';
 import UserCard from '../../shared/userCard/UserCard';
 import About from './components/about/About';
@@ -44,7 +44,7 @@ const Profile: React.FC<IParamsProps> = props => {
       {!userDetails ? (
         <Redirect to="/login" />
       ) : (
-        <Layout pageTitle={`${userDetails._id === _id ? 'My': ''} Profile`}>
+        <Layout pageTitle={`${userDetails._id === _id ? 'My' : ''} Profile`}>
           <div className="profile">
             <div className="leftside">
               <UserCard mainInfo={userDetails} boxShadow={2} isProfile />

@@ -1,6 +1,10 @@
-import React, { useState, useContext, useEffect } from 'react';
-import { getFriendsFromStorage, getUserFromStorage, saveFriendsToStorage } from '../../../services/localStorageService';
+import React, { useContext, useEffect, useState } from 'react';
 import { getFriends } from '../../../services/apiUserService';
+import {
+  getFriendsFromStorage,
+  getUserFromStorage,
+  saveFriendsToStorage
+} from '../../../services/sessionStorageService';
 import { IUser } from '../../interfaces/Interface';
 
 // TODO
@@ -27,9 +31,6 @@ export const friendsContext = React.createContext(initialState);
 
 export const FriendsProvider = ({ children }: Props) => {
   const [friends, setFriends] = useState<Set<string>>(new Set([]));
-
-
-
 
   const addFriendToContext = (id: string) => {
     setFriends(arr => new Set(arr.add(id)));

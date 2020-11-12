@@ -1,7 +1,7 @@
 import { Box } from '@material-ui/core';
 import { useFormikContext } from 'formik';
 import React, { useEffect, useState } from 'react';
-import { getUserFromStorage } from '../../../services/localStorageService';
+import { getUserFromStorage } from '../../../services/sessionStorageService';
 import { FormikValues } from '../../interfaces/Interface';
 import AdditionalInfo from '../../shared/additionalInfo/AdditionalInfo';
 import LanguagesInfo from '../../shared/languagesInfo/Languages';

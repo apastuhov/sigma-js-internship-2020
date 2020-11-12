@@ -1,8 +1,8 @@
 import Box from '@material-ui/core/Box';
 import SendSharpIcon from '@material-ui/icons/SendSharp';
 import React, { useState } from 'react';
-import { getUserFromStorage } from '../../../../../services/localStorageService';
 import { sendPostToUser } from '../../../../../services/postService';
+import { getUserFromStorage } from '../../../../../services/sessionStorageService';
 import { ISendPostProps } from '../../../../interfaces/Interface';
 import './addPostForm.scss';
 

@@ -118,7 +118,7 @@ router.post<any, any, DTO.IDialogs, any>('/dialogs', async (req, res, next) => {
   try {
     const newDialog = {
       participants: req.body.participants
-    }
+    };
     await userService.createDialog(newDialog);
     return res.status(201).send(newDialog);
   } catch (e) {
