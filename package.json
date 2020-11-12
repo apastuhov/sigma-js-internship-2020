@@ -7,6 +7,7 @@
     "postinstall": "cd backend && npm ci && cd ../frontend && npm ci",
     "start:backend": "cd backend && npm start",
     "start:frontend": "cd frontend && npm start",
+    "test": "cd frontend && npm test",
     "prettier": "prettier --config .prettierrc --write \"{backend,frontend}/src/**/*.{json,ts,tsx}\"",
     "typecheck": "tsc --project backend --noEmit && tsc --project frontend --noEmit"
   },
