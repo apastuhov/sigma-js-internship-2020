@@ -43,7 +43,7 @@ const Settings: React.FC = () => {
           <PreviewInfo />
           <Tile>
             <Box boxShadow={2} className="tile">
-              <div className="settings-nav">
+              <div>
                 <ButtonWithFormikSettings />
               </div>
             </Box>

@@ -8,9 +8,9 @@
     width: $mobile-tile-width;
     flex-direction: column;
     align-items: center;
-  }    
-  
-  .disabled{  
+  }
+
+  .disabled {
     pointer-events: none;
     cursor: default;
   }
@@ -29,9 +29,9 @@
       margin-bottom: $gap-4;
     }
 
-    h3 {
+    h4 {
       @include title;
-      margin: $gap-4;
+      margin: 0;
     }
 
     p {

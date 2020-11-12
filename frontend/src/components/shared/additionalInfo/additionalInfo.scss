@@ -21,7 +21,7 @@ p {
       cursor: pointer;
     }
   }
-  .avatar-icon{
+  .avatar-icon {
     width: 80px;
     height: 80px;
     color: $grey;
@@ -43,6 +43,7 @@ p {
 .textarea {
   @include input;
   padding: $gap-6;
+  resize: none;
   &:focus {
     outline-color: $grey;
   }

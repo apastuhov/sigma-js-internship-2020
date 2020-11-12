@@ -18,7 +18,7 @@ type MainInfoProps = {
 const UserCard: React.FC<MainInfoProps> = ({ mainInfo, boxShadow, isProfile }) => {
   const [loginedUser] = useState(getUserFromStorage());
   const [userAge, setUserAge] = useState<number>();
-  const {friends, addFriendToContext} = useFriends()
+  const { friends, addFriendToContext } = useFriends();
 
   const sendFriendRequest = (event: MouseEvent) => {
     event.preventDefault();
@@ -27,7 +27,9 @@ const UserCard: React.FC<MainInfoProps> = ({ mainInfo, boxShadow, isProfile }) =
     };
 
     addFriendToDB(loginedUser._id, friendId).then(res => {
-       if (res === status.SUCCESS) {addFriendToContext(mainInfo._id); }
+      if (res === status.SUCCESS) {
+        addFriendToContext(mainInfo._id);
+      }
     });
   };
 
@@ -43,56 +45,56 @@ const UserCard: React.FC<MainInfoProps> = ({ mainInfo, boxShadow, isProfile }) =
       {!loginedUser ? (
         <Redirect to="/login" />
       ) : (
-          <Box boxShadow={boxShadow && 2} className="user-card">
-            <Link to={`/user/${mainInfo._id}`} className={isProfile ? 'leftbar disabled' : 'leftbar'}>
-              <UserPhoto avatar={mainInfo.avatar} />
-              <h3>
-                {mainInfo.firstName} {mainInfo.lastName}
-              </h3>
-              <p>{userAge} y.o.</p>
-              <div className="flag">
-                <img src={`https://www.countryflags.io/${mainInfo.countryCode}/flat/24.png`} alt="Country flag" />
-                <p>{mainInfo.country}</p>
-              </div>
-            </Link>
-            <div className="rightbar">
-              <div className="speaks">
-                <h3>Speaks</h3>
-                {mainInfo.speak.map((speaksInfo, id) => {
-                  return (
-                    <div className="languages" key={id}>
-                      <p>{speaksInfo.language}</p>
-                      <p>{speaksInfo.level}</p>
-                    </div>
-                  );
-                })}
-              </div>
-              <div className="learning">
-                <h3>Learning</h3>
-                {mainInfo.learn.map((learnInfo, id) => {
-                  return (
-                    <div className="languages" key={id}>
-                      <p>{learnInfo.language}</p>
-                      <p>{learnInfo.level}</p>
-                    </div>
-                  );
-                })}
-              </div>
-              {loginedUser._id !== mainInfo._id && (
-                <div className="buttons-action">
-                  {!friends.has(mainInfo._id) && (
-                    <Link to="/" onClick={sendFriendRequest} className="add-friend">
-                      add friend
-                    </Link>
-                  )}
-                  <Link to="/chat" className="send-message">
-                    message
-                </Link>
-                </div>
-              )}
+        <Box boxShadow={boxShadow && 2} className="user-card">
+          <Link to={`/user/${mainInfo._id}`} className={isProfile ? 'leftbar disabled' : 'leftbar'}>
+            <UserPhoto avatar={mainInfo.avatar} />
+            <h4>
+              {mainInfo.firstName} {mainInfo.lastName}
+            </h4>
+            {isNaN(userAge as number) ? <p>0 y.o.</p> : <p>{userAge} y.o.</p>}
+            <div className="flag">
+              <img src={`https://www.countryflags.io/${mainInfo.countryCode}/flat/24.png`} alt="Country flag" />
+              <p>{mainInfo.country}</p>
             </div>
-          </Box>
-        )}
+          </Link>
+          <div className="rightbar">
+            <div className="speaks">
+              <h3>Speaks</h3>
+              {mainInfo.speak.map((speaksInfo, id) => {
+                return (
+                  <div className="languages" key={id}>
+                    <p>{speaksInfo.language}</p>
+                    <p>{speaksInfo.level}</p>
+                  </div>
+                );
+              })}
+            </div>
+            <div className="learning">
+              <h3>Learning</h3>
+              {mainInfo.learn.map((learnInfo, id) => {
+                return (
+                  <div className="languages" key={id}>
+                    <p>{learnInfo.language}</p>
+                    <p>{learnInfo.level}</p>
+                  </div>
+                );
+              })}
+            </div>
+            {loginedUser._id !== mainInfo._id && (
+              <div className="buttons-action">
+                {!friends.has(mainInfo._id) && (
+                  <Link to="/" onClick={sendFriendRequest} className="add-friend">
+                    add friend
+                  </Link>
+                )}
+                <Link to="/chat" className="send-message">
+                  message
+                </Link>
+              </div>
+            )}
+          </div>
+        </Box>
+      )}
     </>
   );
 };

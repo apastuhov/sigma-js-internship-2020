@@ -8,6 +8,7 @@
 
 .preview-tile {
   @include tile;
-  padding: 0 0 $gap-10 0;
+  height: 330px;
+  padding: 0;
   margin-bottom: $gap-24;
 }
