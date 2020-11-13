@@ -26,7 +26,7 @@ router.post<any, any, DTO.IMessage, any>('/:id/message', async (req, res, next) 
       userId: req.body.userId,
       body: req.body.body,
       status: req.body.status
-    }
+    };
     const message = await chatService.setNewMessage(newMessage, dialogId);
     return res.status(201).send(message);
   } catch (e) {
@@ -40,7 +40,7 @@ router.post<any, any, DTO.IDialogs, any>('/dialogs', async (req, res, next) => {
   try {
     const newDialog = {
       participants: req.body.participants.sort()
-    }
+    };
     await chatService.createDialog(newDialog);
     return res.status(201).send(newDialog);
   } catch (e) {

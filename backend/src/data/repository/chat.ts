@@ -3,7 +3,6 @@ import { Dialog } from '../models/dialog';
 import { Message } from '../models/message';
 
 export class ChatRepository {
-
   // GET ALL MESSAGES
 
   async getMessagesByChatId(dialogId: DTO.ID): Promise<DTO.IDialogsDoc | null> {
@@ -25,13 +24,13 @@ export class ChatRepository {
   }
 
   // FIND DIALOG BY PARTICIPANTS
-  
+
   async findDialogByParticipants(newDialog: DTO.IDialogs): Promise<DTO.IDialogsDoc | null> {
     const res = await Dialog.findOne({
-      "participants": {
-        "$all": newDialog.participants
+      participants: {
+        $all: newDialog.participants
       }
-    })
+    });
     return res;
   }
 
