@@ -103,17 +103,6 @@ export class UserRepository {
     });
     return res;
   }
-
-  //Dialogs
-
-  async createDialog(newDialog: DTO.IDialogs): Promise<DTO.IDialogs> {
-    const dialog = new Dialog(newDialog);
-    const res = await dialog.save(function (err, dialog) {
-      if (err) return console.error(err);
-      return dialog;
-    });
-    return res;
-  }
 }
 
 export const userRepository = new UserRepository();
