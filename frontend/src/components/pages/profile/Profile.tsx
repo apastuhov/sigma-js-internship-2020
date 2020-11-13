@@ -12,7 +12,7 @@ import Posts from './components/posts/Posts';
 import './profile.scss';
 
 interface MatchParams {
-  id: number & string;
+  id?: string;
 }
 
 interface IParamsProps extends RouteComponentProps<MatchParams> {}
