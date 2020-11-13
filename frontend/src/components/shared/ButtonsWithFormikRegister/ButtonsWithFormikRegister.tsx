@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { postRequest } from '../../../services/apiService';
 import { toDataURL } from '../../../services/convertImageService';
-import { getUserFromStorage, saveUserToStorage } from '../../../services/localStorageService';
+import { getUserFromStorage, saveUserToStorage } from '../../../services/sessionStorageService';
 import { sex } from '../../constants/constants';
 import { Country } from '../../constants/Countries';
 import { FormikValues } from '../../interfaces/Interface';
@@ -30,21 +30,6 @@ export const ButtonWithFormikRegister: React.FC = props => {
   }, [values.fileUrl]);
 
   const submitUser = () => {
-    // TIME DECISION
-    const user = {
-      firstName: values.name,
-      lastName: values.surname,
-      sex: getSexPriority(values.sex),
-      email: userEmail,
-      birthday: values.birthday,
-      country: values.country,
-      countryCode: getMethodPriority(values.country),
-      speak: values.languages,
-      learn: values.learnLanguages,
-      avatar: userImage,
-      about: values.about
-    };
-    saveUserToStorage(user);
     postRequest('user/register', {
       firstName: values.name,
       lastName: values.surname,
@@ -58,7 +43,10 @@ export const ButtonWithFormikRegister: React.FC = props => {
       avatar: userImage,
       about: values.about
     })
-      .then(() => history.push('/'))
+      .then(res => {
+        saveUserToStorage(res);
+        history.push('/');
+      })
       .catch(() => history.push('/register'));
   };
 

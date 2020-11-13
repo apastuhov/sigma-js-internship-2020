@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import Box from '@material-ui/core/Box';
 import MailOutlineIcon from '@material-ui/icons/MailOutline';
 import SearchIcon from '@material-ui/icons/Search';
-import { clearStorage, getUserFromStorage } from '../../../services/localStorageService';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { clearStorage, getUserFromStorage } from '../../../services/sessionStorageService';
 import './Header.scss';
 import logo from './logo.png';
 
@@ -16,9 +16,9 @@ const Header: React.FC = () => {
   };
 
   useEffect(() => {
-    const user = getUserFromStorage()
-    setAvatar(user.avatar)
-  }, [])
+    const user = getUserFromStorage();
+    setAvatar(user.avatar);
+  }, []);
 
   return (
     <header>

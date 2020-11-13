@@ -3,7 +3,6 @@ import { Dialog } from '../models/dialog';
 import { Message } from '../models/message';
 
 export class ChatRepository {
-
   // GET ALL MESSAGES
 
   async getMessagesByChatId(dialogId: DTO.ID): Promise<DTO.IDialogsDoc | null> {
@@ -25,13 +24,13 @@ export class ChatRepository {
   }
 
   // FIND DIALOG BY PARTICIPANTS
-  
+
   async findDialogByParticipants(newDialog: DTO.IDialogs): Promise<DTO.IDialogsDoc | null> {
     const res = await Dialog.findOne({
-      "participants": {
-        "$all": newDialog.participants
+      participants: {
+        $all: newDialog.participants
       }
-    })
+    });
     return res;
   }
 
@@ -49,9 +48,12 @@ export class ChatRepository {
   // GET ALL DIALOGS
 
   async getAllDialogs(ID: DTO.ID): Promise<DTO.IDialogs[]> {
-    const dialogs = await Dialog.find({ participants: ID }).populate([{ path: 'participants', select: ['firstName', 'lastName', 'avatar'] }, { path: 'messages', options: { limit: 1 } }])
+    const dialogs = await Dialog.find({ participants: ID }).populate([
+      { path: 'participants', select: ['firstName', 'lastName', 'avatar'] },
+      { path: 'messages', options: { limit: 1 } }
+    ]);
     return dialogs;
-  } 
+  }
 }
 
 export const chatRepository = new ChatRepository();

@@ -16,7 +16,7 @@ const Login: React.FC = () => {
     if (result) {
       history.push('/');
     } else {
-      localStorage.setItem('loginedUser', JSON.stringify(res.tt.$t));
+      sessionStorage.setItem('loginedUser', JSON.stringify(res.tt.$t));
       history.push('/register');
     }
   };

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { saveUserToStorage } from './localStorageService';
+import { saveUserToStorage } from './sessionStorageService';
 
 const url = `${process.env.REACT_APP_API_URL}`;
 
@@ -14,7 +14,6 @@ export const processGoogleResponse = (res: any) => {
       saveUserToStorage(user);
       return user;
     }
-    saveUserToStorage({});
     return null;
   });
 };

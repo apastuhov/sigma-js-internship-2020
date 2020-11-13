@@ -24,7 +24,6 @@ const Search: React.FC = () => {
   //   isOnline: false
   // });
 
-
   const [selectsFilters, setSelectsFilters] = useState({
     lowAge: lowLimit,
     highAge: hightLimit,
@@ -88,14 +87,15 @@ const Search: React.FC = () => {
   const resetFields = (e: MouseEvent) => {
     e.preventDefault();
     setName('');
-    setGenders({male: false,female: false,other: false});
+    setGenders({ male: false, female: false, other: false });
     setCountry('');
     setSelectsFilters({
       lowAge: lowLimit,
       highAge: hightLimit,
       language: '',
-      level: ''})
-  }
+      level: ''
+    });
+  };
 
   const findUsers = (e: React.FormEvent) => {
     const requestBody = {
@@ -167,9 +167,10 @@ const Search: React.FC = () => {
           </select>
           {/*<label>Online</label>*/}
           {/*<input type="checkbox" checked={online.isOnline} onChange={handleOnline} name="isOnline" />*/}
-          <button className="reset" onClick={resetFields}>Reset</button>
+          <button className="reset" onClick={resetFields}>
+            Reset
+          </button>
           <button type="submit">Search</button>
-
         </form>
       </Box>
       {showError ? (

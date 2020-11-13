@@ -3,7 +3,7 @@ import dayjs from 'dayjs';
 import React, { MouseEvent, useEffect, useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { addFriendToDB } from '../../../services/apiUserService';
-import { getUserFromStorage } from '../../../services/localStorageService';
+import { getUserFromStorage } from '../../../services/sessionStorageService';
 import { IUser, status } from '../../interfaces/Interface';
 import { useFriends } from '../../storage/friends/friendsContext';
 import { UserPhoto } from '../userPhoto/UserPhoto';
@@ -28,7 +28,7 @@ const UserCard: React.FC<MainInfoProps> = ({ mainInfo, boxShadow, isProfile }) =
 
     addFriendToDB(loginedUser._id, friendId).then(res => {
       if (res === status.SUCCESS) {
-        addFriendToContext(mainInfo._id);
+        addFriendToContext(friendId.ID);
       }
     });
   };
