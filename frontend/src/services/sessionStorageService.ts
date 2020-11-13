@@ -1,4 +1,4 @@
-export const saveUserToStorage = (user = {} || null) => {
+export const saveUserToStorage = (user: {}) => {
   sessionStorage.setItem('loginedUser', JSON.stringify(user));
 };
 
