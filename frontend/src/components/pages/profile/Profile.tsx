@@ -11,11 +11,7 @@ import FriendsList from './components/friendsList/FriendsList';
 import Posts from './components/posts/Posts';
 import './profile.scss';
 
-interface MatchParams {
-  id: number & string;
-}
-
-interface IParamsProps extends RouteComponentProps<MatchParams> {}
+interface IParamsProps extends RouteComponentProps<any> {}
 
 const Profile: React.FC<IParamsProps> = props => {
   const [userDetails, setUserDetails] = useState(getUserFromStorage());
