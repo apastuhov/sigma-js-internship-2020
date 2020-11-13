@@ -39,11 +39,12 @@ export const FriendsProvider = ({ children }: Props) => {
   useEffect(() => {
     const user = getUserFromStorage();
     const friendsFromStorage = getFriendsFromStorage();
-
     if (friendsFromStorage) {
       setFriends(new Set(friendsFromStorage));
     } else {
-      getFriends(user._id).then(users => setFriends(new Set(users.map((user: IUser) => user._id))));
+      if (user?._id) {
+        getFriends(user._id).then(users => setFriends(new Set(users.map((user: IUser) => user._id))));
+      }
     }
   }, []);
 

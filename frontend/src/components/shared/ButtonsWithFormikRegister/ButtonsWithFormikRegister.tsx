@@ -45,7 +45,7 @@ export const ButtonWithFormikRegister: React.FC = props => {
     })
       .then(res => {
         saveUserToStorage(res);
-        history.push('/');
+        history.push(`/user/${res._id}`);
       })
       .catch(() => history.push('/register'));
   };

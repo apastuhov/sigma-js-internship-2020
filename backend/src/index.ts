@@ -8,7 +8,7 @@ import { corsMiddleware } from './middleware/cors';
 const app = express();
 
 app.use(corsMiddleware);
-app.use(bodyParser.json());
+app.use(bodyParser.json({ limit: '10mb' }));
 app.use(express.static(path.join(__dirname, '../fe/')));
 
 app.use('/api/', routes);

@@ -6,7 +6,6 @@ const friendsFields: Record<keyof DTO.IUserFriends, any> = {
   friends: [
     {
       type: Types.ObjectId,
-      required: true,
       ref: 'User'
     }
   ]

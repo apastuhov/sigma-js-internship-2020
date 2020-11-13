@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Redirect, RouteComponentProps, useLocation } from 'react-router-dom';
+import { RouteComponentProps, useLocation } from 'react-router-dom';
 import { getFriends, getUserDetails } from '../../../services/apiUserService';
 import { getUserPosts } from '../../../services/postService';
 import { getUserFromStorage } from '../../../services/sessionStorageService';
@@ -23,11 +23,11 @@ const Profile: React.FC<IParamsProps> = props => {
   const [userPosts, setUserPosts] = useState([]);
   const location = useLocation();
   const userId = props.match.params.id;
-  const { _id } = getUserFromStorage();
+  const myInfo = getUserFromStorage();
 
   useEffect(() => {
-    if (!userId) {
-      const user = getUserFromStorage();
+    const user = getUserFromStorage();
+    if (userId === user._id) {
       setUserDetails(user);
       getUserPosts(userDetails._id).then(posts => setUserPosts(posts));
       getFriends(userDetails._id).then(users => setFriends(users));
@@ -40,24 +40,19 @@ const Profile: React.FC<IParamsProps> = props => {
 
   return (
     <>
-      {/* TIME DECISION */}
-      {!userDetails ? (
-        <Redirect to="/login" />
-      ) : (
-        <Layout pageTitle={`${userDetails._id === _id ? 'My' : ''} Profile`}>
-          <div className="profile">
-            <div className="leftside">
-              <UserCard mainInfo={userDetails} boxShadow={2} isProfile />
-              <About about={userDetails.about} />
-              <FriendsList id={userDetails._id} friends={friends} />
-            </div>
-            <div className="rightside">
-              <AddPostForm _id={userDetails._id} />
-              <Posts posts={userPosts} />
-            </div>
+      <Layout pageTitle={`${userDetails._id === myInfo?._id ? 'My' : ''} Profile`}>
+        <div className="profile">
+          <div className="leftside">
+            <UserCard mainInfo={userDetails} boxShadow={2} isProfile />
+            <About about={userDetails.about} />
+            <FriendsList id={userDetails._id} friends={friends} />
           </div>
-        </Layout>
-      )}
+          <div className="rightside">
+            <AddPostForm _id={userDetails._id} />
+            <Posts posts={userPosts} />
+          </div>
+        </div>
+      </Layout>
     </>
   );
 };

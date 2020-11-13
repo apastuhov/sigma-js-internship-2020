@@ -6,10 +6,11 @@ import { Link } from 'react-router-dom';
 import { clearStorage, getUserFromStorage } from '../../../services/sessionStorageService';
 import './Header.scss';
 import logo from './logo.png';
+import { IUser } from '../../interfaces/Interface';
 
 const Header: React.FC = () => {
   const [menuClass, setMenuClass] = useState('');
-  const [avatar, setAvatar] = useState('');
+  const [user, setUser] = useState<IUser>();
 
   const toggleMenu = () => {
     setMenuClass(Boolean(menuClass) ? '' : 'dropdown-menu-active');
@@ -17,13 +18,13 @@ const Header: React.FC = () => {
 
   useEffect(() => {
     const user = getUserFromStorage();
-    setAvatar(user.avatar);
+    setUser(user);
   }, []);
 
   return (
     <header>
       <div className="wrapper">
-        <Link to="/">
+        <Link to={`/user/${user?._id}`}>
           <img src={logo} alt="logo" className="logo" />
         </Link>
         <nav>
@@ -35,11 +36,11 @@ const Header: React.FC = () => {
             <MailOutlineIcon style={{ color: '#fff' }} />
           </Link>
           <div className="avatar">
-            <img onClick={toggleMenu} src={avatar} alt="profile" />
+            <img onClick={toggleMenu} src={user?.avatar} alt="profile" />
           </div>
           <Box boxShadow={2} className={`dropdown-menu ${menuClass}`}>
             <Link to="/settings">Settings</Link>
-            <Link to="/login" onClick={clearStorage}>
+            <Link to="/" onClick={clearStorage}>
               Log Out
             </Link>
           </Box>
