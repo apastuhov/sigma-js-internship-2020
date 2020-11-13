@@ -21,12 +21,12 @@ class ChatService {
   // CREATE DIALOG
 
   async createDialog(newDialog: DTO.IDialogs): Promise<DTO.IDialogs | null> {
-    const filterDialog = await this.chatRepo.filterDialog(newDialog);
-    if (filterDialog === null) {
+    const filteredDialog = await this.chatRepo.findDialogByParticipants(newDialog);
+    if (filteredDialog === null) {
       const dialog = await this.chatRepo.createDialog(newDialog);
       return dialog;
     }
-    return filterDialog;
+    return filteredDialog;
   }
 
   // GET ALL DIALOGS

@@ -10,7 +10,7 @@ export class ChatRepository {
     const data = await Dialog.findById(dialogId).populate('messages');
     return data;
   }
-  
+
   // CREATE NEW MESSAGE
 
   async setNewMessage(newMessage: DTO.IMessage, dialogId: DTO.ID): Promise<DTO.IMessage> {
@@ -24,9 +24,9 @@ export class ChatRepository {
     return data;
   }
 
-  // CREATE DIALOG
-
-  async filterDialog(newDialog: DTO.IDialogs): Promise<DTO.IDialogsDoc | null> {
+  // FIND DIALOG BY PARTICIPANTS
+  
+  async findDialogByParticipants(newDialog: DTO.IDialogs): Promise<DTO.IDialogsDoc | null> {
     const res = await Dialog.findOne({
       "participants": {
         "$all": newDialog.participants
@@ -34,6 +34,8 @@ export class ChatRepository {
     })
     return res;
   }
+
+  // CREATE DIALOG
 
   async createDialog(newDialog: DTO.IDialogs): Promise<DTO.IDialogs> {
     const dialog = new Dialog(newDialog);

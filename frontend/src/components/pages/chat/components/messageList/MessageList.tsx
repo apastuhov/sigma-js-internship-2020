@@ -1,5 +1,7 @@
 import Box from '@material-ui/core/Box';
 import React, { useEffect, useRef, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { getChatMessages } from '../../../../../services/apiChatService';
 import { Compose } from '../compose/Compose';
 import { Message } from '../message/Message';
 import './messageList.scss';
@@ -7,16 +9,16 @@ import './messageList.scss';
 const MY_USER_ID = 'apple';
 
 export const MessageList: React.FC = () => {
-  const [messages] = useState<Array<any>>([]);
-  // const { dialogId } = useParams<any>();
+  const [messages, setMessages] = useState<Array<any>>([]);
+  const { dialogId } = useParams<any>();
 
-  // useEffect(() => {
-  //   setMessages([]);
-  //   (async () => {
-  //     const messages = await getChatMessages(dialogId);
-  //     setMessages(messages);
-  //   })();
-  // }, [dialogId]);
+  useEffect(() => {
+    setMessages([]);
+    (async () => {
+      const messages = await getChatMessages(dialogId);
+      setMessages(messages);
+    })();
+  }, [dialogId]);
 
   //TODO: second useEffect for user data
 
