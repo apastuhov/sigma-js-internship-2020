@@ -13,7 +13,6 @@ interface Props {
   Component: React.FC<RouteComponentProps>;
   path: string;
   exact?: boolean;
-  id?: string;
 }
 
 const PrivateRoute = ({ Component, path, exact = false }: Props): JSX.Element => {
