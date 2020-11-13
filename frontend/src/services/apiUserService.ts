@@ -38,4 +38,4 @@ export const addFriendToDB = async (id: string, friendID: object) => {
   }
 };
 
-export const getUserDetails = (id: number) => getRequest(`${dataType.user}/${id}`);
+export const getUserDetails = (id: string) => getRequest(`${dataType.user}/${id}`);

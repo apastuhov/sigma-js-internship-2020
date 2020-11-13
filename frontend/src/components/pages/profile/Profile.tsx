@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Redirect, RouteComponentProps, useLocation } from 'react-router-dom';
+import { RouteComponentProps, useLocation } from 'react-router-dom';
 import { getFriends, getUserDetails } from '../../../services/apiUserService';
 import { getUserPosts } from '../../../services/postService';
 import { getUserFromStorage } from '../../../services/sessionStorageService';
@@ -12,7 +12,7 @@ import Posts from './components/posts/Posts';
 import './profile.scss';
 
 interface MatchParams {
-  id: number & string;
+  id?: string;
 }
 
 interface IParamsProps extends RouteComponentProps<MatchParams> {}
@@ -39,26 +39,19 @@ const Profile: React.FC<IParamsProps> = props => {
   }, [location, userId, userDetails._id]);
 
   return (
-    <>
-      {/* TIME DECISION */}
-      {!userDetails ? (
-        <Redirect to="/login" />
-      ) : (
-        <Layout pageTitle={`${userDetails._id === _id ? 'My' : ''} Profile`}>
-          <div className="profile">
-            <div className="leftside">
-              <UserCard mainInfo={userDetails} boxShadow={2} isProfile />
-              <About about={userDetails.about} />
-              <FriendsList id={userDetails._id} friends={friends} />
-            </div>
-            <div className="rightside">
-              <AddPostForm _id={userDetails._id} />
-              <Posts posts={userPosts} />
-            </div>
-          </div>
-        </Layout>
-      )}
-    </>
+    <Layout pageTitle={`${userDetails._id === _id ? 'My' : ''} Profile`}>
+      <div className="profile">
+        <div className="leftside">
+          <UserCard mainInfo={userDetails} boxShadow={2} isProfile />
+          <About about={userDetails.about} />
+          <FriendsList id={userDetails._id} friends={friends} />
+        </div>
+        <div className="rightside">
+          <AddPostForm _id={userDetails._id} />
+          <Posts posts={userPosts} />
+        </div>
+      </div>
+    </Layout>
   );
 };
 
