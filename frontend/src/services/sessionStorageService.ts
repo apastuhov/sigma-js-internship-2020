@@ -1,4 +1,6 @@
-export const saveUserToStorage = (user: {}) => {
+import { IUser } from '../components/interfaces/Interface';
+
+export const saveUserToStorage = (user: IUser) => {
   sessionStorage.setItem('loginedUser', JSON.stringify(user));
 };
 

@@ -14,7 +14,6 @@ export const processGoogleResponse = (res: any) => {
       saveUserToStorage(user);
       return user;
     }
-    saveUserToStorage({});
     return null;
   });
 };
