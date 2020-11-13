@@ -40,9 +40,9 @@ export const ButtonWithFormikSettings: React.FC = props => {
   };
 
   return (
-    <div className="register-nav">
+    <div className="settings-nav">
       <Button name="CANCEL" color="secondary" link="login" />
-      <Button name="SIGN UP" color="primary" onClick={editUser} />
+      <Button name="SAVE" color="primary" onClick={editUser} />
     </div>
   );
 };

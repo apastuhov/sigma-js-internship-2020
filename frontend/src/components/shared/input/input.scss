@@ -3,7 +3,4 @@
 .input {
   @include input;
   height: 22px;
-  &:focus {
-    outline-color: $grey;
-  }
 }

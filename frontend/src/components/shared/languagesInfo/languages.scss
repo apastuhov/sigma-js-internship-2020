@@ -12,5 +12,8 @@
 }
 
 .languages-div {
-  min-height: 336px;
+  @include scrollbar;
+  overflow: scroll;
+  overflow-x: hidden;
+  height: 388px;
 }
