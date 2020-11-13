@@ -48,10 +48,10 @@ const UserCard: React.FC<MainInfoProps> = ({ mainInfo, boxShadow, isProfile }) =
         <Box boxShadow={boxShadow && 2} className="user-card">
           <Link to={`/user/${mainInfo._id}`} className={isProfile ? 'leftbar disabled' : 'leftbar'}>
             <UserPhoto avatar={mainInfo.avatar} />
-            <h3>
+            <h4>
               {mainInfo.firstName} {mainInfo.lastName}
-            </h3>
-            <p>{userAge} y.o.</p>
+            </h4>
+            {isNaN(userAge as number) ? <p>0 y.o.</p> : <p>{userAge} y.o.</p>}
             <div className="flag">
               <img src={`https://www.countryflags.io/${mainInfo.countryCode}/flat/24.png`} alt="Country flag" />
               <p>{mainInfo.country}</p>

@@ -6,6 +6,6 @@ const router = express.Router();
 
 router.use('/user', usersRoute);
 router.post('/googleLogin', googleLogin);
-router.use('/dialogs', chatsRoute);
+router.use('/chat', chatsRoute);
 
 export default router;

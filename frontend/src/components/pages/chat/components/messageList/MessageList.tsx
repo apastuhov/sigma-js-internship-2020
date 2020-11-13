@@ -1,7 +1,7 @@
 import Box from '@material-ui/core/Box';
 import React, { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { getChatMessages } from '../../../../../services/getChatMessages';
+import { getChatMessages } from '../../../../../services/apiChatService';
 import { Compose } from '../compose/Compose';
 import { Message } from '../message/Message';
 import './messageList.scss';

@@ -62,13 +62,6 @@ class UserService {
     const post = await this.userRepo.createPost(newPost);
     return post;
   }
-
-  // Dialogs
-
-  async createDialog(newDialog: DTO.IDialogs): Promise<DTO.IDialogs> {
-    const dialog = await this.userRepo.createDialog(newDialog);
-    return dialog;
-  }
 }
 
 export const userService = new UserService(userRepository);

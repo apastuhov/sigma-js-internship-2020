@@ -53,9 +53,13 @@ $container-width: 944px;
 }
 
 @mixin input {
-  border: 1px solid $light-grey;
+  border: 0;
+  border-bottom: 2px solid $grey;
   box-sizing: border-box;
-  border-radius: $tile-radius;
+  &:focus {
+    outline: none;
+    border-color: $primary-color;
+  }
 }
 
 @mixin title {
@@ -98,7 +102,6 @@ $container-width: 944px;
   box-sizing: border-box;
   padding: $gap-24;
 }
-
 
 @mixin scrollbar {
   &::-webkit-scrollbar {
