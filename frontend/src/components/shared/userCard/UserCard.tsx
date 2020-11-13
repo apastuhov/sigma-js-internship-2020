@@ -28,7 +28,7 @@ const UserCard: React.FC<MainInfoProps> = ({ mainInfo, boxShadow, isProfile }) =
 
     addFriendToDB(loginedUser._id, friendId).then(res => {
       if (res === status.SUCCESS) {
-        addFriendToContext(mainInfo._id);
+        addFriendToContext(friendId.ID);
       }
     });
   };

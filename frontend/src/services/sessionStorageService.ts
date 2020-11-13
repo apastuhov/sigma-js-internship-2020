@@ -7,11 +7,11 @@ export const saveFriendsToStorage = (friends: Set<string>) => {
 };
 
 export const getUserFromStorage = () => {
-  return JSON.parse(sessionStorage.getItem('loginedUser')!);
+  return JSON.parse(sessionStorage.getItem('loginedUser') as string);
 };
 
 export const getFriendsFromStorage = () => {
-  const friends = JSON.parse(sessionStorage.getItem('friends')!);
+  const friends = JSON.parse(sessionStorage.getItem('friends') as string);
   return friends;
 };
 

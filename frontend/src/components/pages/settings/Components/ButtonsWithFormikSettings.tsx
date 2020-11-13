@@ -24,19 +24,21 @@ export const ButtonWithFormikSettings: React.FC = props => {
   const email = storageData.email;
 
   const editUser = () => {
-    patchRequest(`user/edit/${id}`, {
-      firstName: values.name,
-      lastName: values.surname,
-      sex: getSexPriority(values.sex),
-      email: email,
-      birthday: values.birthday,
-      country: values.country,
-      countryCode: getMethodPriority(values.country),
-      speak: values.languages,
-      learn: values.learnLanguages,
-      photo: values.fileUrl,
-      about: values.about
-    });
+    if (id) {
+      patchRequest(`user/edit/${id}`, {
+        firstName: values.name,
+        lastName: values.surname,
+        sex: getSexPriority(values.sex),
+        email: email,
+        birthday: values.birthday,
+        country: values.country,
+        countryCode: getMethodPriority(values.country),
+        speak: values.languages,
+        learn: values.learnLanguages,
+        photo: values.fileUrl,
+        about: values.about
+      });
+    }
   };
 
   return (
