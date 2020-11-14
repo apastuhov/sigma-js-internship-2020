@@ -20,7 +20,7 @@ export const patchRequest = (url: string, body: any) => {
     .catch(e => e);
 };
 
-export const getFriends = async (id: string) => {
+export const getFriends = async (id?: string) => {
   try {
     const res = await axios.get(`${dataType.user}/${id}/friends`);
     return await res.data;
@@ -38,4 +38,6 @@ export const addFriendToDB = async (id: string, friendID: object) => {
   }
 };
 
-export const getUserDetails = (id: string) => getRequest(`${dataType.user}/${id}`);
+export const getUserDetails = (id?: string) => {
+  return getRequest(`${dataType.user}/${id}`);
+}

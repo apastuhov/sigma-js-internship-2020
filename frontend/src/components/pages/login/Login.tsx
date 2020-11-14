@@ -25,10 +25,10 @@ const Login: React.FC = () => {
   useEffect(() => {
     try {
       const user = getUserFromStorage();
-      if (user._id) {
+      if (user?._id) {
         history.push(`/user/${user._id}`);
       }
-    } catch (e) {}
+    } catch (e) {console.log(e)}
   }, [history]);
 
   return (

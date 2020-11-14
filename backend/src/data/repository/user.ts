@@ -17,7 +17,7 @@ export class UserRepository {
   async createUser(newUser: DTO.IUser): Promise<DTO.IUserDoc> {
     const user = new User(newUser);
     const res = await user.save();
-    const friend = await UserRepository.addUserIdToFriends(res._id);
+    await UserRepository.addUserIdToFriends(res._id);
     return res;
   }
 

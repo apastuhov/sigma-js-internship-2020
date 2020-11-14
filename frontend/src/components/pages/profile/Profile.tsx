@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { RouteComponentProps, useLocation } from 'react-router-dom';
 import { getFriends, getUserDetails } from '../../../services/apiUserService';
 import { getUserPosts } from '../../../services/postService';
-import { getUserFromStorage } from '../../../services/sessionStorageService';
+import { getUserFromStorage, isCurrentUser } from '../../../services/sessionStorageService';
 import Layout from '../../shared/layout/Layout';
 import UserCard from '../../shared/userCard/UserCard';
 import About from './components/about/About';
@@ -23,11 +23,10 @@ const Profile: React.FC<IParamsProps> = props => {
   const [userPosts, setUserPosts] = useState([]);
   const location = useLocation();
   const userId = props.match.params.id;
-  const myInfo = getUserFromStorage();
 
   useEffect(() => {
     const user = getUserFromStorage();
-    if (userId === user._id) {
+    if (userId === user?._id) {
       setUserDetails(user);
       getUserPosts(userDetails._id).then(posts => setUserPosts(posts));
       getFriends(userDetails._id).then(users => setFriends(users));
@@ -40,7 +39,7 @@ const Profile: React.FC<IParamsProps> = props => {
 
   return (
     <>
-      <Layout pageTitle={`${userDetails._id === myInfo?._id ? 'My' : ''} Profile`}>
+      <Layout pageTitle={`${isCurrentUser(userId) ? 'My' : ''} Profile`}>
         <div className="profile">
           <div className="leftside">
             <UserCard mainInfo={userDetails} boxShadow={2} isProfile />

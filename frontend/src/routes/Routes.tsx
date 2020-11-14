@@ -23,7 +23,7 @@ const PrivateRoute = ({ Component, path, exact = false }: Props): JSX.Element =>
     <Route
       exact={exact}
       path={path}
-      render={(props: RouteComponentProps) => (isAuthed ? <Component {...props} /> : <Redirect to="/login" />)}
+      render={(props: RouteComponentProps) => (isAuthed ? <Component {...props} /> : <Redirect to="/" />)}
     />
   );
 };
@@ -31,23 +31,14 @@ const PrivateRoute = ({ Component, path, exact = false }: Props): JSX.Element =>
 export default () => (
   <Switch>
     <Route path="/" exact component={Login} />
-    <Route path="/register" component={Register} />
-    <FriendsProvider>
-      <Route path="/user/:id" exact component={Profile} />
-      <Route path="/user/:id/friends" component={Friends} />
-      <Route path="/search" component={Search} />
-    </FriendsProvider>
-    <Route path="/chat" component={Chat} />
-    <Route path="/chat/:dialogId" component={Chat} />
-    <Route path="/settings" component={Settings} />
-    <PrivateRoute path="/" exact Component={Profile} />
-    <PrivateRoute path="/user/:id" exact Component={Profile} />
-    <PrivateRoute path="/user/:id/friends" Component={Friends} />
     <PrivateRoute path="/register" Component={Register} />
+    <FriendsProvider>
+      <PrivateRoute path="/user/:id" exact Component={Profile} />
+      <PrivateRoute path="/user/:id/friends" Component={Friends} />
+      <PrivateRoute path="/search" Component={Search} />
+    </FriendsProvider>
     <PrivateRoute path="/chat" Component={Chat} />
     <PrivateRoute path="/chat/:dialogId" Component={Chat} />
-    <PrivateRoute path="/search" Component={Search} />
     <PrivateRoute path="/settings" Component={Settings} />
-    <Route path="/login" component={Login} />
   </Switch>
 );
