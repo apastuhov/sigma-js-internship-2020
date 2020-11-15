@@ -16,24 +16,13 @@ export interface IAboutProps {
   about: string;
 }
 
-export interface ISendPostProps {
-  _id: number;
-}
-
-export interface IUserMain {
-  id: number;
-  firstName: string;
-  lastName: string;
-  avatar: string;
-}
-
 export interface IFriendsListProps {
   id: string;
   friends: IFriend[];
 }
 
 export interface ISendPostProps {
-  _id: number;
+  _id: string;
 }
 
 export interface IPostsProps {

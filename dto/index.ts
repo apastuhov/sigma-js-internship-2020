@@ -10,6 +10,7 @@ export namespace DTO {
     isFriend?: boolean;
     birthday: Date;
     avatar: string;
+    about: string;
   }
 
   export interface IUserDetails extends IUser {

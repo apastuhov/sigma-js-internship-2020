@@ -9,8 +9,7 @@ import './posts.scss';
 
 const Posts: React.FC<IPostsProps> = ({ posts }) => {
   const sortedPosts = useMemo(() => {
-    const newPosts = [...posts].reverse();
-    return newPosts;
+    return [...posts].reverse();
   }, [posts]);
 
   const editPost = (postId: number) => {

@@ -1,5 +1,5 @@
 import Box from '@material-ui/core/Box';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { GoogleLogin } from 'react-google-login';
 import { useHistory } from 'react-router-dom';
 import GoogleLogo from '../../../images/google-login.svg';
@@ -8,18 +8,29 @@ import { processGoogleResponse } from '../../../services/sessionService';
 import Footer from '../../shared/footer/Footer';
 import Tile from '../../shared/tile/Tile';
 import './login.scss';
+import { getUserFromStorage } from '../../../services/sessionStorageService';
 
 const Login: React.FC = () => {
   const history = useHistory();
   const handleGoogleResponse = async (res: any) => {
     const result = await processGoogleResponse(res);
     if (result) {
-      history.push('/');
+      history.push(`/user/${result._id}`);
     } else {
       sessionStorage.setItem('loginedUser', JSON.stringify(res.tt.$t));
       history.push('/register');
     }
   };
+
+  useEffect(() => {
+    try {
+      const user = getUserFromStorage();
+      if (user?._id) {
+        history.push(`/user/${user._id}`);
+      }
+    } catch (e) {console.log(e)}
+  }, [history]);
+
   return (
     <div className="login-wrapper">
       <Tile>

@@ -17,7 +17,8 @@ export class UserRepository {
   async createUser(newUser: DTO.IUser): Promise<DTO.IUserDoc> {
     const user = new User(newUser);
     const res = await user.save();
-    return res._id;
+    await UserRepository.addUserIdToFriends(res._id);
+    return res;
   }
 
   async updateUser(ID: DTO.ID, param: IUserDoc): Promise<DTO.IUserDoc | null> {
@@ -26,6 +27,12 @@ export class UserRepository {
   }
 
   // Friends
+
+  private static async addUserIdToFriends(userId: DTO.ID) {
+    const user = new Friends({ userId });
+    const data = await user.save();
+    return data;
+  }
 
   async getFriendsById(userId: DTO.ID): Promise<DTO.IUserDoc[] | DTO.ID[]> {
     const data = await Friends.findOne({ userId: userId })
