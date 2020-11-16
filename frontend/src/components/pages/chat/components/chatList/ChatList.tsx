@@ -1,5 +1,6 @@
 import Box from '@material-ui/core/Box';
 import dayjs from 'dayjs';
+import { DTO } from 'dto';
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import { getAllDialogs } from '../../../../../services/apiChatService';
 import { getUserFromStorage } from '../../../../../services/sessionStorageService';
@@ -9,7 +10,9 @@ import './chatList.scss';
 
 export const ChatList: React.FC = () => {
   const [search, setSearch] = useState('');
+  const [dialogList, setDialogList] = useState<DialogInfoProps[]>([]);
   const [searchResults, setSearchResults] = useState<DialogInfoProps[]>([]);
+
   const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -23,33 +26,30 @@ export const ChatList: React.FC = () => {
       const user = await getUserFromStorage();
       const dialogs = await getAllDialogs(user._id);
       const newDialogs = dialogs.map(
-        (dialog: any): DialogInfoProps => {
-          if (user._id !== dialog.participants[1]._id) {
-            return {
-              dialogId: dialog._id,
-              photo: dialog.participants[1].avatar,
-              name: `${dialog.participants[1].firstName} ${dialog.participants[1].lastName}`,
-              text: dialog.messages[0].body,
-              date: dayjs(dialog.messages[0].date).format('DD.MM.YY')
-            };
-          }
+        (dialog: DTO.IDialogs): DialogInfoProps => {
+          const { avatar, firstName, lastName } = dialog.participants.find(({ _id }) => _id !== user._id) || {};
           return {
             dialogId: dialog._id,
-            photo: dialog.participants[0].avatar,
-            name: `${dialog.participants[0].firstName} ${dialog.participants[0].lastName}`,
+            photo: avatar,
+            name: `${firstName} ${lastName}`,
             text: dialog.messages[0].body,
             date: dayjs(dialog.messages[0].date).format('DD.MM.YY')
           };
         }
       );
-      const results = newDialogs.filter((chat: DialogInfoProps) =>
-        chat.name.toLowerCase().includes(search.toLowerCase())
-      );
-      setSearchResults(results);
+      setDialogList(newDialogs);
+      setSearchResults(newDialogs);
       setIsLoading(false);
     };
     getChats();
-  }, [search]);
+  }, []);
+
+  useEffect(() => {
+    const results = dialogList.filter((chat: DialogInfoProps) =>
+      chat.name.toLowerCase().includes(search.toLowerCase())
+    );
+    setSearchResults(results);
+  }, [search, dialogList]);
 
   return (
     <div className="chat-list">

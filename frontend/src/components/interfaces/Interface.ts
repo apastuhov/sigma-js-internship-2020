@@ -59,3 +59,7 @@ export enum status {
   SUCCESS = 'SUCCESS',
   FAILURE = 'FAILURE'
 }
+
+export interface ParamTypes {
+  currentDialogId: string;
+}

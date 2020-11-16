@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import { getChatMessages } from '../../../../../services/apiChatService';
 import { getUserDetails } from '../../../../../services/apiUserService';
 import { getUserFromStorage } from '../../../../../services/sessionStorageService';
+import { ParamTypes } from '../../../../interfaces/Interface';
 import { Compose } from '../compose/Compose';
 import { Message } from '../message/Message';
 import './messageList.scss';
@@ -13,21 +14,18 @@ export const MessageList: React.FC = () => {
   const [messages, setMessages] = useState<Array<DTO.IMessage>>([]);
   const [userId, setUserId] = useState('');
   const [userName, setUserName] = useState('');
-  const { dialogId } = useParams<any>();
-  const chatUserId = getUserFromStorage()._id;
+  const { currentDialogId } = useParams<ParamTypes>();
+  const chatUser = getUserFromStorage();
 
   useEffect(() => {
     setMessages([]);
     (async () => {
-      const messages = await getChatMessages(dialogId);
+      const messages = await getChatMessages(currentDialogId);
       setMessages(messages.messages);
-      if (chatUserId !== messages.participants[1]) {
-        setUserId(messages.participants[1]);
-      } else {
-        setUserId(messages.participants[0]);
-      }
+      const chatPaticipant = messages.participants.find((id: string) => id !== chatUser._id);
+      setUserId(chatPaticipant);
     })();
-  }, [dialogId, chatUserId]);
+  }, [currentDialogId, chatUser._id]);
 
   useEffect(() => {
     (async () => {
@@ -42,7 +40,7 @@ export const MessageList: React.FC = () => {
   const divRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (dialogId) {
+    if (currentDialogId) {
       divRef.current!.scrollIntoView();
     }
   });
@@ -65,7 +63,7 @@ export const MessageList: React.FC = () => {
 
   return (
     <>
-      {dialogId ? (
+      {currentDialogId ? (
         <Box boxShadow={2} className="message-list">
           <div className="user-data">
             <h2>{userName}</h2>

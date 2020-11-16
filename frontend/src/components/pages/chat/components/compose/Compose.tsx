@@ -3,12 +3,13 @@ import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { createMessage } from '../../../../../services/apiChatService';
 import { getUserFromStorage } from '../../../../../services/sessionStorageService';
+import { ParamTypes } from '../../../../interfaces/Interface';
 import './compose.scss';
 
 export const Compose: React.FC = () => {
   const [messageValue, setMessageValue] = useState<string>('');
   const [loginedUser] = useState(getUserFromStorage());
-  const { dialogId } = useParams<any>();
+  const { currentDialogId } = useParams<ParamTypes>();
 
   const inputValueHandleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setMessageValue(event.target.value);
@@ -21,7 +22,7 @@ export const Compose: React.FC = () => {
       body: messageValue,
       status: 0
     };
-    createMessage(dialogId, request);
+    createMessage(currentDialogId, request);
     setMessageValue('');
   };
   return (

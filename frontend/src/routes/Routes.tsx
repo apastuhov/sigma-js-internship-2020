@@ -33,7 +33,7 @@ export default () => (
     <Route path="/" exact component={Login} />
     <PrivateRoute path="/register" Component={Register} />
     <PrivateRoute path="/chat/:userId/dialogs" Component={Chat} />
-    <PrivateRoute path="/chat/:dialogId" exact Component={Chat} />
+    <PrivateRoute path="/chat/:currentDialogId" exact Component={Chat} />
     <PrivateRoute path="/settings" Component={Settings} />
     <FriendsProvider>
       <PrivateRoute path="/user/:id" exact Component={Profile} />
