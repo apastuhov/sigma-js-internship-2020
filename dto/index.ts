@@ -54,4 +54,16 @@ export namespace DTO {
     date?: Date;
     isCreatedByCurrentUser: boolean;
   }
+  export interface IParticipant {
+    _id: string;
+    firstName: string;
+    lastName: string;
+    avatar: string;
+  }
+
+  export interface IDialogs {
+    _id: string;
+    participants: IParticipant[];
+    messages: IMessage[];
+  }
 }
