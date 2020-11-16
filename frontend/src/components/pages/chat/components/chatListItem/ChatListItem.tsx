@@ -4,27 +4,32 @@ import { Link } from 'react-router-dom';
 import shave from 'shave';
 import './chatListItem.scss';
 
-export type ChatInfoProps = {
+export type DialogInfoProps = {
+  dialogId: string;
   photo: string;
   name: string;
   text: string;
   date: string;
 };
 
-export const ChatListItem: React.FC<ChatInfoProps> = ({ photo, name, text, date }) => {
-  useEffect(() => {
-    shave('.chat-snippet', 30);
-  });
-
+export const ChatListItem: React.FC<DialogInfoProps> = ({ dialogId, photo, name, text, date }) => {
+  const [currentDialogId, setCurrentDialogId] = useState('');
   const [isActive, setIsActive] = useState<boolean>(false);
   // id = id current set is active true
   const toggleChat = () => {
-    setIsActive(!isActive);
+    if (currentDialogId === dialogId) {
+      setIsActive(true);
+    }
   };
   const tileClass = isActive ? 'chat-list-item-selected' : 'chat-list-item';
 
+  useEffect(() => {
+    setCurrentDialogId(dialogId);
+    shave('.chat-snippet', 30);
+  }, [dialogId]);
+
   return (
-    <Link to="/chat/:dialogId" className="chat-item-link">
+    <Link to={`/chat/${dialogId}`} className="chat-item-link">
       <Box boxShadow={2} className={tileClass} onClick={toggleChat}>
         <img className="chat-photo" src={photo} alt="chat" />
         <div className="chat-info">

@@ -26,7 +26,7 @@ const Profile: React.FC<IParamsProps> = props => {
 
   useEffect(() => {
     const user = getUserFromStorage();
-    if (userId === user?._id) {
+    if (userId === user._id) {
       setUserDetails(user);
       getUserPosts(userDetails._id).then(posts => setUserPosts(posts));
       getFriends(userDetails._id).then(users => setFriends(users));
@@ -38,21 +38,19 @@ const Profile: React.FC<IParamsProps> = props => {
   }, [location, userId, userDetails._id]);
 
   return (
-    <>
-      <Layout pageTitle={`${isCurrentUser(userId) ? 'My' : ''} Profile`}>
-        <div className="profile">
-          <div className="leftside">
-            <UserCard mainInfo={userDetails} boxShadow={2} isProfile />
-            <About about={userDetails.about} />
-            <FriendsList id={userDetails._id} friends={friends} />
-          </div>
-          <div className="rightside">
-            <AddPostForm _id={userDetails._id} />
-            <Posts posts={userPosts} />
-          </div>
+    <Layout pageTitle={`${isCurrentUser(userId) ? 'My' : ''} Profile`}>
+      <div className="profile">
+        <div className="leftside">
+          <UserCard mainInfo={userDetails} boxShadow={2} isProfile />
+          <About about={userDetails.about} />
+          <FriendsList id={userDetails._id} friends={friends} />
         </div>
-      </Layout>
-    </>
+        <div className="rightside">
+          <AddPostForm _id={userDetails._id} />
+          <Posts posts={userPosts} />
+        </div>
+      </div>
+    </Layout>
   );
 };
 

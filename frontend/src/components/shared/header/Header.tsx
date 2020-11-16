@@ -4,9 +4,9 @@ import SearchIcon from '@material-ui/icons/Search';
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { clearStorage, getUserFromStorage } from '../../../services/sessionStorageService';
+import { IUser } from '../../interfaces/Interface';
 import './Header.scss';
 import logo from './logo.png';
-import { IUser } from '../../interfaces/Interface';
 
 const Header: React.FC = () => {
   const [menuClass, setMenuClass] = useState('');
@@ -32,7 +32,7 @@ const Header: React.FC = () => {
             <SearchIcon style={{ color: '#fff' }} />
             <div>Search</div>
           </Link>
-          <Link to="/chat">
+          <Link to={`/chat/${user?._id}/dialogs`}>
             <MailOutlineIcon style={{ color: '#fff' }} />
           </Link>
           <div className="avatar">

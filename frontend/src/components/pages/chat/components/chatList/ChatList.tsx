@@ -1,25 +1,15 @@
 import Box from '@material-ui/core/Box';
 import dayjs from 'dayjs';
 import React, { ChangeEvent, useEffect, useState } from 'react';
-import { getUserChats } from '../../../../../services/getUserChats';
-import type { ChatInfoProps } from '../chatListItem/ChatListItem';
+import { getAllDialogs } from '../../../../../services/apiChatService';
+import { getUserFromStorage } from '../../../../../services/sessionStorageService';
+import type { DialogInfoProps } from '../chatListItem/ChatListItem';
 import { ChatListItem } from '../chatListItem/ChatListItem';
 import './chatList.scss';
 
-type ChatProps = {
-  picture: {
-    large: string;
-  };
-  name: {
-    first: string;
-    last: string;
-  };
-  text: string;
-};
-
 export const ChatList: React.FC = () => {
   const [search, setSearch] = useState('');
-  const [searchResults, setSearchResults] = useState<ChatInfoProps[]>([]);
+  const [searchResults, setSearchResults] = useState<DialogInfoProps[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -28,26 +18,38 @@ export const ChatList: React.FC = () => {
   };
 
   useEffect(() => {
+    const getChats = async () => {
+      setIsLoading(true);
+      const user = await getUserFromStorage();
+      const dialogs = await getAllDialogs(user._id);
+      const newDialogs = dialogs.map(
+        (dialog: any): DialogInfoProps => {
+          if (user._id !== dialog.participants[1]._id) {
+            return {
+              dialogId: dialog._id,
+              photo: dialog.participants[1].avatar,
+              name: `${dialog.participants[1].firstName} ${dialog.participants[1].lastName}`,
+              text: dialog.messages[0].body,
+              date: dayjs(dialog.messages[0].date).format('DD.MM.YY')
+            };
+          }
+          return {
+            dialogId: dialog._id,
+            photo: dialog.participants[0].avatar,
+            name: `${dialog.participants[0].firstName} ${dialog.participants[0].lastName}`,
+            text: dialog.messages[0].body,
+            date: dayjs(dialog.messages[0].date).format('DD.MM.YY')
+          };
+        }
+      );
+      const results = newDialogs.filter((chat: DialogInfoProps) =>
+        chat.name.toLowerCase().includes(search.toLowerCase())
+      );
+      setSearchResults(results);
+      setIsLoading(false);
+    };
     getChats();
-  }, []);
-
-  const getChats = async () => {
-    setIsLoading(true);
-    // TODO: replace with another service
-    const result = await getUserChats();
-    const newChats = result.map(
-      (result: ChatProps): ChatInfoProps => {
-        return {
-          photo: result.picture.large,
-          name: `${result.name.first} ${result.name.last}`,
-          text: 'Hello world! This is a long message that needs to be truncated.',
-          date: dayjs(new Date().getTime()).format('DD.MM')
-        };
-      }
-    );
-    setSearchResults(newChats);
-    setIsLoading(false);
-  };
+  }, [search]);
 
   return (
     <div className="chat-list">
@@ -67,7 +69,7 @@ export const ChatList: React.FC = () => {
             <div></div>
           </div>
         ) : (
-          searchResults.map((chat: ChatInfoProps) => <ChatListItem key={chat.name} {...chat} />)
+          searchResults.map((chat: DialogInfoProps) => <ChatListItem key={chat.name} {...chat} />)
         )}
       </div>
     </div>

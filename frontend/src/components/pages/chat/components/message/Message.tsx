@@ -2,34 +2,27 @@ import CloseIcon from '@material-ui/icons/Close';
 import EditIcon from '@material-ui/icons/Edit';
 import dayjs from 'dayjs';
 import LocalizedFormat from 'dayjs/plugin/localizedFormat';
+import { DTO } from 'dto';
 import React from 'react';
 import './message.scss';
 
 dayjs.extend(LocalizedFormat);
 
-type MessageProps = {
-  data: {
-    timestamp: Date;
-    message: string;
-  };
-  isMine: boolean;
-};
+export const Message: React.FC<DTO.IMessage> = props => {
+  const { body, date, isCreatedByCurrentUser } = props;
 
-export const Message: React.FC<MessageProps> = props => {
-  const { data, isMine } = props;
-
-  const friendlyTimestamp = dayjs(data.timestamp).format('lll');
+  const friendlyTimestamp = dayjs(date).format('lll');
   return (
-    <div className={['message', `${isMine ? 'mine' : ''}`].join(' ')}>
+    <div className={['message', `${isCreatedByCurrentUser ? 'mine' : ''}`].join(' ')}>
       <div className="bubble-container">
         <div className="bubble">
-          {isMine && (
+          {isCreatedByCurrentUser && (
             <div className="post-actions">
               <EditIcon className="action-icons" />
               <CloseIcon className="action-icons" />
             </div>
           )}
-          {data.message}
+          {body}
           <div className="timestamp">{friendlyTimestamp}</div>
         </div>
       </div>

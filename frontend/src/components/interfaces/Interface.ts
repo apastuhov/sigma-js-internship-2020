@@ -38,7 +38,8 @@ export enum dataType {
   user = 'user',
   posts = 'posts',
   chat = 'chat',
-  dialogs = 'dialogs'
+  dialogs = 'dialogs',
+  message = 'message'
 }
 
 export type FormikValues = {
