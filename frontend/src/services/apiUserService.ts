@@ -40,4 +40,4 @@ export const addFriendToDB = async (id: string, friendID: object) => {
 
 export const getUserDetails = (id?: string) => {
   return getRequest(`${dataType.user}/${id}`);
-}
+};

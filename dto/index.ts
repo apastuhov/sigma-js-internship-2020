@@ -26,24 +26,32 @@ export namespace DTO {
   }
 
   export interface IFriend {
-    _id: number;
+    _id: string;
     firstName: string;
     lastName: string;
     avatar: string;
   }
 
   export interface IPost {
-    _id: number;
+    _id: string;
     body: string;
     date: string;
     createdBy: IUserDetailsPost;
   }
 
   export interface IUserDetailsPost {
-    _id: number;
+    _id: string;
     firstName: string;
     lastName: string;
     avatar: string;
   }
 
+  export interface IMessage {
+    _id: string;
+    userId: string;
+    body: string;
+    status: number;
+    date?: Date;
+    isCreatedByCurrentUser: boolean;
+  }
 }
