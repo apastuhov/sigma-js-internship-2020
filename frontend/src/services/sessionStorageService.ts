@@ -20,7 +20,7 @@ export const getFriendsFromStorage = () => {
 export const isCurrentUser = (id?: string) => {
   const user = getUserFromStorage();
   return user?._id === id;
-}
+};
 
 export const clearStorage = () => {
   sessionStorage.clear();

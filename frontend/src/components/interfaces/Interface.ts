@@ -38,7 +38,8 @@ export enum dataType {
   user = 'user',
   posts = 'posts',
   chat = 'chat',
-  dialogs = 'dialogs'
+  dialogs = 'dialogs',
+  message = 'message'
 }
 
 export type FormikValues = {
@@ -57,4 +58,8 @@ export type FormikValues = {
 export enum status {
   SUCCESS = 'SUCCESS',
   FAILURE = 'FAILURE'
+}
+
+export interface ParamTypes {
+  currentDialogId: string;
 }

@@ -28,7 +28,9 @@ const Login: React.FC = () => {
       if (user?._id) {
         history.push(`/user/${user._id}`);
       }
-    } catch (e) {console.log(e)}
+    } catch (e) {
+      console.log(e);
+    }
   }, [history]);
 
   return (

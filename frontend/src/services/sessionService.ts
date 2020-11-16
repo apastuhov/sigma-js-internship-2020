@@ -15,5 +15,5 @@ export const processGoogleResponse = (res: any) => {
       return user;
     }
     return null;
-  })
+  });
 };

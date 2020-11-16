@@ -1,31 +1,28 @@
 import Box from '@material-ui/core/Box';
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link, useParams } from 'react-router-dom';
 import shave from 'shave';
+import { ParamTypes } from '../../../../interfaces/Interface';
 import './chatListItem.scss';
 
-export type ChatInfoProps = {
-  photo: string;
+export type DialogInfoProps = {
+  dialogId: string;
+  photo?: string;
   name: string;
   text: string;
   date: string;
 };
 
-export const ChatListItem: React.FC<ChatInfoProps> = ({ photo, name, text, date }) => {
+export const ChatListItem: React.FC<DialogInfoProps> = ({ dialogId, photo, name, text, date }) => {
+  const { currentDialogId } = useParams<ParamTypes>();
+
   useEffect(() => {
     shave('.chat-snippet', 30);
-  });
-
-  const [isActive, setIsActive] = useState<boolean>(false);
-  // id = id current set is active true
-  const toggleChat = () => {
-    setIsActive(!isActive);
-  };
-  const tileClass = isActive ? 'chat-list-item-selected' : 'chat-list-item';
+  }, []);
 
   return (
-    <Link to="/chat/:dialogId" className="chat-item-link">
-      <Box boxShadow={2} className={tileClass} onClick={toggleChat}>
+    <Link to={`/chat/${dialogId}`} className="chat-item-link">
+      <Box boxShadow={2} className={dialogId === currentDialogId ? 'chat-list-item-selected' : 'chat-list-item'}>
         <img className="chat-photo" src={photo} alt="chat" />
         <div className="chat-info">
           <h1 className="chat-title">{name}</h1>

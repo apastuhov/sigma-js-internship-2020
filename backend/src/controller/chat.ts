@@ -1,15 +1,15 @@
 import express from 'express';
 import { Types } from 'mongoose';
-import { chatService } from '../service/chat';
 import { DTO } from '../interface';
+import { chatService } from '../service/chat';
 const router = express.Router();
 
 // GET ALL MESSAGES
 
-router.get('/:id', async (req, res, next) => {
+router.get('/:dialogId', async (req, res, next) => {
   // TODO: catch errors
   try {
-    const ID = Types.ObjectId(req.params.id);
+    const ID = Types.ObjectId(req.params.dialogId);
     const messages = await chatService.getMessagesByChatId(ID);
     return res.send(messages);
   } catch (e) {
@@ -19,9 +19,9 @@ router.get('/:id', async (req, res, next) => {
 
 // CREATE NEW MESSAGE
 
-router.post<any, any, DTO.IMessage, any>('/:id/message', async (req, res, next) => {
+router.post<any, any, DTO.IMessage, any>('/:dialogId/message', async (req, res, next) => {
   try {
-    const dialogId = Types.ObjectId(req.params.id);
+    const dialogId = Types.ObjectId(req.params.dialogId);
     const newMessage = {
       userId: req.body.userId,
       body: req.body.body,
@@ -50,9 +50,9 @@ router.post<any, any, DTO.IDialogs, any>('/dialogs', async (req, res, next) => {
 
 // GET ALL DIALOGS
 
-router.get('/:id/dialogs', async (req, res, next) => {
+router.get('/:userId/dialogs', async (req, res, next) => {
   try {
-    const userId = Types.ObjectId(req.params.id);
+    const userId = Types.ObjectId(req.params.userId);
     const dialogs = await chatService.getAllDialogs(userId);
     return res.send(dialogs);
   } catch (e) {

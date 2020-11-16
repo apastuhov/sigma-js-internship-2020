@@ -37,3 +37,14 @@
   color: $grey;
   font-size: $gap-14;
 }
+
+.messageListReplace {
+  padding: 6px;
+  border-radius: 4px;
+  background-color: $primary-color;
+  color: $white;
+  font-size: $gap-14;
+  margin: 300px 0 0 180px;
+  display: inline-block;
+  position: absolute;
+}

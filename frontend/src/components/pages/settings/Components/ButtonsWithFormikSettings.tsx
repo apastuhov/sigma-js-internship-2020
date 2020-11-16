@@ -7,8 +7,6 @@ import { Country } from '../../../constants/Countries';
 import { FormikValues } from '../../../interfaces/Interface';
 import Button from '../../../shared/button/Button';
 
-const storageData = getUserFromStorage();
-
 export const ButtonWithFormikSettings: React.FC = props => {
   const { values } = useFormikContext<FormikValues>();
 
@@ -21,7 +19,7 @@ export const ButtonWithFormikSettings: React.FC = props => {
   };
   const user = getUserFromStorage();
   const id = user._id;
-  const email = storageData.email;
+  const email = user.email;
 
   const editUser = () => {
     if (id) {
