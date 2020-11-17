@@ -5,6 +5,7 @@ import routes from './controller/index';
 const path = require('path');
 import './data/db/mongoose';
 import { corsMiddleware } from './middleware/cors';
+import { initSocket } from './socket/index';
 const app = express();
 
 app.use(corsMiddleware);
@@ -19,6 +20,8 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../fe/index.html'));
 });
 
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`⚡️[server]: Server is running at http://localhost:${PORT}`);
 });
+
+initSocket(server);
