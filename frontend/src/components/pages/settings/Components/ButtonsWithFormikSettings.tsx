@@ -1,14 +1,18 @@
 import { useFormikContext } from 'formik';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { patchRequest } from '../../../../services/apiUserService';
-import { getUserFromStorage } from '../../../../services/sessionStorageService';
+import { toDataURL } from '../../../../services/convertImageService';
+import { getUserFromStorage, saveUserToStorage } from '../../../../services/sessionStorageService';
 import { sex } from '../../../constants/constants';
 import { Country } from '../../../constants/Countries';
 import { FormikValues } from '../../../interfaces/Interface';
 import Button from '../../../shared/button/Button';
+import './ButtonsWithFormikSettings.scss';
 
 export const ButtonWithFormikSettings: React.FC = props => {
   const { values } = useFormikContext<FormikValues>();
+  const [userImage, setUserImage] = useState<string>();
 
   const getMethodPriority = (country: keyof typeof Country) => {
     return Country[country];
@@ -20,6 +24,12 @@ export const ButtonWithFormikSettings: React.FC = props => {
   const user = getUserFromStorage();
   const id = user._id;
   const email = user.email;
+
+  useEffect(() => {
+    toDataURL(values.fileUrl).then(dataUrl => {
+      setUserImage(dataUrl);
+    });
+  }, [values.fileUrl]);
 
   const editUser = () => {
     if (id) {
@@ -33,15 +43,17 @@ export const ButtonWithFormikSettings: React.FC = props => {
         countryCode: getMethodPriority(values.country),
         speak: values.languages,
         learn: values.learnLanguages,
-        photo: values.fileUrl,
+        avatar: userImage,
         about: values.about
-      });
+      }).then(res => saveUserToStorage(res));
     }
   };
 
   return (
     <div className="settings-nav">
-      <Button name="CANCEL" color="secondary" link="login" />
+      <Link to="/" className="link-to-profile">
+        <Button name="CANCEL" color="secondary" />
+      </Link>
       <Button name="SAVE" color="primary" onClick={editUser} />
     </div>
   );

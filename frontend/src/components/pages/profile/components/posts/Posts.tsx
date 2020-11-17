@@ -28,7 +28,7 @@ const Posts: React.FC<IPostsProps> = ({ posts }) => {
           <h3>
             This user has no posts yet
             <br />
-            You can be the first)
+            You can add one
           </h3>
         </div>
       ) : (
