@@ -1,40 +1,30 @@
-import React  from 'react';
+import React from 'react';
 import Login from './Login';
-import { render, fireEvent, waitForElement } from "@testing-library/react";
+import { render } from '@testing-library/react';
+import {getUserFromStorage} from '../../../services/sessionStorageService';
 
-// const { createBrowserHistory } =  require('history');
-// const history = createBrowserHistory(/* ... */);
-// jest.spyOn(history, "push");
+const mockHistoryPush = jest.fn();
+
+jest.mock('../../../services/sessionStorageService', () => ({
+  getUserFromStorage: jest.fn().mockReturnValue({_id:'abc123'})
+}));
+
+jest.mock('react-router-dom', () => ({
+  ...jest.requireActual('react-router-dom'),
+  useHistory: () => ({
+    push: mockHistoryPush,
+  }),
+}));
 
 describe('Login test', () => {
-
-  // beforeEach(() => {
-  //   Object.defineProperty(window, "sessionStorage", {
-  //     value: {
-  //       getItem: jest.fn(() => 3),
-  //       setItem: jest.fn(() => null)
-  //     },
-  //     writable: true
-  //   });
-  // });
-
-  // jest.spyOn(window.sessionStorage.__proto__, 'getItem');
-  // window.sessionStorage.__proto__.getItem = jest.fn();
-  //
-  const spy = jest.spyOn(Storage.prototype, 'getItem');
-
   it('Should call sessionStorage getItem on render', () => {
-    render(<Login/>);
-    expect(spy).toHaveBeenCalled();
+    render(<Login />);
+    expect(getUserFromStorage).toHaveBeenCalled();
   });
 
-  it('if user exists in sessionStorage, it will redirect to user/:id ', () => {
-    render(<Login/>);
-    expect(spy).toBeCalledWith('loginedUser');
-    //TODO Check history push
-    // 1) get id from sessionStorage
-    // 2) check redirect to /user/:id
-
+  it('Should redirect to user/:id, if user exists in sessionStorage', () => {
+    render(<Login />);
+    expect(getUserFromStorage).lastReturnedWith({_id: "abc123"});
+    expect(mockHistoryPush).toHaveBeenCalledWith('/user/abc123');
   });
-
 });
