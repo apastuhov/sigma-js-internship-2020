@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { dataType } from '../components/interfaces/Interface';
 
-axios.defaults.baseURL = 'http://127.0.0.1:8000/api/';
+axios.defaults.baseURL = `${process.env.REACT_APP_API_URL}`;
 axios.defaults.headers = { 'Content-Type': 'application/json' };
 
 const getRequest = (url: string) => axios.get(`${url}`).then(res => res.data);
