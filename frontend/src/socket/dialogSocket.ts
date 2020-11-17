@@ -1,6 +1,6 @@
 import io from 'socket.io-client';
 import { IMessage } from '../components/interfaces/Interface';
-const ENDPOINT = "http://127.0.0.1:8000";
+const ENDPOINT = `${process.env.REACT_APP_API_URL}`;
 const socket = io(ENDPOINT)
 
 export const joinDialog = (dialogId: string) => {
