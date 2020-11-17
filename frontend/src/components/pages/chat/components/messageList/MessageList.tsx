@@ -1,5 +1,4 @@
 import Box from '@material-ui/core/Box';
-import { DTO } from 'dto';
 import React, { useEffect, useRef, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getChatMessages } from '../../../../../services/apiChatService';
@@ -9,9 +8,11 @@ import { ParamTypes } from '../../../../interfaces/Interface';
 import { Compose } from '../compose/Compose';
 import { Message } from '../message/Message';
 import './messageList.scss';
+import { IMessage } from '../../../../interfaces/Interface';
+import { joinDialog, getMessage, leaveRoom } from '../../../../../socket/dialogSocket';
 
 export const MessageList: React.FC = () => {
-  const [messages, setMessages] = useState<Array<DTO.IMessage>>([]);
+  const [messages, setMessages] = useState<IMessage[]>([]);
   const [userId, setUserId] = useState('');
   const [userName, setUserName] = useState('');
   const { currentDialogId } = useParams<ParamTypes>();
@@ -26,6 +27,19 @@ export const MessageList: React.FC = () => {
       setUserId(chatPaticipant);
     })();
   }, [currentDialogId, chatUser._id]);
+
+  useEffect(() => {
+    joinDialog(currentDialogId);
+    return () => {
+      leaveRoom(currentDialogId);
+    }
+  }, [currentDialogId]);
+
+  useEffect(() => {
+    getMessage((message: IMessage) => {
+      setMessages((oldMessages) => [...oldMessages, message]);
+    })
+  }, []);
 
   useEffect(() => {
     (async () => {

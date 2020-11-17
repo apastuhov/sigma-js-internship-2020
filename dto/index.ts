@@ -47,12 +47,12 @@ export namespace DTO {
   }
 
   export interface IMessage {
-    _id: string;
+    _id?: string;
     userId: string;
     body: string;
     status: number;
     date?: Date;
-    isCreatedByCurrentUser: boolean;
+    isCreatedByCurrentUser?: boolean;
   }
   export interface IParticipant {
     _id: string;
