@@ -58,7 +58,7 @@ class UserService {
     return posts;
   }
 
-  async createPost(newPost: DTO.IPost): Promise<DTO.IPost> {
+  async createPost(newPost: DTO.IPost): Promise<DTO.IPostDoc | null> {
     const post = await this.userRepo.createPost(newPost);
     return post;
   }

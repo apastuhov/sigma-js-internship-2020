@@ -101,13 +101,10 @@ export class UserRepository {
     return posts;
   }
 
-  async createPost(newPost: DTO.IPost): Promise<DTO.IPost> {
-    const post = new Post(newPost);
-    const res = await post.save(function (err, post) {
-      if (err) return console.error(err);
-      return post;
-    });
-    return res;
+  async createPost(newPost: DTO.IPost): Promise<DTO.IPostDoc | null>  {
+    const post = await new Post(newPost).save();
+    const data = await Post.findById(post._id).populate('createdBy', ['firstName', 'lastName', 'avatar']);
+    return data;
   }
 }
 
