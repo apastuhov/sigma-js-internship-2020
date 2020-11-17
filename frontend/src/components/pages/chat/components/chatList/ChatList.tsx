@@ -32,8 +32,8 @@ export const ChatList: React.FC = () => {
             dialogId: dialog._id,
             photo: avatar,
             name: `${firstName} ${lastName}`,
-            text: dialog.messages[0].body,
-            date: dayjs(dialog.messages[0].date).format('DD.MM.YY')
+            text: dialog.messages[0]?.body,
+            date: dayjs(dialog.messages[0]?.date).format('DD.MM.YY')
           };
         }
       );

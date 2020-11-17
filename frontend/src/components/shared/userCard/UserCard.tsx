@@ -1,7 +1,8 @@
 import Box from '@material-ui/core/Box';
 import dayjs from 'dayjs';
 import React, { MouseEvent, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
+import { createDialog } from '../../../services/apiChatService';
 import { addFriendToDB } from '../../../services/apiUserService';
 import { getUserFromStorage } from '../../../services/sessionStorageService';
 import { IUser, status } from '../../interfaces/Interface';
@@ -19,6 +20,7 @@ const UserCard: React.FC<MainInfoProps> = ({ mainInfo, boxShadow, isProfile }) =
   const [loginedUser] = useState(getUserFromStorage());
   const [userAge, setUserAge] = useState<number>();
   const { friends, addFriendToContext } = useFriends();
+  let history = useHistory();
 
   const sendFriendRequest = (event: MouseEvent) => {
     event.preventDefault();
@@ -30,6 +32,17 @@ const UserCard: React.FC<MainInfoProps> = ({ mainInfo, boxShadow, isProfile }) =
       if (res === status.SUCCESS) {
         addFriendToContext(friendId.ID);
       }
+    });
+  };
+
+  const createDialogRequest = (event: MouseEvent) => {
+    event.preventDefault();
+    const participants = {
+      participants: [loginedUser._id, mainInfo._id]
+    };
+
+    createDialog(participants).then(() => {
+      history.push(`/chat/${loginedUser._id}/dialogs`);
     });
   };
 
@@ -82,7 +95,7 @@ const UserCard: React.FC<MainInfoProps> = ({ mainInfo, boxShadow, isProfile }) =
                 add friend
               </Link>
             )}
-            <Link to={`/chat/${loginedUser._id}/dialogs`} className="send-message">
+            <Link to={`/chat/${loginedUser._id}/dialogs`} className="send-message" onClick={createDialogRequest}>
               message
             </Link>
           </div>
