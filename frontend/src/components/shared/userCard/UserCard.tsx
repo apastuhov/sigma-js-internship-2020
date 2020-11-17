@@ -88,7 +88,7 @@ const UserCard: React.FC<MainInfoProps> = ({ mainInfo, boxShadow, isProfile }) =
             );
           })}
         </div>
-        {loginedUser._id !== mainInfo._id && (
+        {loginedUser._id !== mainInfo._id && !isProfile && (
           <div className="buttons-action">
             {!friends.has(mainInfo._id) && (
               <Link to="/" onClick={sendFriendRequest} className="add-friend">

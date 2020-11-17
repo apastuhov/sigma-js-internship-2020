@@ -2,10 +2,9 @@ import { DTO } from '../../interface';
 import { Friends } from '../models/friends';
 import { Post } from '../models/post';
 import { User } from '../models/user';
-import { Dialog } from '../models/dialog';
 import IUserDoc = DTO.IUserDoc;
 
-const userFiels = ['firstName', 'lastName', 'avatar', 'birthday', 'country', 'speak', 'learn'];
+const userFiels = ['firstName', 'lastName', 'avatar', 'birthday', 'country', 'countryCode', 'speak', 'learn'];
 
 export class UserRepository {
   // Login & Register
@@ -22,7 +21,7 @@ export class UserRepository {
   }
 
   async updateUser(ID: DTO.ID, param: IUserDoc): Promise<DTO.IUserDoc | null> {
-    const res = await User.findByIdAndUpdate(ID, param).exec();
+    const res = await User.findByIdAndUpdate(ID, param);
     return res;
   }
 

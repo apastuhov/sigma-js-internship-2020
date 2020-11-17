@@ -24,9 +24,9 @@ const AddPostForm: React.FC<ISendPostProps> = ({ _id }) => {
     if (postValue?.trim()?.length > 0) {
       const request = {
         body: postValue,
-        createdBy: _id
+        createdBy: loginedUser._id
       };
-      sendPostToUser(loginedUser._id, request);
+      sendPostToUser(_id, request);
       setPostValue('');
     } else {
       setInvalidForm(true);

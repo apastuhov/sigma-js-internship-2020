@@ -1,4 +1,5 @@
 import { Box } from '@material-ui/core';
+import dayjs from 'dayjs';
 import { useFormikContext } from 'formik';
 import React, { useEffect, useState } from 'react';
 import { getUserFromStorage } from '../../../services/sessionStorageService';
@@ -19,7 +20,7 @@ const Settings: React.FC = () => {
   const [userDetails] = useState({
     name: storageData.firstName,
     surname: storageData.lastName,
-    birthday: storageData.birthday,
+    birthday: dayjs(storageData.birthday).format('YYYY-MM-DD'),
     country: storageData.country,
     languages: storageData.speak,
     learnLanguages: storageData.learn,
