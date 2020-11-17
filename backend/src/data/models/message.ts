@@ -1,4 +1,4 @@
-import { Schema, model, Types } from 'mongoose';
+import { model, Schema, Types } from 'mongoose';
 import { DTO } from '../../interface';
 
 const messageSchemaFields: Record<keyof DTO.IMessage, any> = {

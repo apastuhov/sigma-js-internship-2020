@@ -32,13 +32,13 @@ export default () => (
   <Switch>
     <Route path="/" exact component={Login} />
     <PrivateRoute path="/register" Component={Register} />
+    <PrivateRoute path="/chat/:userId/dialogs" Component={Chat} />
+    <PrivateRoute path="/chat/:currentDialogId" exact Component={Chat} />
+    <PrivateRoute path="/settings" Component={Settings} />
     <FriendsProvider>
       <PrivateRoute path="/user/:id" exact Component={Profile} />
       <PrivateRoute path="/user/:id/friends" Component={Friends} />
       <PrivateRoute path="/search" Component={Search} />
     </FriendsProvider>
-    <PrivateRoute path="/chat" Component={Chat} />
-    <PrivateRoute path="/chat/:dialogId" Component={Chat} />
-    <PrivateRoute path="/settings" Component={Settings} />
   </Switch>
 );

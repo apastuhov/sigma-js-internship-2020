@@ -12,11 +12,11 @@ const Posts: React.FC<IPostsProps> = ({ posts }) => {
     return [...posts].reverse();
   }, [posts]);
 
-  const editPost = (postId: number) => {
+  const editPost = (postId: string) => {
     console.log(postId);
   };
 
-  const deletePost = (postId: number) => {
+  const deletePost = (postId: string) => {
     console.log(postId);
   };
 
@@ -28,7 +28,7 @@ const Posts: React.FC<IPostsProps> = ({ posts }) => {
           <h3>
             This user has no posts yet
             <br />
-            You can be the first)
+            You can add one
           </h3>
         </div>
       ) : (
