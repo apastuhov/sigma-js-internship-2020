@@ -2,6 +2,7 @@
 
 .add-post-form {
   @include tile;
+  margin: 0 $gap-10 0 $gap-6;
 
   @include for-mobile {
     width: $mobile-tile-width;
