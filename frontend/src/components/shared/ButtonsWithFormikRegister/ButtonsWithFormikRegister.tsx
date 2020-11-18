@@ -1,6 +1,6 @@
 import { useFormikContext } from 'formik';
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { postRequest } from '../../../services/apiService';
 import { toDataURL } from '../../../services/convertImageService';
 import { getUserFromStorage, saveUserToStorage } from '../../../services/sessionStorageService';
@@ -52,8 +52,10 @@ export const ButtonWithFormikRegister: React.FC = props => {
 
   return (
     <div className="register-nav">
-      <Button name="CANCEL" color="secondary" link="login" />
-      <Button name="SIGN UP" color="primary" onClick={submitUser} />
+      <Link to="/" className="link-to-login">
+        <Button name="cancel" color="secondary" />
+      </Link>
+      <Button name="sign up" color="primary" onClick={submitUser} />
     </div>
   );
 };

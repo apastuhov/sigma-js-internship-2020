@@ -5,12 +5,10 @@ form {
   position: relative;
 
   .compose-input {
+    @include input;
     width: 500px;
-    height: 16px;
-    padding: $gap-10;
-    border: $gap-1 solid $grey;
-    border-radius: $gap-4;
-    outline-color: $primary-color;
+    height: $gap-16;
+    padding: $gap-16 $gap-4;
   }
 
   .save-icon {

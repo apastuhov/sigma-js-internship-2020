@@ -20,20 +20,13 @@
 
     textarea {
       @include text;
+      @include input-textarea;
       flex-grow: 1;
-      box-sizing: border-box;
-      border: 1px solid $grey;
-      border-radius: $gap-4;
       font-family: 'Roboto';
 
       &::placeholder {
         @include text;
         padding: $gap-2;
-      }
-
-      &:focus {
-        outline: none;
-        border: $gap-2 solid $primary-color;
       }
     }
 

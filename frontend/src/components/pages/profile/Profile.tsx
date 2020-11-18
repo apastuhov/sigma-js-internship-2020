@@ -39,9 +39,9 @@ const Profile: React.FC<IParamsProps> = props => {
   }, [location, userId, userDetails._id]);
 
   const sendUserPost = (userId: string, post: IPost) => {
-    sendPostToUser(userId, post).then(post => setUserPosts((oldPosts) => [...oldPosts, post]));
-  }
-  
+    sendPostToUser(userId, post).then(post => setUserPosts(oldPosts => [...oldPosts, post]));
+  };
+
   return (
     <Layout pageTitle={`${isCurrentUser(userId) ? 'My' : ''} Profile`}>
       <div className="profile">

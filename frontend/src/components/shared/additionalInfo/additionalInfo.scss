@@ -29,7 +29,6 @@ p {
 }
 
 .text-optional {
-  font-size: $gap-14;
   color: $grey;
 }
 .img-input {
@@ -42,9 +41,9 @@ p {
   }
 }
 .textarea {
-  @include input;
+  @include input-textarea;
   padding: $gap-6;
-  padding-bottom: 11px;
+  padding-bottom: $gap-14;
   resize: none;
   font-family: 'Roboto';
   font-size: $gap-14;
@@ -54,5 +53,5 @@ p {
 }
 
 .container span {
-  font-size: 16px;
+  font-size: $gap-14;
 }

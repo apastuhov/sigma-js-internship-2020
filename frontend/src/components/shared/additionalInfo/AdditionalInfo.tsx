@@ -6,7 +6,7 @@ import './additionalInfo.scss';
 import PhotoInput from './components/PhotoInput';
 import TextareaInput from './components/TextareaInput';
 
-const AdditionalInfo: React.FC = props => {
+const AdditionalInfo: React.FC = () => {
   const { setFieldValue } = useFormikContext();
 
   const handleUpload = (url: string) => setFieldValue('fileUrl', url);
@@ -16,13 +16,13 @@ const AdditionalInfo: React.FC = props => {
       <Box boxShadow={2} className="tile">
         <h1>Additional Info</h1>
         <p>
-          Photo<span className="text-optional"> (optional)</span>
+          Photo <span className="text-optional">(optional)</span>
         </p>
         <div className="upload-wrapper">
           <PhotoInput onUpload={handleUpload} />
         </div>
         <p>
-          About<span className="text-optional"> (optional)</span>
+          About <span className="text-optional">(optional)</span>
         </p>
         <TextareaInput name="about" />
       </Box>

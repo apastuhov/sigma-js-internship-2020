@@ -63,6 +63,17 @@ $container-width: 944px;
   }
 }
 
+@mixin input-textarea {
+  border: 0;
+  border: 2px solid $grey;
+  border-radius: $gap-4;
+  box-sizing: border-box;
+  &:focus {
+    outline: none;
+    border-color: $primary-color;
+  }
+}
+
 @mixin title {
   font-size: 20px;
   font-weight: 500;
