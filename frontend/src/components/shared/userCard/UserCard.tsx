@@ -61,7 +61,7 @@ const UserCard: React.FC<MainInfoProps> = ({ mainInfo, boxShadow, isProfile, isS
         <h4>
           {mainInfo.firstName} {mainInfo.lastName}
         </h4>
-        {isNaN(userAge as number) ? <p>0 y.o.</p> : <p>{userAge} y.o.</p>}
+        <p className="age">{`${isNaN(userAge as number) ? '0' : userAge} y.o.`}</p>
         <div className="flag">
           <img src={`https://www.countryflags.io/${mainInfo.countryCode}/flat/24.png`} alt="Country flag" />
           <p>{mainInfo.country}</p>
@@ -90,7 +90,7 @@ const UserCard: React.FC<MainInfoProps> = ({ mainInfo, boxShadow, isProfile, isS
             );
           })}
         </div>
-        {loginedUser._id !== mainInfo._id && !isSettings && (
+        {loginedUser?._id !== mainInfo._id && !isSettings && (
           <div className="buttons-action">
             {!friends.has(mainInfo._id) && (
               <Link to="/" onClick={sendFriendRequest} className="add-friend">
