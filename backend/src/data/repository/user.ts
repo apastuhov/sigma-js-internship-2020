@@ -21,7 +21,7 @@ export class UserRepository {
   }
 
   async updateUser(ID: DTO.ID, param: IUserDoc): Promise<DTO.IUserDoc | null> {
-    const res = await User.findByIdAndUpdate(ID, param);
+    const res = await User.findByIdAndUpdate(ID, param, { new: true });
     return res;
   }
 
@@ -101,7 +101,7 @@ export class UserRepository {
     return posts;
   }
 
-  async createPost(newPost: DTO.IPost): Promise<DTO.IPostDoc | null>  {
+  async createPost(newPost: DTO.IPost): Promise<DTO.IPostDoc | null> {
     const post = await new Post(newPost).save();
     const data = await Post.findById(post._id).populate('createdBy', ['firstName', 'lastName', 'avatar']);
     return data;
