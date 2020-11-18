@@ -1,11 +1,15 @@
 @import '../../../styles/variables.scss';
 
-.profile{
+.profile {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
 
-  @include for-medium{
+  .rightside {
+    margin-right: $gap-16;
+  }
+
+  @include for-medium {
     flex-direction: column;
     align-items: center;
   }

@@ -1,4 +1,7 @@
+@import '../../../styles/variables.scss';
+
 footer {
   text-align: center;
+  font-size: $gap-14;
   margin-top: 60px;
 }

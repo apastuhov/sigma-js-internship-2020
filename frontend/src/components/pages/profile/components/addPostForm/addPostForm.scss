@@ -24,6 +24,7 @@
       box-sizing: border-box;
       border: 1px solid $grey;
       border-radius: $gap-4;
+      font-family: 'Roboto';
 
       &::placeholder {
         @include text;

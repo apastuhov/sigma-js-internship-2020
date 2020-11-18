@@ -9,14 +9,7 @@ const TextareaInput: React.FC<InputProps> = props => {
   const [field] = useField(props.name);
 
   return (
-    <textarea
-      name={field.name}
-      value={field.value}
-      onChange={field.onChange}
-      rows={11}
-      cols={53}
-      className="textarea"
-    />
+    <textarea name={field.name} value={field.value} onChange={field.onChange} rows={9} cols={53} className="textarea" />
   );
 };
 

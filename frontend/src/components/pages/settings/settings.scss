@@ -4,5 +4,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  min-height: 60px;
+  min-height: 58px;
+}
+
+select,
+button {
+  cursor: pointer;
+}
+
+p {
+  font-size: $gap-14;
 }

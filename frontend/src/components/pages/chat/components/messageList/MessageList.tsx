@@ -4,12 +4,11 @@ import { useParams } from 'react-router-dom';
 import { getChatMessages } from '../../../../../services/apiChatService';
 import { getUserDetails } from '../../../../../services/apiUserService';
 import { getUserFromStorage } from '../../../../../services/sessionStorageService';
-import { ParamTypes } from '../../../../interfaces/Interface';
+import { getMessage, joinDialog, leaveRoom } from '../../../../../socket/dialogSocket';
+import { IMessage, ParamTypes } from '../../../../interfaces/Interface';
 import { Compose } from '../compose/Compose';
 import { Message } from '../message/Message';
 import './messageList.scss';
-import { IMessage } from '../../../../interfaces/Interface';
-import { joinDialog, getMessage, leaveRoom } from '../../../../../socket/dialogSocket';
 
 export const MessageList: React.FC = () => {
   const [messages, setMessages] = useState<IMessage[]>([]);
@@ -32,13 +31,13 @@ export const MessageList: React.FC = () => {
     joinDialog(currentDialogId);
     return () => {
       leaveRoom(currentDialogId);
-    }
+    };
   }, [currentDialogId]);
 
   useEffect(() => {
     getMessage((message: IMessage) => {
-      setMessages((oldMessages) => [...oldMessages, message]);
-    })
+      setMessages(oldMessages => [...oldMessages, message]);
+    });
   }, []);
 
   useEffect(() => {
@@ -81,7 +80,6 @@ export const MessageList: React.FC = () => {
         <Box boxShadow={2} className="message-list">
           <div className="user-data">
             <h2>{userName}</h2>
-            <p>Last seen 2 hours ago</p>
           </div>
           <hr />
           <div className="message-list-container">

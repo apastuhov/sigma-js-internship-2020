@@ -49,23 +49,23 @@ header {
         width: 110px;
         top: 60px;
         right: -24px;
-        background-color: $white;
+        background-color: $primary-color;
         border-radius: $tile-radius;
         box-sizing: border-box;
-        a{
+        a {
           @include text;
           display: flex;
           justify-content: center;
           width: 100%;
-          font-size: 17px;
+          font-size: $gap-16;
           padding: $gap-8 0;
-          color: $black;
-          &:hover{
-            background-color: rgb(206, 203, 203);
+          color: $white;
+          &:hover {
+            text-decoration: underline;
             transform: none;
           }
-          &:first-child{
-            border-bottom: 1px solid #F0EAEA;
+          &:first-child {
+            border-bottom: 1px solid #f0eaea;
           }
         }
         &-active {

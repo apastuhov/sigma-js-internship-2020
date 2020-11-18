@@ -5,9 +5,10 @@
   width: 125px;
   height: 125px;
   margin: 0 auto;
+  margin-bottom: $gap-4;
 
   img {
-   @include avatar;
+    @include avatar;
   }
 
   .online-status {

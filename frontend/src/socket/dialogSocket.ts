@@ -1,5 +1,6 @@
 import io from 'socket.io-client';
 import { IMessage } from '../components/interfaces/Interface';
+
 const ENDPOINT = `${process.env.REACT_APP_SOCKET_URL}`;
 const socket = io(ENDPOINT);
 
