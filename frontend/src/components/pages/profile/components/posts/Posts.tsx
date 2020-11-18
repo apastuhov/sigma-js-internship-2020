@@ -1,6 +1,4 @@
 import Box from '@material-ui/core/Box';
-import CloseIcon from '@material-ui/icons/Close';
-import EditIcon from '@material-ui/icons/Edit';
 import PostAddIcon from '@material-ui/icons/PostAdd';
 import React, { useMemo } from 'react';
 import { Link } from 'react-router-dom';
@@ -11,15 +9,7 @@ const Posts: React.FC<IPostsProps> = ({ posts }) => {
   const sortedPosts = useMemo(() => {
     return [...posts].reverse();
   }, [posts]);
-
-  const editPost = (postId: string) => {
-    console.log(postId);
-  };
-
-  const deletePost = (postId: string) => {
-    console.log(postId);
-  };
-
+  
   return (
     <>
       {sortedPosts.length === 0 ? (
@@ -46,10 +36,6 @@ const Posts: React.FC<IPostsProps> = ({ posts }) => {
                     </h3>
                     <p>{date}</p>
                   </Link>
-                  <div className="post-actions">
-                    <EditIcon className="action-icons" onClick={() => editPost(postInfo.createdBy._id)} />
-                    <CloseIcon className="action-icons" onClick={() => deletePost(postInfo.createdBy._id)} />
-                  </div>
                 </div>
                 <p>{postInfo.body}</p>
               </Box>

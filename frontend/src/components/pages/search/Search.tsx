@@ -1,4 +1,5 @@
 import { Box } from '@material-ui/core';
+import dayjs from 'dayjs';
 import React, { MouseEvent, useEffect, useState } from 'react';
 import { CountryDropdown } from 'react-country-region-selector';
 import apiService from '../../../services/apiService';
@@ -6,7 +7,6 @@ import { hightLimit, languageLevels, languages, lowLimit } from '../../constants
 import { dataType } from '../../interfaces/Interface';
 import Layout from '../../shared/layout/Layout';
 import UserList from '../../shared/userList/UserList';
-import dayjs from 'dayjs';
 import './search.scss';
 
 const Search: React.FC = () => {
@@ -175,7 +175,7 @@ const Search: React.FC = () => {
       </Box>
       {showError ? (
         <Box boxShadow={2} className="not-found">
-          Not found, try again
+          Nothing found
         </Box>
       ) : (
         <UserList users={users} />

@@ -28,3 +28,12 @@ select {
     display: flex;
   }
 }
+
+.input {
+  font-size: $gap-14;
+  font-family: 'Roboto';
+}
+
+.select {
+  font-size: $gap-14;
+}

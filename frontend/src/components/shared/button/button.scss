@@ -4,9 +4,13 @@
   @include button;
   @include hover-transform-scale;
   background-color: $primary-color;
+  height: 34px;
+  font-family: 'Roboto';
 }
 .secondary {
   @include button;
   @include hover-transform-scale;
   background-color: $secondary-color;
+  height: 34px;
+  font-family: 'Roboto';
 }

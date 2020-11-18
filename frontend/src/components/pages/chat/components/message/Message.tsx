@@ -1,7 +1,7 @@
 import dayjs from 'dayjs';
 import LocalizedFormat from 'dayjs/plugin/localizedFormat';
-import { IMessage } from '../../../../interfaces/Interface';
 import React from 'react';
+import { IMessage } from '../../../../interfaces/Interface';
 import './message.scss';
 
 dayjs.extend(LocalizedFormat);
@@ -9,7 +9,7 @@ dayjs.extend(LocalizedFormat);
 export const Message: React.FC<IMessage> = props => {
   const { body, date, isCreatedByCurrentUser } = props;
 
-  const friendlyTimestamp = dayjs(date).format('lll');
+  const friendlyTimestamp = dayjs(date).format('LT');
   return (
     <div className={['message', `${isCreatedByCurrentUser ? 'mine' : ''}`].join(' ')}>
       <div className="bubble-container">

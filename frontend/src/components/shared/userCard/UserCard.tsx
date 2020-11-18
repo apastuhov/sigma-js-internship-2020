@@ -14,9 +14,10 @@ type MainInfoProps = {
   mainInfo: IUser;
   boxShadow?: number;
   isProfile?: boolean;
+  isSettings?: boolean;
 };
 
-const UserCard: React.FC<MainInfoProps> = ({ mainInfo, boxShadow, isProfile }) => {
+const UserCard: React.FC<MainInfoProps> = ({ mainInfo, boxShadow, isProfile, isSettings }) => {
   const [loginedUser] = useState(getUserFromStorage());
   const [userAge, setUserAge] = useState<number>();
   const { friends, addFriendToContext } = useFriends();
@@ -88,7 +89,7 @@ const UserCard: React.FC<MainInfoProps> = ({ mainInfo, boxShadow, isProfile }) =
             );
           })}
         </div>
-        {loginedUser._id !== mainInfo._id && !isProfile && (
+        {loginedUser._id !== mainInfo._id && !isSettings && (
           <div className="buttons-action">
             {!friends.has(mainInfo._id) && (
               <Link to="/" onClick={sendFriendRequest} className="add-friend">
