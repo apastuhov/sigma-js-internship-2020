@@ -6,7 +6,8 @@
   min-height: 635px;
 
   .title {
-    @include title;
+    font-size: 22px;
+    font-weight: 500;
     color: $black;
     display: flex;
     margin: 24px 0;

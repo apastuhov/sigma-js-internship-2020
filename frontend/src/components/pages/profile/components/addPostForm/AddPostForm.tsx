@@ -35,7 +35,7 @@ const AddPostForm: React.FC<ISendPostProps> = ({ _id }) => {
 
   return (
     <Box boxShadow={2} className="add-post-form">
-      {isInvalidForm && <p>The value is missing</p>}
+      {isInvalidForm && <p>Please,type your text</p>}
       <form action="" onSubmit={sendPost}>
         <textarea
           rows={5}

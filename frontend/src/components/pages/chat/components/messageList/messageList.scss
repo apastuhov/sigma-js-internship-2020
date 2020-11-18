@@ -4,7 +4,7 @@
   width: 614px;
   display: inline-block;
   vertical-align: top;
-  margin-left: 20px;
+  margin-left: $gap-20;
   background-color: $white;
   border-radius: $tile-radius;
   box-sizing: border-box;
@@ -26,7 +26,7 @@
 }
 
 .user-data h2 {
-  font-size: 22px;
+  font-size: $gap-20;
   margin: 0;
   font-weight: 500;
 }
@@ -39,8 +39,8 @@
 }
 
 .messageListReplace {
-  padding: 6px;
-  border-radius: 4px;
+  padding: $gap-6 $gap-10;
+  border-radius: $gap-4;
   background-color: $primary-color;
   color: $white;
   font-size: $gap-14;
