@@ -24,7 +24,7 @@ export interface IFriendsListProps {
 
 export interface ISendPostProps {
   _id: string;
-  sendUserPost(userId:string, request: {}): any;
+  sendUserPost(userId: string, request: {}): any;
 }
 
 export interface IPostsProps {

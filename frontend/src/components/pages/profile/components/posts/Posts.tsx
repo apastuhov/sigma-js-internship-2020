@@ -9,7 +9,7 @@ const Posts: React.FC<IPostsProps> = ({ posts }) => {
   const sortedPosts = useMemo(() => {
     return [...posts].reverse();
   }, [posts]);
-  
+
   return (
     <>
       {sortedPosts.length === 0 ? (
