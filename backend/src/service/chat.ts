@@ -35,6 +35,13 @@ class ChatService {
     const dialogs = await this.chatRepo.getAllDialogs(userId);
     return dialogs;
   }
+
+  // FIND DIALOG BY ID
+  
+  async findDialogById(dialogId: DTO.ID): Promise<DTO.IDialogs | null> {
+    const dialog = await this.chatRepo.findDialogById(dialogId);
+    return dialog;
+  }
 }
 
 export const chatService = new ChatService(chatRepository);

@@ -6,6 +6,8 @@ import { getAllDialogs } from '../../../../../services/apiChatService';
 import { getUserFromStorage } from '../../../../../services/sessionStorageService';
 import type { DialogInfoProps } from '../chatListItem/ChatListItem';
 import { ChatListItem } from '../chatListItem/ChatListItem';
+import { updateDialog } from '../../../../../socket/dialogSocket';
+import { IMessage } from '../../../../interfaces/Interface';
 import './chatList.scss';
 
 export const ChatList: React.FC = () => {
@@ -33,7 +35,7 @@ export const ChatList: React.FC = () => {
             photo: avatar,
             name: `${firstName} ${lastName}`,
             text: dialog.messages[0]?.body,
-            date: dayjs(dialog.messages[0]?.date).format('DD.MM.YY')
+            date: dayjs(dialog.messages[0]?.date).format(`DD.MM HH:mm`)
           };
         }
       );
@@ -50,6 +52,14 @@ export const ChatList: React.FC = () => {
     );
     setSearchResults(results);
   }, [search, dialogList]);
+
+  useEffect(() => {
+    updateDialog((message: IMessage, dialogID: string) => {
+      const newDialogs = dialogList.map(dialog => dialog.dialogId === dialogID ? { ...dialog, text: message.body ,date: dayjs(message.date).format('DD.MM HH:mm') } : dialog);
+      newDialogs.sort((a,b) => b.date.localeCompare(a.date));
+      setDialogList(newDialogs);
+    });
+  }, [dialogList]);
 
   return (
     <div className="chat-list">
