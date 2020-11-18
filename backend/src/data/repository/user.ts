@@ -68,17 +68,14 @@ export class UserRepository {
     const { name, birthdateFrom, birthdateTo, sex, country, language, level } = params;
     const data = await User.find({
       $and: [
-        {
-          $expr: {
-            $function: {
-              body: `function(firstName, lastName) {return (firstName + ' ' + lastName).toLowerCase().includes('${name
-                .trim()
-                .toLowerCase()}')}`,
-              args: ['$firstName', '$lastName'],
-              lang: 'js'
+        name
+          ? {
+              $text: {
+                $search: name,
+                $caseSensitive: false
+              }
             }
-          }
-        },
+          : {},
         {
           birthday: {
             $gte: birthdateFrom,
@@ -101,7 +98,7 @@ export class UserRepository {
     return posts;
   }
 
-  async createPost(newPost: DTO.IPost): Promise<DTO.IPostDoc | null>  {
+  async createPost(newPost: DTO.IPost): Promise<DTO.IPostDoc | null> {
     const post = await new Post(newPost).save();
     const data = await Post.findById(post._id).populate('createdBy', ['firstName', 'lastName', 'avatar']);
     return data;
