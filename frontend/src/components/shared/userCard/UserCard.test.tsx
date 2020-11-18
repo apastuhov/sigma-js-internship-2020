@@ -75,8 +75,8 @@ describe('UserCard test', () => {
         <UserCard mainInfo={userProps} />
       </MemoryRouter>
     );
-    const links = wrapper.find('.leftbar[href="/user/5fae8f5bac677440d079a289"]').length;
-    expect(links).toBeGreaterThan(0);
+    const link = wrapper.find('.leftbar').at(1).prop('href');
+    expect(link).toEqual('/user/5fae8f5bac677440d079a289');
   });
 
   it('Should call addFriendToDB by clicking on Add friend', () => {
