@@ -1,6 +1,6 @@
 import { useFormikContext } from 'formik';
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { patchRequest } from '../../../../services/apiUserService';
 import { toDataURL } from '../../../../services/convertImageService';
 import { getUserFromStorage, saveUserToStorage } from '../../../../services/sessionStorageService';
@@ -8,11 +8,11 @@ import { sex } from '../../../constants/constants';
 import { Country } from '../../../constants/Countries';
 import { FormikValues } from '../../../interfaces/Interface';
 import Button from '../../../shared/button/Button';
-import './ButtonsWithFormikSettings.scss';
 
 export const ButtonWithFormikSettings: React.FC = props => {
   const { values } = useFormikContext<FormikValues>();
   const [userImage, setUserImage] = useState<string>();
+  const history = useHistory();
 
   const getMethodPriority = (country: keyof typeof Country) => {
     return Country[country];
@@ -45,16 +45,18 @@ export const ButtonWithFormikSettings: React.FC = props => {
         learn: values.learnLanguages,
         avatar: userImage,
         about: values.about
-      }).then(res => saveUserToStorage(res));
+      })
+        .then(res => saveUserToStorage(res))
+        .then(() => history.push('/'));
     }
   };
 
   return (
     <div className="settings-nav">
       <Link to="/" className="link-to-profile">
-        <Button name="CANCEL" color="secondary" />
+        <Button name="cancel" color="secondary" />
       </Link>
-      <Button name="SAVE" color="primary" onClick={editUser} />
+      <Button name="save" color="primary" onClick={editUser} />
     </div>
   );
 };

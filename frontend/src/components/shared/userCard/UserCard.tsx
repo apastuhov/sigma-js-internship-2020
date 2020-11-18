@@ -7,6 +7,7 @@ import { addFriendToDB } from '../../../services/apiUserService';
 import { getUserFromStorage } from '../../../services/sessionStorageService';
 import { IUser, status } from '../../interfaces/Interface';
 import { useFriends } from '../../storage/friends/friendsContext';
+import Button from '../button/Button';
 import { UserPhoto } from '../userPhoto/UserPhoto';
 import './userCard.scss';
 
@@ -79,7 +80,7 @@ const UserCard: React.FC<MainInfoProps> = ({ mainInfo, boxShadow, isProfile, isS
           })}
         </div>
         <div className="learning">
-          <h3>Learning</h3>
+          <h3>Learns</h3>
           {mainInfo.learn.map((learnInfo, id) => {
             return (
               <div className="languages" key={id}>
@@ -96,9 +97,7 @@ const UserCard: React.FC<MainInfoProps> = ({ mainInfo, boxShadow, isProfile, isS
                 add friend
               </Link>
             )}
-            <Link to={`/chat/${loginedUser._id}/dialogs`} className="send-message" onClick={createDialogRequest}>
-              message
-            </Link>
+            <Button name="message" color="secondary" onClick={createDialogRequest} />
           </div>
         )}
       </div>

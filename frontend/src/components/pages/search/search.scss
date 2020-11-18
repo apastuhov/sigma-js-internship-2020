@@ -14,22 +14,14 @@
       margin-right: 0;
     }
 
-    input {
-      border-radius: $tile-radius;
-      border: 1px solid $grey;
-      &:focus {
-        outline: none;
-        border: $gap-2 solid $primary-color;
-      }
-    }
     input[type='search'] {
       height: 24px;
+      @include input;
     }
     input[type='checkbox'] {
       width: 14px;
       height: 14px;
       margin-right: 4px;
-      margin-bottom: 0;
       cursor: pointer;
     }
     .years {
@@ -43,13 +35,10 @@
         margin: 0 $gap-10;
         width: 12px;
         height: 1px;
-        border-bottom: 2px solid $grey;
       }
     }
     select {
       width: 172px;
-      border-radius: $tile-radius;
-      border-color: $grey;
       height: 24px;
       margin: auto 0;
       cursor: pointer;
