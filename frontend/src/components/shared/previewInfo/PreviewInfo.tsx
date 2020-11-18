@@ -20,7 +20,7 @@ const PreviewInfo: React.FC = () => {
       <Box boxShadow={2} className="preview-tile">
         <h1 className="preview-h1">Preview</h1>
         <UserCard
-          isProfile
+          isSettings
           mainInfo={{
             ...User,
             firstName: values.name,
