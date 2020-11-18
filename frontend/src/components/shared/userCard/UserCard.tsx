@@ -7,7 +7,6 @@ import { addFriendToDB } from '../../../services/apiUserService';
 import { getUserFromStorage } from '../../../services/sessionStorageService';
 import { IUser, status } from '../../interfaces/Interface';
 import { useFriends } from '../../storage/friends/friendsContext';
-import Button from '../button/Button';
 import { UserPhoto } from '../userPhoto/UserPhoto';
 import './userCard.scss';
 
@@ -97,7 +96,9 @@ const UserCard: React.FC<MainInfoProps> = ({ mainInfo, boxShadow, isProfile, isS
                 add friend
               </Link>
             )}
-            <Button name="message" color="secondary" onClick={createDialogRequest} />
+            <Link to={`/chat/${loginedUser?._id}/dialogs`} className="send-message" onClick={createDialogRequest}>
+              message
+            </Link>
           </div>
         )}
       </div>
