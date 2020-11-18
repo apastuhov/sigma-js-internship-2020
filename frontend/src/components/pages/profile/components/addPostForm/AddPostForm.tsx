@@ -1,12 +1,11 @@
 import Box from '@material-ui/core/Box';
 import SendSharpIcon from '@material-ui/icons/SendSharp';
 import React, { useState } from 'react';
-import { sendPostToUser } from '../../../../../services/postService';
 import { getUserFromStorage } from '../../../../../services/sessionStorageService';
 import { ISendPostProps } from '../../../../interfaces/Interface';
 import './addPostForm.scss';
 
-const AddPostForm: React.FC<ISendPostProps> = ({ _id }) => {
+const AddPostForm: React.FC<ISendPostProps> = ({ _id, sendUserPost }) => {
   const [postValue, setPostValue] = useState<string>('');
   const [isInvalidForm, setInvalidForm] = useState<boolean>(false);
   const [loginedUser] = useState(getUserFromStorage());
@@ -26,7 +25,7 @@ const AddPostForm: React.FC<ISendPostProps> = ({ _id }) => {
         body: postValue,
         createdBy: loginedUser._id
       };
-      sendPostToUser(_id, request);
+      sendUserPost(_id, request);
       setPostValue('');
     } else {
       setInvalidForm(true);
