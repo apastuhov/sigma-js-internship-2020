@@ -16,7 +16,7 @@
   max-height: 790px;
   overflow: scroll;
   overflow-x: hidden;
-  margin-top: $gap-20;
+  margin-top: $gap-24;
   padding-right: $gap-6;
   @include scrollbar;
 
@@ -28,7 +28,8 @@
 
   .post {
     @include tile;
-    margin-bottom: $gap-20;
+    margin-bottom: $gap-24;
+    margin-left: $gap-6;
 
     @include for-mobile {
       width: $mobile-tile-width;
