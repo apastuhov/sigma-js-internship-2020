@@ -111,7 +111,7 @@ const Search: React.FC = () => {
     e.preventDefault();
     apiService(dataType.filter, requestBody).then(users => {
       setUsers(users);
-      setShowError(!Boolean(users.length));
+      setShowError(!Boolean(users?.length));
     });
   };
 
