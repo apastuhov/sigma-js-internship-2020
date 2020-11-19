@@ -27,7 +27,7 @@ export const ButtonWithFormikSettings: React.FC = props => {
 
   useEffect(() => {
     toDataURL(values.fileUrl).then(dataUrl => {
-      values.fileUrl === dataUrl ? setUserImage(dataUrl) : setUserImage(values.fileUrl);
+      setUserImage(dataUrl);
     });
   }, [values.fileUrl]);
 
