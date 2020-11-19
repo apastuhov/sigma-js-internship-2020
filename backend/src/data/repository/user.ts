@@ -68,17 +68,14 @@ export class UserRepository {
     const { name, birthdateFrom, birthdateTo, sex, country, language, level } = params;
     const data = await User.find({
       $and: [
-        {
-          $expr: {
-            $function: {
-              body: `function(firstName, lastName) {return (firstName + ' ' + lastName).toLowerCase().includes('${name
-                .trim()
-                .toLowerCase()}')}`,
-              args: ['$firstName', '$lastName'],
-              lang: 'js'
+        name
+          ? {
+              $text: {
+                $search: name,
+                $caseSensitive: false
+              }
             }
-          }
-        },
+          : {},
         {
           birthday: {
             $gte: birthdateFrom,
