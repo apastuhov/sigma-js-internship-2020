@@ -1,8 +1,8 @@
+import { FieldArray, useField, useFormikContext } from 'formik';
 import React from 'react';
-import { FieldArray, useFormikContext, useField } from 'formik';
-import '../languages.scss';
-import { languages, languageLevels } from '../../../constants/constants';
+import { languageLevels, languages } from '../../../constants/constants';
 import Select from '../../select/Select';
+import '../languages.scss';
 
 interface ILanguage {
   name: string;
@@ -51,7 +51,7 @@ const LanguagesDetailInfo: React.FC<ILanguages> = props => {
         render={arrayHelpers => (
           <div>
             {values[props.name].map((language: string, index: number) => (
-              <LanguagesBlock name={props.name} index={index} label={props.label} />
+              <LanguagesBlock name={props.name} index={index} label={props.label} key={index} />
             ))}
             <button
               onClick={() =>
