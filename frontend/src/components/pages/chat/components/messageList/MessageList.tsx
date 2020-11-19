@@ -1,6 +1,6 @@
 import Box from '@material-ui/core/Box';
 import React, { useEffect, useRef, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import { getChatMessages } from '../../../../../services/apiChatService';
 import { getUserDetails } from '../../../../../services/apiUserService';
 import { getUserFromStorage } from '../../../../../services/sessionStorageService';
@@ -16,16 +16,20 @@ export const MessageList: React.FC = () => {
   const [userName, setUserName] = useState('');
   const { currentDialogId } = useParams<ParamTypes>();
   const chatUser = getUserFromStorage();
+  const location = useLocation();
 
   useEffect(() => {
-    setMessages([]);
-    (async () => {
-      const messages = await getChatMessages(currentDialogId);
-      setMessages(messages.messages);
-      const chatPaticipant = messages.participants.find((id: string) => id !== chatUser._id);
-      setUserId(chatPaticipant);
-    })();
-  }, [currentDialogId, chatUser._id]);
+    const dialogPath = location.pathname.split('/');
+    if (dialogPath[dialogPath.length - 1] !== 'dialogs') {
+      setMessages([]);
+      (async () => {
+        const messages = await getChatMessages(currentDialogId);
+        setMessages(messages.messages);
+        const chatPaticipant = messages.participants.find((id: string) => id !== chatUser._id);
+        setUserId(chatPaticipant);
+      })();
+    }
+  }, [location, currentDialogId, chatUser._id]);
 
   useEffect(() => {
     joinDialog(currentDialogId);
@@ -90,8 +94,8 @@ export const MessageList: React.FC = () => {
           <Compose />
         </Box>
       ) : (
-        <p className="messageListReplace">Please select a chat to start messaging</p>
-      )}
+          <p className="messageListReplace">Please select a chat to start messaging</p>
+        )}
     </>
   );
 };
