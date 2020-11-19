@@ -129,7 +129,7 @@ const Search: React.FC = () => {
             <select onChange={handleSelect} value={selectsFilters.lowAge} name="lowAge">
               {getOptions(lowYears)}
             </select>
-            <div className="divider"></div>
+            <div className="divider" />
             <select onChange={handleSelect} value={selectsFilters.highAge} name="highAge">
               {getOptions(hightYears)}
             </select>

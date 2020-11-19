@@ -48,5 +48,6 @@ const userSchemaFields: Record<keyof DTO.IUser, any> = {
 };
 
 const userSchema = new Schema(userSchemaFields);
+userSchema.index({ firstName: 'text', lastName: 'text' });
 
 export const User = model<DTO.IUserDoc>('User', userSchema);
