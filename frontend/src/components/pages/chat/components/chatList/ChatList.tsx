@@ -55,8 +55,12 @@ export const ChatList: React.FC = () => {
 
   useEffect(() => {
     updateDialog((message: IMessage, dialogID: string) => {
-      const newDialogs = dialogList.map(dialog => dialog.dialogId === dialogID ? { ...dialog, text: message.body ,date: dayjs(message.date).format('DD.MM HH:mm') } : dialog);
-      newDialogs.sort((a,b) => b.date.localeCompare(a.date));
+      const newDialogs = dialogList.map(dialog =>
+        dialog.dialogId === dialogID
+          ? { ...dialog, text: message.body, date: dayjs(message.date).format('DD.MM HH:mm') }
+          : dialog
+      );
+      newDialogs.sort((a, b) => b.date.localeCompare(a.date));
       setDialogList(newDialogs);
     });
   }, [dialogList]);

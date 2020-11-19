@@ -37,7 +37,7 @@ class ChatService {
   }
 
   // FIND DIALOG BY ID
-  
+
   async findDialogById(dialogId: DTO.ID): Promise<DTO.IDialogs | null> {
     const dialog = await this.chatRepo.findDialogById(dialogId);
     return dialog;

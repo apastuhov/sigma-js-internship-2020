@@ -20,7 +20,7 @@ interface Props {
 const PrivateRoute = ({ Component, path, exact = false }: Props): JSX.Element => {
   const user = getUserFromStorage();
   const isAuthed = !!user;
-  if(isAuthed){
+  if (isAuthed) {
     onConnect(user._id);
   }
   return (

@@ -5,11 +5,11 @@ import { useHistory } from 'react-router-dom';
 import GoogleLogo from '../../../images/google-login.svg';
 import Logo from '../../../images/logo-login.svg';
 import { processGoogleResponse } from '../../../services/sessionService';
+import { getUserFromStorage } from '../../../services/sessionStorageService';
+import { onConnect } from '../../../socket/dialogSocket';
 import Footer from '../../shared/footer/Footer';
 import Tile from '../../shared/tile/Tile';
 import './login.scss';
-import { getUserFromStorage } from '../../../services/sessionStorageService';
-import { onConnect } from '../../../socket/dialogSocket';
 
 const Login: React.FC = () => {
   const history = useHistory();
@@ -18,7 +18,7 @@ const Login: React.FC = () => {
     if (result) {
       history.push(`/user/${result._id}`);
     } else {
-      sessionStorage.setItem('loginedUser', JSON.stringify(res.tt.$t));
+      sessionStorage.setItem('loginedUser', JSON.stringify(res.profileObj.email));
       history.push('/register');
     }
   };
