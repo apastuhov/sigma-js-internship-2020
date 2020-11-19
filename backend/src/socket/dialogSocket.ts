@@ -12,7 +12,7 @@ export const sendMessage = (socket: any, io: any) => {
   socket.on('sendMessage', async (newMessage: DTO.IMessage, dialogId: string) => {
     let message = await chatService.setNewMessage(newMessage, Types.ObjectId(dialogId));
     io.to(dialogId).emit('message', message);
-    updateParticipants(message, dialogId, io)
+    updateParticipants(message, dialogId, io);
   });
 };
 
@@ -22,7 +22,7 @@ const updateParticipants = async (message: DTO.IMessage, dialogId: string, io: a
   for (const userId of participants!) {
     io.to(userId.toString()).emit('updateDialog', message, dialogId);
   }
-}
+};
 
 export const leaveRoom = (socket: any) => {
   socket.on('leaveRoom', (dialogId: string) => {

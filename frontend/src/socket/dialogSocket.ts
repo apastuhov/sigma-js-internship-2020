@@ -10,7 +10,7 @@ export const onConnect = (userId: string) => {
     socket.emit('stabilizeConnection', userId);
     stable = true;
   }
-}
+};
 
 export const joinDialog = (dialogId: string) => {
   socket.emit('joinDialog', dialogId);
@@ -32,6 +32,6 @@ export const getMessage = (newMessage: any) => {
 
 export const updateDialog = (updateDialogs: any) => {
   socket.on('updateDialog', (message: IMessage, dialogId: string) => {
-    updateDialogs(message, dialogId)
+    updateDialogs(message, dialogId);
   });
 };
