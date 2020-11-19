@@ -54,6 +54,13 @@ export class ChatRepository {
     ]);
     return dialogs;
   }
+
+  // FIND DIALOG BY ID
+
+  async findDialogById(dialogId: DTO.ID): Promise<DTO.IDialogsDoc | null> {
+    const dialog = await Dialog.findById(dialogId);
+    return dialog;
+  }
 }
 
 export const chatRepository = new ChatRepository();

@@ -9,6 +9,7 @@ import Footer from '../../shared/footer/Footer';
 import Tile from '../../shared/tile/Tile';
 import './login.scss';
 import { getUserFromStorage } from '../../../services/sessionStorageService';
+import { onConnect } from '../../../socket/dialogSocket';
 
 const Login: React.FC = () => {
   const history = useHistory();
@@ -26,6 +27,7 @@ const Login: React.FC = () => {
     try {
       const user = getUserFromStorage();
       if (user?._id) {
+        onConnect(user._id);
         history.push(`/user/${user._id}`);
       }
     } catch (e) {

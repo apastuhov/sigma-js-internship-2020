@@ -9,6 +9,9 @@ export const initSocket = (server: any) => {
   });
 
   io.on('connection', (socket: any) => {
+    socket.on('stabilizeConnection', (userId: string) => {
+      socket.join(userId);
+    });
     joinDialog(socket);
     sendMessage(socket, io);
     leaveRoom(socket);

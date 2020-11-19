@@ -9,6 +9,7 @@ import Search from '../components/pages/search/Search';
 import Settings from '../components/pages/settings/Components/SettingFormikWrapper';
 import { FriendsProvider } from '../components/storage/friends/friendsContext';
 import { getUserFromStorage } from '../services/sessionStorageService';
+import { onConnect } from '../socket/dialogSocket';
 
 interface Props {
   Component: React.FC<RouteComponentProps>;
@@ -19,6 +20,9 @@ interface Props {
 const PrivateRoute = ({ Component, path, exact = false }: Props): JSX.Element => {
   const user = getUserFromStorage();
   const isAuthed = !!user;
+  if(isAuthed){
+    onConnect(user._id);
+  }
   return (
     <Route
       exact={exact}

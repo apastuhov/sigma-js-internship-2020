@@ -1,3 +1,4 @@
+import { onConnect } from './../socket/dialogSocket';
 import axios from 'axios';
 import { saveUserToStorage } from './sessionStorageService';
 
@@ -12,6 +13,7 @@ export const processGoogleResponse = (res: any) => {
     const user = res.data;
     if (user._id) {
       saveUserToStorage(user);
+      onConnect(user._id);
       return user;
     }
     return null;
