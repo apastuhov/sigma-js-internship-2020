@@ -6,8 +6,8 @@ import { getAllDialogs } from '../../../../../services/apiChatService';
 import { getUserFromStorage } from '../../../../../services/sessionStorageService';
 import { updateDialog } from '../../../../../socket/dialogSocket';
 import { IMessage, IUser } from '../../../../interfaces/Interface';
-import { ChatListItem } from '../chatListItem/ChatListItem';
 import type { DialogInfoProps } from '../chatListItem/ChatListItem';
+import { ChatListItem } from '../chatListItem/ChatListItem';
 import './chatList.scss';
 
 export const ChatList: React.FC = () => {
@@ -34,7 +34,7 @@ export const ChatList: React.FC = () => {
             dialogId: dialog._id,
             photo: avatar,
             name: `${firstName} ${lastName}`,
-            text: dialog.messages[0]?.body,
+            text: `${dialog.messages[0]?.body.substring(0, 18)}...`,
             date: dayjs(dialog.messages[0]?.date).format(`DD.MM HH:mm`)
           };
         }
@@ -43,10 +43,14 @@ export const ChatList: React.FC = () => {
       setSearchResults(newDialogs);
       setIsLoading(false);
       updateDialog((message: IMessage, dialogID: string, user: IUser) => {
-        setDialogList((oldDialogs) => {
+        setDialogList(oldDialogs => {
           const dialogIndex = oldDialogs.findIndex(el => el.dialogId === dialogID);
           if (dialogIndex !== -1) {
-            const newDialog = { ...oldDialogs[dialogIndex], text: message.body, date: dayjs(message.date).format('DD.MM HH:mm') };
+            const newDialog = {
+              ...oldDialogs[dialogIndex],
+              text: `${message.body.substring(0, 18)}...`,
+              date: dayjs(message.date).format('DD.MM HH:mm')
+            };
             oldDialogs.splice(dialogIndex, 1);
             return [newDialog, ...oldDialogs];
           } else {
@@ -55,8 +59,8 @@ export const ChatList: React.FC = () => {
               dialogId: dialogID,
               name: `${user.firstName} ${user.lastName}`,
               photo: user.avatar,
-              text: message.body
-            }
+              text: `${message.body.substring(0, 18)}...`
+            };
             return [newDialog, ...oldDialogs];
           }
         });
