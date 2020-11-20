@@ -4,10 +4,10 @@ import { DTO } from 'dto';
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import { getAllDialogs } from '../../../../../services/apiChatService';
 import { getUserFromStorage } from '../../../../../services/sessionStorageService';
-import type { DialogInfoProps } from '../chatListItem/ChatListItem';
-import { ChatListItem } from '../chatListItem/ChatListItem';
 import { updateDialog } from '../../../../../socket/dialogSocket';
-import { IMessage } from '../../../../interfaces/Interface';
+import { IMessage, IUser } from '../../../../interfaces/Interface';
+import { ChatListItem } from '../chatListItem/ChatListItem';
+import type { DialogInfoProps } from '../chatListItem/ChatListItem';
 import './chatList.scss';
 
 export const ChatList: React.FC = () => {
@@ -42,6 +42,25 @@ export const ChatList: React.FC = () => {
       setDialogList(newDialogs);
       setSearchResults(newDialogs);
       setIsLoading(false);
+      updateDialog((message: IMessage, dialogID: string, user: IUser) => {
+        setDialogList((oldDialogs) => {
+          const dialogIndex = oldDialogs.findIndex(el => el.dialogId === dialogID);
+          if (dialogIndex !== -1) {
+            const newDialog = { ...oldDialogs[dialogIndex], text: message.body, date: dayjs(message.date).format('DD.MM HH:mm') };
+            oldDialogs.splice(dialogIndex, 1);
+            return [newDialog, ...oldDialogs];
+          } else {
+            const newDialog = {
+              date: dayjs(message.date).format('DD.MM HH:mm'),
+              dialogId: dialogID,
+              name: `${user.firstName} ${user.lastName}`,
+              photo: user.avatar,
+              text: message.body
+            }
+            return [newDialog, ...oldDialogs];
+          }
+        });
+      });
     };
     getChats();
   }, []);
@@ -52,18 +71,6 @@ export const ChatList: React.FC = () => {
     );
     setSearchResults(results);
   }, [search, dialogList]);
-
-  useEffect(() => {
-    updateDialog((message: IMessage, dialogID: string) => {
-      const newDialogs = dialogList.map(dialog =>
-        dialog.dialogId === dialogID
-          ? { ...dialog, text: message.body, date: dayjs(message.date).format('DD.MM HH:mm') }
-          : dialog
-      );
-      newDialogs.sort((a, b) => b.date.localeCompare(a.date));
-      setDialogList(newDialogs);
-    });
-  }, [dialogList]);
 
   return (
     <div className="chat-list">

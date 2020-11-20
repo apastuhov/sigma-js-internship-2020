@@ -1,5 +1,5 @@
 import io from 'socket.io-client';
-import { IMessage } from '../components/interfaces/Interface';
+import { IMessage, IUser } from '../components/interfaces/Interface';
 
 const ENDPOINT = `${process.env.REACT_APP_SOCKET_URL}`;
 const socket = io(ENDPOINT);
@@ -31,7 +31,7 @@ export const getMessage = (newMessage: any) => {
 };
 
 export const updateDialog = (updateDialogs: any) => {
-  socket.on('updateDialog', (message: IMessage, dialogId: string) => {
-    updateDialogs(message, dialogId);
+  socket.on('updateDialog', (message: IMessage, dialogId: string, user: IUser) => {
+    updateDialogs(message, dialogId, user);
   });
 };

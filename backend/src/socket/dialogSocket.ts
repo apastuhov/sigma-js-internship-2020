@@ -1,6 +1,7 @@
+import { Types } from 'mongoose';
 import { DTO } from '../interface';
 import { chatService } from '../service/chat';
-import { Types } from 'mongoose';
+import { userService } from '../service/user';
 
 export const joinDialog = (socket: any) => {
   socket.on('joinDialog', (dialogId: string) => {
@@ -18,9 +19,11 @@ export const sendMessage = (socket: any, io: any) => {
 
 const updateParticipants = async (message: DTO.IMessage, dialogId: string, io: any) => {
   const dialog = await chatService.findDialogById(Types.ObjectId(dialogId));
+  const user = await userService.getUserById(message.userId);
+
   const participants = dialog?.participants.filter(users => users != message.userId);
   for (const userId of participants!) {
-    io.to(userId.toString()).emit('updateDialog', message, dialogId);
+    io.to(userId.toString()).emit('updateDialog', message, dialogId, user);
   }
 };
 
